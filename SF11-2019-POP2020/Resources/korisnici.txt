@@ -1,0 +1,2 @@
+mika;mika;mika;12;mika@gmail.com;mika;M;LEKAR;True
+pera;pera;pera;12;pera@mgmail.com;pera;Z;LEKAR;True
