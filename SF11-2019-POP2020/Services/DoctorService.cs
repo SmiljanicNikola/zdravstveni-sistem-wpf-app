@@ -36,6 +36,13 @@ namespace SF11_2019_POP2020.Services
                     };
                     lekar.Aktivan = korisnik.Aktivan;
                     lekar.TipKorisnika = korisnik.TipKorisnika;
+                    lekar.Ime = korisnik.Ime;
+                    lekar.Prezime = korisnik.Prezime;
+                    lekar.KorisnickoIme = korisnik.KorisnickoIme;
+                    lekar.Lozinka = korisnik.Lozinka;
+                    lekar.Pol = korisnik.Pol;
+                    lekar.Email = korisnik.Email;
+                    lekar.JMBG = korisnik.JMBG;
 
                     Util.Instance.Lekari.Add(lekar);
                 }

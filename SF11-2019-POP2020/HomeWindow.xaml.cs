@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SF11_2019_POP2020.Models;
+using SF11_2019_POP2020.Windows;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,11 +24,13 @@ namespace SF11_2019_POP2020
         public HomeWindow()
         {
             InitializeComponent();
+            Util.Instance.CitanjeEntiteta("korisnici.txt");
+            Util.Instance.CitanjeEntiteta("lekari.txt");
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow window = new MainWindow();
+            SviLekari window = new SviLekari();
 
             this.Hide();
             window.Show();
