@@ -1,5 +1,6 @@
-mika;Miroslav;Mikic;1234;MiroslavMikic@gmail.com;1234;M;LEKAR;True
+mika;miroslav;nikic;1234;MiroslavMikic@gmail.com;1234;M;LEKAR;True
 pera;pera;pera;12;pera@mgmail.com;pera;Z;LEKAR;True
-nenadn;Nenad;Nenadic;1234;nenadnenadic@gmail.com;1234;M;LEKAR;True
+nenadn;nenad;nenadic;1234;nenadnenadic@gmail.com;1234;M;LEKAR;True
 nikolan;nikola;nikolic;;nikola1nikolic@gmail.com;;M;LEKAR;True
 stefans;stefan12;stefanovic;;stefan1stefanovic@gmail.com;;M;LEKAR;False
+milosm;milos;milosevic;;Milos@gmail.com;;M;LEKAR;True

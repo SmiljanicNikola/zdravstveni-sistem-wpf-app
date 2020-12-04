@@ -65,34 +65,37 @@ namespace SF11_2019_POP2020.Windows
             //    Lozinka = "1234"
             //};
 
-           
-            if(odabranStatus.Equals(EStatus.Dodaj))
+            if (IsValid())
             {
-                odabranLekar.Aktivan = true;
-                Lekar lekar = new Lekar
+
+                if (odabranStatus.Equals(EStatus.Dodaj))
                 {
-                    DomZdravlja = "DomZdravlja 1",
-                    Korisnicko = odabranLekar
-                };
-                Util.Instance.Korisnici.Add(odabranLekar);
-                Util.Instance.Lekari.Add(lekar);
+                    odabranLekar.Aktivan = true;
+                    Lekar lekar = new Lekar
+                    {
+                        DomZdravlja = "DomZdravlja 1",
+                        Korisnicko = odabranLekar
+                    };
+                    Util.Instance.Korisnici.Add(odabranLekar);
+                    Util.Instance.Lekari.Add(lekar);
+                }
+                else
+                {
+                    //int izmenaLekara = Util.Instance.Lekari.ToList().FindIndex(u => u.Korisnicko.KorisnickoIme.Equals(txtKorisnickoIme.Text));
+                    //int izmenaKorisnika = Util.Instance.Korisnici.ToList().FindIndex(u => u.KorisnickoIme.Equals(txtKorisnickoIme.Text));
+
+                    //Util.Instance.Korisnici[izmenaKorisnika] = k;
+                    //Util.Instance.Lekari[izmenaLekara] = lekar;
+                }
+
+
+                Util.Instance.SacuvajEntite("korisnici.txt");
+                Util.Instance.SacuvajEntite("lekari.txt");
+
+
+                this.DialogResult = false;
+                this.Close();
             }
-            else
-            {
-                //int izmenaLekara = Util.Instance.Lekari.ToList().FindIndex(u => u.Korisnicko.KorisnickoIme.Equals(txtKorisnickoIme.Text));
-                //int izmenaKorisnika = Util.Instance.Korisnici.ToList().FindIndex(u => u.KorisnickoIme.Equals(txtKorisnickoIme.Text));
-
-                //Util.Instance.Korisnici[izmenaKorisnika] = k;
-                //Util.Instance.Lekari[izmenaLekara] = lekar;
-            }
-
-
-            Util.Instance.SacuvajEntite("korisnici.txt");
-            Util.Instance.SacuvajEntite("lekari.txt");
-
-
-            this.DialogResult = false;
-            this.Close();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -100,5 +103,12 @@ namespace SF11_2019_POP2020.Windows
             this.DialogResult = true;
             this.Close();
         }
+
+        private bool IsValid()
+        {
+            return !Validation.GetHasError(txtKorisnickoIme) && !Validation.GetHasError(txtEmail)
+                && !Validation.GetHasError(txtIme);
+        }
+
     }
 }

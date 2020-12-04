@@ -60,6 +60,7 @@
     <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Validations\EmailValidacija.cs" />
     <Compile Include="Windows\DodavanjeIzmenaLekar.xaml.cs">
       <DependentUpon>DodavanjeIzmenaLekar.xaml</DependentUpon>
     </Compile>

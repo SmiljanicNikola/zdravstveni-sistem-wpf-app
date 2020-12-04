@@ -1,5 +1,0 @@
-DomZdravlja 1;mika
-Dom zdravlja 2;pera
-DomZdravlja 1;nenadn
-DomZdravlja 1;nikolan
-DomZdravlja 1;stefans

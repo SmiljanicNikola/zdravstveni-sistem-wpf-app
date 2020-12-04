@@ -63,8 +63,8 @@ namespace SF11_2019_POP2020.Windows
 
         private void DataGridLekari_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            //if (e.PropertyName.Equals("Aktivan"))
-            //    e.Column.Visibility = Visibility.Collapsed;
+            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
+                e.Column.Visibility = Visibility.Collapsed;
         }
 
         private void MenuItemDodaj_Click(object sender, RoutedEventArgs e)

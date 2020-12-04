@@ -8,14 +8,25 @@ using System.Threading.Tasks;
 namespace SF11_2019_POP2020.Models
 {
     [Serializable]
-    public class Korisnik
+    public class Korisnik : IDataErrorInfo
     {
         private string _korisnickoIme;
 
         public string KorisnickoIme
         {
             get { return _korisnickoIme; }
-            set { _korisnickoIme = value; }
+            set {
+                if (value != null)
+                {
+                    if(Util.Instance.Korisnici.ToList().Exists(k=>k.KorisnickoIme.Equals(value)))
+                    {
+                        throw new ArgumentException("Korisnicko ime mora biti jedinstveno!");
+                    }
+                }
+
+                _korisnickoIme = value; }
+
+            
         }
 
         private string _ime;
@@ -88,6 +99,33 @@ namespace SF11_2019_POP2020.Models
         {
             get { return _aktivan; }
             set { _aktivan = value; }
+        }
+
+        public string Error
+        {
+            get
+            {
+                return "Message!";
+            }
+        }
+
+        public string this[string columnName]
+        {
+            get
+            {
+                switch(columnName)
+                {
+                    case "Ime":
+                        if (string.IsNullOrEmpty(Ime))
+                            return "Ime je obavezno da se unese!";
+                        break;
+                    case "Prezime":
+                        if (string.IsNullOrEmpty(Prezime))
+                            return "Prezime je obavezno da se unese!";
+                        break;
+                }
+                return String.Empty;
+            }
         }
 
         public Korisnik()
