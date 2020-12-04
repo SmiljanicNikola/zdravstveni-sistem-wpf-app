@@ -106,5 +106,23 @@ namespace SF11_2019_POP2020.Models
                 Email + ";" + Lozinka + ";" + Pol + ";" + TipKorisnika+ ";" + Aktivan;
         }
      
+
+        public Korisnik Clone()
+        {
+            Korisnik kopija = new Korisnik();
+
+            kopija.Adresa = Adresa;
+            kopija.Aktivan = Aktivan;
+            kopija.Email = Email;
+            kopija.Ime = Ime;
+            kopija.Prezime = Prezime;
+            kopija.Pol = Pol;
+            kopija.Lozinka = Lozinka;
+            kopija.JMBG = JMBG;
+            kopija.KorisnickoIme = KorisnickoIme;
+
+            return kopija;
+        }
+
     }
 }

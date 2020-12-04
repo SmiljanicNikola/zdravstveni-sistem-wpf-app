@@ -38,12 +38,12 @@ namespace SF11_2019_POP2020.Models
         }
 
         public ObservableCollection<Korisnik> Korisnici { get; set; }
-        public ObservableCollection<Korisnik> Lekari { get; set; }
+        public ObservableCollection<Lekar> Lekari { get; set; }
 
         public void Initialize()
         {
             Korisnici = new ObservableCollection<Korisnik>();
-            Lekari = new ObservableCollection<Korisnik>();
+            Lekari = new ObservableCollection<Lekar>();
 
             Adresa adresa = new Adresa
             {
@@ -88,7 +88,7 @@ namespace SF11_2019_POP2020.Models
             Korisnici.Add(korisnik1);
             Korisnici.Add(korisnik2);
 
-            Lekari = new ObservableCollection<Korisnik>
+            Lekari = new ObservableCollection<Lekar>
             {
                 lekar
             };

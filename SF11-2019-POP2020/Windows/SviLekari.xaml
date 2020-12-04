@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
         mc:Ignorable="d"
-        Title="Lekari" Height="450" Width="800">
+        Title="Lekari" Height="560.4" Width="980">
     <Grid>
         <Menu Name="Menu" HorizontalAlignment="Left" Height="27" Margin="10,10,0,0" VerticalAlignment="Top" Width="774">
             <MenuItem Header="Lekari">
@@ -18,5 +18,6 @@
         </Menu>
         <DataGrid CanUserAddRows="False" Name="DataGridLekari" HorizontalAlignment="Left" Height="258" Margin="10,60,0,0" VerticalAlignment="Top" Width="629" SelectionChanged="DataGridLekari_SelectionChanged"
                   AutoGeneratingColumn="DataGridLekari_AutoGeneratingColumn" AutoGenerateColumns="True" />
+        <TextBox Name="textBoxPretraga" HorizontalAlignment="Left" Height="23" Margin="712,86,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="textBoxPretraga_KeyUp"/>
     </Grid>
 </Window>

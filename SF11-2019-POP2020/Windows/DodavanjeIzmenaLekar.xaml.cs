@@ -21,21 +21,24 @@ namespace SF11_2019_POP2020.Windows
     {
 
         private EStatus odabranStatus;
-        private Lekar odabranLekar;
-        public DodavanjeIzmenaLekar(Lekar lekar, EStatus status = EStatus.Dodaj)
+        private Korisnik odabranLekar;
+        public DodavanjeIzmenaLekar(Korisnik lekar, EStatus status = EStatus.Dodaj)
         {
             InitializeComponent();
 
+            this.DataContext = lekar;
+
             odabranLekar = lekar;
             odabranStatus = status;
+            comboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
 
             if(status.Equals(EStatus.Izmeni) && lekar != null)
             {
                 this.Title = "Izmeni lekara";
-                txtEmail.Text = lekar.Email;
-                txtKorisnickoIme.Text = lekar.KorisnickoIme;
-                txtIme.Text = lekar.Ime;
-                txtPrezime.Text = lekar.Prezime;
+                //txtEmail.Text = lekar.Email;
+                //txtKorisnickoIme.Text = lekar.KorisnickoIme;
+                //txtIme.Text = lekar.Ime;
+                //txtPrezime.Text = lekar.Prezime;
                 txtKorisnickoIme.IsEnabled = false;
             }
             else
@@ -46,47 +49,41 @@ namespace SF11_2019_POP2020.Windows
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            ComboBoxItem item = (ComboBoxItem)comboBoxTipKorisnika.SelectedItem;
-            string value = item.Content.ToString();
-            Enum.TryParse(value, out ETipKorisnika tip);
+            //ComboBoxItem item = (ComboBoxItem)comboBoxTipKorisnika.SelectedItem;
+            //string value = item.Content.ToString();
+            //Enum.TryParse(value, out ETipKorisnika tip);
 
-            Korisnik k = new Korisnik
-            {
-                Ime = txtIme.Text,
-                Prezime = txtPrezime.Text,
-                KorisnickoIme = txtKorisnickoIme.Text,
-                Email = txtEmail.Text,
-                TipKorisnika = tip,
-                Aktivan = true,
-                JMBG = "1234",
-                Lozinka = "1234"
-            };
+            //Korisnik k = new Korisnik
+            //{
+            //    Ime = txtIme.Text,
+            //    Prezime = txtPrezime.Text,
+            //    KorisnickoIme = txtKorisnickoIme.Text,
+            //    Email = txtEmail.Text,
+            //    TipKorisnika = tip,
+            //    Aktivan = true,
+            //    JMBG = "1234",
+            //    Lozinka = "1234"
+            //};
 
-            Lekar lekar = new Lekar
-            {
-                Ime = txtIme.Text,
-                Prezime = txtPrezime.Text,
-                KorisnickoIme = txtKorisnickoIme.Text,
-                Email = txtEmail.Text,
-                TipKorisnika = tip,
-                Aktivan = true,
-                JMBG = "1234",
-                Lozinka = "1234",
-                DomZdravlja = "DomZdravlja 1",
-                Korisnicko = k 
-            };
+           
             if(odabranStatus.Equals(EStatus.Dodaj))
             {
-                Util.Instance.Korisnici.Add(k);
+                odabranLekar.Aktivan = true;
+                Lekar lekar = new Lekar
+                {
+                    DomZdravlja = "DomZdravlja 1",
+                    Korisnicko = odabranLekar
+                };
+                Util.Instance.Korisnici.Add(odabranLekar);
                 Util.Instance.Lekari.Add(lekar);
             }
             else
             {
-                int izmenaLekara = Util.Instance.Lekari.ToList().FindIndex(u => u.KorisnickoIme.Equals(txtKorisnickoIme.Text));
-                int izmenaKorisnika = Util.Instance.Korisnici.ToList().FindIndex(u => u.KorisnickoIme.Equals(txtKorisnickoIme.Text));
+                //int izmenaLekara = Util.Instance.Lekari.ToList().FindIndex(u => u.Korisnicko.KorisnickoIme.Equals(txtKorisnickoIme.Text));
+                //int izmenaKorisnika = Util.Instance.Korisnici.ToList().FindIndex(u => u.KorisnickoIme.Equals(txtKorisnickoIme.Text));
 
-                Util.Instance.Korisnici[izmenaKorisnika] = k;
-                Util.Instance.Lekari[izmenaLekara] = lekar;
+                //Util.Instance.Korisnici[izmenaKorisnika] = k;
+                //Util.Instance.Lekari[izmenaLekara] = lekar;
             }
 
 

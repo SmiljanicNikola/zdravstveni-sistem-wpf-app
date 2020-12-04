@@ -19,7 +19,7 @@ namespace SF11_2019_POP2020.Services
 
         public void readUsers(string filename)
         {
-            Util.Instance.Lekari = new ObservableCollection<Korisnik>();
+            Util.Instance.Lekari = new ObservableCollection<Lekar>();
             using (StreamReader file = new StreamReader(@"../../Resources/" + filename))
             {
                 string line;
@@ -34,15 +34,6 @@ namespace SF11_2019_POP2020.Services
                         DomZdravlja = lekarIzFajla[0],
                         Korisnicko = korisnik
                     };
-                    lekar.Aktivan = korisnik.Aktivan;
-                    lekar.TipKorisnika = korisnik.TipKorisnika;
-                    lekar.Ime = korisnik.Ime;
-                    lekar.Prezime = korisnik.Prezime;
-                    lekar.KorisnickoIme = korisnik.KorisnickoIme;
-                    lekar.Lozinka = korisnik.Lozinka;
-                    lekar.Pol = korisnik.Pol;
-                    lekar.Email = korisnik.Email;
-                    lekar.JMBG = korisnik.JMBG;
 
                     Util.Instance.Lekari.Add(lekar);
                 }

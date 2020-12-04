@@ -21,24 +21,21 @@
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="0" Name="lblIme" Content="Ime:"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Name="txtIme"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Name="txtIme" Text="{Binding Path=Ime}"/>
 
         <Label Grid.Column="0" Grid.Row="1" Name="lblPrezime" Content="Prezime:"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Name="txtPrezime"/>
+        <TextBox Grid.Column="1" Grid.Row="1" Name="txtPrezime" Text="{Binding Path=Prezime}"/>
 
         <Label Grid.Column="0" Grid.Row="2" Name="lblkorisnickoIme" Content="Korisnicko Ime:"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Name="txtKorisnickoIme"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Name="txtKorisnickoIme" Text="{Binding Path=KorisnickoIme}"/>
 
         <Label Grid.Column="0" Grid.Row="3" Name="lblEmail" Content="Email:"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Name="txtEmail"/>
+        <TextBox Grid.Column="1" Grid.Row="3" Name="txtEmail" Text="{Binding Path=Email}"/>
 
         <Label Grid.Column="0" Grid.Row="4" Name="lblTipKorisnika" Content="Tip korisnika:"/>
-        <ComboBox Name="comboBoxTipKorisnika" Grid.Column="1" Grid.Row="4">
-            <ComboBoxItem Content="ADMINISTRATOR"/>
-            <ComboBoxItem Content="LEKAR"/>
-            <ComboBoxItem Content="PACIJENT"/>
 
-        </ComboBox>
+        <ComboBox Name="comboBoxTipKorisnika" Grid.Column="1" Grid.Row="4" SelectedItem="{Binding Path=TipKorisnika }"/>
+
 
         <Button Grid.Column="0" Grid.Row="5" Content="Cancel" Name="btnCancel" Click="btnCancel_Click"></Button>
         <Button Grid.Column="1" Grid.Row="5" Content="Ok" Name="btnOk" Click="btnOk_Click"></Button>
