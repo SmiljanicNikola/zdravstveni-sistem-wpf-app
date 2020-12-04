@@ -55,10 +55,14 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="Models\EStatus.cs" />
     <Compile Include="MyExceptions\UserNotFoundException.cs" />
     <Compile Include="Services\DoctorService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Windows\DodavanjeIzmenaLekar.xaml.cs">
+      <DependentUpon>DodavanjeIzmenaLekar.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\SviLekari.xaml.cs">
       <DependentUpon>SviLekari.xaml</DependentUpon>
     </Compile>
@@ -73,6 +77,10 @@
     <Compile Include="HomeWindow.xaml.cs">
       <DependentUpon>HomeWindow.xaml</DependentUpon>
     </Compile>
+    <Page Include="Windows\DodavanjeIzmenaLekar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\SviLekari.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>

@@ -44,5 +44,44 @@ namespace SF11_2019_POP2020.Windows
             if (e.PropertyName.Equals("Aktivan"))
                 e.Column.Visibility = Visibility.Collapsed;
         }
+
+        private void MenuItemDodaj_Click(object sender, RoutedEventArgs e)
+        {
+            DodavanjeIzmenaLekar add = new DodavanjeIzmenaLekar(null);
+
+            this.Hide();
+            if((bool)add.ShowDialog())
+            {
+
+            }
+            this.Show();
+        }
+
+        private void MenuItemIzmeni_Click(object sender, RoutedEventArgs e)
+        {
+            Lekar stariLekar = (Lekar)DataGridLekari.SelectedItem;
+            DodavanjeIzmenaLekar add = new DodavanjeIzmenaLekar(stariLekar, EStatus.Izmeni);
+
+            this.Hide();
+            if ((bool)add.ShowDialog())
+            {
+
+            }
+            this.Show();
+        }
+
+        private void MenuItemObrisi_Click(object sender, RoutedEventArgs e)
+        {
+            Lekar lekarZaBrisanje = (Lekar)DataGridLekari.SelectedItem;
+            Util.Instance.DeleteUser(lekarZaBrisanje.KorisnickoIme);
+
+            int index = Util.Instance.Lekari.ToList().FindIndex(u => u.KorisnickoIme.Equals(lekarZaBrisanje.KorisnickoIme));
+            Util.Instance.Lekari[index].Aktivan = false;
+
+            UpdateView();
+
+        }
+
+
     }
 }

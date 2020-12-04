@@ -1,2 +1,3 @@
-Dom zdravlja 2;mika
+DomZdravlja 1;mika
 Dom zdravlja 2;pera
+DomZdravlja 1;nenadn

@@ -9,9 +9,9 @@
     <Grid>
         <Menu Name="Menu" HorizontalAlignment="Left" Height="27" Margin="10,10,0,0" VerticalAlignment="Top" Width="774">
             <MenuItem Header="Lekari">
-                <MenuItem Name="MenuItemDodaj" Header="Dodaj lekara"/>
-                <MenuItem Name="MenuItemIzmeni" Header="Izmeni lekara"/>
-                <MenuItem  Name="MenuItemObrisi" Header="Obrisi lekara"/>
+                <MenuItem Name="MenuItemDodaj" Header="Dodaj lekara" Click="MenuItemDodaj_Click"/>
+                <MenuItem Name="MenuItemIzmeni" Header="Izmeni lekara" Click="MenuItemIzmeni_Click"/>
+                <MenuItem  Name="MenuItemObrisi" Header="Obrisi lekara" Click="MenuItemObrisi_Click"/>
                 <Separator/>
                 <MenuItem Name="MenuItemProfil" Header="Profil"/>
             </MenuItem>

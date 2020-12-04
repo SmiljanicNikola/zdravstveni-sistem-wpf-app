@@ -1,2 +1,3 @@
-mika;mika;mika;12;mika@gmail.com;mika;M;LEKAR;True
+mika;Miroslav;Mikic;1234;MiroslavMikic@gmail.com;1234;M;LEKAR;True
 pera;pera;pera;12;pera@mgmail.com;pera;Z;LEKAR;True
+nenadn;Nenad;Nenadic;1234;nenadnenadic@gmail.com;1234;M;LEKAR;False
