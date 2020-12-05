@@ -71,7 +71,18 @@ namespace SF11_2019_POP2020.Windows
 
         private void MenuItemIzmeniAdmina_Click(object sender, RoutedEventArgs e)
         {
+            Korisnik odabranKorisnik = view.CurrentItem as Korisnik;
+            Korisnik stariLekar = odabranKorisnik.Clone();
+            DodavanjeIzmenaLekar add = new DodavanjeIzmenaLekar(odabranKorisnik, EStatus.Izmeni);
 
+            this.Hide();
+            if ((bool)add.ShowDialog())
+            {
+                int index = Util.Instance.Korisnici.ToList().FindIndex(k => k.KorisnickoIme.Equals(odabranKorisnik.KorisnickoIme));
+                Util.Instance.Korisnici[index] = stariLekar;
+            }
+            this.Show();
+            view.Refresh();
         }
 
         private void MenuItemObrisiAdmina_Click(object sender, RoutedEventArgs e)
