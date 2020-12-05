@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="SviAdministratori" Height="450" Width="800">
     <Grid>
-        <DataGrid CanUserAddRows="False" Name="DataGridAdmini" HorizontalAlignment="Left" Height="211" Margin="28,74,0,0" VerticalAlignment="Top" Width="627"
+        <DataGrid CanUserAddRows="False" Name="DataGridAdmini" HorizontalAlignment="Left" Height="211" Margin="28,74,0,0" VerticalAlignment="Top" Width="708"
                   AutoGenerateColumns="True" AutoGeneratingColumn="DataGridAdmini_AutoGeneratingColumn"/>
         <Menu HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="794" Margin="0,0,-0.4,0">
             <MenuItem Header="Administratori">

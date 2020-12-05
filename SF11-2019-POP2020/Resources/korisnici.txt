@@ -1,5 +1,5 @@
-mirkos;mirko;milosevicc;;Miloss@gmail.com;;M;ADMINISTRATOR;True
-ivani;ivan;ivic;1900510040;ivan.ivic@gmail.com;111;M;ADMINISTRATOR;True
+mirkos;mirko;milosevicc;;Miloss@gmail.com;;M;ADMINISTRATOR;False
+ivani;ivan;ivic;1900510040;ivan.ivic@gmail.com;111;M;ADMINISTRATOR;False
 ivanai;ivana;ivanic;4005001030;ivana1.ivanic@gmail.com;222;M;ADMINISTRATOR;True
 ninan;nina;ninicc;;nina123ninic@gmail.com;;M;LEKAR;True
 nikolan;nikola;nikolic;;nikola@nikolic@gmail.com;;M;LEKAR;True

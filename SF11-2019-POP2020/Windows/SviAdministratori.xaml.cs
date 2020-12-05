@@ -76,7 +76,9 @@ namespace SF11_2019_POP2020.Windows
 
         private void MenuItemObrisiAdmina_Click(object sender, RoutedEventArgs e)
         {
-
+            Korisnik odabranKorisnik = view.CurrentItem as Korisnik;
+            Util.Instance.DeleteUser(odabranKorisnik.KorisnickoIme);
+            view.Refresh();
         }
     }
 }
