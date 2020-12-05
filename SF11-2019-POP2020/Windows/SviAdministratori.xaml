@@ -1,0 +1,21 @@
+﻿<Window x:Class="SF11_2019_POP2020.Windows.SviAdministratori"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
+        mc:Ignorable="d"
+        Title="SviAdministratori" Height="450" Width="800">
+    <Grid>
+        <DataGrid CanUserAddRows="False" Name="DataGridAdmini" HorizontalAlignment="Left" Height="211" Margin="28,74,0,0" VerticalAlignment="Top" Width="627"
+                  AutoGenerateColumns="True" AutoGeneratingColumn="DataGridAdmini_AutoGeneratingColumn"/>
+        <Menu HorizontalAlignment="Left" Height="55" VerticalAlignment="Top" Width="794" Margin="0,0,-0.4,0">
+            <MenuItem Header="Administratori">
+                <MenuItem Name="MenuItemDodajAdmina" Header="Dodaj admina" Click="MenuItemDodajAdmina_Click"></MenuItem>
+                <MenuItem Name="MenuItemIzmeniAdmina" Header="Izmeni admina" Click="MenuItemIzmeniAdmina_Click"></MenuItem>
+                <MenuItem Name="MenuItemObrisiAdmina" Header="Obrisi admina" Click="MenuItemObrisiAdmina_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+
+    </Grid>
+</Window>

@@ -16,13 +16,13 @@ namespace SF11_2019_POP2020.Models
         {
             get { return _korisnickoIme; }
             set {
-                if (value != null)
-                {
-                    if(Util.Instance.Korisnici.ToList().Exists(k=>k.KorisnickoIme.Equals(value)))
-                    {
-                        throw new ArgumentException("Korisnicko ime mora biti jedinstveno!");
-                    }
-                }
+                //if (value != null)
+                //{
+                    //if(Util.Instance.Korisnici.ToList().Exists(k=>k.KorisnickoIme.Equals(value)))
+                   // {
+                        //throw new ArgumentException("Korisnicko ime mora biti jedinstveno!");
+                    //}
+               // }
 
                 _korisnickoIme = value; }
 
@@ -162,5 +162,9 @@ namespace SF11_2019_POP2020.Models
             return kopija;
         }
 
+       // public static implicit operator Korisnik(Korisnik v)
+        //{
+         //   throw new NotImplementedException();
+        //}
     }
 }

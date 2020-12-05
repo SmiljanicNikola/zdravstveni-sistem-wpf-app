@@ -35,5 +35,13 @@ namespace SF11_2019_POP2020
             this.Hide();
             window.Show();
         }
+
+        private void btnAdministratori_Click(object sender, RoutedEventArgs e)
+        {
+            SviAdministratori windowAdministratori = new SviAdministratori();
+
+            this.Hide();
+            windowAdministratori.Show();
+        }
     }
 }
