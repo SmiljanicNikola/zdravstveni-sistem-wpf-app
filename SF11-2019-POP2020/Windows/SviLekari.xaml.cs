@@ -65,6 +65,9 @@ namespace SF11_2019_POP2020.Windows
         {
             if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
                 e.Column.Visibility = Visibility.Collapsed;
+
+            if (e.PropertyName.Equals("korisni"))
+                e.Column.Visibility = Visibility.Collapsed;
         }
 
         private void MenuItemDodaj_Click(object sender, RoutedEventArgs e)
@@ -91,7 +94,7 @@ namespace SF11_2019_POP2020.Windows
             this.Hide();
             if ((bool)add.ShowDialog())
             {
-                int index = Util.Instance.Korisnici.ToList().FindIndex(k => k.KorisnickoIme.Equals(izabraniLekar.KorisnickoIme));
+                int index = Util.Instance.Korisnici.ToList().FindIndex(k => k.Jmbg.Equals(izabraniLekar.Jmbg));
                 Util.Instance.Korisnici[index] = stariLekar;
             }
             this.Show();
@@ -115,6 +118,14 @@ namespace SF11_2019_POP2020.Windows
         private void textBoxPretraga_KeyUp(object sender, KeyEventArgs e)
         {
             view.Refresh();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow window = new HomeWindow();
+
+            this.Hide();
+            window.Show();
         }
     }
 }

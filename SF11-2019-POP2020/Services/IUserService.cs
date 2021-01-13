@@ -8,9 +8,9 @@ namespace SF11_2019_POP2020.Services
 {
     public interface IUserService
     {
-        void readUsers(string filename);
-        void saveUsers(string filename);
+        void readUsers();
+        int saveUser(Object obj);
 
-        void deleteUser(string username);
+        void deleteUser();
     }
 }

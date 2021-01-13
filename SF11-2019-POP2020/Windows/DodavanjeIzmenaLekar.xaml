@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:validations="clr-namespace:SF11_2019_POP2020.Validations"
         mc:Ignorable="d"
-        Title="DodavanjeIzmena Lekara" Height="450" Width="800">
+        Title="DodavanjeIzmena Lekara" Height="650" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -18,6 +18,10 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="0" Name="lblIme" Content="Ime:"/>
@@ -28,17 +32,9 @@
         <TextBox Grid.Column="1" Grid.Row="1" Name="txtPrezime" Text="{Binding Path=Prezime, ValidatesOnDataErrors=True}"/>
         <TextBlock Grid.Column="0" Grid.Row="1" Text="{ Binding ElementName=txtPrezime, Path=(Validation.Errors)[0].ErrorContent}" Foreground="Red" />
 
-        <Label Grid.Column="0" Grid.Row="2" Name="lblkorisnickoIme" Content="Korisnicko Ime:"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Name="txtKorisnickoIme" Text="{Binding Path=KorisnickoIme, ValidatesOnExceptions=True, UpdateSourceTrigger=LostFocus}">
-            <Validation.ErrorTemplate>
-                <ControlTemplate>
-                    <StackPanel>
-                        <AdornedElementPlaceholder/>
-                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
-                    </StackPanel>
-                </ControlTemplate>
-            </Validation.ErrorTemplate>
-        </TextBox>
+        <Label Grid.Column="0" Grid.Row="2" Name="lblJmbg" Content="Jmbg:"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Name="txtJmbg" Text="{Binding Path=Jmbg}"/>
+
         <Label Grid.Column="0" Grid.Row="3" Name="lblEmail" Content="Email:"/>
         <TextBox Grid.Column="1" Grid.Row="3" Name="txtEmail">
             <TextBox.Text>
@@ -58,13 +54,24 @@
             </Validation.ErrorTemplate>
         </TextBox>
 
-        <Label Grid.Column="0" Grid.Row="4" Name="lblTipKorisnika" Content="Tip korisnika:"/>
+        <Label Grid.Column="0" Grid.Row="4" Name="lblAdresaId" Content="AdresaId:"/>
+        <TextBox Grid.Column="1" Grid.Row="4" Name="txtAdresaId" Text="{Binding Path=AdresaId}"/>
 
-        <ComboBox Name="comboBoxTipKorisnika" Grid.Column="1" Grid.Row="4" SelectedItem="{Binding Path=TipKorisnika }"/>
+        <Label Grid.Column="0" Grid.Row="5" Name="lblPol" Content="Pol:"/>
+        
+        <ComboBox Name="ComboBoxPol" Grid.Column="1" Grid.Row="5" SelectedItem="{Binding Path=Pol }"/>
 
 
-        <Button Grid.Column="0" Grid.Row="5" Content="Cancel" Name="btnCancel" Click="btnCancel_Click"></Button>
-        <Button Grid.Column="1" Grid.Row="5" Content="Ok" Name="btnOk" Click="btnOk_Click"></Button>
+        <Label Grid.Column="0" Grid.Row="6" Name="lblLozinka" Content="Lozinka:"/>
+        <TextBox Grid.Column="1" Grid.Row="6" Name="txtLozinka" Text="{Binding Path=Lozinka}"/>
+
+        <Label Grid.Column="0" Grid.Row="7" Name="lblTipKorisnika" Content="Tip korisnika:"/>
+
+        <ComboBox Name="ComboBoxTipKorisnika" Grid.Column="1" Grid.Row="7" SelectedItem="{Binding Path=TipKorisnika }"/>
+
+
+        <Button Grid.Column="0" Grid.Row="8" Content="Cancel" Name="btnCancel" Click="btnCancel_Click"></Button>
+        <Button Grid.Column="1" Grid.Row="8" Content="Ok" Name="btnOk" Click="btnOk_Click"></Button>
 
     </Grid>
 </Window>

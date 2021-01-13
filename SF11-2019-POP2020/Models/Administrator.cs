@@ -11,7 +11,7 @@ namespace SF11_2019_POP2020.Models
 
         public string AdminZaUpisUFajl()
         {
-            return KorisnickoIme + ";" + Ime + ";" + Prezime + ";" + JMBG + ";" +
+            return KorisnickoIme + ";" + Ime + ";" + Prezime + ";" + Jmbg + ";" +
                 Email + ";" + Lozinka + ";" + Pol + ";" + TipKorisnika + ";" + Aktivan;
         }
     }

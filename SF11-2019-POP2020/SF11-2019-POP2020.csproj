@@ -56,6 +56,7 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="Models\Administrator.cs" />
+    <Compile Include="Models\DomZdravlja.cs" />
     <Compile Include="Models\EStatus.cs" />
     <Compile Include="Models\Terapija.cs" />
     <Compile Include="Models\Termin.cs" />

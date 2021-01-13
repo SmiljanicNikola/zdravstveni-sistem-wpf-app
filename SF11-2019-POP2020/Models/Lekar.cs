@@ -10,32 +10,27 @@ namespace SF11_2019_POP2020.Models
     public class Lekar
 
     {
-        private string _domZdravlja;
 
-        public string DomZdravlja
+        private int _id;
+
+        public int Id
         {
-            get { return _domZdravlja; }
-            set { _domZdravlja = value; }
+            get { return _id; }
+            set { _id = value; }
         }
 
-        private Korisnik _korisnick;
+        private int _domZdravljaId;
 
-        public Korisnik Korisnicko
+        public int DomZdravljaId
         {
-            get { return _korisnick; }
-            set { _korisnick = value; }
+            get { return _domZdravljaId; }
+            set { _domZdravljaId = value; }
         }
 
-        public override string ToString()
-        {
-            return base.ToString() + "Ja sam lekar " + Korisnicko.ToString() + ". Ja radim u " + DomZdravlja;
 
-        }
+        
 
-        public string LekarUpisUFajl()
-        {
-            return DomZdravlja + ";" + Korisnicko.KorisnickoIme;
-        }
+
 
     }
 }

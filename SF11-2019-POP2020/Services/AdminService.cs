@@ -8,19 +8,20 @@ namespace SF11_2019_POP2020.Services
 {
     class AdminService : IUserService
     {
-        public void deleteUser(string username)
+        public void deleteUser()
         {
             throw new NotImplementedException();
         }
 
-        public void readUsers(string filename)
+        public void readUsers()
         {
             
         }
 
-        public void saveUsers(string filename)
+        public int saveUser(Object obj)
         {
-            throw new NotImplementedException();
+            return -1;
+
         }
     }
 }

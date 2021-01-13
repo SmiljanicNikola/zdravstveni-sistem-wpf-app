@@ -12,6 +12,15 @@ namespace SF11_2019_POP2020.Models
     {
         private string _korisnickoIme;
 
+
+        private int _id;
+
+        public int Id
+        {
+            get { return _id; }
+            set { _id = value; }
+        }
+
         public string KorisnickoIme
         {
             get { return _korisnickoIme; }
@@ -63,18 +72,18 @@ namespace SF11_2019_POP2020.Models
 
         private string _jmbg;
 
-        public string JMBG
+        public string Jmbg
         {
             get { return _jmbg; }
             set { _jmbg = value; }
         }
 
-        private Adresa _adresa;
+        private int _adresaId;
 
-        public Adresa Adresa
+        public int AdresaId
         {
-            get { return _adresa; }
-            set { _adresa = value; }
+            get { return _adresaId; }
+            set { _adresaId = value; }
         }
 
         private EPol _pol;
@@ -140,7 +149,7 @@ namespace SF11_2019_POP2020.Models
 
         public string KorisnikZaUpisUFajl()
         {
-            return KorisnickoIme + ";" + Ime + ";" + Prezime + ";" + JMBG + ";" +
+            return KorisnickoIme + ";" + Ime + ";" + Prezime + ";" + Jmbg + ";" +
                 Email + ";" + Lozinka + ";" + Pol + ";" + TipKorisnika+ ";" + Aktivan;
         }
      
@@ -149,22 +158,28 @@ namespace SF11_2019_POP2020.Models
         {
             Korisnik kopija = new Korisnik();
 
-            kopija.Adresa = Adresa;
+            kopija.AdresaId = AdresaId;
             kopija.Aktivan = Aktivan;
             kopija.Email = Email;
             kopija.Ime = Ime;
             kopija.Prezime = Prezime;
             kopija.Pol = Pol;
             kopija.Lozinka = Lozinka;
-            kopija.JMBG = JMBG;
+            kopija.Jmbg = Jmbg;
             kopija.KorisnickoIme = KorisnickoIme;
 
             return kopija;
         }
 
-       // public static implicit operator Korisnik(Korisnik v)
+      
+
+        /* public static implicit operator Korisnik(Korisnik v)
+         {
+         }*/
+
+        // public static implicit operator Korisnik(Korisnik v)
         //{
-         //   throw new NotImplementedException();
+        //   throw new NotImplementedException();
         //}
     }
 }

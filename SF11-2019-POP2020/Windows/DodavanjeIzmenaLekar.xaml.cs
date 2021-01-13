@@ -30,16 +30,20 @@ namespace SF11_2019_POP2020.Windows
 
             odabranLekar = lekar;
             odabranStatus = status;
-            comboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
+            ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
+
+            ComboBoxPol.ItemsSource = Enum.GetValues(typeof(EPol)).Cast<EPol>();
 
             if(status.Equals(EStatus.Izmeni) && lekar != null)
             {
                 this.Title = "Izmeni lekara";
-                //txtEmail.Text = lekar.Email;
-                //txtKorisnickoIme.Text = lekar.KorisnickoIme;
-                //txtIme.Text = lekar.Ime;
-                //txtPrezime.Text = lekar.Prezime;
-                txtKorisnickoIme.IsEnabled = false;
+                txtIme.Text = lekar.Ime;
+                txtPrezime.Text = lekar.Prezime;
+                txtJmbg.Text = lekar.Jmbg;
+                txtEmail.Text = lekar.Email;
+                txtAdresaId.Text = lekar.AdresaId.ToString();
+                txtLozinka.Text = lekar.Lozinka;
+               
             }
             else
             {
@@ -49,22 +53,62 @@ namespace SF11_2019_POP2020.Windows
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            //ComboBoxItem item = (ComboBoxItem)comboBoxTipKorisnika.SelectedItem;
-            //string value = item.Content.ToString();
-            //Enum.TryParse(value, out ETipKorisnika tip);
 
-            //Korisnik k = new Korisnik
-            //{
-            //    Ime = txtIme.Text,
-            //    Prezime = txtPrezime.Text,
-            //    KorisnickoIme = txtKorisnickoIme.Text,
-            //    Email = txtEmail.Text,
-            //    TipKorisnika = tip,
-            //    Aktivan = true,
-            //    JMBG = "1234",
-            //    Lozinka = "1234"
-            //};
+            if (!Validation.GetHasError(txtEmail) && !Validation.GetHasError(txtIme))
+            {
+                if (odabranStatus.Equals(EStatus.Dodaj))
+                {
+                    odabranLekar.Aktivan = true;
+                    Lekar lekar = new Lekar
+                    {
+                        Id=odabranLekar.Id,
+                        DomZdravljaId = 3
+                
+                    };
 
+                    Util.Instance.Korisnici.Add(odabranLekar);
+                    Util.Instance.Lekari.Add(lekar);
+
+                    int id = Util.Instance.SacuvajEntitet(odabranLekar);
+                    lekar.Id = id;
+                  
+                    Util.Instance.SacuvajEntitet(lekar);
+                }
+
+                this.DialogResult = true;
+                this.Close();
+            }
+
+
+            /*
+            ComboBoxItem item = (ComboBoxItem)comboBoxTipKorisnika.SelectedItem;
+            string value = item.Content.ToString();
+            Enum.TryParse(value, out ETipKorisnika tip);
+            // comboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
+
+            ComboBoxItem item1 = (ComboBoxItem)ComboBoxPol.SelectedItem;
+            string value1 = item.Content.ToString();
+            Enum.TryParse(value1, out EPol pol);
+
+
+            Korisnik k = new Korisnik
+            {
+                Ime = txtIme.Text,
+                Prezime = txtPrezime.Text,
+                Jmbg = txtJmbg.Text,
+                Email = txtEmail.Text,
+                AdresaId = int.Parse(txtAdresaId.Text),
+                Pol = pol,
+                Lozinka = txtLozinka.Text,
+                TipKorisnika = tip,
+                Aktivan = true
+            };
+            Util.Instance.Korisnici.Add(k);
+            Util.Instance.SacuvajEntitet(k);
+            */
+
+
+            /*
             if (IsValid())
             {
 
@@ -73,11 +117,16 @@ namespace SF11_2019_POP2020.Windows
                     odabranLekar.Aktivan = true;
                     Lekar lekar = new Lekar
                     {
-                        DomZdravlja = "DomZdravlja 1",
-                        Korisnicko = odabranLekar
+                        Id = odabranLekar.Id,
+                        DomZdravljaId = 4
+                   
                     };
                     Util.Instance.Korisnici.Add(odabranLekar);
                     Util.Instance.Lekari.Add(lekar);
+
+                    int id = Util.Instance.SacuvajEntitet(odabranLekar);
+                    Util.Instance.SacuvajEntitet(lekar);
+
                 }
                 else
                 {
@@ -89,13 +138,12 @@ namespace SF11_2019_POP2020.Windows
                 }
 
 
-                Util.Instance.SacuvajEntite("korisnici.txt");
-                Util.Instance.SacuvajEntite("lekari.txt");
+               
 
 
                 this.DialogResult = false;
                 this.Close();
-            }
+            }*/
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -106,7 +154,7 @@ namespace SF11_2019_POP2020.Windows
 
         private bool IsValid()
         {
-            return !Validation.GetHasError(txtKorisnickoIme) && !Validation.GetHasError(txtEmail)
+            return !Validation.GetHasError(txtEmail)
                 && !Validation.GetHasError(txtIme);
         }
 

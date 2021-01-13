@@ -30,8 +30,9 @@ namespace SF11_2019_POP2020.Windows
 
             odabranKorisnik = korisnik;
             odabranStatus = status;
-            comboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
+            ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
 
+            ComboBoxPol.ItemsSource = Enum.GetValues(typeof(EPol)).Cast<EPol>();
 
         }
 
@@ -45,19 +46,32 @@ namespace SF11_2019_POP2020.Windows
         {
             if (odabranStatus.Equals(EStatus.Dodaj))
             {
+                //ComboBoxItem item = (ComboBoxItem)ComboBoxPol.SelectedItem;
+                //string value = item.Content.ToString();
+                //.TryParse(value, out ETipKorisnika tip);
+                //ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
+
+               // ComboBoxItem item1 = (ComboBoxItem)ComboBoxPol.SelectedItem;
+               // string value1 = item1.Content.ToString();
+               // Enum.TryParse(value1, out EPol pol);
                 //odabranKorisnik.Aktivan = true;
                 Korisnik k = new Korisnik
                 {
                     Ime = txtIme.Text,
                     Prezime = txtPrezime.Text,
-                    KorisnickoIme = txtKorisnickoIme.Text,
+                    Jmbg = txtJMBG.Text,
                     Email = txtEmail.Text,
-                    Aktivan = true,
-                    JMBG = txtJMBG.Text,
-                    Lozinka = txtLozinka.Text
+                    AdresaId = int.Parse(txtAdresaId.Text),
+                    Pol = EPol.M,
+                    Lozinka = txtLozinka.Text,
+                    TipKorisnika = ETipKorisnika.ADMINISTRATOR,
+                    Aktivan = true
+
                 };
                 Util.Instance.Korisnici.Add(k);
                 //Util.Instance.Lekari.Add(lekar);
+                Util.Instance.SacuvajEntitet(k);
+
             }
             else
             {
@@ -69,7 +83,7 @@ namespace SF11_2019_POP2020.Windows
             }
 
 
-            Util.Instance.SacuvajEntite("korisnici.txt");
+                    /* Util.Instance.SacuvajEntitet(obj);*/
             //Util.Instance.SacuvajEntite("lekari.txt");
 
 

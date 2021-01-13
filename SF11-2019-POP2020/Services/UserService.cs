@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 using System.IO;
 using System.Linq;
 using System.Runtime.CompilerServices;
@@ -13,61 +14,48 @@ namespace SF11_2019_POP2020.Services
 {
     public class UserService : IUserService
     {
-        public void deleteUser(string username)
+        public void deleteUser()
         {
-            Korisnik k = Util.Instance.Korisnici.ToList().Find(korisnik => korisnik.KorisnickoIme.Equals(username));
-
-            if (k == null)
-                throw new UserNotFoundException($"Ne postoji korisnik sa korisnickim imenom {username}");
-            k.Aktivan = false;
-            Util.Instance.SacuvajEntite("korisnici.txt");
+            
         }
 
-        public void readUsers(string filename)
+        public void readUsers()
         {
-            Util.Instance.Korisnici = new ObservableCollection<Korisnik>();
 
-            using (StreamReader file = new StreamReader(@"../../Resources/" + filename))
+                
+            
+        }
+
+      
+        public int saveUser(Object obj)
+        {
+            Korisnik korisnik = obj as Korisnik;
+
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
-                string line;
-                while ((line = file.ReadLine()) != null)
-                {
-                    string[] korisnikIzFajla = line.Split(';');
+                conn.Open();
 
-                    Enum.TryParse(korisnikIzFajla[6], out EPol pol);
-                    Enum.TryParse(korisnikIzFajla[7], out ETipKorisnika tip);
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = @"insert into dbo.Korisnici(ime, prezime, jmbg, email, adresaId, pol, lozinka, TipKorisnika, aktivan)
+                       output inserted.id VALUES(@Ime, @Prezime, @Jmbg, @Email, @AdresaId, @Pol, @Lozinka, @TipKorisnika, @Aktivan)";
 
-                    Boolean.TryParse(korisnikIzFajla[8], out Boolean aktivan);
-                    Korisnik korisnik = new Korisnik
-                    {
-                        KorisnickoIme = korisnikIzFajla[0],
-                        Ime = korisnikIzFajla[1],
-                        Prezime = korisnikIzFajla[2],
-                        JMBG = korisnikIzFajla[3],
-                        Email = korisnikIzFajla[4],
-                        Lozinka = korisnikIzFajla[5],
-                        Pol = pol,
-                        TipKorisnika = tip,
-                        Aktivan = aktivan
-                        //Aktivan = Convert.ToBoolean(korisnikIzFajla[8])
+                command.Parameters.Add(new SqlParameter("Ime", korisnik.Ime));
+                command.Parameters.Add(new SqlParameter("Prezime", korisnik.Prezime));
+                command.Parameters.Add(new SqlParameter("Jmbg", korisnik.Jmbg));
+                command.Parameters.Add(new SqlParameter("Email", korisnik.Email));
+                command.Parameters.Add(new SqlParameter("AdresaId", korisnik.AdresaId));
+                command.Parameters.Add(new SqlParameter("Pol", korisnik.Pol.ToString()));
+                command.Parameters.Add(new SqlParameter("Lozinka", korisnik.Lozinka));
+                command.Parameters.Add(new SqlParameter("TipKorisnika", korisnik.TipKorisnika));
+                command.Parameters.Add(new SqlParameter("Aktivan", korisnik.Aktivan));
 
-                    };
-                    Util.Instance.Korisnici.Add(korisnik);
-                }
+               return (int)command.ExecuteScalar();
+
+
             }
-        }
 
-        public void saveUsers(string filename)
-        {
-            using (StreamWriter file = new StreamWriter(@"../../Resources/" + filename))
-            {
-                foreach (Korisnik korisnik in Util.Instance.Korisnici)
-                {
-                    file.WriteLine(korisnik.KorisnikZaUpisUFajl());
-                }
-            }
+               // return -1;
         }
-
 
     }
 }

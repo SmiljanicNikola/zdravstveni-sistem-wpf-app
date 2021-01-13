@@ -20,30 +20,41 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+
         </Grid.RowDefinitions>
         <Label Grid.Column="0" Grid.Row="0" Name="lblIme" Content="Ime:"/>
         <TextBox Grid.Column="1" Grid.Row="0" Name="txtIme" Text="{Binding Path=Ime, ValidatesOnDataErrors=True}"/>
-        
+
         <Label Grid.Column="0" Grid.Row="1" Name="lblPrezime" Content="Prezime:"/>
         <TextBox Grid.Column="1" Grid.Row="1" Name="txtPrezime" Text="{Binding Path=Prezime}"/>
 
-        <Label Grid.Column="0" Grid.Row="2" Name="lblKorisnickoIme" Content="Korisnicko Ime:"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Name="txtKorisnickoIme" Text="{Binding Path=KorisnickoIme}"/>
+        <Label Grid.Column="0" Grid.Row="2" Name="lblJMBG" Content="Jmbg:"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Name="txtJMBG" Text="{Binding Path=Jmbg}"/>
+
+        <Label Grid.Column="0" Grid.Row="4" Name="lblAdresaId" Content="AdresaId:"/>
+        <TextBox Grid.Column="1" Grid.Row="4" Name="txtAdresaId" Text="{Binding Path=AdresaId}"/>
+
 
         <Label Grid.Column="0" Grid.Row="3" Name="lblEmail" Content="Email:"/>
         <TextBox Grid.Column="1" Grid.Row="3" Name="txtEmail" Text="{Binding Path=Email}" />
 
-        <Label Grid.Column="0" Grid.Row="4" Name="lblTipKorisnika" Content="Tip korisnika:"/>
-        <ComboBox Name="comboBoxTipKorisnika" Grid.Column="1" Grid.Row="4" SelectedItem="{Binding Path=TipKorisnika }"/>
+        <Label Grid.Column="0" Grid.Row="7" Name="lblTipKorisnika" Content="Tip korisnika:"/>
+        <ComboBox Name="ComboBoxTipKorisnika" Grid.Column="1" Grid.Row="7" SelectedItem="{Binding Path=TipKorisnika}">
+ 
+        </ComboBox>
 
-        <Label Grid.Column="0" Grid.Row="5" Name="lblJMBG" Content="JMBG:"/>
-        <TextBox Grid.Column="1" Grid.Row="5" Name="txtJMBG" Text="{Binding Path=JMBG}"/>
+
+        <Label Grid.Column="0" Grid.Row="5" Name="lblPol" Content="Pol:"/>
+
+        <ComboBox Name="ComboBoxPol" Grid.Column="1" Grid.Row="5" SelectedItem="{Binding Path=Pol}">
+        </ComboBox>
 
         <Label Grid.Column="0" Grid.Row="6" Name="lblLozinka" Content="Lozinka:"/>
         <TextBox Grid.Column="1" Grid.Row="6" Name="txtLozinka" Text="{Binding Path=Lozinka}"/>
 
-        <Button Grid.Column="0" Grid.Row="7" Content="Cancel" Name="btnCancel" Click="btnCancel_Click"></Button>
-        <Button Grid.Column="1" Grid.Row="7" Content="Ok" Name="btnOk" Click="btnOk_Click"></Button>
+        <Button Grid.Column="0" Grid.Row="8" Content="Cancel" Name="btnCancel" Click="btnCancel_Click"></Button>
+        <Button Grid.Column="1" Grid.Row="8" Content="Ok" Name="btnOk" Click="btnOk_Click"></Button>
         
     </Grid>
 </Window>

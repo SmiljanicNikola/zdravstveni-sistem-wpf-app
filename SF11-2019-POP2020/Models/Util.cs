@@ -15,6 +15,12 @@ namespace SF11_2019_POP2020.Models
 {
     public sealed class Util
     {
+
+
+        public static string CONNECTION_STRING = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;
+                                                    Integrated Security=True;Connect Timeout=30;Encrypt=False;
+                                                    TrustServerCertificate=False;ApplicationIntent=ReadWrite;
+                                                    MultiSubnetFailover=False";
         private static readonly Util instance = new Util();
         IUserService _userService;
         IUserService _doctorService;
@@ -58,7 +64,7 @@ namespace SF11_2019_POP2020.Models
             korisnik1.KorisnickoIme = "pera";
             korisnik1.Ime = "petar";
             korisnik1.Prezime = "peric";
-            korisnik1.JMBG = "123456";
+            korisnik1.Jmbg = "123456";
             korisnik1.Lozinka = "pera";
             korisnik1.Email = "pera@gmail.com";
             korisnik1.Pol = EPol.M;
@@ -72,7 +78,7 @@ namespace SF11_2019_POP2020.Models
                 Ime = "zika",
                 Prezime = "zikic",
                 KorisnickoIme = "ziza",
-                JMBG = "654321",
+                Jmbg = "654321",
                 Lozinka = "zika",
                 Pol = EPol.Z,
                 TipKorisnika = ETipKorisnika.LEKAR,
@@ -81,8 +87,9 @@ namespace SF11_2019_POP2020.Models
 
             Lekar lekar = new Lekar
             {
-                DomZdravlja = "Dom Zdravlja 1",
-                Korisnicko = korisnik2
+                Id = korisnik2.Id,
+                DomZdravljaId = 4
+         
             };
 
             Korisnici.Add(korisnik1);
@@ -95,33 +102,34 @@ namespace SF11_2019_POP2020.Models
 
         }
 
-        public void SacuvajEntite(string filename)
+        public int SacuvajEntitet(Object obj)
         {
-            if(filename.Contains("korisnici"))
+            if(obj is Korisnik)
             {
-                _userService.saveUsers(filename);
+              return _userService.saveUser(obj);
             }
-            else if(filename.Contains("lekari"))
+            else if(obj is Lekar)
             {
-                _doctorService.saveUsers(filename);
+              return _doctorService.saveUser(obj);
             }
+            return -1;
         }
 
         public void CitanjeEntiteta(string filename)
         {
             if (filename.Contains("korisnici"))
             {
-                _userService.readUsers(filename);
+                _userService.readUsers();
             }
             else if (filename.Contains("lekari"))
             {
-                _doctorService.readUsers(filename);
+                _doctorService.readUsers();
             }
         }
     
         public void DeleteUser(string username)
         {
-            _userService.deleteUser(username);
+            _userService.deleteUser();
         }
     }
 }
