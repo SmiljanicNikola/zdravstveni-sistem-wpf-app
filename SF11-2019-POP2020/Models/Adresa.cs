@@ -9,9 +9,9 @@ namespace SF11_2019_POP2020.Models
     [Serializable]
     public class Adresa
     {
-        private string _id;
+        private int _id;
 
-        public string ID
+        public int Id
         {
             get { return _id; }
             set { _id = value; }

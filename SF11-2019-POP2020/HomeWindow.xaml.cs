@@ -43,5 +43,15 @@ namespace SF11_2019_POP2020
             this.Hide();
             windowAdministratori.Show();
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+
+        }
     }
 }

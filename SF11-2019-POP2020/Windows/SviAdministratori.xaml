@@ -16,6 +16,7 @@
                 <MenuItem Name="MenuItemObrisiAdmina" Header="Obrisi admina" Click="MenuItemObrisiAdmina_Click"></MenuItem>
             </MenuItem>
         </Menu>
+        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="506,320,0,0" VerticalAlignment="Top" Width="83" Height="34" Click="Button_Click"/>
 
     </Grid>
 </Window>

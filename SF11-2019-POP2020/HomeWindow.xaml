@@ -7,10 +7,25 @@
         mc:Ignorable="d"
         Title="Home" Height="450" Width="800">
     <Grid>
-        <Button Name="btnStart" Content="Lekari" Click="btnStart_Click" Margin="298,88,328.6,286"/>
-        <Button Name="btnAdministratori" Content="Administratori" HorizontalAlignment="Left" Margin="298,173,0,0" VerticalAlignment="Top" Width="167" Height="49" Click="btnAdministratori_Click"/>
-        <Button Name="btnPacijenti" Content="Pacijenti" HorizontalAlignment="Left" Margin="298,259,0,0" VerticalAlignment="Top" Width="167" Height="49" RenderTransformOrigin="0.5,0.5"/>
-        <Label Content="Dobrodosli!" HorizontalAlignment="Left" Margin="10,10,0,0" VerticalAlignment="Top"/>
+        <Menu Name="Menu" HorizontalAlignment="Left" Height="27" Margin="10,10,0,0" VerticalAlignment="Top" Width="777">
+            <MenuItem Header="Pregled">
+                <MenuItem Header="Pregled domova zdravlja" Name="PregledDomovaZdravlja"></MenuItem>
+
+            </MenuItem>
+        </Menu>
+        <Button Name="btnStart" Content="Lekari" Click="btnStart_Click" Margin="103,286,578.6,93"/>
+        <Button Name="btnAdministratori" Content="Administratori" HorizontalAlignment="Left" Margin="260,286,0,0" VerticalAlignment="Top" Width="112" Height="41" Click="btnAdministratori_Click"/>
+        <Button Name="btnPacijenti" Content="Pacijenti" HorizontalAlignment="Left" Margin="411,286,0,0" VerticalAlignment="Top" Width="117" Height="42" RenderTransformOrigin="0.5,0.5">
+            <Button.RenderTransform>
+                <TransformGroup>
+                    <ScaleTransform/>
+                    <SkewTransform/>
+                    <RotateTransform Angle="-0.951"/>
+                    <TranslateTransform/>
+                </TransformGroup>
+            </Button.RenderTransform>
+        </Button>
+        <Label Content="Dobrodosli!" HorizontalAlignment="Left" Margin="10,85,0,0" VerticalAlignment="Top" Height="26" Width="72"/>
 
     </Grid>
 </Window>

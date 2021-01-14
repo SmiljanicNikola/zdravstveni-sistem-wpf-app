@@ -11,6 +11,9 @@ namespace SF11_2019_POP2020.Services
         void readUsers();
         int saveUser(Object obj);
 
-        void deleteUser();
+        void updateUser(Object obj);
+        void deleteUser(string jmbg);
+
+
     }
 }

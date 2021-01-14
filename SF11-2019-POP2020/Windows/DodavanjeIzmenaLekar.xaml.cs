@@ -43,6 +43,7 @@ namespace SF11_2019_POP2020.Windows
                 txtEmail.Text = lekar.Email;
                 txtAdresaId.Text = lekar.AdresaId.ToString();
                 txtLozinka.Text = lekar.Lozinka;
+               // Util.Instance.SacuvajEntitet(lekar);
                
             }
             else
@@ -62,7 +63,7 @@ namespace SF11_2019_POP2020.Windows
                     Lekar lekar = new Lekar
                     {
                         Id=odabranLekar.Id,
-                        DomZdravljaId = 3
+                        DomZdravljaId = 4
                 
                     };
 

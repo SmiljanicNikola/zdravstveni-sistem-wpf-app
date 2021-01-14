@@ -103,8 +103,11 @@ namespace SF11_2019_POP2020.Windows
 
         private void MenuItemObrisi_Click(object sender, RoutedEventArgs e)
         {
+            // Korisnik izabraniLekar = view.CurrentItem as Korisnik; pos
+            // Util.Instance.DeleteUser(izabraniLekar.KorisnickoIme); pos
+
             Korisnik izabraniLekar = view.CurrentItem as Korisnik;
-            Util.Instance.DeleteUser(izabraniLekar.KorisnickoIme);
+            Util.Instance.DeleteUser(izabraniLekar.Jmbg);
 
             //int index = Util.Instance.Lekari.ToList().FindIndex(u => u.Korisnicko.KorisnickoIme.Equals(izabraniLekar.KorisnickoIme));
             //Util.Instance.Lekari[index].Korisnicko.Aktivan = false;

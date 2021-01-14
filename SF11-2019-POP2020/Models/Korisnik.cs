@@ -10,9 +10,6 @@ namespace SF11_2019_POP2020.Models
     [Serializable]
     public class Korisnik : IDataErrorInfo
     {
-        private string _korisnickoIme;
-
-
         private int _id;
 
         public int Id
@@ -21,22 +18,6 @@ namespace SF11_2019_POP2020.Models
             set { _id = value; }
         }
 
-        public string KorisnickoIme
-        {
-            get { return _korisnickoIme; }
-            set {
-                //if (value != null)
-                //{
-                    //if(Util.Instance.Korisnici.ToList().Exists(k=>k.KorisnickoIme.Equals(value)))
-                   // {
-                        //throw new ArgumentException("Korisnicko ime mora biti jedinstveno!");
-                    //}
-               // }
-
-                _korisnickoIme = value; }
-
-            
-        }
 
         private string _ime;
 
@@ -144,12 +125,12 @@ namespace SF11_2019_POP2020.Models
 
         public override string ToString()
         {
-            return "Ja sam " + KorisnickoIme + ". Moje email je:" + Email + ". Tip: " + TipKorisnika; // + ". Moja adresa je " + Adresa.ToString();
+            return " Moje email je:" + Email + ". Tip: " + TipKorisnika; // + ". Moja adresa je " + Adresa.ToString();
         }
 
         public string KorisnikZaUpisUFajl()
         {
-            return KorisnickoIme + ";" + Ime + ";" + Prezime + ";" + Jmbg + ";" +
+            return Ime + ";" + Prezime + ";" + Jmbg + ";" +
                 Email + ";" + Lozinka + ";" + Pol + ";" + TipKorisnika+ ";" + Aktivan;
         }
      
@@ -166,7 +147,7 @@ namespace SF11_2019_POP2020.Models
             kopija.Pol = Pol;
             kopija.Lozinka = Lozinka;
             kopija.Jmbg = Jmbg;
-            kopija.KorisnickoIme = KorisnickoIme;
+
 
             return kopija;
         }

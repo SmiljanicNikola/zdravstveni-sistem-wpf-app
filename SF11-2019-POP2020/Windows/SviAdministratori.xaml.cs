@@ -78,7 +78,7 @@ namespace SF11_2019_POP2020.Windows
             this.Hide();
             if ((bool)add.ShowDialog())
             {
-                int index = Util.Instance.Korisnici.ToList().FindIndex(k => k.KorisnickoIme.Equals(odabranKorisnik.KorisnickoIme));
+                int index = Util.Instance.Korisnici.ToList().FindIndex(k => k.Jmbg.Equals(odabranKorisnik.Jmbg));
                 Util.Instance.Korisnici[index] = stariLekar;
             }
             this.Show();
@@ -88,8 +88,16 @@ namespace SF11_2019_POP2020.Windows
         private void MenuItemObrisiAdmina_Click(object sender, RoutedEventArgs e)
         {
             Korisnik odabranKorisnik = view.CurrentItem as Korisnik;
-            Util.Instance.DeleteUser(odabranKorisnik.KorisnickoIme);
+            Util.Instance.DeleteUser(odabranKorisnik.Jmbg);
             view.Refresh();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow window = new HomeWindow();
+
+            this.Hide();
+            window.Show();
         }
     }
 }

@@ -1,7 +1,2 @@
 mirkos;mirko;milosevic;;Miloss@gmail.com;;M;ADMINISTRATOR;False
-ivani;ivan;ivic;1900510040;ivan.ivic@gmail.com;111;M;ADMINISTRATOR;False
-ivanai;ivana;ivanicc;4005001030;ivana1.ivanic@gmail.com;222;M;ADMINISTRATOR;True
 ninan;nina;ninicc;;nina123ninic@gmail.com;;M;LEKAR;True
-nikolan;nikola;nikolic;;nikola@nikolic@gmail.com;;M;LEKAR;True
-milanm;milan;milanovic;;milan.milanovic@gmail.com;;M;LEKAR;True
-petrap;petar;petrovicc;;petar.petrovic@gmail.com;;M;LEKAR;True

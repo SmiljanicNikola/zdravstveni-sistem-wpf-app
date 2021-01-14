@@ -57,11 +57,10 @@ namespace SF11_2019_POP2020.Models
                 Broj = "Broj 1",
                 Drzava = "Drzava 1",
                 Ulica = "Ulica 1",
-                ID = "1"
+                Id = 1
             };
 
             Korisnik korisnik1 = new Korisnik();
-            korisnik1.KorisnickoIme = "pera";
             korisnik1.Ime = "petar";
             korisnik1.Prezime = "peric";
             korisnik1.Jmbg = "123456";
@@ -77,7 +76,6 @@ namespace SF11_2019_POP2020.Models
                 Email = "zika@gmail.com",
                 Ime = "zika",
                 Prezime = "zikic",
-                KorisnickoIme = "ziza",
                 Jmbg = "654321",
                 Lozinka = "zika",
                 Pol = EPol.Z,
@@ -127,9 +125,9 @@ namespace SF11_2019_POP2020.Models
             }
         }
     
-        public void DeleteUser(string username)
+        public void DeleteUser(string jmbg)
         {
-            _userService.deleteUser();
+            _userService.deleteUser(jmbg);
         }
     }
 }

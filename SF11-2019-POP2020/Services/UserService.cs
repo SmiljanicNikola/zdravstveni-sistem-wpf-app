@@ -14,19 +14,25 @@ namespace SF11_2019_POP2020.Services
 {
     public class UserService : IUserService
     {
-        public void deleteUser()
+        public void deleteUser(string jmbg)
         {
-            
+            Korisnik k = Util.Instance.Korisnici.ToList().Find(korisnik => korisnik.Jmbg.Equals(jmbg));
+
+            if (k == null)
+                throw new UserNotFoundException($"Ne postoji korisnik sa jmbg-om {jmbg}");
+            k.Aktivan = false;
+
+            updateUser(k);
         }
 
         public void readUsers()
         {
 
-                
-            
+
+
         }
 
-      
+
         public int saveUser(Object obj)
         {
             Korisnik korisnik = obj as Korisnik;
@@ -46,16 +52,45 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("AdresaId", korisnik.AdresaId));
                 command.Parameters.Add(new SqlParameter("Pol", korisnik.Pol.ToString()));
                 command.Parameters.Add(new SqlParameter("Lozinka", korisnik.Lozinka));
-                command.Parameters.Add(new SqlParameter("TipKorisnika", korisnik.TipKorisnika));
+                command.Parameters.Add(new SqlParameter("TipKorisnika", korisnik.TipKorisnika.ToString()));
                 command.Parameters.Add(new SqlParameter("Aktivan", korisnik.Aktivan));
 
-               return (int)command.ExecuteScalar();
+                return (int)command.ExecuteScalar();
 
 
             }
 
-               // return -1;
+            // return -1;
         }
 
+        public void updateUser(object obj)
+        {
+            Korisnik korisnik = obj as Korisnik;
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"update dbo.Korisnici
+                                        SET Ime = @Ime
+                                        SET Prezime = @Prezime                 
+                                        SET Email = @Email
+                                        SET AdresaId = @AdresaId
+                                        SET Lozinka = @Lozinka
+                                        SET Aktivan = @Aktivan
+                                        where jmbg = @Jmbg";
+
+                command.Parameters.Add(new SqlParameter("Ime", korisnik.Ime));
+                command.Parameters.Add(new SqlParameter("Prezime", korisnik.Prezime));
+                command.Parameters.Add(new SqlParameter("Email", korisnik.Email));
+                command.Parameters.Add(new SqlParameter("AdresaId", korisnik.AdresaId));
+                command.Parameters.Add(new SqlParameter("Lozinka", korisnik.Lozinka));
+                command.Parameters.Add(new SqlParameter("Aktivan", korisnik.Aktivan));
+                command.Parameters.Add(new SqlParameter("Jmbg", korisnik.Jmbg));
+
+                command.ExecuteNonQuery();
+
+            }
+        }
     }
 }
