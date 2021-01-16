@@ -129,5 +129,18 @@ namespace SF11_2019_POP2020.Models
         {
             _userService.deleteUser(jmbg);
         }
+
+        public void UpdateEntiteta(Object obj)
+        {
+            if(obj is Korisnik)
+            {
+                _userService.updateUser(obj);
+            }
+            if(obj is Lekar)
+            {
+                _doctorService.updateUser(obj);
+            }
+        }
+
     }
 }

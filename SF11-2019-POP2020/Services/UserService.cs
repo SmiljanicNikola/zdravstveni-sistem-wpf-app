@@ -22,12 +22,38 @@ namespace SF11_2019_POP2020.Services
                 throw new UserNotFoundException($"Ne postoji korisnik sa jmbg-om {jmbg}");
             k.Aktivan = false;
 
-            updateUser(k);
+            // updateUser(k);
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"update dbo.Korisnici
+                                       
+                                        SET Aktivan = @Aktivan
+                                        where jmbg = @Jmbg";
+
+                command.Parameters.Add(new SqlParameter("Aktivan", k.Aktivan));
+                command.Parameters.Add(new SqlParameter("Jmbg", k.Jmbg));
+
+                command.ExecuteNonQuery();
+
+            }
         }
 
         public void readUsers()
         {
+            Util.Instance.Korisnici = new ObservableCollection<Korisnik>();
 
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"select * from korisnici";
+
+            }
 
 
         }
@@ -68,8 +94,8 @@ namespace SF11_2019_POP2020.Services
             Korisnik korisnik = obj as Korisnik;
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
-                conn.Open();
-                SqlCommand command = conn.CreateCommand();
+                 conn.Open();
+                 SqlCommand command = conn.CreateCommand();
 
                 command.CommandText = @"update dbo.Korisnici
                                         SET Ime = @Ime

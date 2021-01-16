@@ -16,6 +16,7 @@ using System.Windows.Shapes;
 namespace SF11_2019_POP2020.Windows
 {
     /// <summary>
+    /// Logic for DodavanjeIzmenaLekar.xaml
     /// </summary>
     public partial class DodavanjeIzmenaLekar : Window
     {
@@ -30,6 +31,7 @@ namespace SF11_2019_POP2020.Windows
 
             odabranLekar = lekar;
             odabranStatus = status;
+
             ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
 
             ComboBoxPol.ItemsSource = Enum.GetValues(typeof(EPol)).Cast<EPol>();
@@ -37,12 +39,12 @@ namespace SF11_2019_POP2020.Windows
             if(status.Equals(EStatus.Izmeni) && lekar != null)
             {
                 this.Title = "Izmeni lekara";
-                txtIme.Text = lekar.Ime;
-                txtPrezime.Text = lekar.Prezime;
-                txtJmbg.Text = lekar.Jmbg;
-                txtEmail.Text = lekar.Email;
-                txtAdresaId.Text = lekar.AdresaId.ToString();
-                txtLozinka.Text = lekar.Lozinka;
+                //txtIme.Text = lekar.Ime;
+                //txtPrezime.Text = lekar.Prezime;
+                txtJmbg.IsEnabled = false;
+                //txtEmail.Text = lekar.Email;
+                //txtAdresaId.Text = lekar.AdresaId.ToString();
+                //txtLozinka.Text = lekar.Lozinka;
                // Util.Instance.SacuvajEntitet(lekar);
                
             }
@@ -153,11 +155,11 @@ namespace SF11_2019_POP2020.Windows
             this.Close();
         }
 
-        private bool IsValid()
+        /*private bool IsValid()
         {
             return !Validation.GetHasError(txtEmail)
                 && !Validation.GetHasError(txtIme);
-        }
+        }*/
 
     }
 }

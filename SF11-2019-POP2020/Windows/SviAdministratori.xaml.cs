@@ -44,14 +44,15 @@ namespace SF11_2019_POP2020.Windows
             view = CollectionViewSource.GetDefaultView(Util.Instance.Korisnici);
             DataGridAdmini.ItemsSource = view;
             DataGridAdmini.IsSynchronizedWithCurrentItem = true;
+            DataGridAdmini.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+
+
         }
 
         private void DataGridAdmini_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.PropertyName.Equals("Error"))
-            {
+            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
                 e.Column.Visibility = Visibility.Collapsed;
-            }
         }
 
         private void MenuItemDodajAdmina_Click(object sender, RoutedEventArgs e)
