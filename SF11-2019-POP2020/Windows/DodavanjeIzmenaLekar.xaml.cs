@@ -39,14 +39,18 @@ namespace SF11_2019_POP2020.Windows
             if(status.Equals(EStatus.Izmeni) && lekar != null)
             {
                 this.Title = "Izmeni lekara";
-                //txtIme.Text = lekar.Ime;
-                //txtPrezime.Text = lekar.Prezime;
+                /*lekar.Ime = txtIme.Text;
+                lekar.Prezime = txtPrezime.Text;
                 txtJmbg.IsEnabled = false;
-                //txtEmail.Text = lekar.Email;
-                //txtAdresaId.Text = lekar.AdresaId.ToString();
-                //txtLozinka.Text = lekar.Lozinka;
-               // Util.Instance.SacuvajEntitet(lekar);
-               
+                lekar.Email = txtEmail.Text;
+                txtAdresaId.IsEnabled = false;               
+                lekar.Lozinka = txtLozinka.Text;
+                Util.Instance.SacuvajEntitet(lekar);*/
+                txtJmbg.IsEnabled = false;
+                //Util.Instance.SacuvajEntitet(lekar);
+                //Util.Instance.UpdateEntiteta(lekar);
+                //Util.Instance.SacuvajEntitet(lekar);
+
             }
             else
             {
@@ -65,7 +69,9 @@ namespace SF11_2019_POP2020.Windows
                     Lekar lekar = new Lekar
                     {
                         Id=odabranLekar.Id,
-                        DomZdravljaId = 4
+                        DomZdravljaId = 4,
+                        Termini = "nema"
+            
                 
                     };
 

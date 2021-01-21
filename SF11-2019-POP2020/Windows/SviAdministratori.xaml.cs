@@ -26,22 +26,23 @@ namespace SF11_2019_POP2020.Windows
         {
             InitializeComponent();
 
-            Updateview();
+            UpdateView();
 
-            view.Filter = CustomFilter;
+            /*view.Filter = CustomFilter;*/
         }
 
-        private bool CustomFilter(object obj)
+       /* private bool CustomFilter(object obj)
         {
             Korisnik korisnik = obj as Korisnik;
             if (korisnik.TipKorisnika.Equals(ETipKorisnika.ADMINISTRATOR))
                 return true;
            return false;
-        }
+        }*/
 
-        private void Updateview()
+        private void UpdateView()
         {
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Korisnici);
+
+            view = CollectionViewSource.GetDefaultView(Util.Instance.KorisniciAdmini);
             DataGridAdmini.ItemsSource = view;
             DataGridAdmini.IsSynchronizedWithCurrentItem = true;
             DataGridAdmini.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
@@ -89,7 +90,7 @@ namespace SF11_2019_POP2020.Windows
         private void MenuItemObrisiAdmina_Click(object sender, RoutedEventArgs e)
         {
             Korisnik odabranKorisnik = view.CurrentItem as Korisnik;
-            Util.Instance.DeleteUser(odabranKorisnik.Jmbg);
+            Util.Instance.DeleteAdmin(odabranKorisnik.Jmbg);
             view.Refresh();
         }
 

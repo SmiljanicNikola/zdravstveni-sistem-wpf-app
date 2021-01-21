@@ -1,0 +1,25 @@
+﻿<Window x:Class="SF11_2019_POP2020.Windows.SviPacijenti"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
+        mc:Ignorable="d"
+        Title="SviPacijenti" Height="467.463" Width="833.582">
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="0*"/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <DataGrid CanUserAddRows="False" Name="DataGridPacijenti" HorizontalAlignment="Left" Height="218" Margin="4,67,0,0" VerticalAlignment="Top" Width="726"
+                  AutoGenerateColumns="True" AutoGeneratingColumn="DataGridPacijenti_AutoGeneratingColumn"  Grid.Column="1"/>
+        <Menu HorizontalAlignment="Left" Height="43" VerticalAlignment="Top" Width="824" Grid.ColumnSpan="2" Margin="0,10,0,0">
+            <MenuItem Header="Pacijenti">
+                <MenuItem Name="MenuItemDodajPacijenta" Header="Dodaj pacijenta" Click="MenuItemDodajPacijenta_Click"></MenuItem>
+                <MenuItem Name="MenuItemIzmeniPacijenta" Header="Izmeni pacijenta" Click="MenuItemIzmeniPacijenta_Click"></MenuItem>
+                <MenuItem Name="MenuItemObrisiPacijenta" Header="Obrisi pacijenta" Click="MenuItemObrisiPacijenta_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="561,365,0,0" VerticalAlignment="Top" Width="83" Height="34" Click="Button_Click" Grid.Column="1"/>
+    </Grid>
+</Window>

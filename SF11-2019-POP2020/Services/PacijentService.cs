@@ -10,12 +10,11 @@ using System.Threading.Tasks;
 
 namespace SF11_2019_POP2020.Services
 {
-    class AdminService : IUserService
+    class PacijentService : IUserService
     {
-
         public void deleteUser(string jmbg)
         {
-            Korisnik k = Util.Instance.KorisniciAdmini.ToList().Find(korisnik => korisnik.Jmbg.Equals(jmbg));
+            Korisnik k = Util.Instance.KorisniciPacijenti.ToList().Find(korisnik => korisnik.Jmbg.Equals(jmbg));
 
             if (k == null)
                 throw new UserNotFoundException($"Ne postoji korisnik sa jmbg-om {jmbg}");
@@ -42,8 +41,7 @@ namespace SF11_2019_POP2020.Services
 
         public void readUsers()
         {
-
-            Util.Instance.KorisniciAdmini = new ObservableCollection<Korisnik>();
+            Util.Instance.KorisniciPacijenti = new ObservableCollection<Korisnik>();
             //Util.Instance.Lekari = new ObservableCollection<Lekar>();
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
@@ -52,13 +50,13 @@ namespace SF11_2019_POP2020.Services
 
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"Select * from korisnici where TipKorisnika like 'ADMINISTRATOR' and Aktivan=1";
+                command.CommandText = @"Select * from korisnici where TipKorisnika like 'Pacijent' and Aktivan=1";
 
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    Util.Instance.KorisniciAdmini.Add(new Korisnik
+                    Util.Instance.KorisniciPacijenti.Add(new Korisnik
                     {
                         Id = reader.GetInt32(0),
                         Ime = reader.GetString(1),
@@ -68,7 +66,7 @@ namespace SF11_2019_POP2020.Services
                         AdresaId = reader.GetInt32(5),
                         Pol = EPol.M,
                         Lozinka = reader.GetString(7),
-                        TipKorisnika = ETipKorisnika.ADMINISTRATOR,
+                        TipKorisnika = ETipKorisnika.PACIJENT,
                         Aktivan = reader.GetBoolean(9)
 
 
@@ -78,19 +76,16 @@ namespace SF11_2019_POP2020.Services
                 reader.Close();
 
             }
-
         }
-        public int saveUser(Object obj)
-        {
-            return -1;
 
+        public int saveUser(object obj)
+        {
+            throw new NotImplementedException();
         }
 
         public void updateUser(object obj)
         {
             throw new NotImplementedException();
         }
-
     }
- }
-
+}

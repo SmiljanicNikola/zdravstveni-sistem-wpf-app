@@ -16,13 +16,13 @@ using System.Windows.Shapes;
 namespace SF11_2019_POP2020.Windows
 {
     /// <summary>
-    /// Interaction logic for DodavanjeIzmenaAdministratora.xaml
+    /// Interaction logic for DodavanjeIzmenaPacijenta.xaml
     /// </summary>
-    public partial class DodavanjeIzmenaAdministratora : Window
+    public partial class DodavanjeIzmenaPacijenta : Window
     {
         private EStatus odabranStatus;
         private Korisnik odabranKorisnik;
-        public DodavanjeIzmenaAdministratora(Korisnik korisnik, EStatus status = EStatus.Dodaj)
+        public DodavanjeIzmenaPacijenta(Korisnik korisnik, EStatus status = EStatus.Dodaj)
         {
             InitializeComponent();
 
@@ -33,7 +33,6 @@ namespace SF11_2019_POP2020.Windows
             ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
 
             ComboBoxPol.ItemsSource = Enum.GetValues(typeof(EPol)).Cast<EPol>();
-
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -51,9 +50,9 @@ namespace SF11_2019_POP2020.Windows
                 //.TryParse(value, out ETipKorisnika tip);
                 //ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
 
-               // ComboBoxItem item1 = (ComboBoxItem)ComboBoxPol.SelectedItem;
-               // string value1 = item1.Content.ToString();
-               // Enum.TryParse(value1, out EPol pol);
+                // ComboBoxItem item1 = (ComboBoxItem)ComboBoxPol.SelectedItem;
+                // string value1 = item1.Content.ToString();
+                // Enum.TryParse(value1, out EPol pol);
                 //odabranKorisnik.Aktivan = true;
                 Korisnik k = new Korisnik
                 {
@@ -64,30 +63,15 @@ namespace SF11_2019_POP2020.Windows
                     AdresaId = int.Parse(txtAdresaId.Text),
                     Pol = EPol.M,
                     Lozinka = txtLozinka.Text,
-                    TipKorisnika = ETipKorisnika.ADMINISTRATOR,
+                    TipKorisnika = ETipKorisnika.PACIJENT,
                     Aktivan = true
 
                 };
-                Util.Instance.KorisniciAdmini.Add(k);
+                Util.Instance.KorisniciPacijenti.Add(k);
                 //Util.Instance.Lekari.Add(lekar);
                 Util.Instance.SacuvajEntitet(k);
-
+               
             }
-            else
-            {
-                //int izmenaLekara = Util.Instance.Lekari.ToList().FindIndex(u => u.Korisnicko.KorisnickoIme.Equals(txtKorisnickoIme.Text));
-                //int izmenaKorisnika = Util.Instance.Korisnici.ToList().FindIndex(u => u.KorisnickoIme.Equals(txtKorisnickoIme.Text));
-
-                //Util.Instance.Korisnici[izmenaKorisnika] = k;
-                //Util.Instance.Lekari[izmenaLekara] = lekar;
-            }
-
-
-                    /* Util.Instance.SacuvajEntitet(obj);*/
-            //Util.Instance.SacuvajEntite("lekari.txt");
-
-
-            //this.DialogResult = false;
             this.Close();
         }
     }

@@ -99,20 +99,27 @@ namespace SF11_2019_POP2020.Services
 
                 command.CommandText = @"update dbo.Korisnici
                                         SET Ime = @Ime
-                                        SET Prezime = @Prezime                 
+                                        SET Prezime = @Prezime
+                                        SET Jmbg = @Jmbg
                                         SET Email = @Email
                                         SET AdresaId = @AdresaId
+                                        SET Pol = @Pol
                                         SET Lozinka = @Lozinka
+                                        SET TipKorisnika = @TipKorisnika
                                         SET Aktivan = @Aktivan
                                         where jmbg = @Jmbg";
 
                 command.Parameters.Add(new SqlParameter("Ime", korisnik.Ime));
                 command.Parameters.Add(new SqlParameter("Prezime", korisnik.Prezime));
+                command.Parameters.Add(new SqlParameter("Jmbg", korisnik.Jmbg));
                 command.Parameters.Add(new SqlParameter("Email", korisnik.Email));
                 command.Parameters.Add(new SqlParameter("AdresaId", korisnik.AdresaId));
+                command.Parameters.Add(new SqlParameter("Pol", korisnik.Pol));
                 command.Parameters.Add(new SqlParameter("Lozinka", korisnik.Lozinka));
+                command.Parameters.Add(new SqlParameter("TipKorisnika", korisnik.TipKorisnika));
                 command.Parameters.Add(new SqlParameter("Aktivan", korisnik.Aktivan));
-                command.Parameters.Add(new SqlParameter("Jmbg", korisnik.Jmbg));
+           
+
 
                 command.ExecuteNonQuery();
 

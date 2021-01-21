@@ -64,7 +64,7 @@ namespace SF11_2019_POP2020.Services
             }
         }
 
-                public int saveUser(Object obj)
+        public int saveUser(Object obj)
             {
 
             Lekar lekar = obj as Lekar;
@@ -90,7 +90,7 @@ namespace SF11_2019_POP2020.Services
 
         public void updateUser(object obj)
         {
-            Korisnik korisnik = obj as Korisnik;
+            /*Korisnik korisnik = obj as Korisnik;
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
                 conn.Open();
@@ -115,7 +115,35 @@ namespace SF11_2019_POP2020.Services
 
                 command.ExecuteNonQuery();
 
+            }*/
+
+            Korisnik korisnik = obj as Korisnik;
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"update dbo.Korisnici
+                                        SET Ime = @Ime
+                                        
+                                        where jmbg = @Jmbg";
+
+                command.Parameters.Add(new SqlParameter("Ime", korisnik.Ime));
+                //command.Parameters.Add(new SqlParameter("Prezime", korisnik.Prezime));
+                command.Parameters.Add(new SqlParameter("Jmbg", korisnik.Jmbg));
+                //command.Parameters.Add(new SqlParameter("Email", korisnik.Email));
+                //command.Parameters.Add(new SqlParameter("AdresaId", korisnik.AdresaId));
+                //command.Parameters.Add(new SqlParameter("Pol", korisnik.Pol.ToString()));
+                //command.Parameters.Add(new SqlParameter("Lozinka", korisnik.Lozinka));
+                //command.Parameters.Add(new SqlParameter("TipKorisnika", korisnik.TipKorisnika.ToString()));
+                //command.Parameters.Add(new SqlParameter("Aktivan", korisnik.Aktivan));
+
+
+
+                command.ExecuteNonQuery();
+
             }
+
         }
     }
 }

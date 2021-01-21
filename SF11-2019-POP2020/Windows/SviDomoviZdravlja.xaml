@@ -1,0 +1,22 @@
+﻿<Window x:Class="SF11_2019_POP2020.Windows.SviDomoviZdravlja"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
+        mc:Ignorable="d"
+        Title="SviDomoviZdravlja" Height="450" Width="800">
+    <Grid>
+        <Menu HorizontalAlignment="Left" Height="37" Margin="0,13,-0.4,0" VerticalAlignment="Top" Width="500">
+            <MenuItem Header="Akcije">
+                <MenuItem Name="MenuItemDodajDomZdravlja" Header="Dodaj dom zdravlja" Click="MenuItemDodajDomZdravlja_Click" ></MenuItem>
+                <MenuItem Name="MenuItemIzmeniDomZdravlja" Header="Izmeni dom zdravlja" Click="MenuItemIzmeniDomZdravlja_Click"></MenuItem>
+                <MenuItem Name="MenuItemObrisiDomZdravlja" Header="Obrisi dom zdravlja" Click="MenuItemObrisiDomZdravlja_Click" ></MenuItem>
+            </MenuItem>
+        </Menu>
+        <DataGrid CanUserAddRows="False" Name="DataGridDomoviZdravlja"  HorizontalAlignment="Left" Height="167" Margin="32,68,0,0" VerticalAlignment="Top" 
+                  AutoGenerateColumns="True" AutoGeneratingColumn="DataGridDomoviZdravlja_AutoGeneratingColumn" Width="468"/>
+
+        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="678,361,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="Button_Click"/>
+    </Grid>
+</Window>

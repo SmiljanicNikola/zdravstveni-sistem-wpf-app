@@ -1,0 +1,26 @@
+﻿<Window x:Class="SF11_2019_POP2020.Windows.loginAdmin"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
+        mc:Ignorable="d"
+        Title="login" Height="300" Width="600">
+    <Grid Margin="0,0,12.6,5" RenderTransformOrigin="0.5,0.5">
+        <Grid.RenderTransform>
+            <TransformGroup>
+                <ScaleTransform/>
+                <SkewTransform/>
+                <RotateTransform Angle="0.054"/>
+                <TranslateTransform/>
+            </TransformGroup>
+        </Grid.RenderTransform>
+        <Label Content="Jmbg" HorizontalAlignment="Left" Margin="36,47,0,0" VerticalAlignment="Top" Height="26" Width="61"/>
+        <Label Content="Lozinka" Name="lozinka" HorizontalAlignment="Left" VerticalAlignment="Top" Margin="36,116,0,0" Width="56"/>
+        <TextBox Name="txtJmbg"  HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" Margin="92,47,0,0" RenderTransformOrigin="0.5,0.5">
+        </TextBox>
+        <TextBox Name="txtLozinka" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" Margin="92,116,0,0"/>
+        <Button Content="Prijavi se" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" Margin="117,201,0,0" RenderTransformOrigin="-0.04,1.094" Click="Button_Click" Height="35"/>
+
+    </Grid>
+</Window>

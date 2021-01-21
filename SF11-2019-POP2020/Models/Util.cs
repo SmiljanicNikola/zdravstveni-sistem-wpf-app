@@ -21,14 +21,24 @@ namespace SF11_2019_POP2020.Models
                                                     Integrated Security=True;Connect Timeout=30;Encrypt=False;
                                                     TrustServerCertificate=False;ApplicationIntent=ReadWrite;
                                                     MultiSubnetFailover=False";
+
+
         private static readonly Util instance = new Util();
         IUserService _userService;
         IUserService _doctorService;
+        IAdresaService _adresaService;
+        IUserService _adminService;
+        IDomZdravljaService _domZdravljaService;
+        IUserService _pacijentService;
 
         private Util()
         {
             _userService = new UserService();
             _doctorService = new DoctorService();
+            _adresaService = new AdresaService();
+            _adminService = new AdminService();
+            _domZdravljaService = new DomZdravljaService();
+            _pacijentService = new PacijentService();
         }
         static Util()
         {
@@ -45,31 +55,44 @@ namespace SF11_2019_POP2020.Models
 
         public ObservableCollection<Korisnik> Korisnici { get; set; }
         public ObservableCollection<Lekar> Lekari { get; set; }
+        
+        public ObservableCollection<Adresa> Adrese { get; set; }
+        public ObservableCollection<Korisnik> KorisniciAdmini { get; set; }
+
+        public ObservableCollection<DomZdravlja> DomoviZdravlja { get; set; }
+        public ObservableCollection<Korisnik> KorisniciPacijenti { get; set; }
+
 
         public void Initialize()
         {
             Korisnici = new ObservableCollection<Korisnik>();
             Lekari = new ObservableCollection<Lekar>();
+            Adrese = new ObservableCollection<Adresa>();
+            KorisniciAdmini = new ObservableCollection<Korisnik>();
+            DomoviZdravlja = new ObservableCollection<DomZdravlja>();
+            KorisniciPacijenti = new ObservableCollection<Korisnik>();
 
-            Adresa adresa = new Adresa
+
+
+            /*Adresa adresa = new Adresa
             {
                 Grad = "Grad 1",
                 Broj = "Broj 1",
                 Drzava = "Drzava 1",
                 Ulica = "Ulica 1",
                 Id = 1
-            };
+            };*/
 
-            Korisnik korisnik1 = new Korisnik();
-            korisnik1.Ime = "petar";
-            korisnik1.Prezime = "peric";
-            korisnik1.Jmbg = "123456";
-            korisnik1.Lozinka = "pera";
-            korisnik1.Email = "pera@gmail.com";
-            korisnik1.Pol = EPol.M;
-            korisnik1.TipKorisnika = ETipKorisnika.ADMINISTRATOR;
-            korisnik1.Aktivan = true;
-            //korisnik1.Adresa = adresa;
+            /* Korisnik korisnik1 = new Korisnik();
+             korisnik1.Ime = "petar";
+             korisnik1.Prezime = "peric";
+             korisnik1.Jmbg = "123456";
+             korisnik1.Lozinka = "pera";
+             korisnik1.Email = "pera@gmail.com";
+             korisnik1.Pol = EPol.M;
+             korisnik1.TipKorisnika = ETipKorisnika.ADMINISTRATOR;
+             korisnik1.Aktivan = true;
+             //korisnik1.Adresa = adresa;*/
 
             Korisnik korisnik2 = new Korisnik
             {
@@ -90,7 +113,7 @@ namespace SF11_2019_POP2020.Models
          
             };
 
-            Korisnici.Add(korisnik1);
+            /*Korisnici.Add(korisnik1);*/
             Korisnici.Add(korisnik2);
 
             Lekari = new ObservableCollection<Lekar>
@@ -110,6 +133,11 @@ namespace SF11_2019_POP2020.Models
             {
               return _doctorService.saveUser(obj);
             }
+            
+            else if(obj is Adresa)
+            {
+                return _adresaService.saveAdresa(obj);
+            }
             return -1;
         }
 
@@ -118,16 +146,39 @@ namespace SF11_2019_POP2020.Models
             if (filename.Contains("korisnici"))
             {
                 _userService.readUsers();
+                _adminService.readUsers();
+                _pacijentService.readUsers();
             }
             else if (filename.Contains("lekari"))
             {
                 _doctorService.readUsers();
+            }
+            else if (filename.Contains("adrese"))
+            {
+                _adresaService.readAdrese();
+            }
+            else if(filename.Contains("domovizdravlja"))
+            {
+                _domZdravljaService.readDomoveZdravlja();
             }
         }
     
         public void DeleteUser(string jmbg)
         {
             _userService.deleteUser(jmbg);
+           
+        }
+        public void DeleteAdresa(int id)
+        {
+            _adresaService.deleteAdresa(id);
+        }
+        public void DeleteAdmin(string jmbg)
+        {
+            _adminService.deleteUser(jmbg);
+        }
+        public void DeletePacijent(string jmbg)
+        {
+            _pacijentService.deleteUser(jmbg);
         }
 
         public void UpdateEntiteta(Object obj)

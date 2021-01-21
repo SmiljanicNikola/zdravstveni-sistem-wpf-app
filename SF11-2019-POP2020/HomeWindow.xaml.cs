@@ -26,6 +26,9 @@ namespace SF11_2019_POP2020
             InitializeComponent();
             Util.Instance.CitanjeEntiteta("korisnici.txt");
             Util.Instance.CitanjeEntiteta("lekari.txt");
+            Util.Instance.CitanjeEntiteta("adrese.txt");
+            Util.Instance.CitanjeEntiteta("domovizdravlja.txt");
+
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
@@ -52,6 +55,54 @@ namespace SF11_2019_POP2020
         private void Button_Click_1(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void btnAdrese_Click(object sender, RoutedEventArgs e)
+        {
+            SveAdrese windowAdrese = new SveAdrese();
+
+            this.Hide();
+            windowAdrese.Show();
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            SviDomoviZdravlja windowDomoviZdravlja = new SviDomoviZdravlja();
+            this.Hide();
+            windowDomoviZdravlja.Show();
+        }
+
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            SviLekari window = new SviLekari();
+
+            this.Hide();
+            window.Show();
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
+        {
+            loginAdmin l = new loginAdmin();
+
+            this.Hide();
+            l.Show();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            loginLekar ll = new loginLekar();
+
+            this.Hide();
+            ll.Show();
+        }
+
+        private void btnPacijenti_Click(object sender, RoutedEventArgs e)
+        {
+            SviPacijenti windowPacijenti = new SviPacijenti();
+
+            this.Hide();
+            windowPacijenti.Show();
         }
     }
 }

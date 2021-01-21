@@ -27,8 +27,14 @@ namespace SF11_2019_POP2020.Models
             set { _domZdravljaId = value; }
         }
 
+        private string _termini;
 
-        
+        public string Termini
+        {
+            get { return _termini; }
+            set { _termini = value; }
+        }
+
 
 
 

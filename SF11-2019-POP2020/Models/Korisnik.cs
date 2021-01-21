@@ -123,10 +123,8 @@ namespace SF11_2019_POP2020.Models
             
         }
 
-        public override string ToString()
-        {
-            return " Moje email je:" + Email + ". Tip: " + TipKorisnika; // + ". Moja adresa je " + Adresa.ToString();
-        }
+       
+       
 
         public string KorisnikZaUpisUFajl()
         {
@@ -139,16 +137,16 @@ namespace SF11_2019_POP2020.Models
         {
             Korisnik kopija = new Korisnik();
 
-            kopija.AdresaId = AdresaId;
-            kopija.Aktivan = Aktivan;
-            kopija.Email = Email;
             kopija.Ime = Ime;
             kopija.Prezime = Prezime;
+            kopija.Jmbg = Jmbg;
+            kopija.Email = Email;
+            kopija.AdresaId = AdresaId;
             kopija.Pol = Pol;
             kopija.Lozinka = Lozinka;
-            kopija.Jmbg = Jmbg;
-
-
+            kopija.TipKorisnika = TipKorisnika;
+            kopija.Aktivan = Aktivan;
+          
             return kopija;
         }
 

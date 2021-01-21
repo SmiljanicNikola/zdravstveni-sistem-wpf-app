@@ -19,6 +19,6 @@
         <DataGrid CanUserAddRows="False" Name="DataGridLekari" HorizontalAlignment="Left" Height="258" Margin="10,60,0,0" VerticalAlignment="Top" Width="629" SelectionChanged="DataGridLekari_SelectionChanged"
                   AutoGeneratingColumn="DataGridLekari_AutoGeneratingColumn" AutoGenerateColumns="True" />
         <TextBox Name="textBoxPretraga" HorizontalAlignment="Left" Height="23" Margin="66,353,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="textBoxPretraga_KeyUp"/>
-        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="720,433,0,0" VerticalAlignment="Top" Width="112" Height="48" Click="Button_Click"/>
+        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="786,436,0,0" VerticalAlignment="Top" Width="112" Height="48" Click="Button_Click"/>
     </Grid>
 </Window>

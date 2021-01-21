@@ -62,21 +62,53 @@
     <Compile Include="Models\Termin.cs" />
     <Compile Include="MyExceptions\UserNotFoundException.cs" />
     <Compile Include="Services\AdminService.cs" />
+    <Compile Include="Services\AdresaService.cs" />
     <Compile Include="Services\DoctorService.cs" />
+    <Compile Include="Services\DomZdravljaService.cs" />
+    <Compile Include="Services\IAdresaService.cs" />
+    <Compile Include="Services\IDomZdravljaService.cs" />
     <Compile Include="Services\IUserService.cs" />
+    <Compile Include="Services\PacijentService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Validations\EmailValidacija.cs" />
     <Compile Include="Windows\DodavanjeIzmenaAdministratora.xaml.cs">
       <DependentUpon>DodavanjeIzmenaAdministratora.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\DodavanjeIzmenaAdrese.xaml.cs">
+      <DependentUpon>DodavanjeIzmenaAdrese.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DodavanjeIzmenaDomovaZdravlja.xaml.cs">
+      <DependentUpon>DodavanjeIzmenaDomovaZdravlja.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\DodavanjeIzmenaLekar.xaml.cs">
       <DependentUpon>DodavanjeIzmenaLekar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DodavanjeIzmenaPacijenta.xaml.cs">
+      <DependentUpon>DodavanjeIzmenaPacijenta.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\loginAdmin.xaml.cs">
+      <DependentUpon>loginAdmin.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\loginLekar.xaml.cs">
+      <DependentUpon>loginLekar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\LoginPacijent.xaml.cs">
+      <DependentUpon>LoginPacijent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SveAdrese.xaml.cs">
+      <DependentUpon>SveAdrese.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\SviAdministratori.xaml.cs">
       <DependentUpon>SviAdministratori.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\SviDomoviZdravlja.xaml.cs">
+      <DependentUpon>SviDomoviZdravlja.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\SviLekari.xaml.cs">
       <DependentUpon>SviLekari.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SviPacijenti.xaml.cs">
+      <DependentUpon>SviPacijenti.xaml</DependentUpon>
     </Compile>
     <Page Include="HomeWindow.xaml">
       <SubType>Designer</SubType>
@@ -93,7 +125,35 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\DodavanjeIzmenaAdrese.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DodavanjeIzmenaDomovaZdravlja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\DodavanjeIzmenaLekar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DodavanjeIzmenaPacijenta.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\loginAdmin.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\loginLekar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\LoginPacijent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SveAdrese.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -101,7 +161,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\SviDomoviZdravlja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\SviLekari.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SviPacijenti.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

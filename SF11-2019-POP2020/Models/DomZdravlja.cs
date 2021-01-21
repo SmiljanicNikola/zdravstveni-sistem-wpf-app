@@ -33,6 +33,12 @@ namespace SF11_2019_POP2020.Models
             set { _adresaId = value; }
         }
 
+        private bool _Aktivan;
 
+        public bool Aktivan
+        {
+            get { return _Aktivan; }
+            set { _Aktivan = value; }
+        }
     }
 }

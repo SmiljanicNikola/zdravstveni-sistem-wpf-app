@@ -73,7 +73,7 @@ namespace SF11_2019_POP2020.Windows
         private void MenuItemDodaj_Click(object sender, RoutedEventArgs e)
         {
             Korisnik noviKorisnik = new Korisnik();
-            DodavanjeIzmenaLekar add = new DodavanjeIzmenaLekar(noviKorisnik);
+            DodavanjeIzmenaLekar add = new DodavanjeIzmenaLekar(noviKorisnik, EStatus.Dodaj);
 
             this.Hide();
             if((bool)add.ShowDialog())
@@ -95,7 +95,23 @@ namespace SF11_2019_POP2020.Windows
             if ((bool)add.ShowDialog())
             {
                 int index = Util.Instance.Korisnici.ToList().FindIndex(k => k.Jmbg.Equals(izabraniLekar.Jmbg));
-                Util.Instance.Korisnici[index] = stariLekar;
+
+                //Util.Instance.Korisnici[index] = stariLekar;
+                Util.Instance.Korisnici[index].Id = izabraniLekar.Id;
+                Util.Instance.Korisnici[index].Ime = izabraniLekar.Ime;
+                Util.Instance.Korisnici[index].Prezime = izabraniLekar.Prezime;
+                Util.Instance.Korisnici[index].Email = izabraniLekar.Email;
+                Util.Instance.Korisnici[index].AdresaId = izabraniLekar.AdresaId;
+                Util.Instance.Korisnici[index].Pol = izabraniLekar.Pol;
+                Util.Instance.Korisnici[index].Lozinka = izabraniLekar.Lozinka;
+                Util.Instance.Korisnici[index].TipKorisnika = izabraniLekar.TipKorisnika;
+                Util.Instance.Korisnici[index].Aktivan = izabraniLekar.Aktivan;
+
+                //Util.Instance.UpdateEntiteta(izabraniLekar);
+                Util.Instance.DeleteUser(stariLekar.Jmbg);
+                Util.Instance.SacuvajEntitet(izabraniLekar);
+
+
             }
             this.Show();
             view.Refresh();
