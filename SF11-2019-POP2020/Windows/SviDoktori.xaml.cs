@@ -70,7 +70,23 @@ namespace SF11_2019_POP2020.Windows
 
         private void MenuItemObrisiDoktora_Click(object sender, RoutedEventArgs e)
         {
+            Lekar izabraniDoktor = view.CurrentItem as Lekar;
+            Util.Instance.DeleteDoktora(izabraniDoktor.Id);
+        }
 
+        private void btnPocetnaAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            GlavnaStranicaAdministrator gsa = new GlavnaStranicaAdministrator();
+            this.Hide();
+            gsa.Show();
+        }
+
+        private void btnPocetnaApp_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow window = new HomeWindow();
+
+            this.Hide();
+            window.Show();
         }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using SF11_2019_POP2020.Models;
+using SF11_2019_POP2020.MyExceptions;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -11,9 +12,31 @@ namespace SF11_2019_POP2020.Services
 {
     class PraviDoktorService : IPraviDoktorService
     {
-        public void deleteDoktora(string jmbg)
+        public void deleteDoktora(int id)
         {
-            throw new NotImplementedException();
+            Lekar l = Util.Instance.Doktori.ToList().Find(lekar => lekar.Id.Equals(id));
+
+            if (l == null)
+                throw new UserNotFoundException($"Ne postoji lekar sa id-om {id}");
+            l.Aktivan = false;
+
+            // updateUser(l);
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"update dbo.Lekari
+                                       
+                                        SET Aktivan = @Aktivan
+                                        where id = @Id";
+
+                command.Parameters.Add(new SqlParameter("Aktivan", l.Aktivan));
+                command.Parameters.Add(new SqlParameter("Id", l.Id));
+
+                command.ExecuteNonQuery();
+
+            }
         }
 
         public void deleteUserZapravo(int id)

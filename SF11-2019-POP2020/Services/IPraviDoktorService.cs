@@ -14,7 +14,7 @@ namespace SF11_2019_POP2020.Services
         int saveDoktora(Object obj);
 
         void updateDoktora(Object obj);
-        void deleteDoktora(string jmbg);
+        void deleteDoktora(int id);
 
         void deleteUserZapravo(int id);
     }

@@ -87,9 +87,9 @@ namespace SF11_2019_POP2020.Windows
 
         private void DataGridLekari_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            
 
-            if (e.PropertyName.Equals("korisni"))
+
+            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
                 e.Column.Visibility = Visibility.Collapsed;
         }
 

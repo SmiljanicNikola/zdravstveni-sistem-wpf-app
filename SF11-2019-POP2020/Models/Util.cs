@@ -229,6 +229,10 @@ namespace SF11_2019_POP2020.Models
         {
             _userService.deleteUserZapravo(id);
         }
+        public void DeleteDoktora(int id)
+        {
+            _praviDoktorService.deleteDoktora(id);
+        }
 
         public void UpdateEntiteta(Object obj)
         {

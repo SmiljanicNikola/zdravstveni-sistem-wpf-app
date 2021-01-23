@@ -16,6 +16,8 @@
                 <MenuItem Name="MenuItemObrisiDoktora" Header="Obrisi doktora" Click="MenuItemObrisiDoktora_Click" />
             </MenuItem>
         </Menu>
+        <Button Content="Pocetna admin" Name="btnPocetnaAdmin" HorizontalAlignment="Left" Margin="675,372,0,0" VerticalAlignment="Top" Width="98" Click="btnPocetnaAdmin_Click" Height="38"/>
+        <Button Content="Pocetna app" Name="btnPocetnaApp" HorizontalAlignment="Left" Margin="554,372,0,0" VerticalAlignment="Top" Width="90" Height="38" Click="btnPocetnaApp_Click"/>
 
     </Grid>
 </Window>
