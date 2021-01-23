@@ -50,6 +50,7 @@ namespace SF11_2019_POP2020.Windows
                 //Util.Instance.SacuvajEntitet(lekar);
                 //Util.Instance.UpdateEntiteta(lekar);
                 //Util.Instance.SacuvajEntitet(lekar);
+                
 
             }
             else

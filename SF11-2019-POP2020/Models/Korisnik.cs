@@ -137,6 +137,7 @@ namespace SF11_2019_POP2020.Models
         {
             Korisnik kopija = new Korisnik();
 
+            kopija.Id = Id;
             kopija.Ime = Ime;
             kopija.Prezime = Prezime;
             kopija.Jmbg = Jmbg;

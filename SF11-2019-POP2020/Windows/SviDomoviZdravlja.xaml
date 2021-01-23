@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
         mc:Ignorable="d"
-        Title="SviDomoviZdravlja" Height="450" Width="800">
+        Title="SviDomoviZdravlja" Height="450" Width="1000">
     <Grid>
         <Menu HorizontalAlignment="Left" Height="37" Margin="0,13,-0.4,0" VerticalAlignment="Top" Width="500">
             <MenuItem Header="Akcije">
@@ -14,9 +14,14 @@
                 <MenuItem Name="MenuItemObrisiDomZdravlja" Header="Obrisi dom zdravlja" Click="MenuItemObrisiDomZdravlja_Click" ></MenuItem>
             </MenuItem>
         </Menu>
-        <DataGrid CanUserAddRows="False" Name="DataGridDomoviZdravlja"  HorizontalAlignment="Left" Height="167" Margin="32,68,0,0" VerticalAlignment="Top" 
+        <DataGrid CanUserAddRows="False" Name="DataGridDomoviZdravlja"  HorizontalAlignment="Left" Height="167" Margin="32,74,0,0" VerticalAlignment="Top" 
                   AutoGenerateColumns="True" AutoGeneratingColumn="DataGridDomoviZdravlja_AutoGeneratingColumn" Width="468"/>
 
         <Button Content="Pocetna" HorizontalAlignment="Left" Margin="678,361,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="Button_Click"/>
+        <TextBox Name="txtPretragaPoNazivuInstitucije" HorizontalAlignment="Left" Height="23" Margin="753,105,0,0" TextWrapping="Wrap" Text="" KeyUp="txtPretragaPoNazivuInstitucije_KeyUp" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Po nazivu instituta" HorizontalAlignment="Left" Margin="620,102,0,0" VerticalAlignment="Top" Width="113"/>
+        <GroupBox Header="Pretrage" HorizontalAlignment="Left" Height="155" Margin="609,59,0,0" VerticalAlignment="Top" Width="309"/>
+        <TextBox Name="txtPretragaPoAdresaId" HorizontalAlignment="Left" Height="23" Margin="753,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaPoAdresaId_KeyUp"/>
+        <Label Content="Po adresiId:" HorizontalAlignment="Left" Margin="652,150,0,0" VerticalAlignment="Top"/>
     </Grid>
 </Window>

@@ -25,6 +25,13 @@ namespace SF11_2019_POP2020.Services
             updateUser(k);
         }
 
+      
+
+        public void deleteUserZapravo(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void readUsers()
         {
             Util.Instance.Korisnici = new ObservableCollection<Korisnik>();

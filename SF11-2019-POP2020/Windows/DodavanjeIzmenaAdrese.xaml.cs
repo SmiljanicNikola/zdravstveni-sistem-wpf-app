@@ -32,6 +32,7 @@ namespace SF11_2019_POP2020.Windows
             odabranaAdresa = adresa;
             odabranStatus = status;
 
+           
         }
 
 
@@ -71,6 +72,8 @@ namespace SF11_2019_POP2020.Windows
             {
 
             }
+
+            this.Close();
         }
     }
 }

@@ -6,9 +6,9 @@ using System.Threading.Tasks;
 
 namespace SF11_2019_POP2020.Models
 {
-    public class Pacijent : Korisnik
+    public enum EStatusTermina
     {
-
-
+        SLOBODAN,
+        ZAKAZAN
     }
 }

@@ -63,5 +63,22 @@ namespace SF11_2019_POP2020.Models
             return "Ulica " + Ulica + " broj " + Broj + "Grad " + Grad + " Drzava " + Drzava;
         }
 
+
+
+        public Adresa Clone()
+        {
+            Adresa kopija = new Adresa();
+
+            kopija.Ulica = Ulica;
+            kopija.Broj = Broj;
+            kopija.Drzava = Drzava;
+            kopija.Grad = Grad;
+            kopija.Aktivan = Aktivan;
+
+            return kopija;
+        }
+
+
+
     }
 }

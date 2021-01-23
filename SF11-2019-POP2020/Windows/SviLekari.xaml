@@ -5,20 +5,33 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
         mc:Ignorable="d"
-        Title="Lekari" Height="560.4" Width="980">
+        Title="Lekari" Height="560.4" Width="1200">
     <Grid>
-        <Menu Name="Menu" HorizontalAlignment="Left" Height="27" Margin="10,10,0,0" VerticalAlignment="Top" Width="774">
-            <MenuItem Header="Lekari">
+        <Menu Name="Menu" HorizontalAlignment="Left" Height="27" Margin="10,10,-0.4,0" VerticalAlignment="Top" Width="1184">
+            <MenuItem Header="Lekari Korisnik">
                 <MenuItem Name="MenuItemDodaj" Header="Dodaj lekara" Click="MenuItemDodaj_Click"/>
                 <MenuItem Name="MenuItemIzmeni" Header="Izmeni lekara" Click="MenuItemIzmeni_Click"/>
                 <MenuItem  Name="MenuItemObrisi" Header="Obrisi lekara" Click="MenuItemObrisi_Click"/>
                 <Separator/>
                 <MenuItem Name="MenuItemProfil" Header="Profil"/>
             </MenuItem>
+            <MenuItem Header="Doktori">
+                <MenuItem Name="MenuItemDodajDoktora" Header="Dodaj doktora" Click="MenuItemDodajDoktora_Click" />
+                <MenuItem Name="MenuItemIzmeniDoktora" Header="Izmeni Doktora" Click="MenuItemIzmeniDoktora_Click" />
+                <MenuItem Name="MenuItemObrisiDoktora" Header="Obrisi doktora" Click="MenuItemObrisiDoktora_Click"/>
+            </MenuItem>
         </Menu>
-        <DataGrid CanUserAddRows="False" Name="DataGridLekari" HorizontalAlignment="Left" Height="258" Margin="10,60,0,0" VerticalAlignment="Top" Width="629" SelectionChanged="DataGridLekari_SelectionChanged"
+        <DataGrid CanUserAddRows="False" Name="DataGridLekari" HorizontalAlignment="Left" Height="237" Margin="10,60,0,0" VerticalAlignment="Top" Width="629" SelectionChanged="DataGridLekari_SelectionChanged"
                   AutoGeneratingColumn="DataGridLekari_AutoGeneratingColumn" AutoGenerateColumns="True" />
-        <TextBox Name="textBoxPretraga" HorizontalAlignment="Left" Height="23" Margin="66,353,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="textBoxPretraga_KeyUp"/>
+        <TextBox Name="textBoxPretraga" HorizontalAlignment="Left" Height="23" Margin="888,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="textBoxPretraga_KeyUp"/>
         <Button Content="Pocetna" HorizontalAlignment="Left" Margin="786,436,0,0" VerticalAlignment="Top" Width="112" Height="48" Click="Button_Click"/>
+        <TextBox Name="textBoxPretragaPrezime" HorizontalAlignment="Left" Height="23" Margin="888,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="textBoxPretragaPrezime_KeyUp"/>
+        <TextBox HorizontalAlignment="Left" Name="textBoxPretragaEmail" Height="23" Margin="888,188,0,0" TextWrapping="Wrap" Text="" KeyUp="textBoxPretragaEmail_KeyUp" VerticalAlignment="Top" Width="120"/>
+        <Label Content="Po imenu:" HorizontalAlignment="Left" Margin="801,87,0,0" VerticalAlignment="Top"/>
+        <Label Content="Po prezimenu:" HorizontalAlignment="Left" Margin="779,139,0,0" VerticalAlignment="Top"/>
+        <Label Content="Po Emailu:" HorizontalAlignment="Left" Margin="801,188,0,0" VerticalAlignment="Top"/>
+        <GroupBox Header="Pretrage" HorizontalAlignment="Left" Height="251" Margin="742,46,0,0" VerticalAlignment="Top" Width="358"/>
+        <DataGrid HorizontalAlignment="Left" Height="144" Margin="130,327,0,0" VerticalAlignment="Top" Width="422" CanUserAddRows="False"
+                  Name="DataGridDoktori" AutoGeneratingColumn="DataGridDoktori_AutoGeneratingColumn" />
     </Grid>
 </Window>

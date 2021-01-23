@@ -1,0 +1,31 @@
+﻿<Window x:Class="SF11_2019_POP2020.Windows.DodavanjeIzmenaTerapija"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
+        mc:Ignorable="d"
+        Title="DodavanjeIzmenaTerapija" Height="450" Width="800">
+    <Grid>
+       
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition/>
+                <RowDefinition/>
+                <RowDefinition/>
+            </Grid.RowDefinitions>
+
+            <Label Grid.Column="0" Grid.Row="0" Name="lblOpis" Content="Opis Terapije:"/>
+            <TextBox Grid.Column="1" Grid.Row="0" Name="txtOpis" Text="{Binding Path=Opis}"/>
+
+            <Label Grid.Column="0" Grid.Row="1" Name="lblLekarId" Content="LekarId:"/>
+            <TextBox Grid.Column="1" Grid.Row="1" Name="txtLekarId" Text="{Binding Path=LekarId}"/>
+
+            <Button Grid.Column="0" Grid.Row="2" Content="Cancel" Name="btnCancel" Click="btnCancel_Click">
+                </Button>
+                <Button Grid.Column="1" Grid.Row="2" Content="Ok" Name="btnOk" Click="btnOk_Click"></Button>
+        </Grid>
+</Window>

@@ -39,6 +39,11 @@ namespace SF11_2019_POP2020.Services
             }
         }
 
+        public void deleteUserZapravo(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void readUsers()
         {
             Util.Instance.KorisniciPacijenti = new ObservableCollection<Korisnik>();
@@ -80,7 +85,7 @@ namespace SF11_2019_POP2020.Services
 
         public int saveUser(object obj)
         {
-            throw new NotImplementedException();
+            return -1;
         }
 
         public void updateUser(object obj)

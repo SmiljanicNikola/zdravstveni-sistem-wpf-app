@@ -1,0 +1,22 @@
+﻿<Window x:Class="SF11_2019_POP2020.Windows.GlavnaStranicaPacijent"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
+        mc:Ignorable="d"
+        Title="GlavnaStranicaPacijent" Height="450" Width="800">
+    <Grid>
+        <Label Content="Ulogovani ste kao : Pacijent" HorizontalAlignment="Left" Margin="317,58,0,0" VerticalAlignment="Top"/>
+        <Menu HorizontalAlignment="Left" Height="40" Margin="0,13,-0.4,0" VerticalAlignment="Top" Width="794" >
+            <MenuItem Header="Akcije" Margin="0,0,0,0" Click="MenuItem_Click_1" Height="40" Width="130">
+                <MenuItem Name="PregledDomova" Header="Pregled domova zdravlja" Click="PregledDomova_Click" ></MenuItem>
+                <MenuItem Name="PregledTermina" Header="Pregled termina" Click="PregledTermina_Click" ></MenuItem>
+                <MenuItem Name="ZakazivanjeTermina" Header="Zakazi Termin" Click="ZakazivanjeTermina_Click"></MenuItem>
+            </MenuItem>
+            <MenuItem Header="Izlogujte se" Click="MenuItem_Click_1" Margin="560,0,0,0"  Height="40" Width="100">
+                <MenuItem Name="MenuItemLogOut" Header="LogOut" Click="MenuItemLogOut_Click" ></MenuItem>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>

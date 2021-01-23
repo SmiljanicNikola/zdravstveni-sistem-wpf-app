@@ -15,27 +15,29 @@ using System.Windows.Shapes;
 
 namespace SF11_2019_POP2020.Windows
 {
-    
     /// <summary>
-    /// Interaction logic for DodavanjeIzmenaDomovaZdravlja.xaml
+    /// Interaction logic for DodavanjeIzmenaTerapija.xaml
     /// </summary>
-    public partial class DodavanjeIzmenaDomovaZdravlja : Window
+    ///  
+   
+    public partial class DodavanjeIzmenaTerapija : Window
     {
+
         private EStatus odabranStatus;
-        private DomZdravlja odabranDomZdravlja;
-        public DodavanjeIzmenaDomovaZdravlja(DomZdravlja domZdravlja, EStatus status = EStatus.Dodaj)
+        private Terapija odabranaTerapija;
+        public DodavanjeIzmenaTerapija(Terapija terapija, EStatus status = EStatus.Dodaj)
         {
             InitializeComponent();
 
-            this.DataContext = domZdravlja;
+            this.DataContext = terapija;
 
-            odabranDomZdravlja = domZdravlja;
+            odabranaTerapija = terapija;
             odabranStatus = status;
 
 
-            if (status.Equals(EStatus.Izmeni) && domZdravlja != null)
+            if (status.Equals(EStatus.Izmeni) && terapija != null)
             {
-                this.Title = "Izmeni Dom zdravlja";
+                this.Title = "Izmeni Terapiju";
                 //Util.Instance.SacuvajEntitet(lekar);
                 //Util.Instance.UpdateEntiteta(lekar);
                 //Util.Instance.SacuvajEntitet(lekar);
@@ -44,24 +46,28 @@ namespace SF11_2019_POP2020.Windows
             }
             else
             {
-                this.Title = "Dodaj Dom zdravlja";
+                this.Title = "Dodaj terapiju";
             }
+        }
 
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
+            this.Close();
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
             if (odabranStatus.Equals(EStatus.Dodaj))
             {
-                DomZdravlja dt = new DomZdravlja()
+                Terapija terap = new Terapija()
                 {
-                    NazivInstitucije = txtNazivInstitucije.Text,      
-                    adresaId = int.Parse(txtAdresaId.Text),
+                    Opis = txtOpis.Text,
+                    LekarId = int.Parse(txtLekarId.Text),
                     Aktivan = true
 
                 };
-                Util.Instance.DomoviZdravlja.Add(dt);
-                Util.Instance.SacuvajEntitet(dt);
+                Util.Instance.Terapije.Add(terap);
+                Util.Instance.SacuvajEntitet(terap);
 
                 this.Close();
             }
@@ -69,13 +75,6 @@ namespace SF11_2019_POP2020.Windows
             {
 
             }
-
-        }
-
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.Close();
-
         }
     }
 }

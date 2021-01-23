@@ -10,15 +10,15 @@ using System.Threading.Tasks;
 
 namespace SF11_2019_POP2020.Services
 {
-    class DomZdravljaService : IDomZdravljaService
+     class TerapijaService : ITerapijaService
     {
-        public void deleteDomoveZdravlja(int id)
+        public void deleteTerapiju(int id)
         {
-            DomZdravlja dz = Util.Instance.DomoviZdravlja.ToList().Find(DomZdravlja => DomZdravlja.Id.Equals(id));
+            Terapija terap = Util.Instance.Terapije.ToList().Find(Terapija => Terapija.Id.Equals(id));
 
-            if (dz == null)
-                throw new UserNotFoundException($"Ne postoji Termin sa tim id-om {id}");
-            dz.Aktivan = false;
+            if (terap == null)
+                throw new UserNotFoundException($"Ne postoji Terapija sa tim id-om {id}");
+            terap.Aktivan = false;
 
             // updateUser(k);
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
@@ -26,22 +26,24 @@ namespace SF11_2019_POP2020.Services
                 conn.Open();
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"update dbo.DomoviZdravlja
+                command.CommandText = @"update dbo.Terapije
                                        
                                         SET Aktivan = @Aktivan
                                         where id = @Id";
 
-                command.Parameters.Add(new SqlParameter("Aktivan", dz.Aktivan));
-                command.Parameters.Add(new SqlParameter("Id", dz.Id));
+                command.Parameters.Add(new SqlParameter("Aktivan", terap.Aktivan));
+                command.Parameters.Add(new SqlParameter("Id", terap.Id));
 
                 command.ExecuteNonQuery();
 
             }
         }
 
-        public void readDomoveZdravlja()
+      
+
+        public void readTerapije()
         {
-            Util.Instance.DomoviZdravlja = new ObservableCollection<DomZdravlja>();
+            Util.Instance.Terapije = new ObservableCollection<Terapija>();
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
@@ -49,17 +51,17 @@ namespace SF11_2019_POP2020.Services
 
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"Select * from DomoviZdravlja where Aktivan=1";
+                command.CommandText = @"Select * from Terapije where Aktivan=1";
 
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    Util.Instance.DomoviZdravlja.Add(new DomZdravlja
+                    Util.Instance.Terapije.Add(new Terapija
                     {
                         Id = reader.GetInt32(0),
-                        NazivInstitucije = reader.GetString(1),
-                        adresaId = reader.GetInt32(2),
+                        Opis = reader.GetString(1),
+                        LekarId = reader.GetInt32(2),
                         Aktivan = reader.GetBoolean(3)
                     });
                 }
@@ -67,21 +69,23 @@ namespace SF11_2019_POP2020.Services
             }
         }
 
-            public int saveDomoveZdravlja(object obj)
-            {
-            DomZdravlja domZdravlja = obj as DomZdravlja;
+      
+
+        public int saveTerapije(object obj)
+        {
+            Terapija terapija = obj as Terapija;
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
                 conn.Open();
 
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"insert into dbo.DomoviZdravlja(NazivInstitucije, adresaId, aktivan)
-                       output inserted.id VALUES(@nazivInstitucije, @adresaId, @aktivan)";
+                command.CommandText = @"insert into dbo.Terapije(Opis, LekarId, Aktivan)
+                       output inserted.id VALUES(@Opis, @LekarId, @Aktivan)";
 
-                command.Parameters.Add(new SqlParameter("nazivInstitucije", domZdravlja.NazivInstitucije));
-                command.Parameters.Add(new SqlParameter("adresaId", domZdravlja.adresaId));
-                command.Parameters.Add(new SqlParameter("Aktivan", domZdravlja.Aktivan));
+                command.Parameters.Add(new SqlParameter("Opis", terapija.Opis));
+                command.Parameters.Add(new SqlParameter("LekarId", terapija.LekarId));
+                command.Parameters.Add(new SqlParameter("Aktivan", terapija.Aktivan));
 
                 return (int)command.ExecuteScalar();
 
@@ -89,9 +93,13 @@ namespace SF11_2019_POP2020.Services
             }
         }
 
-        public void updateDomoveZdravlja(object obj)
+     
+
+        public void updateTerapije(object obj)
         {
             throw new NotImplementedException();
         }
+
+       
     }
 }

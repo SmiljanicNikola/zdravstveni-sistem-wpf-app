@@ -16,29 +16,31 @@ using System.Windows.Shapes;
 namespace SF11_2019_POP2020.Windows
 {
     /// <summary>
-    /// Interaction logic for DodavanjeIzmenaPacijenta.xaml
+    /// Interaction logic for DodavanjeIzmenaTermina.xaml
     /// </summary>
-    public partial class DodavanjeIzmenaPacijenta : Window
+    public partial class DodavanjeIzmenaTermina : Window
     {
         private EStatus odabranStatus;
-        private Korisnik odabranKorisnik;
-        public DodavanjeIzmenaPacijenta(Korisnik korisnik, EStatus status = EStatus.Dodaj)
+        private Termin odabranTermin;
+        public DodavanjeIzmenaTermina(Termin termin,  EStatus status = EStatus.Dodaj)
         {
             InitializeComponent();
 
-            this.DataContext = korisnik;
+            this.DataContext = termin;
 
-            odabranKorisnik = korisnik;
+            odabranTermin = termin;
             odabranStatus = status;
-            ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
 
-            ComboBoxPol.ItemsSource = Enum.GetValues(typeof(EPol)).Cast<EPol>();
-        }
+            ComboBoxStatusTermina.ItemsSource = Enum.GetValues(typeof(EStatusTermina)).Cast<EStatusTermina>();
 
-        private void btnCancel_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;
-            this.Close();
+            if (status.Equals(EStatus.Izmeni) && termin != null)
+            {
+                this.Title = "Izmena termina";
+            }
+            else
+            {
+                this.Title = "Dodavanje termina";
+            }
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
@@ -54,24 +56,28 @@ namespace SF11_2019_POP2020.Windows
                 // string value1 = item1.Content.ToString();
                 // Enum.TryParse(value1, out EPol pol);
                 //odabranKorisnik.Aktivan = true;
-                Korisnik k = new Korisnik
+                Termin t = new Termin()
                 {
-                    Ime = txtIme.Text,
-                    Prezime = txtPrezime.Text,
-                    Jmbg = txtJMBG.Text,
-                    Email = txtEmail.Text,
-                    AdresaId = int.Parse(txtAdresaId.Text),
-                    Pol = EPol.M,
-                    Lozinka = txtLozinka.Text,
-                    TipKorisnika = ETipKorisnika.PACIJENT,
+                    LekarId = int.Parse(txtLekarId.Text),
+                    Datum = (DateTime)dateDatum.SelectedDate,
+                    StatusTermina = EStatusTermina.SLOBODAN,
+                    PacijentId = int.Parse(txtPacijentId.Text),
                     Aktivan = true
 
                 };
-                Util.Instance.KorisniciPacijenti.Add(k);
-                //Util.Instance.Lekari.Add(lekar);
-                Util.Instance.SacuvajEntitet(k);
+                Util.Instance.Termini.Add(t);
+                Util.Instance.SacuvajEntitet(t);
+
+                this.Close();
+            }
+            else
+            {
 
             }
+        }
+
+        private void btnCancel_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }

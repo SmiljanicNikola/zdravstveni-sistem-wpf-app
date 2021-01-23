@@ -29,6 +29,7 @@ namespace SF11_2019_POP2020.Windows
 
             UpdateView();
 
+            UpdateView2();
             view.Filter = CustomFilter;
 
         }
@@ -42,8 +43,22 @@ namespace SF11_2019_POP2020.Windows
                 {
                     return korisnik.Ime.Contains(textBoxPretraga.Text);
                 }
+                //else
+                    //return true;
+            if (korisnik.TipKorisnika.Equals(ETipKorisnika.LEKAR) && korisnik.Aktivan)
+                if (textBoxPretragaPrezime.Text != "")
+                {
+                    return korisnik.Prezime.Contains(textBoxPretragaPrezime.Text);
+                }
+            if (korisnik.TipKorisnika.Equals(ETipKorisnika.LEKAR) && korisnik.Aktivan)
+                if (textBoxPretragaEmail.Text != "")
+                {
+                    return korisnik.Email.Contains(textBoxPretragaEmail.Text);
+                }
                 else
                     return true;
+
+
             return false;
         }
 
@@ -54,6 +69,15 @@ namespace SF11_2019_POP2020.Windows
             DataGridLekari.ItemsSource = view; // Util.Instance.Korisnici;
             DataGridLekari.IsSynchronizedWithCurrentItem = true;
             DataGridLekari.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+        }
+
+        private void UpdateView2()
+        {
+            //DataGridLekari.ItemsSource = null;
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
+            DataGridDoktori.ItemsSource = view; // Util.Instance.Korisnici;
+            DataGridDoktori.IsSynchronizedWithCurrentItem = true;
+            DataGridDoktori.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
 
         private void DataGridLekari_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -86,7 +110,6 @@ namespace SF11_2019_POP2020.Windows
 
         private void MenuItemIzmeni_Click(object sender, RoutedEventArgs e)
         {
-            //Korisnik izabraniLekar = (Korisnik)DataGridLekari.SelectedItem;
             Korisnik izabraniLekar = view.CurrentItem as Korisnik;
             Korisnik stariLekar = izabraniLekar.Clone();
             DodavanjeIzmenaLekar add = new DodavanjeIzmenaLekar(izabraniLekar, EStatus.Izmeni);
@@ -99,6 +122,8 @@ namespace SF11_2019_POP2020.Windows
                 //Util.Instance.Korisnici[index] = stariLekar;
                 Util.Instance.Korisnici[index].Id = izabraniLekar.Id;
                 Util.Instance.Korisnici[index].Ime = izabraniLekar.Ime;
+                Util.Instance.Korisnici[index].Jmbg = izabraniLekar.Jmbg;
+
                 Util.Instance.Korisnici[index].Prezime = izabraniLekar.Prezime;
                 Util.Instance.Korisnici[index].Email = izabraniLekar.Email;
                 Util.Instance.Korisnici[index].AdresaId = izabraniLekar.AdresaId;
@@ -106,13 +131,15 @@ namespace SF11_2019_POP2020.Windows
                 Util.Instance.Korisnici[index].Lozinka = izabraniLekar.Lozinka;
                 Util.Instance.Korisnici[index].TipKorisnika = izabraniLekar.TipKorisnika;
                 Util.Instance.Korisnici[index].Aktivan = izabraniLekar.Aktivan;
-
-                //Util.Instance.UpdateEntiteta(izabraniLekar);
-                Util.Instance.DeleteUser(stariLekar.Jmbg);
-                Util.Instance.SacuvajEntitet(izabraniLekar);
-
-
             }
+
+               //Util.Instance.UpdateEntiteta(izabraniLekar);
+               Util.Instance.SacuvajEntitet(izabraniLekar);
+               Util.Instance.DeleteUser(izabraniLekar.Jmbg);
+              
+
+
+           
             this.Show();
             view.Refresh();
         }
@@ -145,6 +172,37 @@ namespace SF11_2019_POP2020.Windows
 
             this.Hide();
             window.Show();
+        }
+
+        private void textBoxPretragaPrezime_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
+
+        }
+
+        private void textBoxPretragaEmail_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
+        }
+
+        private void DataGridDoktori_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+
+        }
+
+        private void MenuItemDodajDoktora_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItemIzmeniDoktora_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItemObrisiDoktora_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

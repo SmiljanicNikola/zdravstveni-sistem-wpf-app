@@ -73,16 +73,37 @@ namespace SF11_2019_POP2020.Windows
 
         private void MenuItemIzmeniAdmina_Click(object sender, RoutedEventArgs e)
         {
-            Korisnik odabranKorisnik = view.CurrentItem as Korisnik;
-            Korisnik stariLekar = odabranKorisnik.Clone();
-            DodavanjeIzmenaLekar add = new DodavanjeIzmenaLekar(odabranKorisnik, EStatus.Izmeni);
+            Korisnik izabraniAdmin = view.CurrentItem as Korisnik;
+            Korisnik stariAdmin = izabraniAdmin.Clone();
+            DodavanjeIzmenaAdministratora addAdmin = new DodavanjeIzmenaAdministratora(izabraniAdmin, EStatus.Izmeni);
 
             this.Hide();
-            if ((bool)add.ShowDialog())
+            if ((bool)addAdmin.ShowDialog())
             {
-                int index = Util.Instance.Korisnici.ToList().FindIndex(k => k.Jmbg.Equals(odabranKorisnik.Jmbg));
-                Util.Instance.Korisnici[index] = stariLekar;
+                int index = Util.Instance.KorisniciAdmini.ToList().FindIndex(k => k.Jmbg.Equals(izabraniAdmin.Jmbg));
+
+                //Util.Instance.Korisnici[index] = stariLekar;
+                Util.Instance.Korisnici[index].Id = izabraniAdmin.Id;
+                Util.Instance.Korisnici[index].Ime = izabraniAdmin.Ime;
+                Util.Instance.Korisnici[index].Jmbg = izabraniAdmin.Jmbg;
+                Util.Instance.Korisnici[index].Prezime = izabraniAdmin.Prezime;
+                Util.Instance.Korisnici[index].Email = izabraniAdmin.Email;
+                Util.Instance.Korisnici[index].AdresaId = izabraniAdmin.AdresaId;
+                Util.Instance.Korisnici[index].Pol = izabraniAdmin.Pol;
+                Util.Instance.Korisnici[index].Lozinka = izabraniAdmin.Lozinka;
+                Util.Instance.Korisnici[index].TipKorisnika = izabraniAdmin.TipKorisnika;
+                Util.Instance.Korisnici[index].Aktivan = izabraniAdmin.Aktivan;
             }
+
+            //Util.Instance.UpdateEntiteta(izabraniLekar);
+            Util.Instance.SacuvajEntitet(izabraniAdmin);
+            Util.Instance.DeleteUserZapravo(stariAdmin.Id);
+           
+            
+
+
+
+
             this.Show();
             view.Refresh();
         }

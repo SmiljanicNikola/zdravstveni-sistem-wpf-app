@@ -40,6 +40,13 @@ namespace SF11_2019_POP2020.Services
             }
         }
 
+     
+
+        public void deleteUserZapravo(int id)
+        {
+            throw new NotImplementedException();
+        }
+
         public void readUsers()
         {
 

@@ -28,6 +28,10 @@ namespace SF11_2019_POP2020
             Util.Instance.CitanjeEntiteta("lekari.txt");
             Util.Instance.CitanjeEntiteta("adrese.txt");
             Util.Instance.CitanjeEntiteta("domovizdravlja.txt");
+            Util.Instance.CitanjeEntiteta("termini.txt");
+            Util.Instance.CitanjeEntiteta("terapije.txt");
+
+
 
         }
 
@@ -103,6 +107,65 @@ namespace SF11_2019_POP2020
 
             this.Hide();
             windowPacijenti.Show();
+        }
+
+        private void Button_Click_6(object sender, RoutedEventArgs e)
+        {
+            LoginPacijent lll = new LoginPacijent();
+
+            this.Hide();
+            lll.Show();
+        }
+
+        private void Button_Click_7(object sender, RoutedEventArgs e)
+        {
+            SviTermini windowTermini = new SviTermini();
+
+            this.Hide();
+            windowTermini.Show();
+        }
+
+        private void Button_Click_8(object sender, RoutedEventArgs e)
+        {
+            SveTerapije windowTerapije = new SveTerapije();
+
+            this.Hide();
+            windowTerapije.Show();
+        }
+
+        private void PregledTerapija_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PregledDomovaZdravlja_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void PregledKorisnika_Click(object sender, RoutedEventArgs e)
+        {
+            
+        }
+
+        private void PregledAdmina_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void btnRegistracija_Click(object sender, RoutedEventArgs e)
+        {
+            Korisnik noviKorisnik = new Korisnik();
+            DodavanjeIzmenaPacijenta addPacijent = new DodavanjeIzmenaPacijenta(noviKorisnik, EStatus.Dodaj);
+            addPacijent.Show();
+
+            this.Hide();
+            //if ((bool)addAdmin.ShowDialog())
+            //{
+
+            //}
+            this.Show();
+            //view.Refresh();
         }
     }
 }

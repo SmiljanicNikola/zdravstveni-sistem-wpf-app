@@ -38,9 +38,9 @@ namespace SF11_2019_POP2020.Windows
             sda.Fill(dtbl);
             if(dtbl.Rows.Count==1)
             {
-                SviLekari svilekari = new SviLekari();
+                GlavnaStranicaAdministrator gsa = new GlavnaStranicaAdministrator();
                 this.Hide();
-                svilekari.Show();
+                gsa.Show();
             }
             else
             {
@@ -48,6 +48,21 @@ namespace SF11_2019_POP2020.Windows
             }
 
 
+        }
+
+        private void DataGrid_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+   
+
+        private void ButtonOdustani_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow window = new HomeWindow();
+
+            this.Hide();
+            window.Show();
         }
     }
 }

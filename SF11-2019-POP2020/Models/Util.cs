@@ -1,15 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using SF11_2019_POP2020.Services;
+using System;
 using System.Collections.ObjectModel;
-using System.ComponentModel;
-using System.IO;
-using System.Linq;
-using System.Runtime.Serialization;
-using System.Runtime.Serialization.Formatters.Binary;
-using System.Security.Policy;
-using System.Text;
-using System.Threading.Tasks;
-using SF11_2019_POP2020.Services;
 
 namespace SF11_2019_POP2020.Models
 {
@@ -30,6 +21,9 @@ namespace SF11_2019_POP2020.Models
         IUserService _adminService;
         IDomZdravljaService _domZdravljaService;
         IUserService _pacijentService;
+        ITerminService _terminService;
+        ITerapijaService _terapijaService;
+        
 
         private Util()
         {
@@ -39,10 +33,13 @@ namespace SF11_2019_POP2020.Models
             _adminService = new AdminService();
             _domZdravljaService = new DomZdravljaService();
             _pacijentService = new PacijentService();
+            _terminService = new TerminService();
+            _terapijaService = new TerapijaService();
+            
         }
         static Util()
         {
-            
+
         }
 
         public static Util Instance
@@ -55,12 +52,15 @@ namespace SF11_2019_POP2020.Models
 
         public ObservableCollection<Korisnik> Korisnici { get; set; }
         public ObservableCollection<Lekar> Lekari { get; set; }
-        
         public ObservableCollection<Adresa> Adrese { get; set; }
         public ObservableCollection<Korisnik> KorisniciAdmini { get; set; }
-
         public ObservableCollection<DomZdravlja> DomoviZdravlja { get; set; }
         public ObservableCollection<Korisnik> KorisniciPacijenti { get; set; }
+        public ObservableCollection<Termin> Termini { get; set; }
+        public ObservableCollection<Terapija> Terapije { get; set; }
+        //public ObservableCollection<Korisnik> SviKorisnici { get; set; }
+
+        //public ObservableCollection<Korisnik> SviKorisnici { get; set; }
 
 
         public void Initialize()
@@ -71,6 +71,10 @@ namespace SF11_2019_POP2020.Models
             KorisniciAdmini = new ObservableCollection<Korisnik>();
             DomoviZdravlja = new ObservableCollection<DomZdravlja>();
             KorisniciPacijenti = new ObservableCollection<Korisnik>();
+            Termini = new ObservableCollection<Termin>();
+            Terapije = new ObservableCollection<Terapija>();
+            //SviKorisnici = new ObservableCollection<Korisnik>();
+
 
 
 
@@ -110,7 +114,7 @@ namespace SF11_2019_POP2020.Models
             {
                 Id = korisnik2.Id,
                 DomZdravljaId = 4
-         
+
             };
 
             /*Korisnici.Add(korisnik1);*/
@@ -125,18 +129,31 @@ namespace SF11_2019_POP2020.Models
 
         public int SacuvajEntitet(Object obj)
         {
-            if(obj is Korisnik)
+            if (obj is Korisnik)
             {
-              return _userService.saveUser(obj);
+                return _userService.saveUser(obj);
             }
-            else if(obj is Lekar)
+            else if (obj is Lekar)
             {
-              return _doctorService.saveUser(obj);
+                return _doctorService.saveUser(obj);
             }
-            
-            else if(obj is Adresa)
+
+            else if (obj is Adresa)
             {
                 return _adresaService.saveAdresa(obj);
+            }
+            else if (obj is Termin)
+            {
+                return _terminService.saveTermin(obj);
+            }
+
+            else if (obj is DomZdravlja)
+            {
+                return _domZdravljaService.saveDomoveZdravlja(obj);
+            }
+            else if (obj is Terapija)
+            {
+                return _terapijaService.saveTerapije(obj);
             }
             return -1;
         }
@@ -145,6 +162,7 @@ namespace SF11_2019_POP2020.Models
         {
             if (filename.Contains("korisnici"))
             {
+                //_sviKorisniciService.readUsers();
                 _userService.readUsers();
                 _adminService.readUsers();
                 _pacijentService.readUsers();
@@ -157,16 +175,24 @@ namespace SF11_2019_POP2020.Models
             {
                 _adresaService.readAdrese();
             }
-            else if(filename.Contains("domovizdravlja"))
+            else if (filename.Contains("domovizdravlja"))
             {
                 _domZdravljaService.readDomoveZdravlja();
             }
+            else if (filename.Contains("termini"))
+            {
+                _terminService.readTermine();
+            }
+            else if (filename.Contains("terapije"))
+            {
+                _terapijaService.readTerapije();
+            }
         }
-    
+
         public void DeleteUser(string jmbg)
         {
             _userService.deleteUser(jmbg);
-           
+
         }
         public void DeleteAdresa(int id)
         {
@@ -180,17 +206,38 @@ namespace SF11_2019_POP2020.Models
         {
             _pacijentService.deleteUser(jmbg);
         }
+        public void DeleteTermin(int id)
+        {
+            _terminService.deleteTermin(id);
+        }
+        public void DeleteTerapija(int id)
+        {
+            _terapijaService.deleteTerapiju(id);
+        }
+        public void DeleteDomZdravlja(int id)
+        {
+            _domZdravljaService.deleteDomoveZdravlja(id);
+        }
+        public void DeleteUserZapravo(int id)
+        {
+            _userService.deleteUserZapravo(id);
+        }
 
         public void UpdateEntiteta(Object obj)
         {
-            if(obj is Korisnik)
+            if (obj is Korisnik)
             {
                 _userService.updateUser(obj);
             }
-            if(obj is Lekar)
+            if (obj is Lekar)
             {
                 _doctorService.updateUser(obj);
             }
+            if (obj is Termin)
+            {
+                _terminService.updateTermin(obj);
+            }
+            
         }
 
     }

@@ -14,30 +14,21 @@
         </Grid.ColumnDefinitions>
         <Menu Name="Menu" HorizontalAlignment="Left" Height="27" Margin="10,10,0,0" VerticalAlignment="Top" Width="777" Grid.ColumnSpan="3">
             <MenuItem Header="Pregled">
-                <MenuItem Header="Pregled domova zdravlja" Name="PregledDomovaZdravlja"></MenuItem>
-                <MenuItem Header="Pregled zaposlenih lekara" Name="PregledLekara"></MenuItem>
+                <MenuItem Header="Pregled domova zdravlja" Name="PregledDomovaZdravlja" Click="PregledDomovaZdravlja_Click"></MenuItem>
+                <MenuItem Header="Pregled dostupnih lekara" Name="PregledKorisnika" Click="PregledKorisnika_Click" > </MenuItem>
+                <MenuItem Header="Pregled dostupnih admina" Name="PregledAdmina" Click="PregledAdmina_Click"> </MenuItem>
+                <MenuItem Header="Pregled dostupnih pacijenata" Name="PregledPacijenata" Click="PregledAdmina_Click"> </MenuItem>
+                <MenuItem Header="Pregled terapija" Name="PregledTerapija" Click="PregledTerapija_Click"> </MenuItem>
             </MenuItem>
         </Menu>
         <Button Name="btnStart" Content="Lekari" Click="btnStart_Click" Margin="7,286,786.6,93" RenderTransformOrigin="0.232,0.48" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <Button Name="btnAdministratori" Content="Administratori" HorizontalAlignment="Left" Margin="180,312,0,0" VerticalAlignment="Top" Width="99" Height="41" Click="btnAdministratori_Click" Grid.Column="2"/>
-        <Button Name="btnPacijenti" Content="Pacijenti" HorizontalAlignment="Left" Margin="522,312,0,0" VerticalAlignment="Top" Width="96" Height="41" RenderTransformOrigin="0.5,0.5" Grid.Column="2" Click="btnPacijenti_Click">
-            <Button.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="0.041"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </Button.RenderTransform>
-        </Button>
-        <Label Content="Dobrodosli!" HorizontalAlignment="Left" Margin="10,42,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.ColumnSpan="3"/>
-        <Button Name="btnAdrese" Content="Adrese" HorizontalAlignment="Left" Margin="292,312,0,0" VerticalAlignment="Top" Width="103" Height="41" Click="btnAdrese_Click" Grid.Column="2"/>
-        <Button Content="DomoviZdravlja" HorizontalAlignment="Left" Margin="407,312,0,0" VerticalAlignment="Top" Width="102" Height="41" Click="Button_Click_2" Grid.Column="2"/>
-        <Button Grid.ColumnSpan="3" Content="Lekari" HorizontalAlignment="Left" VerticalAlignment="Top" Width="83" Margin="84,312,0,0" Click="Button_Click_4" Height="41"/>
-        <Button Grid.ColumnSpan="3" Content="Korisnik" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="414,98,0,0" Click="Button_Click_5"/>
-        <Label Grid.ColumnSpan="3" Content="Ulogujte se kao:" HorizontalAlignment="Left" Margin="407,50,0,0" VerticalAlignment="Top"/>
-        <Button Grid.ColumnSpan="3" Content="Lekar" HorizontalAlignment="Left" Margin="334,98,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
-        <Button Grid.ColumnSpan="3" Content="Pacijent" HorizontalAlignment="Left" Margin="494,98,0,0" VerticalAlignment="Top" Width="75"/>
+        <Label Content="Dobrodosli!" HorizontalAlignment="Left" Margin="366,42,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.ColumnSpan="3"/>
+        <Button Grid.ColumnSpan="3" Content="Admin" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="366,115,0,0" Click="Button_Click_5"/>
+        <Label Grid.ColumnSpan="3" Content="Ulogujte se kao:" HorizontalAlignment="Left" Margin="356,68,0,0" VerticalAlignment="Top"/>
+        <Button Grid.ColumnSpan="3" Content="Lekar" HorizontalAlignment="Left" Margin="275,115,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
+        <Button Grid.ColumnSpan="3" Content="Pacijent" HorizontalAlignment="Left" Margin="456,115,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_6"/>
+        <Label Grid.ColumnSpan="3" Content="Registrujte se:" HorizontalAlignment="Left" Margin="366,194,0,0" VerticalAlignment="Top"/>
+        <Button Grid.ColumnSpan="3" Name="btnRegistracija" Content="Registracija" HorizontalAlignment="Left" Margin="366,225,0,0" VerticalAlignment="Top" Width="75" Click="btnRegistracija_Click"/>
 
 
     </Grid>

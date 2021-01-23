@@ -21,7 +21,8 @@
         <TextBox Name="txtJmbg"  HorizontalAlignment="Left" Height="26" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" Margin="92,47,0,0" RenderTransformOrigin="0.5,0.5">
         </TextBox>
         <TextBox Name="txtLozinka" HorizontalAlignment="Left" Height="28" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="144" Margin="92,116,0,0"/>
-        <Button Content="Prijavi se" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" Margin="117,201,0,0" RenderTransformOrigin="-0.04,1.094" Click="Button_Click" Height="35"/>
+        <Button Content="Prijavi se" HorizontalAlignment="Left" VerticalAlignment="Top" Width="85" Margin="92,209,0,0" RenderTransformOrigin="-0.04,1.094" Click="Button_Click" Height="35"/>
+        <Button Content="Odustani" Name="ButtonOdustani" HorizontalAlignment="Left" Margin="206,209,0,0" VerticalAlignment="Top" Width="85" Height="35" Click="ButtonOdustani_Click"/>
 
     </Grid>
 </Window>

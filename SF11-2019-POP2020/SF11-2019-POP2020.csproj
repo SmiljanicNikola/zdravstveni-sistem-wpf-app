@@ -58,6 +58,7 @@
     <Compile Include="Models\Administrator.cs" />
     <Compile Include="Models\DomZdravlja.cs" />
     <Compile Include="Models\EStatus.cs" />
+    <Compile Include="Models\EStatusTermina.cs" />
     <Compile Include="Models\Terapija.cs" />
     <Compile Include="Models\Termin.cs" />
     <Compile Include="MyExceptions\UserNotFoundException.cs" />
@@ -67,8 +68,12 @@
     <Compile Include="Services\DomZdravljaService.cs" />
     <Compile Include="Services\IAdresaService.cs" />
     <Compile Include="Services\IDomZdravljaService.cs" />
+    <Compile Include="Services\ITerapijaService.cs" />
+    <Compile Include="Services\ITerminService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\PacijentService.cs" />
+    <Compile Include="Services\TerapijaService.cs" />
+    <Compile Include="Services\TerminService.cs" />
     <Compile Include="Services\UserService.cs" />
     <Compile Include="Validations\EmailValidacija.cs" />
     <Compile Include="Windows\DodavanjeIzmenaAdministratora.xaml.cs">
@@ -86,6 +91,21 @@
     <Compile Include="Windows\DodavanjeIzmenaPacijenta.xaml.cs">
       <DependentUpon>DodavanjeIzmenaPacijenta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\DodavanjeIzmenaTerapija.xaml.cs">
+      <DependentUpon>DodavanjeIzmenaTerapija.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\DodavanjeIzmenaTermina.xaml.cs">
+      <DependentUpon>DodavanjeIzmenaTermina.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GlavnaStranicaAdministrator.xaml.cs">
+      <DependentUpon>GlavnaStranicaAdministrator.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GlavnaStranicaLekar.xaml.cs">
+      <DependentUpon>GlavnaStranicaLekar.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\GlavnaStranicaPacijent.xaml.cs">
+      <DependentUpon>GlavnaStranicaPacijent.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\loginAdmin.xaml.cs">
       <DependentUpon>loginAdmin.xaml</DependentUpon>
     </Compile>
@@ -95,8 +115,12 @@
     <Compile Include="Windows\LoginPacijent.xaml.cs">
       <DependentUpon>LoginPacijent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\PrikazTerminaBezCRUD.cs" />
     <Compile Include="Windows\SveAdrese.xaml.cs">
       <DependentUpon>SveAdrese.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SveTerapije.xaml.cs">
+      <DependentUpon>SveTerapije.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\SviAdministratori.xaml.cs">
       <DependentUpon>SviAdministratori.xaml</DependentUpon>
@@ -109,6 +133,9 @@
     </Compile>
     <Compile Include="Windows\SviPacijenti.xaml.cs">
       <DependentUpon>SviPacijenti.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SviTermini.xaml.cs">
+      <DependentUpon>SviTermini.xaml</DependentUpon>
     </Compile>
     <Page Include="HomeWindow.xaml">
       <SubType>Designer</SubType>
@@ -141,6 +168,26 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\DodavanjeIzmenaTerapija.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DodavanjeIzmenaTermina.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GlavnaStranicaAdministrator.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GlavnaStranicaLekar.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\GlavnaStranicaPacijent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\loginAdmin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -157,6 +204,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\SveTerapije.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\SviAdministratori.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -170,6 +221,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\SviPacijenti.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SviTermini.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

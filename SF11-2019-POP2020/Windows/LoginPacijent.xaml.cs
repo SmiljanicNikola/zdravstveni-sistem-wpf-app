@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.SqlClient;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +24,36 @@ namespace SF11_2019_POP2020.Windows
         public LoginPacijent()
         {
             InitializeComponent();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            SqlConnection sqlConn = new SqlConnection(@"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;
+                                                    Integrated Security=True;Connect Timeout=30;Encrypt=False;
+                                                    TrustServerCertificate=False;ApplicationIntent=ReadWrite;
+                                                    MultiSubnetFailover=False");
+            string query = "Select * from korisnici where TipKorisnika like 'pacijent' and jmbg ='" + txtJmbg.Text.Trim() + "' and lozinka ='" + txtLozinka.Text.Trim() + "'";
+            SqlDataAdapter sda = new SqlDataAdapter(query, sqlConn);
+            DataTable dtbl = new DataTable();
+            sda.Fill(dtbl);
+            if (dtbl.Rows.Count == 1)
+            {
+                GlavnaStranicaPacijent gsp = new GlavnaStranicaPacijent();
+                this.Hide();
+                gsp.Show();
+            }
+            else
+            {
+                MessageBox.Show("Netacni podaci za prijavu! Proveri ih ponovo!");
+            }
+        }
+
+        private void ButtonOdustani_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow window = new HomeWindow();
+
+            this.Hide();
+            window.Show();
         }
     }
 }

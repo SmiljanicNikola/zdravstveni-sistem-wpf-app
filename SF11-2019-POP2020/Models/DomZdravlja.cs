@@ -40,5 +40,18 @@ namespace SF11_2019_POP2020.Models
             get { return _Aktivan; }
             set { _Aktivan = value; }
         }
+
+        public DomZdravlja Clone()
+        {
+            DomZdravlja kopija = new DomZdravlja();
+
+            kopija.NazivInstitucije = NazivInstitucije;
+            kopija.adresaId = adresaId;
+            kopija.Aktivan = Aktivan;
+
+            return kopija;
+        }
+
+
     }
 }

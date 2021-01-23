@@ -38,14 +38,23 @@ namespace SF11_2019_POP2020.Windows
             sda.Fill(dtbl);
             if (dtbl.Rows.Count == 1)
             {
-                SviLekari svilekari = new SviLekari();
+                GlavnaStranicaLekar gsl = new GlavnaStranicaLekar();
                 this.Hide();
-                svilekari.Show();
+                gsl.Show();
             }
             else
             {
                 MessageBox.Show("Netacni podaci za prijavu! Proveri ih ponovo!");
             }
+        }
+
+
+        private void ButtonOdustani_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow window = new HomeWindow();
+
+            this.Hide();
+            window.Show();
         }
     }
 }

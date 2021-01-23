@@ -41,6 +41,37 @@ namespace SF11_2019_POP2020.Services
             }
         }
 
+        
+
+        public void deleteUserZapravo(string jmbg)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void deleteUserZapravo(int id)
+        {
+            Korisnik k = Util.Instance.Korisnici.ToList().Find(korisnik => korisnik.Id.Equals(id));
+
+            if (k == null)
+                throw new UserNotFoundException($"Ne postoji korisnik sa Id-om {id}");
+            k.Aktivan = false;
+
+            // updateUser(k);
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"DELETE from dbo.Korisnici where id = @id";
+
+                command.Parameters.Add(new SqlParameter("Aktivan", k.Aktivan));
+                command.Parameters.Add(new SqlParameter("Id", k.Id));
+
+                command.ExecuteNonQuery();
+
+            }
+        }
+
         public void readUsers()
         {
             Util.Instance.Korisnici = new ObservableCollection<Korisnik>();
