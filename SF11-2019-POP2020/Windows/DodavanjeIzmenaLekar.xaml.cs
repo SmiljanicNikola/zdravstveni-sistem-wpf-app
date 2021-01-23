@@ -69,11 +69,12 @@ namespace SF11_2019_POP2020.Windows
                     odabranLekar.Aktivan = true;
                     Lekar lekar = new Lekar
                     {
-                        Id=odabranLekar.Id,
+                        Id = odabranLekar.Id,
                         DomZdravljaId = 4,
-                        Termini = "nema"
-            
-                
+                        Termini = "nema",
+                        Aktivan = true
+
+
                     };
 
                     Util.Instance.Korisnici.Add(odabranLekar);
@@ -81,7 +82,7 @@ namespace SF11_2019_POP2020.Windows
 
                     int id = Util.Instance.SacuvajEntitet(odabranLekar);
                     lekar.Id = id;
-                  
+
                     Util.Instance.SacuvajEntitet(lekar);
                 }
 
@@ -89,7 +90,7 @@ namespace SF11_2019_POP2020.Windows
                 this.Close();
             }
 
-
+        }
             /*
             ComboBoxItem item = (ComboBoxItem)comboBoxTipKorisnika.SelectedItem;
             string value = item.Content.ToString();
@@ -154,7 +155,7 @@ namespace SF11_2019_POP2020.Windows
                 this.DialogResult = false;
                 this.Close();
             }*/
-        }
+        
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {

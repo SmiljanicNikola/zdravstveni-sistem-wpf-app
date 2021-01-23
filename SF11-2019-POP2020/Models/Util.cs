@@ -23,6 +23,7 @@ namespace SF11_2019_POP2020.Models
         IUserService _pacijentService;
         ITerminService _terminService;
         ITerapijaService _terapijaService;
+        IPraviDoktorService _praviDoktorService;
         
 
         private Util()
@@ -35,6 +36,7 @@ namespace SF11_2019_POP2020.Models
             _pacijentService = new PacijentService();
             _terminService = new TerminService();
             _terapijaService = new TerapijaService();
+            _praviDoktorService = new PraviDoktorService();
             
         }
         static Util()
@@ -61,7 +63,7 @@ namespace SF11_2019_POP2020.Models
         //public ObservableCollection<Korisnik> SviKorisnici { get; set; }
 
         //public ObservableCollection<Korisnik> SviKorisnici { get; set; }
-
+        public ObservableCollection<Lekar> Doktori { get; set; }
 
         public void Initialize()
         {
@@ -74,6 +76,7 @@ namespace SF11_2019_POP2020.Models
             Termini = new ObservableCollection<Termin>();
             Terapije = new ObservableCollection<Terapija>();
             //SviKorisnici = new ObservableCollection<Korisnik>();
+            Doktori = new ObservableCollection<Lekar>();
 
 
 
@@ -112,7 +115,7 @@ namespace SF11_2019_POP2020.Models
 
             Lekar lekar = new Lekar
             {
-                Id = korisnik2.Id,
+               Id = korisnik2.Id,
                 DomZdravljaId = 4
 
             };
@@ -136,6 +139,7 @@ namespace SF11_2019_POP2020.Models
             else if (obj is Lekar)
             {
                 return _doctorService.saveUser(obj);
+                
             }
 
             else if (obj is Adresa)
@@ -155,6 +159,7 @@ namespace SF11_2019_POP2020.Models
             {
                 return _terapijaService.saveTerapije(obj);
             }
+          
             return -1;
         }
 
@@ -170,6 +175,8 @@ namespace SF11_2019_POP2020.Models
             else if (filename.Contains("lekari"))
             {
                 _doctorService.readUsers();
+                _praviDoktorService.readDoktore();
+                
             }
             else if (filename.Contains("adrese"))
             {

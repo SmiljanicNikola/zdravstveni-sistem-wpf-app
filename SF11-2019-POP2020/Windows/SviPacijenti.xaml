@@ -21,5 +21,6 @@
             </MenuItem>
         </Menu>
         <Button Content="Pocetna" HorizontalAlignment="Left" Margin="561,365,0,0" VerticalAlignment="Top" Width="83" Height="34" Click="Button_Click" Grid.Column="1"/>
+        <Button Grid.ColumnSpan="2" Name="btnAdminPocetna" Content="Admin pocetna" HorizontalAlignment="Left" Margin="719,365,0,0" VerticalAlignment="Top" Width="86" Height="34" Click="btnAdminPocetna_Click"/>
     </Grid>
 </Window>

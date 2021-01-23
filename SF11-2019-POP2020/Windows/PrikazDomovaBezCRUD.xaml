@@ -1,0 +1,15 @@
+﻿<Window x:Class="SF11_2019_POP2020.Windows.PrikazDomovaBezCRUD"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
+        mc:Ignorable="d"
+        Title="PrikazDomovaBezCRUD" Height="450" Width="800">
+    <Grid>
+        <DataGrid CanUserAddRows="False" Name="DataGridDomZdravlja" HorizontalAlignment="Left" Height="174" Margin="27,24,0,0" VerticalAlignment="Top" Width="513"
+                  AutoGenerateColumns="True" AutoGeneratingColumn="DataGridTermini_AutoGeneratingColumn"/>
+        <Label Content="Izaberi mesto:" HorizontalAlignment="Left" Margin="27,229,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Name="ComboBoxMesto" Margin="115,232,0,0" VerticalAlignment="Top" Width="114" Height="23"/>
+    </Grid>
+</Window>

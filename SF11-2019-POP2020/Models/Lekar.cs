@@ -35,6 +35,13 @@ namespace SF11_2019_POP2020.Models
             set { _termini = value; }
         }
 
+        private bool _aktivan;
+
+        public bool Aktivan
+        {
+            get { return _aktivan; }
+            set { _aktivan = value; }
+        }
 
 
 

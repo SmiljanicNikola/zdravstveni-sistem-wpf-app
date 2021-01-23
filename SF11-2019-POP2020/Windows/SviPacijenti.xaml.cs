@@ -117,6 +117,12 @@ namespace SF11_2019_POP2020.Windows
                 if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
                     e.Column.Visibility = Visibility.Collapsed;
             }
-        
+
+        private void btnAdminPocetna_Click(object sender, RoutedEventArgs e)
+        {
+            GlavnaStranicaAdministrator gsa = new GlavnaStranicaAdministrator();
+            this.Hide();
+            gsa.Show();
+        }
     }
 }

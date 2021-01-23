@@ -1,0 +1,21 @@
+﻿<Window x:Class="SF11_2019_POP2020.Windows.SviDoktori"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
+        mc:Ignorable="d"
+        Title="SviDoktori" Height="450" Width="800">
+    <Grid>
+        <DataGrid CanUserAddRows="False" Name="DataGridDoktori" HorizontalAlignment="Left" Height="237" Margin="22,39,0,0" VerticalAlignment="Top" Width="600" SelectionChanged="DataGridDoktori_SelectionChanged"
+                  AutoGeneratingColumn="DataGridDoktori_AutoGeneratingColumn" AutoGenerateColumns="True" />
+        <Menu Name="Menu" HorizontalAlignment="Left" Height="27" Margin="10,10,-0.4,0" VerticalAlignment="Top" Width="1184">
+            <MenuItem Header="Doktori">
+                <MenuItem Name="MenuItemDodajDoktora" Header="Dodaj doktora" Click="MenuItemDodajDoktora_Click" />
+                <MenuItem Name="MenuItemIzmeniDoktora" Header="Izmeni Doktora" Click="MenuItemIzmeniDoktora_Click" />
+                <MenuItem Name="MenuItemObrisiDoktora" Header="Obrisi doktora" Click="MenuItemObrisiDoktora_Click" />
+            </MenuItem>
+        </Menu>
+
+    </Grid>
+</Window>

@@ -54,7 +54,10 @@ namespace SF11_2019_POP2020.Windows
 
         private void MenuItemLogOut_Click(object sender, RoutedEventArgs e)
         {
+            HomeWindow window = new HomeWindow();
 
+            this.Hide();
+            window.Show();
         }
 
         private void MenuItemLekari_Click_1(object sender, RoutedEventArgs e)
@@ -64,15 +67,18 @@ namespace SF11_2019_POP2020.Windows
 
         private void PregledTermina_Click(object sender, RoutedEventArgs e)
         {
-            SviTermini windowTermini = new SviTermini();
-
+            PrikazTerminaBezCRUD addPrikaz = new PrikazTerminaBezCRUD();
+            addPrikaz.Show();
             this.Hide();
-            windowTermini.Show();
+            this.Show();
         }
 
         private void PregledDomova_Click(object sender, RoutedEventArgs e)
         {
-
+            PrikazDomovaBezCRUD addPrikaz = new PrikazDomovaBezCRUD();
+            addPrikaz.Show();
+            this.Hide();
+            this.Show();
         }
 
         private void ZakazivanjeTermina_Click(object sender, RoutedEventArgs e)

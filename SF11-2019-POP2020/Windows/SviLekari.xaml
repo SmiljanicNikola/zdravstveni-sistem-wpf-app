@@ -24,7 +24,7 @@
         <DataGrid CanUserAddRows="False" Name="DataGridLekari" HorizontalAlignment="Left" Height="237" Margin="10,60,0,0" VerticalAlignment="Top" Width="629" SelectionChanged="DataGridLekari_SelectionChanged"
                   AutoGeneratingColumn="DataGridLekari_AutoGeneratingColumn" AutoGenerateColumns="True" />
         <TextBox Name="textBoxPretraga" HorizontalAlignment="Left" Height="23" Margin="888,87,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="textBoxPretraga_KeyUp"/>
-        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="786,436,0,0" VerticalAlignment="Top" Width="112" Height="48" Click="Button_Click"/>
+        <Button Content="Pocetna" Name="btnPocetna" HorizontalAlignment="Left" Margin="786,436,0,0" VerticalAlignment="Top" Width="112" Height="48" Click="btnPocetna_Click"/>
         <TextBox Name="textBoxPretragaPrezime" HorizontalAlignment="Left" Height="23" Margin="888,139,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="textBoxPretragaPrezime_KeyUp"/>
         <TextBox HorizontalAlignment="Left" Name="textBoxPretragaEmail" Height="23" Margin="888,188,0,0" TextWrapping="Wrap" Text="" KeyUp="textBoxPretragaEmail_KeyUp" VerticalAlignment="Top" Width="120"/>
         <Label Content="Po imenu:" HorizontalAlignment="Left" Margin="801,87,0,0" VerticalAlignment="Top"/>
@@ -33,5 +33,7 @@
         <GroupBox Header="Pretrage" HorizontalAlignment="Left" Height="251" Margin="742,46,0,0" VerticalAlignment="Top" Width="358"/>
         <DataGrid HorizontalAlignment="Left" Height="144" Margin="130,327,0,0" VerticalAlignment="Top" Width="422" CanUserAddRows="False"
                   Name="DataGridDoktori" AutoGeneratingColumn="DataGridDoktori_AutoGeneratingColumn" />
+        <Button Content="Admin pocetna" Name="btnAdmin" HorizontalAlignment="Left" Margin="933,436,0,0" VerticalAlignment="Top" Width="109" Height="48" Click="btnAdmin_Click"/>
+        <Button Content="Tabela doktori" Name="btnDoktori" HorizontalAlignment="Left" Margin="623,436,0,0" VerticalAlignment="Top" Width="112" Height="48" Click="btnDoktori_Click"/>
     </Grid>
 </Window>

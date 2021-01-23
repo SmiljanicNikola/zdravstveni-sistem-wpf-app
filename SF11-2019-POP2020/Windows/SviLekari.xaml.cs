@@ -29,7 +29,7 @@ namespace SF11_2019_POP2020.Windows
 
             UpdateView();
 
-            UpdateView2();
+            //UpdateView2();
             view.Filter = CustomFilter;
 
         }
@@ -74,7 +74,7 @@ namespace SF11_2019_POP2020.Windows
         private void UpdateView2()
         {
             //DataGridLekari.ItemsSource = null;
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Doktori);
             DataGridDoktori.ItemsSource = view; // Util.Instance.Korisnici;
             DataGridDoktori.IsSynchronizedWithCurrentItem = true;
             DataGridDoktori.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
@@ -87,8 +87,7 @@ namespace SF11_2019_POP2020.Windows
 
         private void DataGridLekari_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
-                e.Column.Visibility = Visibility.Collapsed;
+            
 
             if (e.PropertyName.Equals("korisni"))
                 e.Column.Visibility = Visibility.Collapsed;
@@ -166,13 +165,7 @@ namespace SF11_2019_POP2020.Windows
             view.Refresh();
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            HomeWindow window = new HomeWindow();
-
-            this.Hide();
-            window.Show();
-        }
+       
 
         private void textBoxPretragaPrezime_KeyUp(object sender, KeyEventArgs e)
         {
@@ -202,7 +195,30 @@ namespace SF11_2019_POP2020.Windows
 
         private void MenuItemObrisiDoktora_Click(object sender, RoutedEventArgs e)
         {
+         
+        }
 
+
+        private void btnDoktori_Click(object sender, RoutedEventArgs e)
+        {
+            SviDoktori SviDoktoriPrikaz = new SviDoktori();
+            this.Hide();
+            SviDoktoriPrikaz.Show();
+        }
+
+        private void btnAdmin_Click(object sender, RoutedEventArgs e)
+        {
+            GlavnaStranicaAdministrator gsa = new GlavnaStranicaAdministrator();
+            this.Hide();
+            gsa.Show();
+        }
+
+        private void btnPocetna_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow window = new HomeWindow();
+
+            this.Hide();
+            window.Show();
         }
     }
 }
