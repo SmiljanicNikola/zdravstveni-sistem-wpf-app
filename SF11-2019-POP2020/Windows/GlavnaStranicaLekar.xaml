@@ -13,7 +13,7 @@
             <MenuItem Header="Akcije sa korisnicima" Margin="0,0,0,0" Click="MenuItem_Click" Height="40" Width="130">
                 <MenuItem Name="MenuItemAdministratori" Header="Administratori" Click="MenuItemAdministratori_Click" ></MenuItem>
                 <MenuItem Name="MenuItemPacijenti" Header="Pacijenti" Click="MenuItemPacijenti_Click"></MenuItem>
-                <MenuItem Name="MenuItemLekari" Header="Lekari" Click="MenuItemLekari_Click"></MenuItem>
+                <MenuItem Name="MenuItemLekari" Header="Lekari" Click="MenuItemLekari_Click"></MenuItem >
             </MenuItem>
             <MenuItem Header="Izlogujte se" Click="MenuItem_Click_1" Margin="560,0,0,0"  Height="40" Width="100">
                 <MenuItem Name="MenuItemLogOut" Header="LogOut" Click="MenuItemLogOut_Click" ></MenuItem>
