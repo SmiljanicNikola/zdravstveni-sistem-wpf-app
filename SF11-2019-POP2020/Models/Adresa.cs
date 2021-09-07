@@ -74,6 +74,7 @@ namespace SF11_2019_POP2020.Models
             kopija.Drzava = Drzava;
             kopija.Grad = Grad;
             kopija.Aktivan = Aktivan;
+            kopija.Drzava = Drzava;
 
             return kopija;
         }
