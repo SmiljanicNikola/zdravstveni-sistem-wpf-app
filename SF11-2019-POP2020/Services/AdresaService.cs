@@ -20,16 +20,14 @@ namespace SF11_2019_POP2020.Services
                 throw new UserNotFoundException($"Ne postoji adresa sa id-om {id}");
             adr.Aktivan = false;
 
-            // updateUser(k);
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
                 conn.Open();
                 SqlCommand command = conn.CreateCommand();
 
                 command.CommandText = @"update dbo.Adrese
-                                       
                                         SET Aktivan = @Aktivan
-                                        where id = @Id";
+                                        where Id = @Id";
 
                 command.Parameters.Add(new SqlParameter("Aktivan", adr.Aktivan));
                 command.Parameters.Add(new SqlParameter("Id", adr.Id));
@@ -105,18 +103,14 @@ namespace SF11_2019_POP2020.Services
                 conn.Open();
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"update dbo.Adrese
-                                        SET Ulica = @Ulica
-                                        SET Broj = @Broj
-                                        SET Drzava = @Drzava
-                                        SET Grad = @Grad                            
-                                        where id = @Id";
+                command.CommandText = @"update dbo.Adrese SET Ulica = @Ulica, Broj = @Broj, Grad = @Grad, Drzava = @Drzava, Aktivan = @Aktivan                            
+                                        where Id = @Id";
 
+                command.Parameters.Add(new SqlParameter("Id", adresa.Id));
                 command.Parameters.Add(new SqlParameter("Ulica", adresa.Ulica));
                 command.Parameters.Add(new SqlParameter("Broj", adresa.Broj));
-                command.Parameters.Add(new SqlParameter("Drzava", adresa.Drzava));
                 command.Parameters.Add(new SqlParameter("Grad", adresa.Grad));
-                command.Parameters.Add(new SqlParameter("Id", adresa.Id));
+                command.Parameters.Add(new SqlParameter("Drzava", adresa.Drzava));
                 command.Parameters.Add(new SqlParameter("Aktivan", adresa.Aktivan));
 
 

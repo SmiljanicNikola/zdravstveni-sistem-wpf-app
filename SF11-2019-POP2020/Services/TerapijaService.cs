@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace SF11_2019_POP2020.Services
 {
-     class TerapijaService : ITerapijaService
+    class TerapijaService : ITerapijaService
     {
         public void deleteTerapiju(int id)
         {
@@ -39,7 +39,7 @@ namespace SF11_2019_POP2020.Services
             }
         }
 
-      
+
 
         public void readTerapije()
         {
@@ -69,7 +69,7 @@ namespace SF11_2019_POP2020.Services
             }
         }
 
-      
+
 
         public int saveTerapije(object obj)
         {
@@ -93,13 +93,32 @@ namespace SF11_2019_POP2020.Services
             }
         }
 
-     
+
 
         public void updateTerapije(object obj)
         {
-            throw new NotImplementedException();
-        }
 
-       
+            Terapija terapija = obj as Terapija;
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"update dbo.Terapije SET Opis = @Opis, LekarId = @LekarId, Aktivan = @Aktivan                            
+                                        where Id = @Id";
+
+                command.Parameters.Add(new SqlParameter("Id", terapija.Id));
+                command.Parameters.Add(new SqlParameter("Opis", terapija.Opis));
+                command.Parameters.Add(new SqlParameter("LekarId", terapija.LekarId));
+                command.Parameters.Add(new SqlParameter("Aktivan", terapija.Aktivan));
+
+
+
+                command.ExecuteNonQuery();
+
+            }
+
+
+        }
     }
 }

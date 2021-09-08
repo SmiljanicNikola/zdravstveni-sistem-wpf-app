@@ -37,7 +37,7 @@ namespace SF11_2019_POP2020.Windows
             {
                 this.Title = "Izmeni Dom zdravlja";
                 //Util.Instance.SacuvajEntitet(lekar);
-                //Util.Instance.UpdateEntiteta(lekar);
+                //Util.Instance.UpdateEntiteta(domZdravlja);
                 //Util.Instance.SacuvajEntitet(lekar);
                 //Util.Instance.UpdateEntiteta(termin);
 
@@ -65,10 +65,14 @@ namespace SF11_2019_POP2020.Windows
 
                 this.Close();
             }
-            else
+            else if(odabranStatus.Equals(EStatus.Izmeni))
             {
+          
+                Util.Instance.UpdateEntiteta(odabranDomZdravlja);
 
             }
+
+            this.Close();
 
         }
 

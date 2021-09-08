@@ -79,28 +79,24 @@ namespace SF11_2019_POP2020.Windows
         {
             //Korisnik izabraniLekar = (Korisnik)DataGridLekari.SelectedItem;
             DomZdravlja izabraniDom = view.CurrentItem as DomZdravlja;
-            DomZdravlja stariDom = izabraniDom.Clone();
-            DodavanjeIzmenaDomovaZdravlja add = new DodavanjeIzmenaDomovaZdravlja(izabraniDom, EStatus.Izmeni);
-
-            this.Hide();
-            if ((bool)add.ShowDialog())
+            if (izabraniDom != null)
             {
-                int index = Util.Instance.DomoviZdravlja.ToList().FindIndex(dt => dt.Id.Equals(izabraniDom.Id));
+                DomZdravlja stariDom = izabraniDom.Clone();
+                DodavanjeIzmenaDomovaZdravlja addDomZdravlja = new DodavanjeIzmenaDomovaZdravlja(izabraniDom, EStatus.Izmeni);
 
-                //Util.Instance.Korisnici[index] = stariLekar;
-                Util.Instance.DomoviZdravlja[index].NazivInstitucije = izabraniDom.NazivInstitucije;
-                Util.Instance.DomoviZdravlja[index].adresaId = izabraniDom.adresaId;   
-                Util.Instance.DomoviZdravlja[index].Aktivan = izabraniDom.Aktivan;
+                if ((bool)addDomZdravlja.ShowDialog())
+                {
+                    /*int index = Util.Instance.DomoviZdravlja.ToList().FindIndex(dt => dt.Id.Equals(izabraniDom.Id));
 
-                //Util.Instance.UpdateEntiteta(izabraniLekar);
-                Util.Instance.DeleteDomZdravlja(stariDom.Id);
-                Util.Instance.SacuvajEntitet(izabraniDom);
+                    //Util.Instance.Korisnici[index] = stariLekar;
+                    Util.Instance.DomoviZdravlja[index].NazivInstitucije = izabraniDom.NazivInstitucije;
+                    Util.Instance.DomoviZdravlja[index].adresaId = izabraniDom.adresaId;
+                    Util.Instance.DomoviZdravlja[index].Aktivan = izabraniDom.Aktivan;*/
 
-
-
+                }
+                view.Refresh();
             }
-            this.Show();
-            view.Refresh();
+
         }
 
         private void MenuItemObrisiDomZdravlja_Click(object sender, RoutedEventArgs e)
@@ -118,10 +114,10 @@ namespace SF11_2019_POP2020.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            HomeWindow window = new HomeWindow();
-
+            /*HomeWindow window = new HomeWindow();*/
+            GlavnaStranicaAdministrator gsa = new GlavnaStranicaAdministrator();
             this.Hide();
-            window.Show();
+            gsa.Show();
         }
 
         private void txtPretragaPoNazivuInstitucije_KeyUp(object sender, KeyEventArgs e)

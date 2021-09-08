@@ -50,5 +50,16 @@ namespace SF11_2019_POP2020.Models
 
         }
 
+        public Terapija Clone()
+        {
+            Terapija kopija = new Terapija();
+
+            kopija.Opis = Opis;
+            kopija.LekarId = LekarId;
+            kopija.Aktivan = Aktivan;
+
+            return kopija;
+        }
+
     }
 }

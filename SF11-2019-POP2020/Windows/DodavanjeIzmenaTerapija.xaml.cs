@@ -71,10 +71,12 @@ namespace SF11_2019_POP2020.Windows
 
                 this.Close();
             }
-            else
+            else if (odabranStatus.Equals(EStatus.Izmeni))
             {
-
+                Util.Instance.UpdateEntiteta(odabranaTerapija);
             }
+
+            this.Close();
         }
     }
 }

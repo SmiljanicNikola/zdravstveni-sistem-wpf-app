@@ -32,7 +32,16 @@ namespace SF11_2019_POP2020.Windows
             odabranaAdresa = adresa;
             odabranStatus = status;
 
-           
+
+            if (status.Equals(EStatus.Izmeni) && adresa != null)
+            {
+                this.Title = "Izmeni adresu";
+                txtUlica.Text = odabranaAdresa.Ulica;
+                txtBroj.Text = odabranaAdresa.Broj.ToString();
+                txtGrad.Text = odabranaAdresa.Grad;
+                txtDrzava.Text = odabranaAdresa.Drzava;
+            }
+
         }
 
 
@@ -60,7 +69,6 @@ namespace SF11_2019_POP2020.Windows
                     Broj = txtBroj.Text,
                     Grad = txtGrad.Text,
                     Drzava = txtDrzava.Text,
-            
                     Aktivan = true
 
                 };
@@ -68,12 +76,23 @@ namespace SF11_2019_POP2020.Windows
                 Util.Instance.SacuvajEntitet(adresa);
 
             }
-            else
-            {
+            else if(odabranStatus.Equals(EStatus.Izmeni))
+             {
+                /*Adresa adresa = new Adresa()
+                {
+                    Ulica = txtUlica.Text,
+                    Broj = txtBroj.Text,
+                    Grad = txtGrad.Text,
+                    Drzava = txtDrzava.Text,
+                    Aktivan = true
 
-            }
+                };*/
+                Util.Instance.UpdateEntiteta(odabranaAdresa);
+             }
 
             this.Close();
+            //this.DialogResult = true;
+
         }
     }
 }

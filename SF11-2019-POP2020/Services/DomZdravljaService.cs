@@ -17,17 +17,15 @@ namespace SF11_2019_POP2020.Services
             DomZdravlja dz = Util.Instance.DomoviZdravlja.ToList().Find(DomZdravlja => DomZdravlja.Id.Equals(id));
 
             if (dz == null)
-                throw new UserNotFoundException($"Ne postoji Termin sa tim id-om {id}");
+                throw new UserNotFoundException($"Ne postoji Dom Zdravlja sa tim id-om {id}");
             dz.Aktivan = false;
 
-            // updateUser(k);
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
                 conn.Open();
                 SqlCommand command = conn.CreateCommand();
 
                 command.CommandText = @"update dbo.DomoviZdravlja
-                                       
                                         SET Aktivan = @Aktivan
                                         where id = @Id";
 
@@ -91,7 +89,25 @@ namespace SF11_2019_POP2020.Services
 
         public void updateDomoveZdravlja(object obj)
         {
-            throw new NotImplementedException();
+            DomZdravlja domZdravlja = obj as DomZdravlja;
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"update dbo.DomoviZdravlja
+                                        SET NazivInstitucije = @NazivInstitucije, AdresaId = @AdresaId, Aktivan = @Aktivan
+                                        where Id = @Id";
+
+                command.Parameters.Add(new SqlParameter("NazivInstitucije", domZdravlja.NazivInstitucije));
+                command.Parameters.Add(new SqlParameter("AdresaId", domZdravlja.adresaId));
+                command.Parameters.Add(new SqlParameter("Aktivan", domZdravlja.Aktivan));
+                command.Parameters.Add(new SqlParameter("Id", domZdravlja.Id));
+
+
+                command.ExecuteNonQuery();
+
+            }
         }
     }
 }

@@ -248,7 +248,18 @@ namespace SF11_2019_POP2020.Models
             {
                 _terminService.updateTermin(obj);
             }
-            
+            if (obj is DomZdravlja)
+            {
+                _domZdravljaService.updateDomoveZdravlja(obj);
+            }
+            if (obj is Adresa)
+            {
+                _adresaService.updateAdresa(obj);
+            }
+            if (obj is Terapija)
+            {
+                _terapijaService.updateTerapije(obj);
+            }
         }
 
     }

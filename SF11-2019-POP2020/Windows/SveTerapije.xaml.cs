@@ -56,6 +56,20 @@ namespace SF11_2019_POP2020.Windows
 
         private void MenuItemIzmeniTerapiju_Click(object sender, RoutedEventArgs e)
         {
+            Terapija izabranaTerapija = view.CurrentItem as Terapija;
+
+            if (izabranaTerapija != null)
+            {
+                Terapija staraTerapija = izabranaTerapija.Clone();
+                DodavanjeIzmenaTerapija addterapije = new DodavanjeIzmenaTerapija(izabranaTerapija, EStatus.Izmeni);
+                //this.Hide();
+                if ((bool)addterapije.ShowDialog())
+                {
+                    
+                }
+                view.Refresh();
+
+            }
 
         }
 
