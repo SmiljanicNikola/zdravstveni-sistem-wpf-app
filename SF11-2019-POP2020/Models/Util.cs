@@ -57,76 +57,27 @@ namespace SF11_2019_POP2020.Models
         public ObservableCollection<Adresa> Adrese { get; set; }
         public ObservableCollection<Korisnik> KorisniciAdmini { get; set; }
         public ObservableCollection<DomZdravlja> DomoviZdravlja { get; set; }
-        public ObservableCollection<Korisnik> KorisniciPacijenti { get; set; }
+        //public ObservableCollection<Korisnik> KorisniciPacijenti { get; set; }
         public ObservableCollection<Termin> Termini { get; set; }
         public ObservableCollection<Terapija> Terapije { get; set; }
-        //public ObservableCollection<Korisnik> SviKorisnici { get; set; }
-
-        //public ObservableCollection<Korisnik> SviKorisnici { get; set; }
+        
+        public ObservableCollection<Pacijent> Pacijenti { get; set; }
         public ObservableCollection<Lekar> Doktori { get; set; }
 
         public void Initialize()
         {
             Korisnici = new ObservableCollection<Korisnik>();
             Lekari = new ObservableCollection<Lekar>();
+            Pacijenti = new ObservableCollection<Pacijent>();
             Adrese = new ObservableCollection<Adresa>();
             KorisniciAdmini = new ObservableCollection<Korisnik>();
             DomoviZdravlja = new ObservableCollection<DomZdravlja>();
-            KorisniciPacijenti = new ObservableCollection<Korisnik>();
+            //KorisniciPacijenti = new ObservableCollection<Korisnik>();
             Termini = new ObservableCollection<Termin>();
             Terapije = new ObservableCollection<Terapija>();
             //SviKorisnici = new ObservableCollection<Korisnik>();
             Doktori = new ObservableCollection<Lekar>();
 
-
-
-
-            /*Adresa adresa = new Adresa
-            {
-                Grad = "Grad 1",
-                Broj = "Broj 1",
-                Drzava = "Drzava 1",
-                Ulica = "Ulica 1",
-                Id = 1
-            };*/
-
-            /* Korisnik korisnik1 = new Korisnik();
-             korisnik1.Ime = "petar";
-             korisnik1.Prezime = "peric";
-             korisnik1.Jmbg = "123456";
-             korisnik1.Lozinka = "pera";
-             korisnik1.Email = "pera@gmail.com";
-             korisnik1.Pol = EPol.M;
-             korisnik1.TipKorisnika = ETipKorisnika.ADMINISTRATOR;
-             korisnik1.Aktivan = true;
-             //korisnik1.Adresa = adresa;*/
-
-            Korisnik korisnik2 = new Korisnik
-            {
-                Email = "zika@gmail.com",
-                Ime = "zika",
-                Prezime = "zikic",
-                Jmbg = "654321",
-                Lozinka = "zika",
-                Pol = EPol.Z,
-                TipKorisnika = ETipKorisnika.LEKAR,
-                //Adresa = adresa
-            };
-
-            Lekar lekar = new Lekar
-            {
-               Id = korisnik2.Id,
-                DomZdravljaId = 4
-
-            };
-
-            /*Korisnici.Add(korisnik1);*/
-            Korisnici.Add(korisnik2);
-
-            Lekari = new ObservableCollection<Lekar>
-            {
-                lekar
-            };
 
         }
 
@@ -169,8 +120,8 @@ namespace SF11_2019_POP2020.Models
             {
                 //_sviKorisniciService.readUsers();
                 _userService.readUsers();
-                _adminService.readUsers();
-                _pacijentService.readUsers();
+                /*_adminService.readUsers();
+                _pacijentService.readUsers();*/
             }
             else if (filename.Contains("lekari"))
             {

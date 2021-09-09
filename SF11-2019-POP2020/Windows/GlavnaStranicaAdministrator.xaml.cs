@@ -45,13 +45,7 @@ namespace SF11_2019_POP2020.Windows
             windowPacijenti.Show();
         }
 
-        private void MenuItemAdministratori_Click(object sender, RoutedEventArgs e)
-        {
-            SviAdministratori windowAdministratori = new SviAdministratori();
-
-            this.Hide();
-            windowAdministratori.Show();
-        }
+        
 
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
@@ -100,6 +94,13 @@ namespace SF11_2019_POP2020.Windows
 
             this.Hide();
             windowAdrese.Show();
+        }
+
+        private void btnKorisnici_Click(object sender, RoutedEventArgs e)
+        {
+            SviKorisnici windowKorisnici = new SviKorisnici();
+            this.Hide();
+            windowKorisnici.Show();
         }
     }
 }

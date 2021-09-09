@@ -63,9 +63,10 @@ namespace SF11_2019_POP2020.Services
                     Util.Instance.Doktori.Add(new Lekar
                     {
                         Id = reader.GetInt32(0),
-                        DomZdravljaId = reader.GetInt32(1),
-                        //Termini = reader.GetString(2),
-                        Aktivan = reader.GetBoolean(3)
+                        
+                        DomZdravljaId = reader.GetInt32(2),
+                        //Termini = reader.GetString(3),
+                        Aktivan = reader.GetBoolean(4)
                     });
                 }
                 reader.Close();

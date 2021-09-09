@@ -67,7 +67,7 @@ namespace SF11_2019_POP2020.Windows
                     Aktivan = true
 
                 };
-                Util.Instance.KorisniciPacijenti.Add(k);
+                Util.Instance.Korisnici.Add(k);
                 //Util.Instance.Lekari.Add(lekar);
                 Util.Instance.SacuvajEntitet(k);
 

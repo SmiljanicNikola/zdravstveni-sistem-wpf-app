@@ -14,7 +14,7 @@ namespace SF11_2019_POP2020.Services
     {
         public void deleteUser(string jmbg)
         {
-            Korisnik k = Util.Instance.KorisniciPacijenti.ToList().Find(korisnik => korisnik.Jmbg.Equals(jmbg));
+            Korisnik k = Util.Instance.Korisnici.ToList().Find(korisnik => korisnik.Jmbg.Equals(jmbg));
 
             if (k == null)
                 throw new UserNotFoundException($"Ne postoji korisnik sa jmbg-om {jmbg}");
@@ -46,7 +46,7 @@ namespace SF11_2019_POP2020.Services
 
         public void readUsers()
         {
-            Util.Instance.KorisniciPacijenti = new ObservableCollection<Korisnik>();
+            Util.Instance.Korisnici = new ObservableCollection<Korisnik>();
             //Util.Instance.Lekari = new ObservableCollection<Lekar>();
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
@@ -61,7 +61,7 @@ namespace SF11_2019_POP2020.Services
 
                 while (reader.Read())
                 {
-                    Util.Instance.KorisniciPacijenti.Add(new Korisnik
+                    Util.Instance.Korisnici.Add(new Korisnik
                     {
                         Id = reader.GetInt32(0),
                         Ime = reader.GetString(1),

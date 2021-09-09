@@ -19,6 +19,13 @@ namespace SF11_2019_POP2020.Models
             set { _id = value; }
         }
 
+        private Korisnik _idKorisnika;
+        public Korisnik IdKorisnika
+        {
+            get { return _idKorisnika;  }
+            set { _idKorisnika = value; }
+        }
+
         private int _domZdravljaId;
 
         public int DomZdravljaId

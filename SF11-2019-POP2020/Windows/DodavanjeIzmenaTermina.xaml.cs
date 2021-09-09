@@ -72,8 +72,9 @@ namespace SF11_2019_POP2020.Windows
             }
             else
             {
-
+                Util.Instance.UpdateEntiteta(odabranTermin);
             }
+            this.Close();
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)

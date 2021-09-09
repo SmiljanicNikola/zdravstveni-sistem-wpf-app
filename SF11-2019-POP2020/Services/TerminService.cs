@@ -29,7 +29,7 @@ namespace SF11_2019_POP2020.Services
                 command.CommandText = @"update dbo.Termini
                                        
                                         SET Aktivan = @Aktivan
-                                        where id = @Id";
+                                        where Id = @Id";
 
                 command.Parameters.Add(new SqlParameter("Aktivan", t.Aktivan));
                 command.Parameters.Add(new SqlParameter("Id", t.Id));
@@ -106,13 +106,8 @@ namespace SF11_2019_POP2020.Services
                 conn.Open();
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"update dbo.Termini
-                                        SET LekarId = @LekarId
-                                        SET Datum = @Datum
-                                        SET StatusTermina = @StatusTermina
-                                        SET PacijentId = @PacijentId                                     
-                                        SET Aktivan = @Aktivan
-                                        where id = @Id";
+                command.CommandText = @"update dbo.Termini SET LekarId = @LekarId, Datum = @Datum, StatusTermina = @StatusTermina, PacijentId = @PacijentId, Aktivan = @Aktivan
+                                        where Id = @Id";
 
                 command.Parameters.Add(new SqlParameter("LekarId", termin.LekarId));
                 command.Parameters.Add(new SqlParameter("Datum", termin.Datum));

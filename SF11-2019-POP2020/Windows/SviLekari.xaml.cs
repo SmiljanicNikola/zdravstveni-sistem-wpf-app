@@ -220,5 +220,10 @@ namespace SF11_2019_POP2020.Windows
             this.Hide();
             window.Show();
         }
+
+        private void DataGridDoktori_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

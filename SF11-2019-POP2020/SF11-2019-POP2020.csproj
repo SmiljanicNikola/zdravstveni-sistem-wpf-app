@@ -81,8 +81,8 @@
     <Compile Include="Windows\DodavanjaIzmenaDoktora.xaml.cs">
       <DependentUpon>DodavanjaIzmenaDoktora.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\DodavanjeIzmenaAdministratora.xaml.cs">
-      <DependentUpon>DodavanjeIzmenaAdministratora.xaml</DependentUpon>
+    <Compile Include="Windows\DodavanjeIzmenaKorisnika.xaml.cs">
+      <DependentUpon>DodavanjeIzmenaKorisnika.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\DodavanjeIzmenaAdrese.xaml.cs">
       <DependentUpon>DodavanjeIzmenaAdrese.xaml</DependentUpon>
@@ -132,14 +132,14 @@
     <Compile Include="Windows\SveTerapije.xaml.cs">
       <DependentUpon>SveTerapije.xaml</DependentUpon>
     </Compile>
-    <Compile Include="Windows\SviAdministratori.xaml.cs">
-      <DependentUpon>SviAdministratori.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Windows\SviDoktori.xaml.cs">
       <DependentUpon>SviDoktori.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\SviDomoviZdravlja.xaml.cs">
       <DependentUpon>SviDomoviZdravlja.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SviKorisnici.xaml.cs">
+      <DependentUpon>SviKorisnici.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\SviLekari.xaml.cs">
       <DependentUpon>SviLekari.xaml</DependentUpon>
@@ -165,7 +165,7 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\DodavanjeIzmenaAdministratora.xaml">
+    <Page Include="Windows\DodavanjeIzmenaKorisnika.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -233,15 +233,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="Windows\SviAdministratori.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="Windows\SviDoktori.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\SviDomoviZdravlja.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SviKorisnici.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

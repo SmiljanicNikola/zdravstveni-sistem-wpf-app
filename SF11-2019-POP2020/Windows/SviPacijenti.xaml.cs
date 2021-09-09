@@ -35,7 +35,7 @@ namespace SF11_2019_POP2020.Windows
         private void UpdateView()
         {
 
-            view = CollectionViewSource.GetDefaultView(Util.Instance.KorisniciPacijenti);
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Korisnici);
             DataGridPacijenti.ItemsSource = view;
             DataGridPacijenti.IsSynchronizedWithCurrentItem = true;
             DataGridPacijenti.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
@@ -71,7 +71,7 @@ namespace SF11_2019_POP2020.Windows
             this.Hide();
             if ((bool)add.ShowDialog())
             {
-                int index = Util.Instance.KorisniciPacijenti.ToList().FindIndex(k => k.Jmbg.Equals(izabraniPacijent.Jmbg));
+                int index = Util.Instance.Korisnici.ToList().FindIndex(k => k.Jmbg.Equals(izabraniPacijent.Jmbg));
 
                 //Util.Instance.Korisnici[index] = stariLekar;
                 Util.Instance.Korisnici[index].Id = izabraniPacijent.Id;

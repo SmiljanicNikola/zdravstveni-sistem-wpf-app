@@ -117,16 +117,20 @@ namespace SF11_2019_POP2020.Windows
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            HomeWindow window = new HomeWindow();
-
+            GlavnaStranicaAdministrator gsa = new GlavnaStranicaAdministrator();
             this.Hide();
-            window.Show();
+            gsa.Show();
         }
 
         private void DataGridAdrese_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
             if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
                 e.Column.Visibility = Visibility.Collapsed;
+        }
+
+        private void DataGridAdrese_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

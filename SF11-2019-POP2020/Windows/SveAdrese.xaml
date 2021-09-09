@@ -8,7 +8,7 @@
         Title="SveAdrese" Height="450" Width="800">
     <Grid>
         <DataGrid CanUserAddRows="False" Name="DataGridAdrese"  HorizontalAlignment="Left" Height="229" Margin="32,68,0,0" VerticalAlignment="Top" 
-                  AutoGenerateColumns="True" AutoGeneratingColumn="DataGridAdrese_AutoGeneratingColumn" Width="643"/>
+                  AutoGenerateColumns="True" AutoGeneratingColumn="DataGridAdrese_AutoGeneratingColumn" Width="643" SelectionChanged="DataGridAdrese_SelectionChanged"/>
         <Menu HorizontalAlignment="Left" Height="37" Margin="0,13,-0.4,0" VerticalAlignment="Top" Width="794">
             <MenuItem Header="Akcije">
                 <MenuItem Name="MenuItemDodajAdresu" Header="Dodaj Adresu" Click="MenuItemDodajAdresu_Click"></MenuItem>

@@ -1,0 +1,22 @@
+﻿<Window x:Class="SF11_2019_POP2020.Windows.SviKorisnici"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
+        mc:Ignorable="d"
+        Title="Svi korisnici" Height="450" Width="800">
+    <Grid>
+        <DataGrid CanUserAddRows="False" Name="DataGridKorisnici"  HorizontalAlignment="Left" Height="229" Margin="32,68,0,0" VerticalAlignment="Top" 
+                  AutoGenerateColumns="True" AutoGeneratingColumn="DataGridKorisnici_AutoGeneratingColumn" Width="643" SelectionChanged="DataGridKorisnici_SelectionChanged"/>
+        <Menu HorizontalAlignment="Left" Height="37" Margin="0,13,-0.4,0" VerticalAlignment="Top" Width="794">
+            <MenuItem Header="Akcije" Click="MenuItem_Click">
+                <MenuItem Name="MenuItemDodajKorisnika" Header="Dodaj Korisnika" Click="MenuItemDodajKorisnika_Click"></MenuItem>
+                <MenuItem Name="MenuItemIzmeniKorisnika" Header="Izmeni Korisnika" Click="MenuItemIzmeniKorisnika_Click"></MenuItem>
+                <MenuItem Name="MenuItemObrisiKorisnika" Header="Obrisi Korisnika" Click="MenuItemObrisiKorisnika_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="678,361,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="Button_Click"/>
+
+    </Grid>
+</Window>

@@ -18,11 +18,11 @@ namespace SF11_2019_POP2020.Windows
     /// <summary>
     /// Interaction logic for DodavanjeIzmenaAdministratora.xaml
     /// </summary>
-    public partial class DodavanjeIzmenaAdministratora : Window
+    public partial class DodavanjeIzmenaKorisnika : Window
     {
         private EStatus odabranStatus;
         private Korisnik odabranKorisnik;
-        public DodavanjeIzmenaAdministratora(Korisnik korisnik, EStatus status = EStatus.Dodaj)
+        public DodavanjeIzmenaKorisnika(Korisnik korisnik, EStatus status = EStatus.Dodaj)
         {
             InitializeComponent();
 
@@ -62,24 +62,31 @@ namespace SF11_2019_POP2020.Windows
                     Jmbg = txtJMBG.Text,
                     Email = txtEmail.Text,
                     AdresaId = int.Parse(txtAdresaId.Text),
-                    Pol = EPol.M,
+                    Pol = (EPol)Enum.Parse(typeof(EPol), ComboBoxPol.SelectedItem.ToString()),
                     Lozinka = txtLozinka.Text,
-                    TipKorisnika = ETipKorisnika.ADMINISTRATOR,
+                    TipKorisnika = (ETipKorisnika)Enum.Parse(typeof(ETipKorisnika), ComboBoxTipKorisnika.SelectedItem.ToString()),
                     Aktivan = true
 
                 };
-                Util.Instance.KorisniciAdmini.Add(k);
+                Util.Instance.Korisnici.Add(k);
                 //Util.Instance.Lekari.Add(lekar);
                 Util.Instance.SacuvajEntitet(k);
 
             }
-            else
-            {
-                //int izmenaLekara = Util.Instance.Lekari.ToList().FindIndex(u => u.Korisnicko.KorisnickoIme.Equals(txtKorisnickoIme.Text));
-                //int izmenaKorisnika = Util.Instance.Korisnici.ToList().FindIndex(u => u.KorisnickoIme.Equals(txtKorisnickoIme.Text));
+                 else if (odabranStatus.Equals(EStatus.Izmeni))
+                {
+                    /*Adresa adresa = new Adresa()
+                    {
+                        Ulica = txtUlica.Text,
+                        Broj = txtBroj.Text,
+                        Grad = txtGrad.Text,
+                        Drzava = txtDrzava.Text,
+                        Aktivan = true
 
-                //Util.Instance.Korisnici[izmenaKorisnika] = k;
-                //Util.Instance.Lekari[izmenaLekara] = lekar;
+                    };*/
+                    Util.Instance.UpdateEntiteta(odabranKorisnik);
+                }
+            this.Close();
             }
 
 
@@ -88,7 +95,7 @@ namespace SF11_2019_POP2020.Windows
 
 
             //this.DialogResult = false;
-            this.Close();
-        }
+           
+       
     }
 }

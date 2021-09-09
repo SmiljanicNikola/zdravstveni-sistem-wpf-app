@@ -82,7 +82,27 @@ namespace SF11_2019_POP2020.Services
 
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"select * from korisnici";
+                command.CommandText = @"select * from korisnici where aktivan=1";
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Util.Instance.Korisnici.Add(new Korisnik
+                    {
+                        Id = reader.GetInt32(0),
+                        Ime = reader.GetString(1),
+                        Prezime = reader.GetString(2),
+                        Jmbg = reader.GetString(3),
+                        Email = reader.GetString(4),
+                        AdresaId = reader.GetInt32(5),
+                        Pol = (EPol)Enum.Parse(typeof(EPol), reader.GetString(6)),
+                        Lozinka = reader.GetString(7),
+                        TipKorisnika = (ETipKorisnika)Enum.Parse(typeof(ETipKorisnika), reader.GetString(8)),
+                        Aktivan = reader.GetBoolean(9)
+                    }) ;
+                }
+                reader.Close();
 
             }
 
@@ -128,17 +148,8 @@ namespace SF11_2019_POP2020.Services
                  conn.Open();
                  SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"update dbo.Korisnici
-                                        SET Ime = @Ime
-                                        SET Prezime = @Prezime
-                                        SET Jmbg = @Jmbg
-                                        SET Email = @Email
-                                        SET AdresaId = @AdresaId
-                                        SET Pol = @Pol
-                                        SET Lozinka = @Lozinka
-                                        SET TipKorisnika = @TipKorisnika
-                                        SET Aktivan = @Aktivan
-                                        where jmbg = @Jmbg";
+                command.CommandText = @"update dbo.Korisnici SET Ime = @Ime, Prezime = @Prezime, Jmbg = @Jmbg, Email = @Email, AdresaId = @AdresaId, Pol = @Pol, Lozinka = @Lozinka, TipKorisnika = @TipKorisnika, Aktivan = @Aktivan
+                                        where Jmbg = @Jmbg";
 
                 command.Parameters.Add(new SqlParameter("Ime", korisnik.Ime));
                 command.Parameters.Add(new SqlParameter("Prezime", korisnik.Prezime));

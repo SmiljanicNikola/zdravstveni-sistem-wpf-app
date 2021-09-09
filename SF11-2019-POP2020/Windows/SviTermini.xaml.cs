@@ -74,7 +74,7 @@ namespace SF11_2019_POP2020.Windows
             this.Hide();
             if ((bool)addTermin.ShowDialog())
             {
-                int index = Util.Instance.Termini.ToList().FindIndex(t => t.Id.Equals(izabraniTermin.Id));
+                /*int index = Util.Instance.Termini.ToList().FindIndex(t => t.Id.Equals(izabraniTermin.Id));
 
                 //Util.Instance.Korisnici[index] = stariLekar;
                 Util.Instance.Termini[index].Id = izabraniTermin.Id;
@@ -82,13 +82,11 @@ namespace SF11_2019_POP2020.Windows
                 Util.Instance.Termini[index].Datum = izabraniTermin.Datum;
                 Util.Instance.Termini[index].StatusTermina = izabraniTermin.StatusTermina;
                 Util.Instance.Termini[index].PacijentId = izabraniTermin.PacijentId;
-                Util.Instance.Termini[index].Aktivan = izabraniTermin.Aktivan;
+                Util.Instance.Termini[index].Aktivan = izabraniTermin.Aktivan;*/
 
                 //Util.Instance.UpdateEntiteta(izabraniTermin);
             }
-                Util.Instance.DeleteTermin(stariTermin.Id);
-                Util.Instance.SacuvajEntitet(izabraniTermin);
-
+                
 
            
             this.Show();
@@ -100,16 +98,16 @@ namespace SF11_2019_POP2020.Windows
             Termin izabraniTermin = view.CurrentItem as Termin;
             Util.Instance.DeleteTermin(izabraniTermin.Id);
 
-
+            Util.Instance.Termini.Remove(izabraniTermin);
+            UpdateView();
             view.Refresh();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            HomeWindow window = new HomeWindow();
-
+            GlavnaStranicaAdministrator gsa = new GlavnaStranicaAdministrator();
             this.Hide();
-            window.Show();
+            gsa.Show();
         }
     }
 }

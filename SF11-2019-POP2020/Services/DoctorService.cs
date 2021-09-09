@@ -34,7 +34,12 @@ namespace SF11_2019_POP2020.Services
 
         public void readUsers()
         {
-            Util.Instance.Korisnici = new ObservableCollection<Korisnik>();
+            /*throw new NotImplementedException();*/
+        }
+
+        /*public void readUsers()
+        {
+            Util.Instance.Korisnici1 = new ObservableCollection<Korisnik>();
             Util.Instance.Lekari = new ObservableCollection<Lekar>();
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
@@ -49,7 +54,7 @@ namespace SF11_2019_POP2020.Services
 
                 while (reader.Read())
                 {
-                    Util.Instance.Korisnici.Add(new Korisnik
+                    Util.Instance.Korisnici1.Add(new Korisnik
                     {
                         Id = reader.GetInt32(0),
                         Ime = reader.GetString(1),
@@ -69,7 +74,7 @@ namespace SF11_2019_POP2020.Services
                 reader.Close();
 
             }
-        }
+        }*/
 
         public int saveUser(Object obj)
             {
