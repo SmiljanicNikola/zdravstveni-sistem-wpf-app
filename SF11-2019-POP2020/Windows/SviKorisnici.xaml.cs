@@ -92,6 +92,7 @@ namespace SF11_2019_POP2020.Windows
         {
             Korisnik izabranKorisnik = view.CurrentItem as Korisnik;
             Util.Instance.DeleteUser(izabranKorisnik.Jmbg);
+            Util.Instance.Korisnici.Remove(izabranKorisnik);
 
             UpdateView();
             view.Refresh();

@@ -25,12 +25,12 @@ namespace SF11_2019_POP2020.Models
             set { _nazivInstitucije = value; }
         }
 
-        private int _adresaId;
+        private Adresa _adresa;
 
-        public int adresaId
+        public Adresa Adresa
         {
-            get { return _adresaId; }
-            set { _adresaId = value; }
+            get { return _adresa; }
+            set { _adresa = value; }
         }
 
         private bool _Aktivan;
@@ -46,7 +46,7 @@ namespace SF11_2019_POP2020.Models
             DomZdravlja kopija = new DomZdravlja();
 
             kopija.NazivInstitucije = NazivInstitucije;
-            kopija.adresaId = adresaId;
+            kopija.Adresa = Adresa;
             kopija.Aktivan = Aktivan;
 
             return kopija;

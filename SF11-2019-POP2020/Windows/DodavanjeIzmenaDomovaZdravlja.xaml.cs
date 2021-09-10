@@ -56,7 +56,7 @@ namespace SF11_2019_POP2020.Windows
                 DomZdravlja dt = new DomZdravlja()
                 {
                     NazivInstitucije = txtNazivInstitucije.Text,      
-                    adresaId = int.Parse(txtAdresaId.Text),
+                    Adresa = Util.Instance.adresaPoId(int.Parse(txtAdresaId.Text)),
                     Aktivan = true
 
                 };

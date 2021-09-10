@@ -112,6 +112,9 @@ namespace SF11_2019_POP2020.Windows
             Adresa izabranaAdresa = view.CurrentItem as Adresa;
             Util.Instance.DeleteAdresa(izabranaAdresa.Id);
 
+            Util.Instance.Adrese.Remove(izabranaAdresa);
+            UpdateView();
+
             view.Refresh();
         }
 

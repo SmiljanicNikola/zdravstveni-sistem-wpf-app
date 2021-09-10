@@ -1,6 +1,7 @@
 ﻿using SF11_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -22,13 +23,25 @@ namespace SF11_2019_POP2020.Windows
     public partial class SviDomoviZdravlja : Window
     {
         ICollectionView view;
+
+        ObservableCollection<string> gradovi;
+
         public SviDomoviZdravlja()
         {
             InitializeComponent();
 
-            UpdateView();
+            this.gradovi = new ObservableCollection<string>(Util.Instance.DomoviZdravlja
+                 .Select(domZdravlja => domZdravlja.Adresa.Grad)
+                 .Distinct()
+                 .Prepend("Izaberite...")
+                 );
 
-            view.Filter = CustomFilter;
+            //view.Filter = CustomFilter;
+
+            cmbMesto.ItemsSource = this.gradovi;
+            cmbMesto.SelectedIndex = 0;
+
+            UpdateView();
         }
 
         private bool CustomFilter(object obj)
@@ -43,8 +56,13 @@ namespace SF11_2019_POP2020.Windows
             if(domZdravlja.Aktivan)
                 if(txtPretragaPoAdresaId.Text != "")
                 {
-                    return domZdravlja.adresaId.Equals(txtPretragaPoAdresaId.Text);
+                    return domZdravlja.Adresa.Id.Equals(txtPretragaPoAdresaId.Text);
                 }
+            /*if(domZdravlja.Aktivan)
+                if(cmbMesto.Text != "izaberite")
+                {
+                    return 
+                }*/
                 else
                     return true;
 
@@ -58,6 +76,8 @@ namespace SF11_2019_POP2020.Windows
             DataGridDomoviZdravlja.ItemsSource = view;
             DataGridDomoviZdravlja.IsSynchronizedWithCurrentItem = true;
             DataGridDomoviZdravlja.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            view.Filter = CustomFilter;
+            
         }
 
         private void MenuItemDodajDomZdravlja_Click(object sender, RoutedEventArgs e)
@@ -104,6 +124,10 @@ namespace SF11_2019_POP2020.Windows
 
             DomZdravlja izabraniDom = view.CurrentItem as DomZdravlja;
             Util.Instance.DeleteDomZdravlja(izabraniDom.Id);
+            Util.Instance.DomoviZdravlja.Remove(izabraniDom);
+
+            UpdateView();
+            view.Refresh();
         }
 
         private void DataGridDomoviZdravlja_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -128,6 +152,23 @@ namespace SF11_2019_POP2020.Windows
 
         private void txtPretragaPoAdresaId_KeyUp(object sender, KeyEventArgs e)
         {
+            view.Refresh();
+        }
+
+        private void cmbMesto_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string grad = cmbMesto.SelectedItem as string;
+            if (grad.Contains("Izaberite"))
+            {
+                view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiDomovePoMestu(""));
+            }
+            else
+            {
+                view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiDomovePoMestu(grad));
+            }
+
+
+            UpdateView();
             view.Refresh();
         }
     }

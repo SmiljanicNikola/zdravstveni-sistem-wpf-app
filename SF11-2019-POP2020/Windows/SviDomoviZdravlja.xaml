@@ -20,8 +20,11 @@
         <Button Content="Pocetna" HorizontalAlignment="Left" Margin="678,361,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="Button_Click"/>
         <TextBox Name="txtPretragaPoNazivuInstitucije" HorizontalAlignment="Left" Height="23" Margin="753,105,0,0" TextWrapping="Wrap" Text="" KeyUp="txtPretragaPoNazivuInstitucije_KeyUp" VerticalAlignment="Top" Width="120"/>
         <Label Content="Po nazivu instituta" HorizontalAlignment="Left" Margin="620,102,0,0" VerticalAlignment="Top" Width="113"/>
-        <GroupBox Header="Pretrage" HorizontalAlignment="Left" Height="155" Margin="609,59,0,0" VerticalAlignment="Top" Width="309"/>
+        <GroupBox Header="Pretrage" HorizontalAlignment="Left" Height="249" Margin="602,60,0,0" VerticalAlignment="Top" Width="309">
+            <Label Content="Mesto:" HorizontalAlignment="Left" Margin="64,126,0,0" VerticalAlignment="Top" Width="47"/>
+        </GroupBox>
         <TextBox Name="txtPretragaPoAdresaId" HorizontalAlignment="Left" Height="23" Margin="753,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaPoAdresaId_KeyUp"/>
         <Label Content="Po adresiId:" HorizontalAlignment="Left" Margin="652,150,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="753,203,0,0" VerticalAlignment="Top" Width="120" Name="cmbMesto" SelectionChanged="cmbMesto_SelectionChanged" />
     </Grid>
 </Window>

@@ -111,6 +111,9 @@
     <Compile Include="Windows\GlavnaStranicaPacijent.xaml.cs">
       <DependentUpon>GlavnaStranicaPacijent.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\IzmenaLicnihPodataka.xaml.cs">
+      <DependentUpon>IzmenaLicnihPodataka.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\loginAdmin.xaml.cs">
       <DependentUpon>loginAdmin.xaml</DependentUpon>
     </Compile>
@@ -202,6 +205,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\GlavnaStranicaPacijent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\IzmenaLicnihPodataka.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

@@ -57,7 +57,7 @@ namespace SF11_2019_POP2020.Services
                     {
                         Id = reader.GetInt32(0),
                         NazivInstitucije = reader.GetString(1),
-                        adresaId = reader.GetInt32(2),
+                        Adresa = Util.Instance.adresaPoId(reader.GetInt32(2)),
                         Aktivan = reader.GetBoolean(3)
                     });
                 }
@@ -78,7 +78,7 @@ namespace SF11_2019_POP2020.Services
                        output inserted.id VALUES(@nazivInstitucije, @adresaId, @aktivan)";
 
                 command.Parameters.Add(new SqlParameter("nazivInstitucije", domZdravlja.NazivInstitucije));
-                command.Parameters.Add(new SqlParameter("adresaId", domZdravlja.adresaId));
+                command.Parameters.Add(new SqlParameter("adresaId", domZdravlja.Adresa.Id));
                 command.Parameters.Add(new SqlParameter("Aktivan", domZdravlja.Aktivan));
 
                 return (int)command.ExecuteScalar();
@@ -96,11 +96,11 @@ namespace SF11_2019_POP2020.Services
                 SqlCommand command = conn.CreateCommand();
 
                 command.CommandText = @"update dbo.DomoviZdravlja
-                                        SET NazivInstitucije = @NazivInstitucije, AdresaId = @AdresaId, Aktivan = @Aktivan
+                                        SET NazivInstitucije = @NazivInstitucije, Aktivan = @Aktivan
                                         where Id = @Id";
 
                 command.Parameters.Add(new SqlParameter("NazivInstitucije", domZdravlja.NazivInstitucije));
-                command.Parameters.Add(new SqlParameter("AdresaId", domZdravlja.adresaId));
+                //command.Parameters.Add(new SqlParameter("AdresaId", domZdravlja.adresaId));
                 command.Parameters.Add(new SqlParameter("Aktivan", domZdravlja.Aktivan));
                 command.Parameters.Add(new SqlParameter("Id", domZdravlja.Id));
 

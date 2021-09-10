@@ -1,6 +1,7 @@
 ﻿using SF11_2019_POP2020.Services;
 using System;
 using System.Collections.ObjectModel;
+using System.Data.SqlClient;
 
 namespace SF11_2019_POP2020.Models
 {
@@ -211,6 +212,85 @@ namespace SF11_2019_POP2020.Models
             {
                 _terapijaService.updateTerapije(obj);
             }
+        }
+
+
+        public void updateLicnihPodataka(object obj)
+        {
+            Korisnik korisnik = obj as Korisnik;
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"update dbo.Korisnici SET Ime = @Ime, Prezime = @Prezime, Jmbg = @Jmbg, Email = @Email, AdresaId = @AdresaId, Lozinka = @Lozinka, Aktivan = @Aktivan
+                                        where Jmbg = @Jmbg";
+
+                command.Parameters.Add(new SqlParameter("Ime", korisnik.Ime));
+                command.Parameters.Add(new SqlParameter("Prezime", korisnik.Prezime));
+                command.Parameters.Add(new SqlParameter("Jmbg", korisnik.Jmbg));
+                command.Parameters.Add(new SqlParameter("Email", korisnik.Email));
+                command.Parameters.Add(new SqlParameter("AdresaId", korisnik.AdresaId));
+                command.Parameters.Add(new SqlParameter("Lozinka", korisnik.Lozinka));
+                command.Parameters.Add(new SqlParameter("Aktivan", korisnik.Aktivan));
+
+
+
+                command.ExecuteNonQuery();
+
+            }
+        }
+
+        public Korisnik nadjiUlogovanog(string jmbg)
+        {
+            foreach (Korisnik kor in Korisnici)
+            {
+                    if (kor.Jmbg == jmbg)
+                    {
+                        return kor;
+                    }
+               
+            }
+
+            return null;
+        }
+
+
+        public ObservableCollection<DomZdravlja> nadjiDomovePoMestu(string grad)
+        {
+            ObservableCollection<DomZdravlja> domovi = new ObservableCollection<DomZdravlja>();
+
+            foreach (DomZdravlja dz in DomoviZdravlja)
+            {
+                if (dz.Adresa.Grad.ToLower().Contains(grad.ToLower())) domovi.Add(dz);
+            }
+
+            return domovi;
+        }
+
+        /*public DomZdravlja nadjiDomovePoMestu(string grad)
+        {
+            foreach (DomZdravlja dz in DomoviZdravlja)
+            {
+                if(dz.Adresa.Grad == grad)
+                {
+                    return dz;
+                }
+            }
+            return null;
+
+        }*/
+
+        public Adresa adresaPoId(int id)
+        {
+            foreach(Adresa adr in Adrese)
+            {
+                if(adr.Id == id)
+                {
+                    return adr;
+                }
+            }
+            return null;
         }
 
     }

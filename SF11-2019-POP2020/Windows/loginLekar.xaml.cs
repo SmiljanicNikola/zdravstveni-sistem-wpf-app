@@ -38,9 +38,13 @@ namespace SF11_2019_POP2020.Windows
             sda.Fill(dtbl);
             if (dtbl.Rows.Count == 1)
             {
+             
+                string jmbg = txtJmbg.Text.Trim();
                 GlavnaStranicaLekar gsl = new GlavnaStranicaLekar();
+                gsl.textBlock1.Text = txtJmbg.Text;
                 this.Hide();
                 gsl.Show();
+
             }
             else
             {

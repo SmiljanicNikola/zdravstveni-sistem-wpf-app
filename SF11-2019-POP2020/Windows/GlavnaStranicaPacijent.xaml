@@ -10,7 +10,7 @@
         <Label Content="Ulogovani ste kao : Pacijent" HorizontalAlignment="Left" Margin="317,58,0,0" VerticalAlignment="Top"/>
         <Menu HorizontalAlignment="Left" Height="40" Margin="0,13,-0.4,0" VerticalAlignment="Top" Width="794" >
             <MenuItem Header="Akcije" Margin="0,0,0,0" Click="MenuItem_Click_1" Height="40" Width="130">
-                <MenuItem Name="PregledDomova" Header="Pregled domova zdravlja" Click="PregledDomova_Click" ></MenuItem>
+                <MenuItem Name="MenuItemLicniPodaci" Header="Licni podaci" Click="MenuItemLicniPodaci_Click" ></MenuItem>
                 <MenuItem Name="PregledTermina" Header="Pregled termina" Click="PregledTermina_Click" ></MenuItem>
                 <MenuItem Name="ZakazivanjeTermina" Header="Zakazi Termin" Click="ZakazivanjeTermina_Click"></MenuItem>
             </MenuItem>
@@ -18,5 +18,6 @@
                 <MenuItem Name="MenuItemLogOut" Header="LogOut" Click="MenuItemLogOut_Click" ></MenuItem>
             </MenuItem>
         </Menu>
+        <TextBlock HorizontalAlignment="Left" Margin="472,63,0,0" TextWrapping="Wrap" Name="textBlock1"  Text="TextBlock" VerticalAlignment="Top"/>
     </Grid>
 </Window>

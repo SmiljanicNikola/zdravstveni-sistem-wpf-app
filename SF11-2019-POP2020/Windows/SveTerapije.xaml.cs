@@ -50,7 +50,9 @@ namespace SF11_2019_POP2020.Windows
         {
             Terapija izabranaTerapija = view.CurrentItem as Terapija;
             Util.Instance.DeleteTerapija(izabranaTerapija.Id);
+            Util.Instance.Terapije.Remove(izabranaTerapija);
 
+            UpdateView();
             view.Refresh();
         }
 
