@@ -64,16 +64,15 @@
     <Compile Include="MyExceptions\UserNotFoundException.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\AdresaService.cs" />
-    <Compile Include="Services\DoctorService.cs" />
+    <Compile Include="Services\LekarService.cs" />
     <Compile Include="Services\DomZdravljaService.cs" />
     <Compile Include="Services\IAdresaService.cs" />
+    <Compile Include="Services\ILekarService.cs" />
     <Compile Include="Services\IDomZdravljaService.cs" />
-    <Compile Include="Services\IPraviDoktorService.cs" />
     <Compile Include="Services\ITerapijaService.cs" />
     <Compile Include="Services\ITerminService.cs" />
     <Compile Include="Services\IUserService.cs" />
     <Compile Include="Services\PacijentService.cs" />
-    <Compile Include="Services\PraviDoktorService.cs" />
     <Compile Include="Services\TerapijaService.cs" />
     <Compile Include="Services\TerminService.cs" />
     <Compile Include="Services\UserService.cs" />
@@ -146,6 +145,9 @@
     </Compile>
     <Compile Include="Windows\SviLekari.xaml.cs">
       <DependentUpon>SviLekari.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\SviLekariPravi.xaml.cs">
+      <DependentUpon>SviLekariPravi.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\SviPacijenti.xaml.cs">
       <DependentUpon>SviPacijenti.xaml</DependentUpon>
@@ -253,6 +255,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\SviLekari.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\SviLekariPravi.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

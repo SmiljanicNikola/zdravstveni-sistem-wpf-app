@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace SF11_2019_POP2020.Services
 {
-    public interface IPraviDoktorService
+    public interface ILekarService
     {
-
-
         void readDoktore();
         int saveDoktora(Object obj);
 

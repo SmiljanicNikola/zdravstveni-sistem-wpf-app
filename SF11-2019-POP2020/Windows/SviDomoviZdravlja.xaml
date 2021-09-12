@@ -15,7 +15,7 @@
             </MenuItem>
         </Menu>
         <DataGrid CanUserAddRows="False" Name="DataGridDomoviZdravlja"  HorizontalAlignment="Left" Height="167" Margin="32,74,0,0" VerticalAlignment="Top" 
-                  AutoGenerateColumns="True" AutoGeneratingColumn="DataGridDomoviZdravlja_AutoGeneratingColumn" Width="468"/>
+                  AutoGenerateColumns="True" AutoGeneratingColumn="DataGridDomoviZdravlja_AutoGeneratingColumn" Width="468" SelectionChanged="DataGridDomoviZdravlja_SelectionChanged"/>
 
         <Button Content="Pocetna" HorizontalAlignment="Left" Margin="678,361,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="Button_Click"/>
         <TextBox Name="txtPretragaPoNazivuInstitucije" HorizontalAlignment="Left" Height="23" Margin="753,105,0,0" TextWrapping="Wrap" Text="" KeyUp="txtPretragaPoNazivuInstitucije_KeyUp" VerticalAlignment="Top" Width="120"/>
@@ -23,8 +23,8 @@
         <GroupBox Header="Pretrage" HorizontalAlignment="Left" Height="249" Margin="602,60,0,0" VerticalAlignment="Top" Width="309">
             <Label Content="Mesto:" HorizontalAlignment="Left" Margin="64,126,0,0" VerticalAlignment="Top" Width="47"/>
         </GroupBox>
-        <TextBox Name="txtPretragaPoAdresaId" HorizontalAlignment="Left" Height="23" Margin="753,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaPoAdresaId_KeyUp"/>
-        <Label Content="Po adresiId:" HorizontalAlignment="Left" Margin="652,150,0,0" VerticalAlignment="Top"/>
+        <TextBox Name="txtPretragaPoUlici" HorizontalAlignment="Left" Height="23" Margin="753,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaPoUlici_KeyUp"/>
+        <Label Content="Po ulici:" HorizontalAlignment="Left" Margin="652,150,0,0" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Margin="753,203,0,0" VerticalAlignment="Top" Width="120" Name="cmbMesto" SelectionChanged="cmbMesto_SelectionChanged" />
     </Grid>
 </Window>

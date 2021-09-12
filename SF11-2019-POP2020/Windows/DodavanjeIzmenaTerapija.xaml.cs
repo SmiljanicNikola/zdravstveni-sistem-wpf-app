@@ -62,7 +62,7 @@ namespace SF11_2019_POP2020.Windows
                 Terapija terap = new Terapija()
                 {
                     Opis = txtOpis.Text,
-                    LekarId = int.Parse(txtLekarId.Text),
+                    Lekar = Util.Instance.lekarPoId(int.Parse(txtLekarId.Text)),
                     Aktivan = true
 
                 };

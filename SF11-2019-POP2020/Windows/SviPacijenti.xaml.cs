@@ -124,5 +124,10 @@ namespace SF11_2019_POP2020.Windows
             this.Hide();
             gsa.Show();
         }
+
+        private void DataGridPacijenti_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
     }
 }

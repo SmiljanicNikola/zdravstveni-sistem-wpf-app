@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -19,19 +20,19 @@ namespace SF11_2019_POP2020.Models
             set { _id = value; }
         }
 
-        private Korisnik _idKorisnika;
-        public Korisnik IdKorisnika
+        private Korisnik _korisnik;
+        public Korisnik Korisnik
         {
-            get { return _idKorisnika;  }
-            set { _idKorisnika = value; }
+            get { return _korisnik;  }
+            set { _korisnik = value; }
         }
 
-        private int _domZdravljaId;
+        private DomZdravlja _domZdravlja;
 
-        public int DomZdravljaId
+        public DomZdravlja DomZdravlja
         {
-            get { return _domZdravljaId; }
-            set { _domZdravljaId = value; }
+            get { return _domZdravlja; }
+            set { _domZdravlja = value; }
         }
 
         private string _termini;
@@ -51,6 +52,21 @@ namespace SF11_2019_POP2020.Models
         }
 
 
+        public Lekar Clone()
+        {
+            Lekar kopija = new Lekar();
+
+            kopija.Korisnik = Korisnik;
+            kopija.DomZdravlja = DomZdravlja;
+            kopija.Aktivan = Aktivan;
+
+            return kopija;
+        }
+
+        public override string ToString()
+        {
+            return Korisnik.Ime + " " + Korisnik.Prezime;
+        }
 
     }
 }

@@ -26,13 +26,16 @@ namespace SF11_2019_POP2020.Windows
         {
             InitializeComponent();
 
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
+
+
             UpdateView2();
         }
 
         private void UpdateView2()
         {
             //DataGridLekari.ItemsSource = null;
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Doktori);
+            //view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
             DataGridDoktori.ItemsSource = view; // Util.Instance.Korisnici;
             DataGridDoktori.IsSynchronizedWithCurrentItem = true;
             DataGridDoktori.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
@@ -72,6 +75,11 @@ namespace SF11_2019_POP2020.Windows
         {
             Lekar izabraniDoktor = view.CurrentItem as Lekar;
             Util.Instance.DeleteDoktora(izabraniDoktor.Id);
+
+            Util.Instance.Lekari.Remove(izabraniDoktor);
+
+            UpdateView2();
+            view.Refresh();
         }
 
         private void btnPocetnaAdmin_Click(object sender, RoutedEventArgs e)

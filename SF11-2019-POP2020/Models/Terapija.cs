@@ -27,12 +27,12 @@ namespace SF11_2019_POP2020.Models
             set { _opis = value; }
         }
 
-        private int _lekarId;
+        private Lekar _lekar;
 
-        public int LekarId
+        public Lekar Lekar
         {
-            get { return _lekarId; }
-            set { _lekarId = value; }
+            get { return _lekar; }
+            set { _lekar = value; }
         }
 
 
@@ -55,7 +55,7 @@ namespace SF11_2019_POP2020.Models
             Terapija kopija = new Terapija();
 
             kopija.Opis = Opis;
-            kopija.LekarId = LekarId;
+            kopija.Lekar = Lekar;
             kopija.Aktivan = Aktivan;
 
             return kopija;

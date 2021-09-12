@@ -70,7 +70,7 @@ namespace SF11_2019_POP2020.Windows
                     Lekar lekar = new Lekar
                     {
                         Id = odabranLekar.Id,
-                        DomZdravljaId = 4,
+                        //DomZdravljaId = 4,
                         Termini = "nema",
                         Aktivan = true
 

@@ -1,6 +1,7 @@
 ﻿using SF11_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -24,20 +25,61 @@ namespace SF11_2019_POP2020.Windows
 
         ICollectionView view;
 
+        ObservableCollection<string> lekari;
+
+
         public SveTerapije()
         {
             InitializeComponent();
 
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Terapije);
+
+           /* this.lekari = new ObservableCollection<string>(Util.Instance.Terapije
+                 .Select(terapijaa => terapijaa.Opis)
+                 .Distinct()
+                 .Prepend("Izaberite lekara...")
+                 );
+
+            //view.Filter = CustomFilter;
+
+            cmbLekari.ItemsSource = this.lekari;
+            cmbLekari.SelectedIndex = 0;*/
+
             UpdateView();
+
+
         }
 
 
         private void UpdateView()
         {
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Terapije);
             DataGridTerapije.ItemsSource = view;
             DataGridTerapije.IsSynchronizedWithCurrentItem = true;
             DataGridTerapije.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            view.Filter = CustomFilter;
+
+        }
+
+        private bool CustomFilter(object obj)
+        {
+            Terapija terapija = obj as Terapija;
+
+            if (terapija.Aktivan)
+                if (txtPretragaPoOpisu.Text != "")
+                {
+                    return terapija.Opis.Contains(txtPretragaPoOpisu.Text);
+                }
+            if (terapija.Aktivan)
+                if (txtPretragaPoLekaru.Text != "")
+                {
+                    //return terapija.Lekar.Korisnik.Ime.Contains(txtPretragaPoLekaru.Text);
+                }
+
+                else
+                    return true;
+
+
+            return false;
         }
 
         private void DataGridTerapije_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -75,6 +117,18 @@ namespace SF11_2019_POP2020.Windows
 
         }
 
+        private void txtPretragaPoOpisu_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
+
+        }
+
+        private void txtPretragaPoLekaru_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
+
+        }
+
         private void MenuItemDodajTerapiju_Click(object sender, RoutedEventArgs e)
         {
             Terapija novaTerapija = new Terapija();
@@ -96,5 +150,30 @@ namespace SF11_2019_POP2020.Windows
             this.Hide();
             gsa.Show();
         }
+
+        /*private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string lekar = cmbLekari.SelectedItem as string;
+
+            //DomZdravlja dz = new DomZdravlja();
+            //ObservableCollection<DomZdravlja> DomoviZdravlja();
+            if (dz.Adresa.Grad.Equals(grad))
+            {
+                view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
+
+            }
+            if (lekar.Contains("Izaberite lekara"))
+            {
+                //view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiTerapijePoLekaru(""));
+            }
+            else
+            {
+                //view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiTerapijePoLekaru(lekar));
+            }
+
+
+            UpdateView();
+            view.Refresh();
+        }*/
     }
 }

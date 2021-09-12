@@ -30,10 +30,13 @@ namespace SF11_2019_POP2020.Windows
         {
             InitializeComponent();
 
+            view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
+
+
             this.gradovi = new ObservableCollection<string>(Util.Instance.DomoviZdravlja
                  .Select(domZdravlja => domZdravlja.Adresa.Grad)
                  .Distinct()
-                 .Prepend("Izaberite...")
+                 .Prepend("Izaberite grad...")
                  );
 
             //view.Filter = CustomFilter;
@@ -54,9 +57,9 @@ namespace SF11_2019_POP2020.Windows
                     return domZdravlja.NazivInstitucije.Contains(txtPretragaPoNazivuInstitucije.Text);
                 }
             if(domZdravlja.Aktivan)
-                if(txtPretragaPoAdresaId.Text != "")
+                if(txtPretragaPoUlici.Text != "")
                 {
-                    return domZdravlja.Adresa.Id.Equals(txtPretragaPoAdresaId.Text);
+                    return domZdravlja.Adresa.Ulica.Contains(txtPretragaPoUlici.Text);
                 }
             /*if(domZdravlja.Aktivan)
                 if(cmbMesto.Text != "izaberite")
@@ -72,7 +75,6 @@ namespace SF11_2019_POP2020.Windows
 
         private void UpdateView()
         {
-            view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
             DataGridDomoviZdravlja.ItemsSource = view;
             DataGridDomoviZdravlja.IsSynchronizedWithCurrentItem = true;
             DataGridDomoviZdravlja.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
@@ -132,6 +134,9 @@ namespace SF11_2019_POP2020.Windows
 
         private void DataGridDomoviZdravlja_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
+
+           
+
             if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
                 e.Column.Visibility = Visibility.Collapsed;
         }
@@ -150,7 +155,7 @@ namespace SF11_2019_POP2020.Windows
 
         }
 
-        private void txtPretragaPoAdresaId_KeyUp(object sender, KeyEventArgs e)
+        private void txtPretragaPoUlici_KeyUp(object sender, KeyEventArgs e)
         {
             view.Refresh();
         }
@@ -158,7 +163,15 @@ namespace SF11_2019_POP2020.Windows
         private void cmbMesto_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
             string grad = cmbMesto.SelectedItem as string;
-            if (grad.Contains("Izaberite"))
+
+            //DomZdravlja dz = new DomZdravlja();
+            //ObservableCollection<DomZdravlja> DomoviZdravlja();
+            /*if (dz.Adresa.Grad.Equals(grad))
+            {
+                view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
+
+            }*/
+            if (grad.Contains("Izaberite grad"))
             {
                 view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiDomovePoMestu(""));
             }
@@ -170,6 +183,11 @@ namespace SF11_2019_POP2020.Windows
 
             UpdateView();
             view.Refresh();
+        }
+
+        private void DataGridDomoviZdravlja_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
     }
 }

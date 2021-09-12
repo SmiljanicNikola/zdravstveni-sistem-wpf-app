@@ -61,7 +61,7 @@ namespace SF11_2019_POP2020.Services
                     {
                         Id = reader.GetInt32(0),
                         Opis = reader.GetString(1),
-                        LekarId = reader.GetInt32(2),
+                        Lekar = Util.Instance.lekarPoId(reader.GetInt32(2)),
                         Aktivan = reader.GetBoolean(3)
                     });
                 }
@@ -84,7 +84,7 @@ namespace SF11_2019_POP2020.Services
                        output inserted.id VALUES(@Opis, @LekarId, @Aktivan)";
 
                 command.Parameters.Add(new SqlParameter("Opis", terapija.Opis));
-                command.Parameters.Add(new SqlParameter("LekarId", terapija.LekarId));
+                command.Parameters.Add(new SqlParameter("LekarId", terapija.Lekar.Id));
                 command.Parameters.Add(new SqlParameter("Aktivan", terapija.Aktivan));
 
                 return (int)command.ExecuteScalar();
@@ -109,7 +109,7 @@ namespace SF11_2019_POP2020.Services
 
                 command.Parameters.Add(new SqlParameter("Id", terapija.Id));
                 command.Parameters.Add(new SqlParameter("Opis", terapija.Opis));
-                command.Parameters.Add(new SqlParameter("LekarId", terapija.LekarId));
+                command.Parameters.Add(new SqlParameter("LekarId", terapija.Lekar.Id));
                 command.Parameters.Add(new SqlParameter("Aktivan", terapija.Aktivan));
 
 

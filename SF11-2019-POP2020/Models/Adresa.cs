@@ -60,7 +60,7 @@ namespace SF11_2019_POP2020.Models
 
         public override string ToString()
         {
-            return "Ulica " + Ulica + " broj " + Broj + "Grad " + Grad + " Drzava " + Drzava;
+            return Ulica + " " + Broj + ", " + Grad;
         }
 
 

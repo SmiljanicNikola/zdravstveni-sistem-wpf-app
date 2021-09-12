@@ -123,8 +123,11 @@ namespace SF11_2019_POP2020.Models
             
         }
 
-       
-       
+        public override string ToString()
+        {
+            return Ime + " " + Prezime + " | " + Jmbg;
+        }
+
 
         public string KorisnikZaUpisUFajl()
         {

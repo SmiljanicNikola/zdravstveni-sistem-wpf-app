@@ -72,21 +72,31 @@ namespace SF11_2019_POP2020.Windows
                 {
                     Lekar l = new Lekar()
                     {
-                        Id = int.Parse(txtIdKorisnika.Text),
-                        DomZdravljaId = int.Parse(txtDomZdravljaId.Text),
-                        //Termini = ter
+                        Korisnik = Util.Instance.korisnikPoId(int.Parse(txtKorisnikId.Text)),
+                        DomZdravlja = Util.Instance.domZdravljaPoId(int.Parse(txtDomZdravljaId.Text)),
+                        Termini = "|",
                         Aktivan = true
 
                     };
-                    Util.Instance.Doktori.Add(l);
+                    Util.Instance.Lekari.Add(l);
                     Util.Instance.SacuvajEntitet(l);
 
-                    this.Close();
+                    
                 }
-                else
+                else if (odabranStatus.Equals(EStatus.Izmeni))
                 {
+                    /*Adresa adresa = new Adresa()
+                    {
+                        Ulica = txtUlica.Text,
+                        Broj = txtBroj.Text,
+                        Grad = txtGrad.Text,
+                        Drzava = txtDrzava.Text,
+                        Aktivan = true
 
+                    };*/
+                    Util.Instance.UpdateEntiteta(odabranDoktor);
                 }
+                this.Close();
             }
         }
     }

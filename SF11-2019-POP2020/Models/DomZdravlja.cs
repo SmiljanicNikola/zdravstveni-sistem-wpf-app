@@ -52,6 +52,9 @@ namespace SF11_2019_POP2020.Models
             return kopija;
         }
 
-
+        public override string ToString()
+        {
+            return NazivInstitucije + " d" + Adresa.Broj;
+        }
     }
 }
