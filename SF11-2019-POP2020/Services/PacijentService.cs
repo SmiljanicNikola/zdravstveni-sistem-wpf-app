@@ -10,44 +10,24 @@ using System.Threading.Tasks;
 
 namespace SF11_2019_POP2020.Services
 {
-    class PacijentService : IUserService
+    class PacijentService : IPacijentService
     {
-        public void deleteUser(string jmbg)
-        {
-            Korisnik k = Util.Instance.Korisnici.ToList().Find(korisnik => korisnik.Jmbg.Equals(jmbg));
-
-            if (k == null)
-                throw new UserNotFoundException($"Ne postoji korisnik sa jmbg-om {jmbg}");
-            k.Aktivan = false;
-
-            // updateUser(k);
-            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
-            {
-                conn.Open();
-                SqlCommand command = conn.CreateCommand();
-
-                command.CommandText = @"update dbo.Korisnici
-                                       
-                                        SET Aktivan = @Aktivan
-                                        where jmbg = @Jmbg";
-
-                command.Parameters.Add(new SqlParameter("Aktivan", k.Aktivan));
-                command.Parameters.Add(new SqlParameter("Jmbg", k.Jmbg));
-
-                command.ExecuteNonQuery();
-
-            }
-        }
-
-        public void deleteUserZapravo(int id)
+        public void deletePacijenta(int id)
         {
             throw new NotImplementedException();
         }
 
-        public void readUsers()
+        public void deletePacijentaZapravo(int id)
         {
-            Util.Instance.Korisnici = new ObservableCollection<Korisnik>();
+            throw new NotImplementedException();
+        }
+
+        public void readPacijente()
+        {
+            Util.Instance.Pacijenti = new ObservableCollection<Pacijent>();
+            //Util.Instance.DomoviZdravlja = new ObservableCollection<DomZdravlja>();
             //Util.Instance.Lekari = new ObservableCollection<Lekar>();
+
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
@@ -55,40 +35,31 @@ namespace SF11_2019_POP2020.Services
 
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"Select * from korisnici where TipKorisnika like 'Pacijent' and Aktivan=1";
+                command.CommandText = @"Select * from Pacijenti where Aktivan=1";
 
                 SqlDataReader reader = command.ExecuteReader();
 
                 while (reader.Read())
                 {
-                    Util.Instance.Korisnici.Add(new Korisnik
+                    Util.Instance.Pacijenti.Add(new Pacijent
                     {
                         Id = reader.GetInt32(0),
-                        Ime = reader.GetString(1),
-                        Prezime = reader.GetString(2),
-                        Jmbg = reader.GetString(3),
-                        Email = reader.GetString(4),
-                        AdresaId = reader.GetInt32(5),
-                        Pol = EPol.M,
-                        Lozinka = reader.GetString(7),
-                        TipKorisnika = ETipKorisnika.PACIJENT,
-                        Aktivan = reader.GetBoolean(9)
-
-
-
+                        Korisnik = Util.Instance.korisnikPoId(reader.GetInt32(1)),
+                        //ListaTerapija = new ObservableCollection<Terapija>(),
+                        Termini = reader.GetString(2),
+                        Aktivan = reader.GetBoolean(3)
                     });
                 }
                 reader.Close();
-
             }
         }
 
-        public int saveUser(object obj)
+        public int savePacijenta(object obj)
         {
-            return -1;
+            throw new NotImplementedException();
         }
 
-        public void updateUser(object obj)
+        public void updatePacijenta(object obj)
         {
             throw new NotImplementedException();
         }

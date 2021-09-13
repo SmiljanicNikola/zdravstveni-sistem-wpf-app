@@ -1,6 +1,7 @@
 ﻿using SF11_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -78,9 +79,15 @@ namespace SF11_2019_POP2020.Windows
 
         }
 
-        private void btnTermini_Click(object sender, RoutedEventArgs e)
-        {
+     
 
+        private void btnPojedinacniTermini_Click(object sender, RoutedEventArgs e)
+        {
+            string jmbg = textBlock1.Text.Trim();
+            ObservableCollection<Termin> termini = Util.Instance.terminiByLekarJmbg(jmbg);
+            TerminiPojedinacnogLekara tpl = new TerminiPojedinacnogLekara();
+            tpl.textBlock1.Text = jmbg;
+            tpl.Show();
         }
     }
 }

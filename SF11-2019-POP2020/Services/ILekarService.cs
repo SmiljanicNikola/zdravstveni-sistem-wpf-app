@@ -9,6 +9,10 @@ namespace SF11_2019_POP2020.Services
     public interface ILekarService
     {
         void readDoktore();
+
+        void readAdrese();
+
+        void readDomoveZdravlja();
         int saveDoktora(Object obj);
 
         void updateDoktora(Object obj);

@@ -38,7 +38,9 @@ namespace SF11_2019_POP2020.Windows
             sda.Fill(dtbl);
             if(dtbl.Rows.Count==1)
             {
+                string jmbg = txtJmbg.Text.Trim();
                 GlavnaStranicaAdministrator gsa = new GlavnaStranicaAdministrator();
+                gsa.textBlock1.Text = txtJmbg.Text;
                 this.Hide();
                 gsa.Show();
             }

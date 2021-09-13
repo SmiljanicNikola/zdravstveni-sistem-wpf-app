@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SF11_2019_POP2020.Models;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -24,10 +25,7 @@ namespace SF11_2019_POP2020.Windows
             InitializeComponent();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
-        {
 
-        }
 
         private void MenuItemLekari_Click(object sender, RoutedEventArgs e)
         {
@@ -47,9 +45,13 @@ namespace SF11_2019_POP2020.Windows
 
         
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        private void MenuItemLicniPodaci_Click(object sender, RoutedEventArgs e)
         {
+            string jmbg = textBlock1.Text;
 
+            Korisnik ulogovaniKorisnik = Util.Instance.nadjiUlogovanog(jmbg);
+            IzmenaLicnihPodataka add = new IzmenaLicnihPodataka(ulogovaniKorisnik);
+            add.ShowDialog();
         }
 
         private void MenuItemLogOut_Click(object sender, RoutedEventArgs e)

@@ -20,7 +20,7 @@
         </Menu>
         <Button Content="Domovi Zdravlja" HorizontalAlignment="Left" Margin="241,152,0,0" Name="btnDomovi" VerticalAlignment="Top" Width="107" Click="btnDomovi_Click" Height="41"/>
         <TextBlock HorizontalAlignment="Left" Margin="459,63,0,0" TextWrapping="Wrap" Name="textBlock1" Text="TextBlock" VerticalAlignment="Top"/>
-        <Button Content="Termini" HorizontalAlignment="Left" Margin="374,152,0,0" x:Name="btnTermini" VerticalAlignment="Top" Width="106" Click="btnTermini_Click" Height="42"/>
+        <Button Content="Termini" HorizontalAlignment="Left" Margin="374,152,0,0" x:Name="btnTermini" VerticalAlignment="Top" Width="106" Click="btnPojedinacniTermini_Click" Height="42"/>
         <Button Content="Terapije" HorizontalAlignment="Left" Margin="510,154,0,0" VerticalAlignment="Top" Name="btnTerapije" Click="btnTerapije_Click" Width="106" Height="40"/>
     </Grid>
 </Window>

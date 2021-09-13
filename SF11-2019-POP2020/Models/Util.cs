@@ -21,10 +21,11 @@ namespace SF11_2019_POP2020.Models
         IAdresaService _adresaService;
         IUserService _adminService;
         IDomZdravljaService _domZdravljaService;
-        IUserService _pacijentService;
+        //IUserService _pacijentService;AAAAAAAAA
         ITerminService _terminService;
         ITerapijaService _terapijaService;
         ILekarService _lekarService;
+        IPacijentService _pacijentService;
         
 
         private Util()
@@ -110,7 +111,11 @@ namespace SF11_2019_POP2020.Models
             {
                 return _terapijaService.saveTerapije(obj);
             }
-          
+            else if (obj is Pacijent)
+            {
+                return _pacijentService.savePacijenta(obj);
+            }
+
             return -1;
         }
 
@@ -127,6 +132,11 @@ namespace SF11_2019_POP2020.Models
             {
                 _lekarService.readDoktore();
                 
+            }
+            else if (filename.Contains("pacijenti"))
+            {
+                _pacijentService.readPacijente();
+
             }
             else if (filename.Contains("adrese"))
             {
@@ -159,9 +169,9 @@ namespace SF11_2019_POP2020.Models
         {
             _adminService.deleteUser(jmbg);
         }
-        public void DeletePacijent(string jmbg)
+        public void DeletePacijent(int id)
         {
-            _pacijentService.deleteUser(jmbg);
+            _pacijentService.deletePacijenta(id);
         }
         public void DeleteTermin(int id)
         {
@@ -266,6 +276,19 @@ namespace SF11_2019_POP2020.Models
             return domovi;
         }
 
+        public ObservableCollection<Termin> terminiByLekarJmbg(string jmbg)
+        {
+            ObservableCollection<Termin> privatniTermini = new ObservableCollection<Termin>();
+            foreach(Termin t in Termini)
+            {
+                if(t.Lekar.Korisnik.Jmbg == jmbg)
+                {
+                    privatniTermini.Add(t);
+                }
+            }
+            return privatniTermini;
+        }
+
         /*public ObservableCollection<Terapija> nadjiTerapijePoLekaru(string lekar)
         {
             ObservableCollection<Terapija> terapije = new ObservableCollection<Terapija>();
@@ -326,14 +349,27 @@ namespace SF11_2019_POP2020.Models
             return null;
         }
 
-        public DomZdravlja domZdravljaPoId(int id)
+        public Pacijent pacijentPoId(int id)
         {
-
-            foreach (DomZdravlja domZdravlja in DomoviZdravlja)
+            foreach(Pacijent pacijent in Pacijenti)
             {
-                if (domZdravlja.Id == id)
+                if(pacijent.Id == id)
                 {
-                    return domZdravlja;
+                    return pacijent;
+                }
+            }
+            return null;
+        }
+
+        public DomZdravlja domZdravljaPoId(int id)
+        {             
+
+
+            foreach (DomZdravlja dz in DomoviZdravlja)
+            {
+                if (dz.Id == id)
+                {
+                    return dz;
                 }
             }
             return null;

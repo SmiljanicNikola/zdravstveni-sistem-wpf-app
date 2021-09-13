@@ -9,11 +9,13 @@
     <Grid RenderTransformOrigin="0.518,0.511">
         <Label Content="Ulogovani ste kao : Administrator" HorizontalAlignment="Left" Margin="317,58,0,0" VerticalAlignment="Top"/>
         <Menu HorizontalAlignment="Left" Height="40" Margin="0,13,-0.4,0" VerticalAlignment="Top" Width="794" >
-            <MenuItem Header="Akcije sa korisnicima" Margin="0,0,0,0" Click="MenuItem_Click" Height="40" Width="130">
+            <MenuItem Header="Akcije sa korisnicima" Margin="0,0,0,0" Height="40" Width="130">
                 <MenuItem Name="MenuItemPacijenti" Header="Pacijenti" Click="MenuItemPacijenti_Click"></MenuItem>
                 <MenuItem Name="MenuItemLekari" Header="Lekari" Click="MenuItemLekari_Click"></MenuItem>
+                <MenuItem Name="MenuItemLicniPodaci" Header="Licni Podaci" Click="MenuItemLicniPodaci_Click"></MenuItem>
+
             </MenuItem>
-            <MenuItem Header="Izlogujte se" Click="MenuItem_Click_1" Margin="560,0,0,0"  Height="40" Width="100">
+            <MenuItem Header="Izlogujte se" Margin="560,0,0,0"  Height="40" Width="100">
                 <MenuItem Name="MenuItemLogOut" Header="LogOut" Click="MenuItemLogOut_Click" ></MenuItem>
             </MenuItem>
         </Menu>
@@ -25,5 +27,6 @@
         <GroupBox Header="Entiteti" HorizontalAlignment="Left" Height="248" Margin="113,105,0,0" VerticalAlignment="Top" Width="302"/>
         <Button Content="Exit" HorizontalAlignment="Left" Margin="673,362,0,0" VerticalAlignment="Top" Width="84" Height="36" Click="Button_Click"/>
         <Button Content="Korisnici" HorizontalAlignment="Left" x:Name="btnKorisnici" Click="btnKorisnici_Click" Margin="206,169,0,0" VerticalAlignment="Top" Width="93" Height="31"/>
+        <TextBlock HorizontalAlignment="Left" Margin="504,63,0,0" TextWrapping="Wrap" Name="textBlock1"  VerticalAlignment="Top"><Run Text=""/></TextBlock>
     </Grid>
 </Window>

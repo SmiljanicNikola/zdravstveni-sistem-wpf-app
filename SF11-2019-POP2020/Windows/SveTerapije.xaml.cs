@@ -34,16 +34,16 @@ namespace SF11_2019_POP2020.Windows
 
             view = CollectionViewSource.GetDefaultView(Util.Instance.Terapije);
 
-           /* this.lekari = new ObservableCollection<string>(Util.Instance.Terapije
-                 .Select(terapijaa => terapijaa.Opis)
-                 .Distinct()
-                 .Prepend("Izaberite lekara...")
-                 );
+            /* this.lekari = new ObservableCollection<string>(Util.Instance.Terapije
+                  .Select(terapijaa => terapijaa.Opis)
+                  .Distinct()
+                  .Prepend("Izaberite lekara...")
+                  );
 
-            //view.Filter = CustomFilter;
+             //view.Filter = CustomFilter;
 
-            cmbLekari.ItemsSource = this.lekari;
-            cmbLekari.SelectedIndex = 0;*/
+             cmbLekari.ItemsSource = this.lekari;
+             cmbLekari.SelectedIndex = 0;*/
 
             UpdateView();
 
@@ -72,13 +72,37 @@ namespace SF11_2019_POP2020.Windows
             if (terapija.Aktivan)
                 if (txtPretragaPoLekaru.Text != "")
                 {
-                    //return terapija.Lekar.Korisnik.Ime.Contains(txtPretragaPoLekaru.Text);
+                    return terapija.Lekar.Korisnik.Ime.Contains(txtPretragaPoLekaru.Text);
+                }
+            if(terapija.Aktivan)
+                if(txtPretragaPoLekaruPrezime.Text != "")
+                {
+                    return terapija.Lekar.Korisnik.Prezime.Contains(txtPretragaPoLekaruPrezime.Text);
+                }
+            if (terapija.Aktivan)
+                if (txtPretragePoLekaruEmail.Text != "")
+                {
+                    return terapija.Lekar.Korisnik.Email.Contains(txtPretragePoLekaruEmail.Text);
+                }
+                else
+                    return true;
+            /*if (terapija.Aktivan)
+            { 
+                if (txtPretragaPoLekaru.Text != "")
+                {
+                    List<String> imePrezime = new List<string>
+                    {
+                        terapija.Lekar.Korisnik.Ime,
+                        terapija.Lekar.Korisnik.Prezime
+                };
+
+                    return imePrezime.Any(podatak => podatak.Contains(txtPretragaPoLekaru.Text));
                 }
 
                 else
                     return true;
 
-
+        }*/
             return false;
         }
 
@@ -128,6 +152,11 @@ namespace SF11_2019_POP2020.Windows
             view.Refresh();
 
         }
+        private void txtPretragaPoLekaruPrezime_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
+
+        }
 
         private void MenuItemDodajTerapiju_Click(object sender, RoutedEventArgs e)
         {
@@ -149,6 +178,17 @@ namespace SF11_2019_POP2020.Windows
             GlavnaStranicaAdministrator gsa = new GlavnaStranicaAdministrator();
             this.Hide();
             gsa.Show();
+        }
+
+        private void txtPretragePoLekaruEmail_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
+
+        }
+
+        private void DataGridTerapije_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
         /*private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)

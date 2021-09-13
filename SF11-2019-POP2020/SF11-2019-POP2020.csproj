@@ -64,6 +64,7 @@
     <Compile Include="MyExceptions\UserNotFoundException.cs" />
     <Compile Include="Services\AdminService.cs" />
     <Compile Include="Services\AdresaService.cs" />
+    <Compile Include="Services\IPacijentService.cs" />
     <Compile Include="Services\LekarService.cs" />
     <Compile Include="Services\DomZdravljaService.cs" />
     <Compile Include="Services\IAdresaService.cs" />
@@ -154,6 +155,9 @@
     </Compile>
     <Compile Include="Windows\SviTermini.xaml.cs">
       <DependentUpon>SviTermini.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\TerminiPojedinacnogLekara.xaml.cs">
+      <DependentUpon>TerminiPojedinacnogLekara.xaml</DependentUpon>
     </Compile>
     <Page Include="HomeWindow.xaml">
       <SubType>Designer</SubType>
@@ -267,6 +271,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\SviTermini.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\TerminiPojedinacnogLekara.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

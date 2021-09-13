@@ -58,10 +58,10 @@ namespace SF11_2019_POP2020.Windows
                 //odabranKorisnik.Aktivan = true;
                 Termin t = new Termin()
                 {
-                    LekarId = int.Parse(txtLekarId.Text),
+                    Lekar = Util.Instance.lekarPoId(int.Parse(txtLekarId.Text)),
                     Datum = (DateTime)dateDatum.SelectedDate,
                     StatusTermina = EStatusTermina.SLOBODAN,
-                    PacijentId = int.Parse(txtPacijentId.Text),
+                    Pacijent = Util.Instance.pacijentPoId(int.Parse(txtPacijentId.Text)),
                     Aktivan = true
 
                 };

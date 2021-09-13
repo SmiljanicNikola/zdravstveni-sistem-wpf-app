@@ -18,12 +18,12 @@ namespace SF11_2019_POP2020.Models
             set { _id = value; }
         }
 
-        private int _lekarId;
+        private Lekar _lekar;
 
-        public int LekarId
+        public Lekar Lekar
         {
-            get { return _lekarId; }
-            set { _lekarId = value; }
+            get { return _lekar; }
+            set { _lekar = value; }
         }
 
 
@@ -43,12 +43,12 @@ namespace SF11_2019_POP2020.Models
             set { _statusTermina = value; }
         }
 
-        private int _pacijentId;
+        private Pacijent _pacijent;
 
-        public int PacijentId
+        public Pacijent Pacijent
         {
-            get { return _pacijentId; }
-            set { _pacijentId = value; }
+            get { return _pacijent; }
+            set { _pacijent = value; }
         }
 
 
@@ -73,18 +73,16 @@ namespace SF11_2019_POP2020.Models
             Termin kopijaTermin = new Termin();
 
             kopijaTermin.Id = Id;
-            kopijaTermin.LekarId = LekarId;
+            kopijaTermin.Lekar = Lekar;
             kopijaTermin.Datum = Datum;
             kopijaTermin.StatusTermina = StatusTermina;
+            kopijaTermin.Pacijent = Pacijent;
             kopijaTermin.Aktivan = Aktivan;
 
             return kopijaTermin;
         }
 
-        public override string ToString()
-        {
-            return "Id " + Id + " Lekar Id " + LekarId + "Datum " + Datum + " PacijentId " + PacijentId + "Status Termina" + StatusTermina;
-        }
+        
 
     }
 }

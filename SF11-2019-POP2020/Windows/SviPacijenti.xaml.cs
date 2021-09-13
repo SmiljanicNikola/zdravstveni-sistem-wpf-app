@@ -35,7 +35,7 @@ namespace SF11_2019_POP2020.Windows
         private void UpdateView()
         {
 
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Korisnici);
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Pacijenti);
             DataGridPacijenti.ItemsSource = view;
             DataGridPacijenti.IsSynchronizedWithCurrentItem = true;
             DataGridPacijenti.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
@@ -87,8 +87,8 @@ namespace SF11_2019_POP2020.Windows
                 //Util.Instance.UpdateEntiteta(izabraniLekar);
            
             }
-            Util.Instance.SacuvajEntitet(stariPacijent);
-            Util.Instance.DeletePacijent(izabraniPacijent.Jmbg);
+            //Util.Instance.SacuvajEntitet(stariPacijent);
+            //Util.Instance.DeletePacijent(izabraniPacijent.Jmbg);
 
 
             this.Show();
@@ -99,7 +99,7 @@ namespace SF11_2019_POP2020.Windows
         private void MenuItemObrisiPacijenta_Click(object sender, RoutedEventArgs e)
         {
             Korisnik izabraniPacijent = view.CurrentItem as Korisnik;
-            Util.Instance.DeletePacijent(izabraniPacijent.Jmbg);
+            //Util.Instance.DeletePacijent(izabraniPacijent.Jmbg);
 
         }
 
@@ -126,6 +126,11 @@ namespace SF11_2019_POP2020.Windows
         }
 
         private void DataGridPacijenti_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void DataGridPacijenti_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
         {
 
         }

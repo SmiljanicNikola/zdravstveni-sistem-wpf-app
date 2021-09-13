@@ -27,6 +27,9 @@ namespace SF11_2019_POP2020.Windows
         {
             InitializeComponent();
 
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Termini);
+
+
             UpdateView();
 
 
@@ -35,7 +38,6 @@ namespace SF11_2019_POP2020.Windows
         private void UpdateView()
         {
 
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Termini);
             DataGridTermini.ItemsSource = view;
             DataGridTermini.IsSynchronizedWithCurrentItem = true;
             DataGridTermini.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
