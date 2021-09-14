@@ -14,6 +14,7 @@ namespace SF11_2019_POP2020.Services
     {
 
         ObservableCollection<Pacijent> pacijenti = new ObservableCollection<Pacijent>();
+        ObservableCollection<Lekar> lekari = new ObservableCollection<Lekar>();
 
         public void deleteTermin(int id)
         {
@@ -41,13 +42,46 @@ namespace SF11_2019_POP2020.Services
 
             }
         }
+        public void readDoktore()
+        {
+            ObservableCollection<Lekar> lekari = new ObservableCollection<Lekar>();
+
+            //Util.Instance.Lekari = new ObservableCollection<Lekar>();
+
+
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"Select * from Lekari where Aktivan=1";
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    lekari.Add(new Lekar
+                    {
+                        Id = reader.GetInt32(0),
+                        Korisnik = Util.Instance.korisnikPoId(reader.GetInt32(1)),
+                        DomZdravlja = Util.Instance.domZdravljaPoId(reader.GetInt32(2)),
+                        Termini = reader.GetString(3),
+                        Aktivan = reader.GetBoolean(4)
+                    });
+                }
+                reader.Close();
+            }
+
+        }
 
         public void readTermine()
         {
             Util.Instance.Termini = new ObservableCollection<Termin>();
-            readPacijente();
+            //readPacijente();
+            //readDoktore();
             Util.Instance.Pacijenti = pacijenti;
-            //Util.Instance.Lekari = new ObservableCollection<Lekar>();
+            Util.Instance.Lekari = lekari;
 
 
 
@@ -115,6 +149,8 @@ namespace SF11_2019_POP2020.Services
         public int saveTermin(Object obj)
         {
             Termin termin = obj as Termin;
+            Util.Instance.Pacijenti = pacijenti;
+
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {

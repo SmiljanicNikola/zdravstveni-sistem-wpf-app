@@ -1,6 +1,7 @@
 ﻿using SF11_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -22,20 +23,63 @@ namespace SF11_2019_POP2020.Windows
     public partial class SviKorisnici : Window
     {
         ICollectionView view;
+
+        ObservableCollection<Enum> uloge;
         public SviKorisnici()
         {
             InitializeComponent();
 
+            view = CollectionViewSource.GetDefaultView(Util.Instance.Korisnici);
+
+
+            List<string> data = new List<string>();
+            data.Add("Izaberite ulogu");
+            data.Add("ADMINISTRATOR");
+            data.Add("LEKAR");
+            data.Add("PACIJENT");
+          
+
+
+            cmbUloga.ItemsSource = data;
+            cmbUloga.SelectedIndex = 0;
+
             UpdateView();
+        }
+
+        private bool CustomFilter(object obj)
+        {
+            Korisnik korisnik = obj as Korisnik;
+
+                if (txtPretragaIme.Text != "")
+                {
+                    return korisnik.Ime.Contains(txtPretragaIme.Text);
+                }
+           
+                if (txtPretragaPrezime.Text != "")
+                {
+                    return korisnik.Prezime.Contains(txtPretragaPrezime.Text);
+                }
+            
+                if (txtPretragaEmail.Text != "")
+                {
+                    return korisnik.Email.Contains(txtPretragaEmail.Text);
+                }
+                else
+                    return true;
+
+
+            return false;
         }
 
         private void UpdateView()
         {
             //DataGridLekari.ItemsSource = null;
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Korisnici);
+            //view = CollectionViewSource.GetDefaultView(Util.Instance.Korisnici);
             DataGridKorisnici.ItemsSource = view; // Util.Instance.Korisnici;
             DataGridKorisnici.IsSynchronizedWithCurrentItem = true;
             DataGridKorisnici.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            view.Filter = CustomFilter;
+
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -106,6 +150,47 @@ namespace SF11_2019_POP2020.Windows
         private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void txtPretragaIme_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
+        }
+
+        private void txtPretragaPrezime_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
+        }
+
+        private void txtPretragaEmail_KeyUp(object sender, KeyEventArgs e)
+        {
+            view.Refresh();
+        }
+
+        private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string uloga = cmbUloga.SelectedItem as string;
+
+            if (uloga.Contains("Izaberite ulogu"))
+            {
+                view = CollectionViewSource.GetDefaultView(Util.Instance.Korisnici);
+            }
+            if (uloga.Contains("LEKAR"))
+            {
+                view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiKorisnikePoUlozi(uloga));
+            }
+            if(uloga.Contains("PACIJENT"))
+            {
+                view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiKorisnikePoUlozi(uloga));
+
+            }
+            if (uloga.Contains("ADMINISTRATOR"))
+            {
+                view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiKorisnikePoUlozi(uloga));
+
+            }
+            UpdateView();
+            view.Refresh();
         }
     }
 }

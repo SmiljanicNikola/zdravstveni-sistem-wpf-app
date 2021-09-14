@@ -60,6 +60,9 @@ namespace SF11_2019_POP2020.Models
         public ObservableCollection<DomZdravlja> DomoviZdravlja { get; set; }
         //public ObservableCollection<Korisnik> KorisniciPacijenti { get; set; }
         public ObservableCollection<Termin> Termini { get; set; }
+
+        public ObservableCollection<Termin> PrivatniTermini { get; set; }
+
         public ObservableCollection<Terapija> Terapije { get; set; }
         
         public ObservableCollection<Pacijent> Pacijenti { get; set; }
@@ -73,11 +76,15 @@ namespace SF11_2019_POP2020.Models
             Adrese = new ObservableCollection<Adresa>();
             KorisniciAdmini = new ObservableCollection<Korisnik>();
             DomoviZdravlja = new ObservableCollection<DomZdravlja>();
+
             //KorisniciPacijenti = new ObservableCollection<Korisnik>();
             Termini = new ObservableCollection<Termin>();
+
+            PrivatniTermini = new ObservableCollection<Termin>();
+
             Terapije = new ObservableCollection<Terapija>();
             //SviKorisnici = new ObservableCollection<Korisnik>();
-            Doktori = new ObservableCollection<Lekar>();
+            //Doktori = new ObservableCollection<Lekar>();
 
 
         }
@@ -276,15 +283,34 @@ namespace SF11_2019_POP2020.Models
             return domovi;
         }
 
+
+        public ObservableCollection<Korisnik> nadjiKorisnikePoUlozi(string uloga)
+        {
+            ObservableCollection<Korisnik> pronadjeni = new ObservableCollection<Korisnik>();
+            foreach(Korisnik kor in Korisnici)
+            {
+                if (kor.TipKorisnika.ToString().Equals(uloga)) pronadjeni.Add(kor);
+            }
+            return pronadjeni;
+        }
+
         public ObservableCollection<Termin> terminiByLekarJmbg(string jmbg)
         {
             ObservableCollection<Termin> privatniTermini = new ObservableCollection<Termin>();
-            foreach(Termin t in Termini)
+            ObservableCollection<Lekar> Lekari = Util.Instance.Lekari;
+
+            foreach (Termin t in Termini)
             {
-                if(t.Lekar.Korisnik.Jmbg == jmbg)
-                {
-                    privatniTermini.Add(t);
+                foreach(Lekar l in Lekari) {
+                    if(t.Lekar == l)
+                    {
+                        if(l.Korisnik.Jmbg == jmbg)
+                        {
+                            privatniTermini.Add(t);
+                        }
+                    }
                 }
+               
             }
             return privatniTermini;
         }

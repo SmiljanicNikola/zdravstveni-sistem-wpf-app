@@ -84,8 +84,9 @@ namespace SF11_2019_POP2020.Windows
         private void btnPojedinacniTermini_Click(object sender, RoutedEventArgs e)
         {
             string jmbg = textBlock1.Text.Trim();
+            Console.WriteLine(jmbg);
             ObservableCollection<Termin> termini = Util.Instance.terminiByLekarJmbg(jmbg);
-            TerminiPojedinacnogLekara tpl = new TerminiPojedinacnogLekara();
+            TerminiPojedinacnogLekara tpl = new TerminiPojedinacnogLekara(termini);
             tpl.textBlock1.Text = jmbg;
             tpl.Show();
         }

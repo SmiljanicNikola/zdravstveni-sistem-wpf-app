@@ -22,13 +22,18 @@ namespace SF11_2019_POP2020.Windows
     /// </summary>
     public partial class TerminiPojedinacnogLekara : Window
     {
-        ICollectionView view;
+        ICollectionView viewTermini;
         ObservableCollection<Termin> termini;
-        public TerminiPojedinacnogLekara()
+        public TerminiPojedinacnogLekara(ObservableCollection<Termin> termini)
         {
             InitializeComponent();
 
-            
+            this.termini = termini;
+            string jmbg = textBlock1.Text.Trim();
+            Console.WriteLine(jmbg);
+
+            this.termini = Util.Instance.terminiByLekarJmbg(jmbg);
+            //view = CollectionViewSource.GetDefaultView(Util.Instance.terminiByLekarJmbg(jmbg));
 
             UpdateView();
 
@@ -47,6 +52,7 @@ namespace SF11_2019_POP2020.Windows
         public ObservableCollection<Termin> terminiByLekarJmbg(string jmbg)
         {
             ObservableCollection<Termin> privatniTermini = new ObservableCollection<Termin>();
+
             foreach (Termin t in Util.Instance.Termini)
             {
                 if (t.Lekar.Korisnik.Jmbg == jmbg)
@@ -61,9 +67,26 @@ namespace SF11_2019_POP2020.Windows
         {
             string jmbg = textBlock1.Text.Trim();
             popuni();
-            ObservableCollection<Termin> privatniTermini = Util.Instance.terminiByLekarJmbg(jmbg);
-            view = CollectionViewSource.GetDefaultView(this.termini);
-            DataGridTerminiLekara.ItemsSource = view;
+            ObservableCollection<Termin> termini = Util.Instance.Termini;
+            ObservableCollection<Lekar> lekari = Util.Instance.Lekari;
+            ObservableCollection<Termin> privatni = new ObservableCollection<Termin>();
+
+            foreach (Termin terminn in termini)
+            {
+                foreach(Lekar lekarr in lekari)
+                {
+                    if(terminn.Lekar == lekarr)
+                    {
+                        if(lekarr.Korisnik.Jmbg == jmbg)
+                        {
+                            privatni.Add(terminn);
+                        }
+                    }
+                }
+                
+            }
+            viewTermini = CollectionViewSource.GetDefaultView(privatni);
+            DataGridTerminiLekara.ItemsSource = viewTermini;
             DataGridTerminiLekara.IsSynchronizedWithCurrentItem = true;
             DataGridTerminiLekara.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
 
@@ -73,6 +96,8 @@ namespace SF11_2019_POP2020.Windows
         private void popuni()
         {
             string jmbg = textBlock1.Text.Trim();
+            Console.WriteLine(jmbg);
+
             this.termini = Util.Instance.terminiByLekarJmbg(jmbg);
            
         }
