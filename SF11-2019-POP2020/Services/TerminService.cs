@@ -78,10 +78,11 @@ namespace SF11_2019_POP2020.Services
         public void readTermine()
         {
             Util.Instance.Termini = new ObservableCollection<Termin>();
-            //readPacijente();
-            //readDoktore();
+            readPacijente();
+            readDoktore();
             Util.Instance.Pacijenti = pacijenti;
-            Util.Instance.Lekari = lekari;
+            //Util.Instance.Lekari = lekari;
+            //ObservableCollection<Lekar> Lekari = Util.Instance.Lekari;
 
 
 

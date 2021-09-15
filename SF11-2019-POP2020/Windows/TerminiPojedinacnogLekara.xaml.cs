@@ -23,17 +23,17 @@ namespace SF11_2019_POP2020.Windows
     public partial class TerminiPojedinacnogLekara : Window
     {
         ICollectionView viewTermini;
-        ObservableCollection<Termin> termini;
-        public TerminiPojedinacnogLekara(ObservableCollection<Termin> termini)
+        //ObservableCollection<Termin> termini;
+        public TerminiPojedinacnogLekara()
         {
             InitializeComponent();
 
-            this.termini = termini;
-            string jmbg = textBlock1.Text.Trim();
+
+            string jmbg = GlavnaStranicaLekar.jmbg;
             Console.WriteLine(jmbg);
 
-            this.termini = Util.Instance.terminiByLekarJmbg(jmbg);
-            //view = CollectionViewSource.GetDefaultView(Util.Instance.terminiByLekarJmbg(jmbg));
+            ObservableCollection<Termin> privatniTermini = Util.Instance.terminiByLekarJmbg(jmbg);
+            viewTermini = CollectionViewSource.GetDefaultView(privatniTermini);
 
             UpdateView();
 
@@ -49,7 +49,7 @@ namespace SF11_2019_POP2020.Windows
             gsl.Show();
             this.Close();
         }
-        public ObservableCollection<Termin> terminiByLekarJmbg(string jmbg)
+        /*public ObservableCollection<Termin> terminiByLekarJmbg(string jmbg)
         {
             ObservableCollection<Termin> privatniTermini = new ObservableCollection<Termin>();
 
@@ -61,13 +61,12 @@ namespace SF11_2019_POP2020.Windows
                 }
             }
             return privatniTermini;
-        }
+        }*/
 
         private void UpdateView()
         {
-            string jmbg = textBlock1.Text.Trim();
-            popuni();
-            ObservableCollection<Termin> termini = Util.Instance.Termini;
+            string jmbg = GlavnaStranicaLekar.jmbg;
+            /*ObservableCollection<Termin> termini = Util.Instance.Termini;
             ObservableCollection<Lekar> lekari = Util.Instance.Lekari;
             ObservableCollection<Termin> privatni = new ObservableCollection<Termin>();
 
@@ -84,22 +83,13 @@ namespace SF11_2019_POP2020.Windows
                     }
                 }
                 
-            }
-            viewTermini = CollectionViewSource.GetDefaultView(privatni);
+            }*/
+            //viewTermini = CollectionViewSource.GetDefaultView();
             DataGridTerminiLekara.ItemsSource = viewTermini;
             DataGridTerminiLekara.IsSynchronizedWithCurrentItem = true;
             DataGridTerminiLekara.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            //view.Filter = customFilter;
 
-
-        }
-
-        private void popuni()
-        {
-            string jmbg = textBlock1.Text.Trim();
-            Console.WriteLine(jmbg);
-
-            this.termini = Util.Instance.terminiByLekarJmbg(jmbg);
-           
         }
 
         private void DataGridTermini_SelectionChanged(object sender, SelectionChangedEventArgs e)

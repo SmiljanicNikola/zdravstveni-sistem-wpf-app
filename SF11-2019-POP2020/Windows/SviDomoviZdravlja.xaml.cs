@@ -26,9 +26,27 @@ namespace SF11_2019_POP2020.Windows
 
         ObservableCollection<string> gradovi;
 
+      
         public SviDomoviZdravlja()
         {
             InitializeComponent();
+
+            textBLock2.Text = GlavnaStranicaLekar.jmbg;
+
+            string jmbg = GlavnaStranicaLekar.jmbg;
+            Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
+            
+                if (kor.TipKorisnika.Equals(ETipKorisnika.LEKAR))
+                {
+                    
+                    txtPretragaPoNazivuInstitucije.Visibility = Visibility.Hidden;
+                    txtPretragaPoUlici.Visibility = Visibility.Hidden;
+                    menuAkcije.Visibility = Visibility.Hidden;
+                    lblUlica.Visibility = Visibility.Hidden;
+                    lblNazivInstituta.Visibility = Visibility.Hidden;
+
+            }
+
 
             view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
 
@@ -75,11 +93,12 @@ namespace SF11_2019_POP2020.Windows
 
         private void UpdateView()
         {
+            
             DataGridDomoviZdravlja.ItemsSource = view;
             DataGridDomoviZdravlja.IsSynchronizedWithCurrentItem = true;
             DataGridDomoviZdravlja.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
-            view.Filter = CustomFilter;
-            
+            view.Filter = CustomFilter; 
+
         }
 
         private void MenuItemDodajDomZdravlja_Click(object sender, RoutedEventArgs e)

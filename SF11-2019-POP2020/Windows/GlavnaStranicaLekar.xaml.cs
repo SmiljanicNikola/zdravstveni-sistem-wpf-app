@@ -21,7 +21,7 @@ namespace SF11_2019_POP2020.Windows
     /// </summary>
     public partial class GlavnaStranicaLekar : Window
     {
-        
+        public static string jmbg;
         public GlavnaStranicaLekar()
         {
 
@@ -76,18 +76,21 @@ namespace SF11_2019_POP2020.Windows
 
         private void btnDomovi_Click(object sender, RoutedEventArgs e)
         {
-
+            jmbg = textBlock1.Text.Trim();
+            SviDomoviZdravlja sdz = new SviDomoviZdravlja();
+            //sdz.textBlock1.Text = jmbg;
+            sdz.Show();
         }
 
      
 
         private void btnPojedinacniTermini_Click(object sender, RoutedEventArgs e)
         {
-            string jmbg = textBlock1.Text.Trim();
+            jmbg = textBlock1.Text.Trim();
             Console.WriteLine(jmbg);
-            ObservableCollection<Termin> termini = Util.Instance.terminiByLekarJmbg(jmbg);
-            TerminiPojedinacnogLekara tpl = new TerminiPojedinacnogLekara(termini);
-            tpl.textBlock1.Text = jmbg;
+            //ObservableCollection<Termin> termini = Util.Instance.terminiByLekarJmbg(jmbg);
+            TerminiPojedinacnogLekara tpl = new TerminiPojedinacnogLekara();
+            //tpl.textBlock1.Text = jmbg;
             tpl.Show();
         }
     }

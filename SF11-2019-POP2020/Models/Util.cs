@@ -294,10 +294,10 @@ namespace SF11_2019_POP2020.Models
             return pronadjeni;
         }
 
-        public ObservableCollection<Termin> terminiByLekarJmbg(string jmbg)
+        /*public ObservableCollection<Termin> terminiByLekarJmbg(string jmbg)
         {
             ObservableCollection<Termin> privatniTermini = new ObservableCollection<Termin>();
-            ObservableCollection<Lekar> Lekari = Util.Instance.Lekari;
+            //ObservableCollection<Lekar> Lekari = Util.Instance.Lekari;
 
             foreach (Termin t in Termini)
             {
@@ -313,7 +313,25 @@ namespace SF11_2019_POP2020.Models
                
             }
             return privatniTermini;
+        }*/
+
+        public ObservableCollection<Termin> terminiByLekarJmbg(string jmbg)
+        {
+            ObservableCollection<Termin> privatniTermini = new ObservableCollection<Termin>();
+            ObservableCollection<Lekar> Lekari = Util.Instance.Lekari;
+
+            foreach (Termin t in Termini)
+            {
+              
+                    if (t.Lekar.Korisnik.Jmbg == jmbg)
+                    {
+                        privatniTermini.Add(t);
+                    }
+               
+            }
+            return privatniTermini;
         }
+
 
         /*public ObservableCollection<Terapija> nadjiTerapijePoLekaru(string lekar)
         {
@@ -362,6 +380,19 @@ namespace SF11_2019_POP2020.Models
             }
             return null;
         }
+
+        public Korisnik korisnikPoJmbg(string jmbg)
+        {
+            foreach (Korisnik korisnikk in Korisnici)
+            {
+                if (korisnikk.Jmbg.Equals(jmbg))
+                {
+                    return korisnikk;
+                }
+            }
+            return null;
+        }
+
 
         public Lekar lekarPoId(int id)
         {
