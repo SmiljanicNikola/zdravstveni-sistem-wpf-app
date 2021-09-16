@@ -1,6 +1,7 @@
 ﻿using SF11_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -22,12 +23,22 @@ namespace SF11_2019_POP2020.Windows
     public partial class SviDoktori : Window
     {
         ICollectionView view;
+
+        ObservableCollection<string> naziviInstitucija;
         public SviDoktori()
         {
             InitializeComponent();
 
             view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
 
+            this.naziviInstitucija = new ObservableCollection<string>(Util.Instance.DomoviZdravlja
+                .Select(domZdravlja => domZdravlja.NazivInstitucije)
+                .Distinct()
+                .Prepend("Izaberite instituciju..."));
+
+
+            cmbInstitucije.ItemsSource = this.naziviInstitucija;
+            cmbInstitucije.SelectedIndex = 0;
 
             UpdateView2();
         }
@@ -39,6 +50,8 @@ namespace SF11_2019_POP2020.Windows
             DataGridDoktori.ItemsSource = view; // Util.Instance.Korisnici;
             DataGridDoktori.IsSynchronizedWithCurrentItem = true;
             DataGridDoktori.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
+            //view.Filter = CustomFilter;
+
         }
 
         private void DataGridDoktori_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -95,6 +108,24 @@ namespace SF11_2019_POP2020.Windows
 
             this.Hide();
             window.Show();
+        }
+
+        private void cmbInstitucije_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            string institucija = cmbInstitucije.SelectedItem as string;
+
+            if(institucija.Contains("Izaberite instituciju..."))
+            {
+                view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiLekarePoInstituciji(""));
+            }
+            else
+            {
+                view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiLekarePoInstituciji(institucija));
+
+            }
+
+            UpdateView2();
+            view.Refresh();
         }
     }
 }

@@ -22,6 +22,9 @@ namespace SF11_2019_POP2020.Windows
     public partial class GlavnaStranicaPacijent : Window
     {
         ICollection view;
+
+        public static string jmbg;
+
         public GlavnaStranicaPacijent()
         {
             InitializeComponent();
@@ -98,6 +101,23 @@ namespace SF11_2019_POP2020.Windows
             //}
             this.Show();
             
+        }
+
+        private void btnDomovi_Click(object sender, RoutedEventArgs e)
+        {
+            jmbg = textBlock1.Text.Trim();
+
+            SviDomoviZdravlja sdz = new SviDomoviZdravlja();
+            //sdz.textBlock1.Text = jmbg;
+            sdz.Show();
+           
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            jmbg = textBlock1.Text.Trim();
+            SviDoktori sd = new SviDoktori();
+            sd.Show();
         }
     }
 }

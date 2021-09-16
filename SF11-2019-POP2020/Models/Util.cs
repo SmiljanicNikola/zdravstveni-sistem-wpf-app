@@ -283,6 +283,16 @@ namespace SF11_2019_POP2020.Models
             return domovi;
         }
 
+        public ObservableCollection<Lekar> nadjiLekarePoInstituciji(string institucija)
+        {
+            ObservableCollection<Lekar> pronadjeniLekari = new ObservableCollection<Lekar>();
+            foreach(Lekar lekar in Lekari)
+            {
+                if (lekar.DomZdravlja.NazivInstitucije.Contains(institucija.ToLower())) pronadjeniLekari.Add(lekar);
+            }
+            return pronadjeniLekari;
+        }
+
 
         public ObservableCollection<Korisnik> nadjiKorisnikePoUlozi(string uloga)
         {

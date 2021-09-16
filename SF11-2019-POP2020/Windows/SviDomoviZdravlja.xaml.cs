@@ -26,7 +26,7 @@ namespace SF11_2019_POP2020.Windows
 
         ObservableCollection<string> gradovi;
 
-      
+
         public SviDomoviZdravlja()
         {
             InitializeComponent();
@@ -34,9 +34,17 @@ namespace SF11_2019_POP2020.Windows
             textBLock2.Text = GlavnaStranicaLekar.jmbg;
 
             string jmbg = GlavnaStranicaLekar.jmbg;
+            if(jmbg == null)
+            {
+                jmbg = GlavnaStranicaPacijent.jmbg;
+                if(jmbg == null)
+                {
+                    jmbg = GlavnaStranicaAdministrator.jmbg;
+                }
+            }
             Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
-            
-                if (kor.TipKorisnika.Equals(ETipKorisnika.LEKAR))
+
+            if (kor.TipKorisnika.Equals(ETipKorisnika.LEKAR) || kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
                 {
                     
                     txtPretragaPoNazivuInstitucije.Visibility = Visibility.Hidden;
@@ -45,8 +53,22 @@ namespace SF11_2019_POP2020.Windows
                     lblUlica.Visibility = Visibility.Hidden;
                     lblNazivInstituta.Visibility = Visibility.Hidden;
 
+                }
+            if (kor.TipKorisnika.Equals(ETipKorisnika.LEKAR))
+            {
+                btnPocetnaAdmin.Visibility = Visibility.Hidden;
+                btnPocetnaPacijent.Visibility = Visibility.Hidden;
             }
-
+            if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+            {
+                btnPocetnaAdmin.Visibility = Visibility.Hidden;
+                btnPocetnaLekar.Visibility = Visibility.Hidden;
+            }
+            if (kor.TipKorisnika.Equals(ETipKorisnika.ADMINISTRATOR))
+            {
+                btnPocetnaLekar.Visibility = Visibility.Hidden;
+                btnPocetnaPacijent.Visibility = Visibility.Hidden;
+            }
 
             view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
 
@@ -154,13 +176,11 @@ namespace SF11_2019_POP2020.Windows
         private void DataGridDomoviZdravlja_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
 
-           
-
             if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
                 e.Column.Visibility = Visibility.Collapsed;
         }
 
-        private void Button_Click(object sender, RoutedEventArgs e)
+        private void btnPocetnaAdmin_Click(object sender, RoutedEventArgs e)
         {
             /*HomeWindow window = new HomeWindow();*/
             GlavnaStranicaAdministrator gsa = new GlavnaStranicaAdministrator();
@@ -207,6 +227,20 @@ namespace SF11_2019_POP2020.Windows
         private void DataGridDomoviZdravlja_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
 
+        }
+
+        private void btnPocetnaLekar_Click(object sender, RoutedEventArgs e)
+        {
+            GlavnaStranicaLekar gsl = new GlavnaStranicaLekar();
+            this.Hide();
+            gsl.Show();
+        }
+
+        private void btnPocetnaPacijent_Click(object sender, RoutedEventArgs e)
+        {
+            GlavnaStranicaPacijent gsp = new GlavnaStranicaPacijent();
+            this.Hide();
+            gsp.Show();
         }
     }
 }

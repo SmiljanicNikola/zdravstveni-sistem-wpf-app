@@ -17,15 +17,17 @@
         <DataGrid CanUserAddRows="False" Name="DataGridDomoviZdravlja"  HorizontalAlignment="Left" Height="167" Margin="32,74,0,0" VerticalAlignment="Top" 
                   AutoGenerateColumns="True" AutoGeneratingColumn="DataGridDomoviZdravlja_AutoGeneratingColumn" Width="468" SelectionChanged="DataGridDomoviZdravlja_SelectionChanged"/>
 
-        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="678,361,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="Button_Click"/>
+        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="882,364,0,0" Name="btnPocetnaAdmin" VerticalAlignment="Top" Width="91" Height="36" Click="btnPocetnaAdmin_Click"/>
         <TextBox Name="txtPretragaPoNazivuInstitucije" HorizontalAlignment="Left" Height="24" Margin="718,202,0,0" TextWrapping="Wrap" Text="" KeyUp="txtPretragaPoNazivuInstitucije_KeyUp" VerticalAlignment="Top" Width="120" RenderTransformOrigin="0.242,0.396"/>
         <Label Content="Po nazivu instituta:" HorizontalAlignment="Left" Margin="605,202,0,0" VerticalAlignment="Top" Width="113" Name="lblNazivInstituta"/>
         <GroupBox Header="Pretrage" HorizontalAlignment="Left" Height="249" Margin="583,55,0,0" VerticalAlignment="Top" Width="308">
-            <Label Content="Mesto:" HorizontalAlignment="Left" Margin="366,-84,-118,0" VerticalAlignment="Top" Width="48"/>
+            <Label Content="Mesto:" HorizontalAlignment="Left" Margin="76,31,0,0" VerticalAlignment="Top" Width="48"/>
         </GroupBox>
         <TextBox Name="txtPretragaPoUlici" HorizontalAlignment="Left" Height="23" Margin="718,153,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaPoUlici_KeyUp"/>
         <Label Content="Po ulici:" HorizontalAlignment="Left" Margin="663,153,0,0" VerticalAlignment="Top" Name="lblUlica"/>
         <ComboBox HorizontalAlignment="Left" Margin="718,104,0,0" VerticalAlignment="Top" Width="120" Name="cmbMesto" SelectionChanged="cmbMesto_SelectionChanged" />
         <TextBlock HorizontalAlignment="Left" Margin="32,252,0,0" TextWrapping="Wrap" Text="" Name="textBLock2" VerticalAlignment="Top" Height="16"/>
+        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="786,364,0,0" VerticalAlignment="Top" Width="91" Height="36" Name="btnPocetnaLekar" Click="btnPocetnaLekar_Click"/>
+        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="690,364,0,0" VerticalAlignment="Top" Width="91" Height="36" Name="btnPocetnaPacijent" Click="btnPocetnaPacijent_Click"/>
     </Grid>
 </Window>

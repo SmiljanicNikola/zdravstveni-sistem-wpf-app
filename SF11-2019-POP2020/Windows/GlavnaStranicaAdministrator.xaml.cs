@@ -20,6 +20,8 @@ namespace SF11_2019_POP2020.Windows
     /// </summary>
     public partial class GlavnaStranicaAdministrator : Window
     {
+        public static string jmbg;
+
         public GlavnaStranicaAdministrator()
         {
             InitializeComponent();
@@ -77,6 +79,8 @@ namespace SF11_2019_POP2020.Windows
 
         private void btnDomoviZdravlja_Click(object sender, RoutedEventArgs e)
         {
+            jmbg = textBlock1.Text.Trim();
+
             SviDomoviZdravlja windowDomoviZdravlja = new SviDomoviZdravlja();
             this.Hide();
             windowDomoviZdravlja.Show();

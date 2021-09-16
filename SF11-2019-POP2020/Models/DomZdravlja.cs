@@ -54,7 +54,7 @@ namespace SF11_2019_POP2020.Models
 
         public override string ToString()
         {
-            return NazivInstitucije + " d" + Adresa.Broj;
+            return NazivInstitucije + " " + Adresa.Broj;
         }
 
         public bool Equals(DomZdravlja other)

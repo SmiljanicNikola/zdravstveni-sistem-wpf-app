@@ -19,5 +19,7 @@
             </MenuItem>
         </Menu>
         <TextBlock HorizontalAlignment="Left" Margin="472,63,0,0" TextWrapping="Wrap" Name="textBlock1"  Text="TextBlock" VerticalAlignment="Top"/>
+        <Button Content="Domovi Zdravlja" HorizontalAlignment="Left" Margin="124,161,0,0" Name="btnDomovi" VerticalAlignment="Top" Width="94" Height="35" Click="btnDomovi_Click"/>
+        <Button Content="Lekari" HorizontalAlignment="Left" Margin="258,161,0,0" VerticalAlignment="Top" Width="94" Height="35" Name="btnL" Click="Button_Click"/>
     </Grid>
 </Window>

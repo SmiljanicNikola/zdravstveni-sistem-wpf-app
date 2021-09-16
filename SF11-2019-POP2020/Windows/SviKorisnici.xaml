@@ -22,14 +22,15 @@
         </Menu>
 
         <Button Content="Pocetna" HorizontalAlignment="Left" Margin="580,361,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="Button_Click" Grid.Column="1"/>
-        <Label Content="Imenu:" Grid.Column="1" HorizontalAlignment="Left" Margin="411,98,0,0" VerticalAlignment="Top"/>
-        <Label Content="Prezimenu:" Grid.Column="1" HorizontalAlignment="Left" Margin="411,138,0,0" VerticalAlignment="Top"/>
-        <Label Content="Email-u:" Grid.Column="1" HorizontalAlignment="Left" Margin="411,181,0,0" VerticalAlignment="Top"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="462,101,0,0" TextWrapping="Wrap" Text="" Name="txtPretragaIme" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaIme_KeyUp"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="484,141,0,0" TextWrapping="Wrap" Text="" Name="txtPretragaPrezime" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaPrezime_KeyUp"/>
-        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="469,184,0,0" TextWrapping="Wrap" Text="" Name="txtPretragaEmail" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaEmail_KeyUp"/>
-        <Label Content="Tipu Korisnika" Grid.Column="1" HorizontalAlignment="Left" Margin="411,228,0,0" VerticalAlignment="Top"/>
-        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="500,228,0,0" VerticalAlignment="Top" Width="120" Name="cmbUloga" SelectionChanged="ComboBox_SelectionChanged"/>
+        <Label Content="Imenu:" Grid.Column="1" HorizontalAlignment="Left" Margin="419,109,0,0" VerticalAlignment="Top"/>
+        <Label Content="Prezimenu:" Grid.Column="1" HorizontalAlignment="Left" Margin="419,149,0,0" VerticalAlignment="Top"/>
+        <Label Content="Email-u:" Grid.Column="1" HorizontalAlignment="Left" Margin="419,192,0,0" VerticalAlignment="Top"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="470,112,0,0" TextWrapping="Wrap" Text="" Name="txtPretragaIme" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaIme_KeyUp"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="492,152,0,0" TextWrapping="Wrap" Text="" Name="txtPretragaPrezime" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaPrezime_KeyUp"/>
+        <TextBox Grid.Column="1" HorizontalAlignment="Left" Height="23" Margin="477,195,0,0" TextWrapping="Wrap" Text="" Name="txtPretragaEmail" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaEmail_KeyUp"/>
+        <Label Content="Tipu Korisnika" Grid.Column="1" HorizontalAlignment="Left" Margin="419,239,0,0" VerticalAlignment="Top"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="508,239,0,0" VerticalAlignment="Top" Width="120" Name="cmbUloga" SelectionChanged="ComboBox_SelectionChanged"/>
+        <GroupBox Grid.Column="1" Header="Pretrage po:" HorizontalAlignment="Left" Height="235" Margin="396,74,0,0" VerticalAlignment="Top" Width="258"/>
 
     </Grid>
 </Window>
