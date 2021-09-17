@@ -135,7 +135,9 @@ namespace SF11_2019_POP2020.Windows
 
             //}
             this.Show();
-            view.Refresh();
+            UpdateView();
+
+            //view.Refresh();
         }
 
         private void MenuItemIzmeniDomZdravlja_Click(object sender, RoutedEventArgs e)
@@ -157,7 +159,8 @@ namespace SF11_2019_POP2020.Windows
                     Util.Instance.DomoviZdravlja[index].Aktivan = izabraniDom.Aktivan;*/
 
                 }
-                view.Refresh();
+                UpdateView();
+                //view.Refresh();
             }
 
         }

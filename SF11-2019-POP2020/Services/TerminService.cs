@@ -96,24 +96,50 @@ namespace SF11_2019_POP2020.Services
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                while (reader.Read())
+                /*while (reader.Read())
                 {
-                    Util.Instance.Termini.Add(new Termin
+                    Util.Instance.Termini.Add(new Termin 
                     {
                         Id = reader.GetInt32(0),
                         Lekar = Util.Instance.lekarPoId(reader.GetInt32(1)),
-                        Datum = reader.GetDateTime(2),              
+                        Datum = reader.GetDateTime(2),
                         StatusTermina = (EStatusTermina)Enum.Parse(typeof(EStatusTermina), reader.GetString(3)),
-                        Pacijent = Util.Instance.pacijentPoId(reader.GetInt32(4)),
-                        Aktivan = reader.GetBoolean(5)
+                        if (reader.IsDBNull(4) == false)
+                        Pacijent = Util.Instance.pacijentPoId(reader.GetInt32(4));
+
+                    else
+                        Pacijent = null;
+                    
+                    Aktivan = reader.GetBoolean(5)
 
                     });
-                }
-                reader.Close();
-
-            }
+            reader.Close();
 
         }
+    }*/         while (reader.Read())
+                {
+                    Termin termin = new Termin();
+                    termin.Id = reader.GetInt32(0);
+                    termin.Lekar = Util.Instance.lekarPoId(reader.GetInt32(1));
+                    termin.Datum = reader.GetDateTime(2).Date;
+                    termin.StatusTermina = (EStatusTermina)Enum.Parse(typeof(EStatusTermina), reader.GetString(3));
+                    if (!reader.IsDBNull(4))
+                    {
+
+                        termin.Pacijent = Util.Instance.pacijentPoId(reader.GetInt32(4));
+                    }
+                    else
+                    {
+                        termin.Pacijent = null;
+                    }
+                    termin.Aktivan = reader.GetBoolean(5);
+                    Util.Instance.Termini.Add(termin);
+                }
+                reader.Close();
+            }
+        }
+
+
 
         public void readPacijente()
         {
@@ -187,7 +213,15 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("LekarId", termin.Lekar.Id));
                 command.Parameters.Add(new SqlParameter("Datum", termin.Datum));
                 command.Parameters.Add(new SqlParameter("StatusTermina", termin.StatusTermina));
-                command.Parameters.Add(new SqlParameter("PacijentId", termin.Pacijent.Id));
+                if (termin.Pacijent == null)
+                {
+                    command.Parameters.Add(new SqlParameter("PacijentId", DBNull.Value));
+                }
+                else
+                {
+                    command.Parameters.Add(new SqlParameter("PacijentId", termin.Pacijent.Id));
+                }
+             
                 command.Parameters.Add(new SqlParameter("Aktivan", termin.Aktivan));
                 command.Parameters.Add(new SqlParameter("Id", termin.Id));
 

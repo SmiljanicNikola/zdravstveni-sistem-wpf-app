@@ -7,8 +7,8 @@
         mc:Ignorable="d"
         Title="SveTerapije" Height="450" Width="800">
     <Grid>
-        <Menu HorizontalAlignment="Left" Height="37" Margin="32,13,0,0" VerticalAlignment="Top" Width="468">
-            <MenuItem Header="Akcije">
+        <Menu HorizontalAlignment="Left" Height="37" Margin="0,13,0,0" VerticalAlignment="Top" Width="792">
+            <MenuItem Name="menuItemAkcije" Header="Akcije">
                 <MenuItem Name="MenuItemDodajTerapiju" Header="Dodaj dom terapiju" Click="MenuItemDodajTerapiju_Click" ></MenuItem>
                 <MenuItem Name="MenuItemIzmeniTerapiju" Header="Izmeni dom terapiju" Click="MenuItemIzmeniTerapiju_Click" ></MenuItem>
                 <MenuItem Name="MenuItemObrisiTerapiju" Header="Obrisi dom terapiju" Click="MenuItemObrisiTerapiju_Click" ></MenuItem>
@@ -18,17 +18,17 @@
                   AutoGenerateColumns="True" AutoGeneratingColumn="DataGridTerapije_AutoGeneratingColumn" Width="468" SelectionChanged="DataGridTerapije_SelectionChanged"/>
 
         <Button Content="Pocetna" HorizontalAlignment="Left" Margin="676,356,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="Button_Click"/>
-        <Label Content="Po opisu:" HorizontalAlignment="Left" Margin="560,68,0,0" VerticalAlignment="Top" />
-        <Label Content="Po imenu:" HorizontalAlignment="Left" Margin="556,160,0,0" VerticalAlignment="Top"/>
-        <Label Content="Po prezimenu:" HorizontalAlignment="Left" Margin="541,204,0,0" VerticalAlignment="Top"/>
-        <Label Content="Po email-u:" HorizontalAlignment="Left" Margin="549,247,0,0" VerticalAlignment="Top"/>
+        <Label Content="Po opisu:" HorizontalAlignment="Left" Margin="30,261,0,0" VerticalAlignment="Top" />
+        <Label Content="Po imenu:" HorizontalAlignment="Left" Margin="558,96,0,0" VerticalAlignment="Top"/>
+        <Label Content="Po prezimenu:" HorizontalAlignment="Left" Margin="543,140,0,0" VerticalAlignment="Top"/>
+        <Label Content="Po email-u:" HorizontalAlignment="Left" Margin="551,183,0,0" VerticalAlignment="Top"/>
 
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="623,68,0,0" TextWrapping="Wrap" Name="txtPretragaPoOpisu" VerticalAlignment="Top" Text="" Width="120"  KeyUp="txtPretragaPoOpisu_KeyUp"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="626,163,0,0" TextWrapping="Wrap" Text="" Name="txtPretragaPoLekaru" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaPoLekaru_KeyUp"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="93,264,0,0" TextWrapping="Wrap" Name="txtPretragaPoOpisu" VerticalAlignment="Top" Text="" Width="120"  KeyUp="txtPretragaPoOpisu_KeyUp"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="622,100,0,0" TextWrapping="Wrap" Text="" Name="txtPretragaPoLekaru" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaPoLekaru_KeyUp"/>
 
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="626,207,0,0" TextWrapping="Wrap" Text="" Name="txtPretragaPoLekaruPrezime" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaPoLekaruPrezime_KeyUp"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="622,144,0,0" TextWrapping="Wrap" Text="" Name="txtPretragaPoLekaruPrezime" VerticalAlignment="Top" Width="120" KeyUp="txtPretragaPoLekaruPrezime_KeyUp"/>
         <TextBlock HorizontalAlignment="Left" Height="1" Margin="1004,264,-217,0" TextWrapping="Wrap" Text="TextBlock" VerticalAlignment="Top" Width="5"/>
-        <GroupBox Header="Po lekaru" Height="168" Margin="505,128,25,0" VerticalAlignment="Top"/>
-        <TextBox HorizontalAlignment="Left" Height="23" Margin="623,247,0,0" TextWrapping="Wrap" Text="" Name="txtPretragePoLekaruEmail" KeyUp="txtPretragePoLekaruEmail_KeyUp" VerticalAlignment="Top" Width="120"/>
+        <GroupBox Header="Po lekaru" Height="168" Margin="505,67,25,0" VerticalAlignment="Top"/>
+        <TextBox HorizontalAlignment="Left" Height="23" Margin="625,183,0,0" TextWrapping="Wrap" Text="" Name="txtPretragePoLekaruEmail" KeyUp="txtPretragePoLekaruEmail_KeyUp" VerticalAlignment="Top" Width="120"/>
     </Grid>
 </Window>

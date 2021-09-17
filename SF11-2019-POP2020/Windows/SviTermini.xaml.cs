@@ -27,7 +27,26 @@ namespace SF11_2019_POP2020.Windows
         {
             InitializeComponent();
 
+            string jmbg = GlavnaStranicaPacijent.jmbg;
+            if (jmbg == null)
+            {
+                jmbg = GlavnaStranicaAdministrator.jmbg;
+                
+            }
+
+            Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
+
+            if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+            {
+                MenuItemDodajTermin.Visibility = Visibility.Hidden;
+                MenuItemIzmeniTermin.Visibility = Visibility.Hidden;
+                MenuItemObrisiTermin.Visibility = Visibility.Hidden;
+                MenuItemZakaziTermin.Visibility = Visibility.Visible;
+
+            }
+
             view = CollectionViewSource.GetDefaultView(Util.Instance.Termini);
+
 
 
             UpdateView();
@@ -76,10 +95,10 @@ namespace SF11_2019_POP2020.Windows
             this.Hide();
             if ((bool)addTermin.ShowDialog())
             {
-                /*int index = Util.Instance.Termini.ToList().FindIndex(t => t.Id.Equals(izabraniTermin.Id));
+                int index = Util.Instance.Termini.ToList().FindIndex(t => t.Id.Equals(izabraniTermin.Id));
 
-                //Util.Instance.Korisnici[index] = stariLekar;
-                Util.Instance.Termini[index].Id = izabraniTermin.Id;
+                Util.Instance.Termini[index] = stariTermin;
+                /*Util.Instance.Termini[index].Id = izabraniTermin.Id;
                 Util.Instance.Termini[index].LekarId = izabraniTermin.LekarId;
                 Util.Instance.Termini[index].Datum = izabraniTermin.Datum;
                 Util.Instance.Termini[index].StatusTermina = izabraniTermin.StatusTermina;
@@ -91,6 +110,35 @@ namespace SF11_2019_POP2020.Windows
                 
 
            
+            this.Show();
+            view.Refresh();
+        }
+
+        private void MenuItemZakaziTermin_Click(object sender, RoutedEventArgs e)
+        {
+            //Korisnik izabraniLekar = (Korisnik)DataGridLekari.SelectedItem;
+            Termin izabraniTermin = view.CurrentItem as Termin;
+
+            izabraniTermin.StatusTermina = EStatusTermina.ZAKAZAN;
+
+
+            string jmbg = GlavnaStranicaPacijent.jmbg;
+            if (jmbg == null)
+            {
+                jmbg = GlavnaStranicaAdministrator.jmbg;
+
+            }
+
+            Korisnik korisnik = Util.Instance.korisnikPoJmbg(jmbg);
+            if (korisnik.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+            {
+                izabraniTermin.Pacijent = Util.Instance.pacijentPoJmbg(jmbg);
+            }
+
+
+
+            Util.Instance.UpdateEntiteta(izabraniTermin);
+
             this.Show();
             view.Refresh();
         }
@@ -111,5 +159,9 @@ namespace SF11_2019_POP2020.Windows
             this.Hide();
             gsa.Show();
         }
+
+       
+
+       
     }
 }

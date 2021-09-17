@@ -62,7 +62,8 @@ namespace SF11_2019_POP2020.Services
                         Id = reader.GetInt32(0),
                         Opis = reader.GetString(1),
                         Lekar = Util.Instance.lekarPoId(reader.GetInt32(2)),
-                        Aktivan = reader.GetBoolean(3)
+                        Pacijent = Util.Instance.pacijentPoId(reader.GetInt32(3)),
+                        Aktivan = reader.GetBoolean(4)
                     });
                 }
                 reader.Close();
@@ -80,11 +81,12 @@ namespace SF11_2019_POP2020.Services
                 conn.Open();
 
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"insert into dbo.Terapije(Opis, LekarId, Aktivan)
-                       output inserted.id VALUES(@Opis, @LekarId, @Aktivan)";
+                command.CommandText = @"insert into dbo.Terapije(Opis, LekarId, PacijentId, Aktivan)
+                       output inserted.id VALUES(@Opis, @LekarId, @PacijentId, @Aktivan)";
 
                 command.Parameters.Add(new SqlParameter("Opis", terapija.Opis));
                 command.Parameters.Add(new SqlParameter("LekarId", terapija.Lekar.Id));
+                command.Parameters.Add(new SqlParameter("PacijentId", terapija.Pacijent.Id));
                 command.Parameters.Add(new SqlParameter("Aktivan", terapija.Aktivan));
 
                 return (int)command.ExecuteScalar();
@@ -104,12 +106,13 @@ namespace SF11_2019_POP2020.Services
                 conn.Open();
                 SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"update dbo.Terapije SET Opis = @Opis, LekarId = @LekarId, Aktivan = @Aktivan                            
+                command.CommandText = @"update dbo.Terapije SET Opis = @Opis, LekarId = @LekarId, PacijentId = @PacijentId, Aktivan = @Aktivan                            
                                         where Id = @Id";
 
                 command.Parameters.Add(new SqlParameter("Id", terapija.Id));
                 command.Parameters.Add(new SqlParameter("Opis", terapija.Opis));
                 command.Parameters.Add(new SqlParameter("LekarId", terapija.Lekar.Id));
+                command.Parameters.Add(new SqlParameter("Pacijent", terapija.Pacijent.Id));
                 command.Parameters.Add(new SqlParameter("Aktivan", terapija.Aktivan));
 
 

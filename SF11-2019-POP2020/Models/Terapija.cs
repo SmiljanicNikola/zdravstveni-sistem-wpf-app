@@ -35,6 +35,14 @@ namespace SF11_2019_POP2020.Models
             set { _lekar = value; }
         }
 
+        private Pacijent _pacijent;
+
+        public Pacijent Pacijent
+        {
+            get { return _pacijent; }
+            set { _pacijent = value; }
+        }
+
 
         private bool _aktivan;
 
@@ -56,6 +64,7 @@ namespace SF11_2019_POP2020.Models
 
             kopija.Opis = Opis;
             kopija.Lekar = Lekar;
+            kopija.Pacijent = Pacijent;
             kopija.Aktivan = Aktivan;
 
             return kopija;

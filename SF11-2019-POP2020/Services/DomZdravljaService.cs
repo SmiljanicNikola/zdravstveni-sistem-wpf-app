@@ -96,11 +96,11 @@ namespace SF11_2019_POP2020.Services
                 SqlCommand command = conn.CreateCommand();
 
                 command.CommandText = @"update dbo.DomoviZdravlja
-                                        SET NazivInstitucije = @NazivInstitucije, Aktivan = @Aktivan
+                                        SET NazivInstitucije = @NazivInstitucije, AdresaId = @AdresaId, Aktivan = @Aktivan
                                         where Id = @Id";
 
                 command.Parameters.Add(new SqlParameter("NazivInstitucije", domZdravlja.NazivInstitucije));
-                //command.Parameters.Add(new SqlParameter("AdresaId", domZdravlja.adresaId));
+                command.Parameters.Add(new SqlParameter("AdresaId", domZdravlja.Adresa.Id));
                 command.Parameters.Add(new SqlParameter("Aktivan", domZdravlja.Aktivan));
                 command.Parameters.Add(new SqlParameter("Id", domZdravlja.Id));
 

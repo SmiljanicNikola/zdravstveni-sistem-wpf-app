@@ -1,6 +1,7 @@
 ﻿using SF11_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,10 @@ namespace SF11_2019_POP2020.Windows
     {
         private EStatus odabranStatus;
         private Termin odabranTermin;
+        ObservableCollection<Lekar> lekari;
+
+        private Lekar selektovanLekarCmb;
+
         public DodavanjeIzmenaTermina(Termin termin,  EStatus status = EStatus.Dodaj)
         {
             InitializeComponent();
@@ -31,20 +36,31 @@ namespace SF11_2019_POP2020.Windows
             odabranTermin = termin;
             odabranStatus = status;
 
+            this.lekari = Util.Instance.Lekari;
+            cmbLekari.ItemsSource = this.lekari;
+
             ComboBoxStatusTermina.ItemsSource = Enum.GetValues(typeof(EStatusTermina)).Cast<EStatusTermina>();
 
             if (status.Equals(EStatus.Izmeni) && termin != null)
             {
+                cmbLekari.SelectedItem = odabranTermin.Lekar;
                 this.Title = "Izmena termina";
             }
             else
             {
+                cmbLekari.SelectedItem = odabranTermin.Lekar;
                 this.Title = "Dodavanje termina";
             }
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
+            odabranTermin.Lekar = cmbLekari.SelectedItem as Lekar;
+            odabranTermin.Datum = (DateTime)dateDatum.SelectedDate;
+            odabranTermin.StatusTermina = EStatusTermina.SLOBODAN;
+            //odabranTermin.Pacijent = Util.Instance.pacijentPoId(int.Parse(txtPacijentId.Text));
+            odabranTermin.Aktivan = true;
+
             if (odabranStatus.Equals(EStatus.Dodaj))
             {
                 //ComboBoxItem item = (ComboBoxItem)ComboBoxPol.SelectedItem;
@@ -58,7 +74,8 @@ namespace SF11_2019_POP2020.Windows
                 //odabranKorisnik.Aktivan = true;
                 Termin t = new Termin()
                 {
-                    Lekar = Util.Instance.lekarPoId(int.Parse(txtLekarId.Text)),
+                    //Lekar = Util.Instance.lekarPoId(int.Parse(txtLekarId.Text)),
+                    Lekar = cmbLekari.SelectedItem as Lekar,
                     Datum = (DateTime)dateDatum.SelectedDate,
                     StatusTermina = EStatusTermina.SLOBODAN,
                     Pacijent = Util.Instance.pacijentPoId(int.Parse(txtPacijentId.Text)),
@@ -80,6 +97,11 @@ namespace SF11_2019_POP2020.Windows
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
+        }
+
+        private void cmbLekari_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.selektovanLekarCmb = cmbLekari.SelectedItem as Lekar;
         }
     }
 }

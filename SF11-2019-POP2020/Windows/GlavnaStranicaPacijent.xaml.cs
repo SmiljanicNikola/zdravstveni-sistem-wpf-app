@@ -119,5 +119,21 @@ namespace SF11_2019_POP2020.Windows
             SviDoktori sd = new SviDoktori();
             sd.Show();
         }
+
+        private void btnZdravstveniKarton_Click(object sender, RoutedEventArgs e)
+        {
+            jmbg = textBlock1.Text.Trim();
+            SveTerapije st = new SveTerapije();
+            st.Show();
+        }
+
+        
+
+        private void btnTermini_Click(object sender, RoutedEventArgs e)
+        {
+            jmbg = textBlock1.Text.Trim();
+            SviTermini st = new SviTermini();
+            st.Show();
+        }
     }
 }

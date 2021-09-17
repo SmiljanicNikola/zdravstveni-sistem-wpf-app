@@ -9,7 +9,7 @@
     <Grid RenderTransformOrigin="0.518,0.511">
         <Label Content="Ulogovani ste kao : Administrator" HorizontalAlignment="Left" Margin="317,58,0,0" VerticalAlignment="Top"/>
         <Menu HorizontalAlignment="Left" Height="40" Margin="0,13,-0.4,0" VerticalAlignment="Top" Width="794" >
-            <MenuItem Header="Akcije sa korisnicima" Margin="0,0,0,0" Height="40" Width="130">
+            <MenuItem Header="Akcije sa korisnicima" Margin="0,0,0,0" Height="40" Width="130" Click="MenuItem_Click">
                 <MenuItem Name="MenuItemPacijenti" Header="Pacijenti" Click="MenuItemPacijenti_Click"></MenuItem>
                 <MenuItem Name="MenuItemLekari" Header="Lekari" Click="MenuItemLekari_Click"></MenuItem>
                 <MenuItem Name="MenuItemLicniPodaci" Header="Licni Podaci" Click="MenuItemLicniPodaci_Click"></MenuItem>

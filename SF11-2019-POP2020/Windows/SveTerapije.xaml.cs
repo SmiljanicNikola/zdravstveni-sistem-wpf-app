@@ -32,8 +32,30 @@ namespace SF11_2019_POP2020.Windows
         {
             InitializeComponent();
 
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Terapije);
+            string jmbg = GlavnaStranicaPacijent.jmbg;
+            if (jmbg != null)
+            {
+                ObservableCollection<Terapija> terapijePacijenta = Util.Instance.nadjiTerapijePoJmbgPacijenta(jmbg);
+                view = CollectionViewSource.GetDefaultView(terapijePacijenta);
 
+                Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
+
+                if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+                {
+
+                    menuItemAkcije.Visibility = Visibility.Hidden;
+                    
+
+                }
+
+            }
+
+            else
+            {
+
+                view = CollectionViewSource.GetDefaultView(Util.Instance.Terapije);
+
+            }
             /* this.lekari = new ObservableCollection<string>(Util.Instance.Terapije
                   .Select(terapijaa => terapijaa.Opis)
                   .Distinct()

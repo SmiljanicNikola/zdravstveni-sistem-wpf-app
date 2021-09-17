@@ -17,6 +17,8 @@
         </Menu>
         <Button Content="Pocetna" HorizontalAlignment="Left" Margin="680,365,0,0" VerticalAlignment="Top" Width="83" Height="34" Click="Button_Click"/>
         <TextBlock HorizontalAlignment="Left" Margin="22,50,0,0" TextWrapping="Wrap" Name="textBlock1" Text="" VerticalAlignment="Top"/>
+        <Label Content="Po datumu:" HorizontalAlignment="Left" Margin="544,119,0,0" VerticalAlignment="Top"/>
+        <ComboBox HorizontalAlignment="Left" Margin="614,123,0,0" VerticalAlignment="Top" Name="cmbDatum" Width="120" SelectionChanged="cmbDatum_SelectionChanged_1"/>
 
     </Grid>
 </Window>

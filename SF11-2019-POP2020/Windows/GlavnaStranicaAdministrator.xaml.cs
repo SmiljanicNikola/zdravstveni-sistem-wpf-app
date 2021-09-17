@@ -60,37 +60,38 @@ namespace SF11_2019_POP2020.Windows
         {
             HomeWindow window = new HomeWindow();
 
-            this.Hide();
+            //this.Hide();
             window.Show();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+            //this.Close();
         }
 
         private void btnTerapije_Click(object sender, RoutedEventArgs e)
         {
             SveTerapije windowTerapije = new SveTerapije();
 
-            this.Hide();
+            //this.Hide();
             windowTerapije.Show();
         }
 
         private void btnDomoviZdravlja_Click(object sender, RoutedEventArgs e)
         {
-            jmbg = textBlock1.Text.Trim();
+            jmbg = textBlock1.Text;
 
             SviDomoviZdravlja windowDomoviZdravlja = new SviDomoviZdravlja();
-            this.Hide();
+            //this.Hide();
             windowDomoviZdravlja.Show();
         }
 
         private void btnTermini_Click(object sender, RoutedEventArgs e)
         {
+            jmbg = textBlock1.Text;
             SviTermini windowTermini = new SviTermini();
 
-            this.Hide();
+            //this.Hide();
             windowTermini.Show();
         }
 
@@ -98,15 +99,20 @@ namespace SF11_2019_POP2020.Windows
         {
             SveAdrese windowAdrese = new SveAdrese();
 
-            this.Hide();
+            //this.Hide();
             windowAdrese.Show();
         }
 
         private void btnKorisnici_Click(object sender, RoutedEventArgs e)
         {
             SviKorisnici windowKorisnici = new SviKorisnici();
-            this.Hide();
+            //this.Hide();
             windowKorisnici.Show();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

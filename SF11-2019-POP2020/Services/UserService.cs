@@ -148,7 +148,7 @@ namespace SF11_2019_POP2020.Services
                  conn.Open();
                  SqlCommand command = conn.CreateCommand();
 
-                command.CommandText = @"update dbo.Korisnici SET Ime = @Ime, Prezime = @Prezime, Jmbg = @Jmbg, Email = @Email, AdresaId = @AdresaId, Pol = @Pol, Lozinka = @Lozinka, TipKorisnika = @TipKorisnika, Aktivan = @Aktivan
+                command.CommandText = @"update dbo.Korisnici SET Ime = @Ime, Prezime = @Prezime, Jmbg = @Jmbg, Email = @Email, AdresaId = @AdresaId, Lozinka = @Lozinka, Aktivan = @Aktivan
                                         where Jmbg = @Jmbg";
 
                 command.Parameters.Add(new SqlParameter("Ime", korisnik.Ime));
@@ -156,9 +156,9 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Jmbg", korisnik.Jmbg));
                 command.Parameters.Add(new SqlParameter("Email", korisnik.Email));
                 command.Parameters.Add(new SqlParameter("AdresaId", korisnik.AdresaId));
-                command.Parameters.Add(new SqlParameter("Pol", korisnik.Pol));
+                //command.Parameters.Add(new SqlParameter("Pol", korisnik.Pol));
                 command.Parameters.Add(new SqlParameter("Lozinka", korisnik.Lozinka));
-                command.Parameters.Add(new SqlParameter("TipKorisnika", korisnik.TipKorisnika));
+                //command.Parameters.Add(new SqlParameter("TipKorisnika", korisnik.TipKorisnika));
                 command.Parameters.Add(new SqlParameter("Aktivan", korisnik.Aktivan));
            
 

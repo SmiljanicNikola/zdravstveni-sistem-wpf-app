@@ -24,15 +24,28 @@ namespace SF11_2019_POP2020.Windows
     {
         ICollectionView viewTermini;
         //ObservableCollection<Termin> termini;
+        ObservableCollection<string> datumi;
         public TerminiPojedinacnogLekara()
         {
             InitializeComponent();
 
-
             string jmbg = GlavnaStranicaLekar.jmbg;
             Console.WriteLine(jmbg);
-
             ObservableCollection<Termin> privatniTermini = Util.Instance.terminiByLekarJmbg(jmbg);
+
+            this.datumi = new ObservableCollection<string>(privatniTermini
+                .Select(lekar => lekar.Datum.ToString())
+                .Distinct()
+                .Prepend("Izaberite datum")
+                );
+
+            cmbDatum.ItemsSource = this.datumi;
+            cmbDatum.SelectedIndex = 0;
+
+
+            
+
+           
             viewTermini = CollectionViewSource.GetDefaultView(privatniTermini);
 
             UpdateView();
@@ -110,6 +123,30 @@ namespace SF11_2019_POP2020.Windows
         private void MenuItemDodajTermin_Click(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void cmbDatum_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void cmbDatum_SelectionChanged_1(object sender, SelectionChangedEventArgs e)
+        {
+            string datum = cmbDatum.SelectedItem as string;
+            string jmbg = GlavnaStranicaLekar.jmbg;
+
+
+            if (datum.Contains("Izaberite datum"))
+            {
+                viewTermini = CollectionViewSource.GetDefaultView(Util.Instance.terminiByLekarJmbg(jmbg));
+            }
+            else
+            {
+                viewTermini = CollectionViewSource.GetDefaultView(Util.Instance.nadjiTerminePoDatumu(datum));
+            }
+
+            UpdateView();
+            viewTermini.Refresh();
         }
     }
 }

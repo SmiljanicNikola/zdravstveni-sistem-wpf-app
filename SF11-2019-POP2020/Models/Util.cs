@@ -283,6 +283,27 @@ namespace SF11_2019_POP2020.Models
             return domovi;
         }
 
+        public ObservableCollection<Termin> nadjiTerminePoDatumu (string datum)
+        {
+            ObservableCollection<Termin> pronadjeniTermini = new ObservableCollection<Termin>();
+
+            foreach(Termin ter in Termini)
+            {
+                if (ter.Datum.ToString().Contains(datum.ToLower())) pronadjeniTermini.Add(ter);
+            }
+            return pronadjeniTermini;
+        }
+
+
+        public ObservableCollection<Terapija> nadjiTerapijePoJmbgPacijenta(string jmbg)
+        {
+            ObservableCollection<Terapija> pronadjeneTerapije = new ObservableCollection<Terapija>();
+            foreach(Terapija terapija in Terapije)
+            {
+                if (terapija.Pacijent.Korisnik.Jmbg.Equals(jmbg)) pronadjeneTerapije.Add(terapija);
+            }
+            return pronadjeneTerapije;
+        }
         public ObservableCollection<Lekar> nadjiLekarePoInstituciji(string institucija)
         {
             ObservableCollection<Lekar> pronadjeniLekari = new ObservableCollection<Lekar>();
@@ -421,6 +442,18 @@ namespace SF11_2019_POP2020.Models
             foreach(Pacijent pacijent in Pacijenti)
             {
                 if(pacijent.Id == id)
+                {
+                    return pacijent;
+                }
+            }
+            return null;
+        }
+
+        public Pacijent pacijentPoJmbg(string jmbg)
+        {
+            foreach (Pacijent pacijent in Pacijenti)
+            {
+                if (pacijent.Korisnik.Jmbg == jmbg)
                 {
                     return pacijent;
                 }
