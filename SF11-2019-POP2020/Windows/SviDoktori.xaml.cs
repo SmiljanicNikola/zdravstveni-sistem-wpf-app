@@ -25,6 +25,7 @@ namespace SF11_2019_POP2020.Windows
         ICollectionView view;
 
         ObservableCollection<string> naziviInstitucija;
+        public static Lekar izabraniLekar;
         public SviDoktori()
         {
             InitializeComponent();
@@ -126,6 +127,19 @@ namespace SF11_2019_POP2020.Windows
 
             UpdateView2();
             view.Refresh();
+        }
+
+        private void MenuItemTerminiDoktora_Click(object sender, RoutedEventArgs e)
+        {
+            Lekar izabraniDoktor = view.CurrentItem as Lekar;
+            izabraniLekar = izabraniDoktor;
+            SviTermini st = new SviTermini();
+            st.Show();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

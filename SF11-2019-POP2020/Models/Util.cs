@@ -283,6 +283,32 @@ namespace SF11_2019_POP2020.Models
             return domovi;
         }
 
+        /*public ObservableCollection<Termin> terminiIzabranogLekara(int id)
+        {
+            ObservableCollection<Termin> terminiIzabranog = new ObservableCollection<Termin>();
+            foreach(Termin termin in Termini)
+            {
+                if(termin.Lekar.Id == id)
+                {
+                    terminiIzabranog.Add(termin);
+                }
+            }
+            return terminiIzabranog;
+        }*/
+
+        public ObservableCollection<Termin> terminiIzabranogLekara(Lekar lekar)
+        {
+            ObservableCollection<Termin> terminiIzabranog = new ObservableCollection<Termin>();
+            foreach (Termin termin in Termini)
+            {
+                if (termin.Lekar == lekar)
+                {
+                    terminiIzabranog.Add(termin);
+                }
+            }
+            return terminiIzabranog;
+        }
+
         public ObservableCollection<Termin> nadjiTerminePoDatumu (string datum)
         {
             ObservableCollection<Termin> pronadjeniTermini = new ObservableCollection<Termin>();

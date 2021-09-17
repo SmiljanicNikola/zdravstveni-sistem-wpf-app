@@ -23,5 +23,6 @@
         <Button Content="Lekari" HorizontalAlignment="Left" Margin="438,130,0,0" VerticalAlignment="Top" Width="94" Height="35" Name="btnL" Click="Button_Click"/>
         <Button Content="Zdravstveni karton" HorizontalAlignment="Left" Margin="306,189,0,0" VerticalAlignment="Top" Width="108" Height="35" Name="btnZdravstveniKarton" Click="btnZdravstveniKarton_Click"/>
         <Button Content="Termini" HorizontalAlignment="Left" Margin="438,189,0,0" VerticalAlignment="Top" Width="94" Height="35" Name="btnTermini" Click="btnTermini_Click"/>
+        
     </Grid>
 </Window>

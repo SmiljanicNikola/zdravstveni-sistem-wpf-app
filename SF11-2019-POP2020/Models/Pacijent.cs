@@ -34,13 +34,13 @@ namespace SF11_2019_POP2020.Models
             set { _termini = value; }
         }
 
-        /*private ObservableCollection<Terapija> _listaTerapija;
+        private ObservableCollection<Terapija> _listaTerapija;
 
         public ObservableCollection<Terapija> ListaTerapija
         {
             get { return _listaTerapija; }
             set { _listaTerapija = value; }
-        }*/
+        }
 
       
 

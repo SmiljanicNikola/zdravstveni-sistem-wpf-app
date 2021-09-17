@@ -47,8 +47,9 @@ namespace SF11_2019_POP2020.Services
                         Korisnik = Util.Instance.korisnikPoId(reader.GetInt32(1)),
                         //ListaTerapija = new ObservableCollection<Terapija>(),
                         Termini = reader.GetString(2),
-                        Aktivan = reader.GetBoolean(3)
-                    });
+                        Aktivan = reader.GetBoolean(3),
+                        ListaTerapija = new ObservableCollection<Terapija>(),
+                });
                 }
                 reader.Close();
             }

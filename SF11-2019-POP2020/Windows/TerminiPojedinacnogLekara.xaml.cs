@@ -117,7 +117,21 @@ namespace SF11_2019_POP2020.Windows
 
         private void MenuItemObrisiTermin_Click(object sender, RoutedEventArgs e)
         {
+            Termin izabraniTermin = viewTermini.CurrentItem as Termin;
+            if (izabraniTermin.StatusTermina.Equals(EStatusTermina.SLOBODAN))
+            {
 
+                Util.Instance.DeleteTermin(izabraniTermin.Id);
+                Util.Instance.Termini.Remove(izabraniTermin);
+            }
+            else { 
+            }
+            string jmbg = GlavnaStranicaLekar.jmbg;
+            Console.WriteLine(jmbg);
+            ObservableCollection<Termin> privatniTermini = Util.Instance.terminiByLekarJmbg(jmbg);
+            viewTermini = CollectionViewSource.GetDefaultView(privatniTermini);
+            UpdateView();
+            viewTermini.Refresh();
         }
 
         private void MenuItemDodajTermin_Click(object sender, RoutedEventArgs e)

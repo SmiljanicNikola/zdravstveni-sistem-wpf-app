@@ -1,6 +1,7 @@
 ﻿using SF11_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Linq;
 using System.Text;
@@ -27,31 +28,42 @@ namespace SF11_2019_POP2020.Windows
         {
             InitializeComponent();
 
-            string jmbg = GlavnaStranicaPacijent.jmbg;
-            if (jmbg == null)
+            Lekar lekar = SviDoktori.izabraniLekar;
+            if (lekar != null)
             {
-                jmbg = GlavnaStranicaAdministrator.jmbg;
-                
-            }
+                ObservableCollection<Termin> terminiIzabranogLekara = Util.Instance.terminiIzabranogLekara(lekar);
+                view = CollectionViewSource.GetDefaultView(terminiIzabranogLekara);
 
-            Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
-
-            if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
-            {
-                MenuItemDodajTermin.Visibility = Visibility.Hidden;
-                MenuItemIzmeniTermin.Visibility = Visibility.Hidden;
-                MenuItemObrisiTermin.Visibility = Visibility.Hidden;
-                MenuItemZakaziTermin.Visibility = Visibility.Visible;
 
             }
+            else
+            {
 
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Termini);
+                string jmbg = GlavnaStranicaPacijent.jmbg;
+                if (jmbg == null)
+                {
+                    jmbg = GlavnaStranicaAdministrator.jmbg;
+
+                }
+
+                Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
+
+                if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+                {
+                    MenuItemDodajTermin.Visibility = Visibility.Hidden;
+                    MenuItemIzmeniTermin.Visibility = Visibility.Hidden;
+                    MenuItemObrisiTermin.Visibility = Visibility.Hidden;
+                    MenuItemZakaziTermin.Visibility = Visibility.Visible;
+
+                }
+
+                view = CollectionViewSource.GetDefaultView(Util.Instance.Termini);
 
 
+            }
+                UpdateView();
 
-            UpdateView();
-
-
+            
         }
 
         private void UpdateView()
@@ -160,8 +172,9 @@ namespace SF11_2019_POP2020.Windows
             gsa.Show();
         }
 
-       
+        private void DataGridTermini_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-       
+        }
     }
 }
