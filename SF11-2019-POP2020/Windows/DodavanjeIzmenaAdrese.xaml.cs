@@ -22,6 +22,8 @@ namespace SF11_2019_POP2020.Windows
     {
         private EStatus odabranStatus;
         private Adresa odabranaAdresa;
+        public static int id;
+        public static Adresa adresa;
 
         public DodavanjeIzmenaAdrese(Adresa adresa, EStatus status = EStatus.Dodaj)
         {
@@ -61,38 +63,48 @@ namespace SF11_2019_POP2020.Windows
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            if (odabranStatus.Equals(EStatus.Dodaj))
+            if (IsValid())
             {
-                Adresa adresa = new Adresa()
+                if (odabranStatus.Equals(EStatus.Dodaj))
                 {
-                    Ulica = txtUlica.Text,
-                    Broj = txtBroj.Text,
-                    Grad = txtGrad.Text,
-                    Drzava = txtDrzava.Text,
-                    Aktivan = true
+                    adresa = new Adresa()
+                    {
+                        Ulica = txtUlica.Text,
+                        Broj = txtBroj.Text,
+                        Grad = txtGrad.Text,
+                        Drzava = txtDrzava.Text,
+                        Aktivan = true
 
-                };
-                Util.Instance.Adrese.Add(adresa);          
-                Util.Instance.SacuvajEntitet(adresa);
+                    };
+                    
+                    id = Util.Instance.SacuvajEntitet(adresa);
+                    adresa.Id = id;
+                    Util.Instance.Adrese.Add(adresa);
 
+                }
+                else if (odabranStatus.Equals(EStatus.Izmeni))
+                {
+                    /*Adresa adresa = new Adresa()
+                    {
+                        Ulica = txtUlica.Text,
+                        Broj = txtBroj.Text,
+                        Grad = txtGrad.Text,
+                        Drzava = txtDrzava.Text,
+                        Aktivan = true
+
+                    };*/
+                    Util.Instance.UpdateEntiteta(odabranaAdresa);
+                }
+
+                this.Close();
+                //this.DialogResult = true;
             }
-            else if(odabranStatus.Equals(EStatus.Izmeni))
-             {
-                /*Adresa adresa = new Adresa()
-                {
-                    Ulica = txtUlica.Text,
-                    Broj = txtBroj.Text,
-                    Grad = txtGrad.Text,
-                    Drzava = txtDrzava.Text,
-                    Aktivan = true
+        }
 
-                };*/
-                Util.Instance.UpdateEntiteta(odabranaAdresa);
-             }
 
-            this.Close();
-            //this.DialogResult = true;
-
+        private bool IsValid()
+        {
+            return !Validation.GetHasError(txtBroj) && !Validation.GetHasError(txtGrad) && !Validation.GetHasError(txtUlica) && !Validation.GetHasError(txtDrzava);
         }
     }
 }

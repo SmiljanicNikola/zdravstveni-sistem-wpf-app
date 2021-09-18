@@ -79,7 +79,7 @@ namespace SF11_2019_POP2020.Services
 
                 SqlCommand command = conn.CreateCommand();
                 command.CommandText = @"insert into dbo.Adrese(ulica,broj,grad,drzava,aktivan)
-                       output inserted.id VALUES(@ulica, @broj, @grad, @drzava, @aktivan)";
+                       output inserted.id VALUES(@Ulica, @Broj, @Grad, @Drzava, @Aktivan)";
 
                 command.Parameters.Add(new SqlParameter("Ulica", adresa.Ulica));
                 command.Parameters.Add(new SqlParameter("Broj", adresa.Broj));

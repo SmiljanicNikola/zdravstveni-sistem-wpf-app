@@ -99,9 +99,9 @@ namespace SF11_2019_POP2020.Windows
         private void MenuItemDodajKorisnika_Click(object sender, RoutedEventArgs e)
         {
             Korisnik noviKorisnik = new Korisnik();
-            DodavanjeIzmenaKorisnika addKorisnik = new DodavanjeIzmenaKorisnika(noviKorisnik);
+            DodavanjeIzmenaKorisnika addKorisnik = new DodavanjeIzmenaKorisnika(noviKorisnik, EStatus.Dodaj);
             addKorisnik.Show();
-
+            //addKorisnik.ShowDialog();
             view.Refresh();
         }
 

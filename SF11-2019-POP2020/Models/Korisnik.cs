@@ -59,12 +59,12 @@ namespace SF11_2019_POP2020.Models
             set { _jmbg = value; }
         }
 
-        private int _adresaId;
+        private Adresa _adresa;
 
-        public int AdresaId
+        public Adresa Adresa
         {
-            get { return _adresaId; }
-            set { _adresaId = value; }
+            get { return _adresa; }
+            set { _adresa = value; }
         }
 
         private EPol _pol;
@@ -145,7 +145,7 @@ namespace SF11_2019_POP2020.Models
             kopija.Prezime = Prezime;
             kopija.Jmbg = Jmbg;
             kopija.Email = Email;
-            kopija.AdresaId = AdresaId;
+            kopija.Adresa = Adresa;
             kopija.Pol = Pol;
             kopija.Lozinka = Lozinka;
             kopija.TipKorisnika = TipKorisnika;

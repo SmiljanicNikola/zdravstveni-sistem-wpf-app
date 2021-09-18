@@ -72,7 +72,7 @@ namespace SF11_2019_POP2020.Services
                         Prezime = reader.GetString(2),
                         Jmbg = reader.GetString(3),
                         Email = reader.GetString(4),
-                        AdresaId = reader.GetInt32(5),
+                        Adresa = Util.Instance.adresaPoId(reader.GetInt32(5)),
                         Pol = EPol.M,
                         Lozinka = reader.GetString(7),
                         TipKorisnika = ETipKorisnika.ADMINISTRATOR,

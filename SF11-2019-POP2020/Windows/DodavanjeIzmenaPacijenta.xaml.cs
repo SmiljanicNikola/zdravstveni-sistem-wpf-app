@@ -22,6 +22,7 @@ namespace SF11_2019_POP2020.Windows
     {
         private EStatus odabranStatus;
         private Korisnik odabranKorisnik;
+        private Adresa novaAdresa;
         public DodavanjeIzmenaPacijenta(Korisnik korisnik, EStatus status = EStatus.Dodaj)
         {
             InitializeComponent();
@@ -33,6 +34,11 @@ namespace SF11_2019_POP2020.Windows
             ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
 
             ComboBoxPol.ItemsSource = Enum.GetValues(typeof(EPol)).Cast<EPol>();
+
+            if (odabranStatus.Equals(EStatus.Dodaj))
+            {
+                novaAdresa = new Adresa();
+            }
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -43,28 +49,31 @@ namespace SF11_2019_POP2020.Windows
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
+            if (IsValid()) { 
             if (odabranStatus.Equals(EStatus.Dodaj))
             {
-                //ComboBoxItem item = (ComboBoxItem)ComboBoxPol.SelectedItem;
-                //string value = item.Content.ToString();
-                //.TryParse(value, out ETipKorisnika tip);
-                //ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
+                    //novaAdresa = new Adresa();
+                    //ComboBoxItem item = (ComboBoxItem)ComboBoxPol.SelectedItem;
+                    //string value = item.Content.ToString();
+                    //.TryParse(value, out ETipKorisnika tip);
+                    //ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
 
-                // ComboBoxItem item1 = (ComboBoxItem)ComboBoxPol.SelectedItem;
-                // string value1 = item1.Content.ToString();
-                // Enum.TryParse(value1, out EPol pol);
-                //odabranKorisnik.Aktivan = true;
-                Korisnik k = new Korisnik
-                {
-                    Ime = txtIme.Text,
-                    Prezime = txtPrezime.Text,
-                    Jmbg = txtJMBG.Text,
-                    Email = txtEmail.Text,
-                    AdresaId = int.Parse(txtAdresaId.Text),
-                    Pol = EPol.M,
-                    Lozinka = txtLozinka.Text,
-                    TipKorisnika = ETipKorisnika.PACIJENT,
-                    Aktivan = true
+                    // ComboBoxItem item1 = (ComboBoxItem)ComboBoxPol.SelectedItem;
+                    // string value1 = item1.Content.ToString();
+                    // Enum.TryParse(value1, out EPol pol);
+                    //odabranKorisnik.Aktivan = true;
+                    Korisnik k = new Korisnik
+                    {
+                        Ime = txtIme.Text,
+                        Prezime = txtPrezime.Text,
+                        Jmbg = txtJMBG.Text,
+                        Email = txtEmail.Text,
+                        //Adresa = Util.Instance.adresaPoId(novaAdresa.Id),
+                        Adresa = novaAdresa,
+                        Pol = EPol.M,
+                        Lozinka = txtLozinka.Text,
+                        TipKorisnika = ETipKorisnika.PACIJENT,
+                        Aktivan = true
 
                 };
                 Util.Instance.Korisnici.Add(k);
@@ -73,6 +82,19 @@ namespace SF11_2019_POP2020.Windows
 
             }
             this.Close();
+        }
+        }
+
+        private bool IsValid()
+        {
+            return !Validation.GetHasError(txtEmail) && !Validation.GetHasError(txtJMBG) && !Validation.GetHasError(txtIme) && !Validation.GetHasError(txtPrezime) && !Validation.GetHasError(txtLozinka);
+        }
+
+        private void btnAdresa_Click(object sender, RoutedEventArgs e)
+        {
+            //Adresa novaAdresa = new Adresa();
+            DodavanjeIzmenaAdrese addAdresa = new DodavanjeIzmenaAdrese(novaAdresa);
+            addAdresa.Show();
         }
     }
 }

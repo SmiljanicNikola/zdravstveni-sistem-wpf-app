@@ -46,10 +46,16 @@ namespace SF11_2019_POP2020.Windows
                 gsl.Show();
 
             }
+            else if (txtJmbg.Text.Equals(""))
+            {
+                MessageBox.Show("Unesite JMBG u polje namenjeno za to!");
+
+            }
             else
             {
                 MessageBox.Show("Netacni podaci za prijavu! Proveri ih ponovo!");
             }
+
         }
 
 

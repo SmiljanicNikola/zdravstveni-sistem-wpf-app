@@ -8,8 +8,8 @@ namespace SF11_2019_POP2020.Models
 {
     public enum ETipKorisnika
     {
+        PACIJENT,
         ADMINISTRATOR, 
-        LEKAR, 
-        PACIJENT
+        LEKAR
     }
 }

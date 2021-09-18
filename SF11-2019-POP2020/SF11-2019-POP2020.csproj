@@ -100,7 +100,12 @@
     <Compile Include="Services\TerapijaService.cs" />
     <Compile Include="Services\TerminService.cs" />
     <Compile Include="Services\UserService.cs" />
+    <Compile Include="Validations\AdresaValidacija.cs" />
     <Compile Include="Validations\EmailValidacija.cs" />
+    <Compile Include="Validations\ImePrezimeValidacija.cs" />
+    <Compile Include="Validations\JmbgValidacija.cs" />
+    <Compile Include="Validations\LozinkaValidacija.cs" />
+    <Compile Include="Validations\PraznoPoljeValidacija.cs" />
     <Compile Include="Windows\DodavanjaIzmenaDoktora.xaml.cs">
       <DependentUpon>DodavanjaIzmenaDoktora.xaml</DependentUpon>
     </Compile>

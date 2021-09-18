@@ -1,6 +1,7 @@
 ﻿using SF11_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,7 @@ namespace SF11_2019_POP2020.Windows
     {
         private EStatus odabranStatus;
         private Korisnik odabranKorisnik;
+        private Adresa novaAdresa;
         public DodavanjeIzmenaKorisnika(Korisnik korisnik, EStatus status = EStatus.Dodaj)
         {
             InitializeComponent();
@@ -30,8 +32,22 @@ namespace SF11_2019_POP2020.Windows
 
             odabranKorisnik = korisnik;
             odabranStatus = status;
-            ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
 
+            if (odabranStatus.Equals(EStatus.Dodaj))
+            {
+                ComboBoxTipKorisnika.IsEnabled = true;
+                ComboBoxPol.IsEnabled = true;
+                novaAdresa = new Adresa();
+
+            }
+            else
+            {
+                novaAdresa = korisnik.Adresa;
+                ComboBoxTipKorisnika.IsEnabled = false;
+                ComboBoxPol.IsEnabled = false;
+            }
+
+            ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
             ComboBoxPol.ItemsSource = Enum.GetValues(typeof(EPol)).Cast<EPol>();
 
         }
@@ -41,40 +57,63 @@ namespace SF11_2019_POP2020.Windows
             this.DialogResult = true;
             this.Close();
         }
+        public Adresa adresaPoId(int id)
+        {
+            ObservableCollection<Adresa> adrese = Util.Instance.Adrese;
+            foreach (Adresa adr in adrese)
+            {
+                if (adr.Id == id)
+                {
+                    return adr;
+                }
+            }
+            return null;
+        }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            if (odabranStatus.Equals(EStatus.Dodaj))
+            if (IsValid()) 
             {
-                //ComboBoxItem item = (ComboBoxItem)ComboBoxPol.SelectedItem;
-                //string value = item.Content.ToString();
-                //.TryParse(value, out ETipKorisnika tip);
-                //ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
+                /*odabranKorisnik.Aktivan = true;
+                odabranKorisnik.Email = txtEmail.Text;
+                odabranKorisnik.Ime = txtIme.Text;
+                odabranKorisnik.Prezime = txtPrezime.Text;
+                odabranKorisnik.Jmbg = txtJMBG.Text;
+                Console.WriteLine($"Id: {novaAdresa.Id}");
+                odabranKorisnik.Adresa = Util.Instance.adresaPoId(novaAdresa.Id);
+                odabranKorisnik.Pol = (EPol)Enum.Parse(typeof(EPol), ComboBoxPol.SelectedItem.ToString());
+                odabranKorisnik.TipKorisnika = (ETipKorisnika)Enum.Parse(typeof(ETipKorisnika), ComboBoxTipKorisnika.SelectedItem.ToString());*/
 
-               // ComboBoxItem item1 = (ComboBoxItem)ComboBoxPol.SelectedItem;
-               // string value1 = item1.Content.ToString();
-               // Enum.TryParse(value1, out EPol pol);
-                //odabranKorisnik.Aktivan = true;
-                Korisnik k = new Korisnik
-                {
-                    Ime = txtIme.Text,
-                    Prezime = txtPrezime.Text,
-                    Jmbg = txtJMBG.Text,
-                    Email = txtEmail.Text,
-                    AdresaId = int.Parse(txtAdresaId.Text),
-                    Pol = (EPol)Enum.Parse(typeof(EPol), ComboBoxPol.SelectedItem.ToString()),
-                    Lozinka = txtLozinka.Text,
-                    TipKorisnika = (ETipKorisnika)Enum.Parse(typeof(ETipKorisnika), ComboBoxTipKorisnika.SelectedItem.ToString()),
-                    Aktivan = true
+                if (odabranStatus.Equals(EStatus.Dodaj))
+            {
+
+
+                    Korisnik k = new Korisnik
+                    {
+
+                        Ime = txtIme.Text,
+                        Prezime = txtPrezime.Text,
+                        Jmbg = txtJMBG.Text,
+                        Email = txtEmail.Text,
+                        Adresa = DodavanjeIzmenaAdrese.adresa,
+                        Pol = (EPol)Enum.Parse(typeof(EPol), ComboBoxPol.SelectedItem.ToString()),
+                        Lozinka = txtLozinka.Text,
+                        TipKorisnika = (ETipKorisnika)Enum.Parse(typeof(ETipKorisnika), ComboBoxTipKorisnika.SelectedItem.ToString()),
+                        Aktivan = true
 
                 };
-                Util.Instance.Korisnici.Add(k);
-                //Util.Instance.Lekari.Add(lekar);
-                Util.Instance.SacuvajEntitet(k);
 
-            }
-                 else if (odabranStatus.Equals(EStatus.Izmeni))
+                    //Util.Instance.Lekari.Add(lekar);
+                    //int id = Util.Instance.SacuvajEntitet(k);
+                    Util.Instance.SacuvajEntitet(k);
+                    //k.Id = id;
+                    Util.Instance.Korisnici.Add(k);
+
+                }
+            else if (odabranStatus.Equals(EStatus.Izmeni))
                 {
+                    
+
                     /*Adresa adresa = new Adresa()
                     {
                         Ulica = txtUlica.Text,
@@ -86,16 +125,30 @@ namespace SF11_2019_POP2020.Windows
                     };*/
                     Util.Instance.UpdateEntiteta(odabranKorisnik);
                 }
-            this.Close();
+                //this.DialogResult = true;
+                this.Close();
             }
+        }
+
+        /* Util.Instance.SacuvajEntitet(obj);*/
+        //Util.Instance.SacuvajEntite("lekari.txt");
 
 
-                    /* Util.Instance.SacuvajEntitet(obj);*/
-            //Util.Instance.SacuvajEntite("lekari.txt");
+        //this.DialogResult = false;
 
+        private bool IsValid()
+        {
+            return !Validation.GetHasError(txtEmail) && !Validation.GetHasError(txtJMBG) && !Validation.GetHasError(txtIme) && !Validation.GetHasError(txtPrezime) && !Validation.GetHasError(txtLozinka);
+        }
 
-            //this.DialogResult = false;
-           
-       
+        private void btnAdresa_Click(object sender, RoutedEventArgs e)
+        {
+            DodavanjeIzmenaAdrese addAdresa = new DodavanjeIzmenaAdrese(novaAdresa,odabranStatus);
+            //addAdresa.Show();
+            if ((bool)addAdresa.ShowDialog())
+            {
+
+            }
+        }
     }
 }

@@ -50,6 +50,7 @@ namespace SF11_2019_POP2020.Windows
 
             //}
             this.Show();
+            UpdateView();
             view.Refresh();
         }
 

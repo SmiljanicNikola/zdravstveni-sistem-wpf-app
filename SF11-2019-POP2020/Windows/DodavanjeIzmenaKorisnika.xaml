@@ -4,8 +4,9 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
+        xmlns:validations="clr-namespace:SF11_2019_POP2020.Validations"
         mc:Ignorable="d"
-        Title="DodavanjeIzmenaKorisnika" Height="450" Width="800">
+        Title="DodavanjeIzmenaKorisnika" Height="600" Width="800">
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition/>
@@ -21,40 +22,129 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
 
         </Grid.RowDefinitions>
         <Label Grid.Column="0" Grid.Row="0" Name="lblIme" Content="Ime:"/>
-        <TextBox Grid.Column="1" Grid.Row="0" Name="txtIme" Text="{Binding Path=Ime, ValidatesOnDataErrors=True}"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Name="txtIme">
+            <TextBox.Text>
+                <Binding Path="Ime">
+                    <Binding.ValidationRules>
+                        <validations:ImePrezimeValidacija/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder/>
+                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
 
-        <Label Grid.Column="0" Grid.Row="1" Name="lblPrezime" Content="Prezime:"/>
-        <TextBox Grid.Column="1" Grid.Row="1" Name="txtPrezime" Text="{Binding Path=Prezime}"/>
+        <Label Grid.Column="0" Grid.Row="2" Name="lblPrezime" Content="Prezime:"/>
+        <TextBox Grid.Column="1" Grid.Row="2" Name="txtPrezime">
+            <TextBox.Text>
+                <Binding Path="Prezime">
+                    <Binding.ValidationRules>
+                        <validations:ImePrezimeValidacija/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder/>
+                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
 
-        <Label Grid.Column="0" Grid.Row="2" Name="lblJMBG" Content="Jmbg:"/>
-        <TextBox Grid.Column="1" Grid.Row="2" Name="txtJMBG" Text="{Binding Path=Jmbg}"/>
 
-        <Label Grid.Column="0" Grid.Row="4" Name="lblAdresaId" Content="AdresaId:"/>
-        <TextBox Grid.Column="1" Grid.Row="4" Name="txtAdresaId" Text="{Binding Path=AdresaId}"/>
+        <Label Grid.Column="0" Grid.Row="4" Name="lblJMBG" Content="Jmbg:"/>
+        <TextBox Grid.Column="1" Grid.Row="4" Name="txtJMBG">
+            <TextBox.Text>
+                <Binding Path="Jmbg">
+                    <Binding.ValidationRules>
+                        <validations:JmbgValidacija/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder/>
+                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
+
+        <Label Grid.Column="0" Grid.Row="6" Name="lblAdresaId" Content="AdresaId:"/>
+        <Button Grid.Column="1" Grid.Row="6" Name="btnAdresa" Content="Adresa" Click="btnAdresa_Click"/>
 
 
-        <Label Grid.Column="0" Grid.Row="3" Name="lblEmail" Content="Email:"/>
-        <TextBox Grid.Column="1" Grid.Row="3" Name="txtEmail" Text="{Binding Path=Email}" />
+        <Label Grid.Column="0" Grid.Row="8" Name="lblEmail" Content="Email:"/>
+        <TextBox Grid.Column="1" Grid.Row="8" Name="txtEmail">
+            <TextBox.Text>
+                <Binding Path="Email">
+                    <Binding.ValidationRules>
+                        <validations:EmailValidacija/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder/>
+                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
 
-        <Label Grid.Column="0" Grid.Row="7" Name="lblTipKorisnika" Content="Tip korisnika:"/>
-        <ComboBox Name="ComboBoxTipKorisnika" Grid.Column="1" Grid.Row="7" SelectedItem="{Binding Path=TipKorisnika}" IsEnabled="False">
+        <Label Grid.Column="0" Grid.Row="10" Name="lblTipKorisnika" Content="Tip korisnika:"/>
+        <ComboBox Name="ComboBoxTipKorisnika" Grid.Column="1" Grid.Row="10" SelectedItem="{Binding Path=TipKorisnika}">
  
         </ComboBox>
 
 
-        <Label Grid.Column="0" Grid.Row="5" Name="lblPol" Content="Pol:"/>
+        <Label Grid.Column="0" Grid.Row="12" Name="lblPol" Content="Pol:"/>
 
-        <ComboBox Name="ComboBoxPol" Grid.Column="1" Grid.Row="5" SelectedItem="{Binding Path=Pol}" IsEnabled="False">
+        <ComboBox Name="ComboBoxPol" Grid.Column="1" Grid.Row="12" SelectedItem="{Binding Path=Pol}">
         </ComboBox>
 
-        <Label Grid.Column="0" Grid.Row="6" Name="lblLozinka" Content="Lozinka:"/>
-        <TextBox Grid.Column="1" Grid.Row="6" Name="txtLozinka" Text="{Binding Path=Lozinka}"/>
+        <Label Grid.Column="0" Grid.Row="14" Name="lblLozinka" Content="Lozinka:"/>
+        <TextBox Grid.Column="1" Grid.Row="14" Name="txtLozinka">
+            <TextBox.Text>
+                <Binding Path="Lozinka">
+                    <Binding.ValidationRules>
+                        <validations:LozinkaValidacija/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+            <Validation.ErrorTemplate>
+                <ControlTemplate>
+                    <StackPanel>
+                        <AdornedElementPlaceholder/>
+                        <TextBlock Text="{Binding [0].ErrorContent}" Foreground="Red"/>
+                    </StackPanel>
+                </ControlTemplate>
+            </Validation.ErrorTemplate>
+        </TextBox>
 
-        <Button Grid.Column="0" Grid.Row="8" Content="Cancel" Name="btnCancel" Click="btnCancel_Click"></Button>
-        <Button Grid.Column="1" Grid.Row="8" Content="Ok" Name="btnOk" Click="btnOk_Click"></Button>
+        <Button Grid.Column="0" Grid.Row="16" Content="Cancel" Name="btnCancel" Click="btnCancel_Click"></Button>
+        <Button Grid.Column="1" Grid.Row="16" Content="Ok" Name="btnOk" Click="btnOk_Click"></Button>
         
     </Grid>
 </Window>

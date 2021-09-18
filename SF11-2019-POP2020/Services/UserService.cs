@@ -14,6 +14,8 @@ namespace SF11_2019_POP2020.Services
 {
     public class UserService : IUserService
     {
+        ObservableCollection<Adresa> adrese = new ObservableCollection<Adresa>();
+
         public void deleteUser(string jmbg)
         {
             Korisnik k = Util.Instance.Korisnici.ToList().Find(korisnik => korisnik.Jmbg.Equals(jmbg));
@@ -40,6 +42,38 @@ namespace SF11_2019_POP2020.Services
 
             }
         }
+        public void readAdrese()
+        {
+
+            //Util.Instance.Adrese = new ObservableCollection<Adresa>();
+
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"Select * from adrese where Aktivan=1";
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    adrese.Add(new Adresa
+                    {
+                        Id = reader.GetInt32(0),
+                        Ulica = reader.GetString(1),
+                        Broj = reader.GetString(2),
+                        Grad = reader.GetString(3),
+                        Drzava = reader.GetString(4),
+                        Aktivan = reader.GetBoolean(5)
+                    });
+                }
+                reader.Close();
+
+            }
+        }
+
 
         
 
@@ -72,9 +106,13 @@ namespace SF11_2019_POP2020.Services
             }
         }
 
+
+        
         public void readUsers()
         {
             Util.Instance.Korisnici = new ObservableCollection<Korisnik>();
+            readAdrese();
+            Util.Instance.Adrese = adrese;
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
@@ -95,7 +133,7 @@ namespace SF11_2019_POP2020.Services
                         Prezime = reader.GetString(2),
                         Jmbg = reader.GetString(3),
                         Email = reader.GetString(4),
-                        AdresaId = reader.GetInt32(5),
+                        Adresa = Util.Instance.adresaPoId(reader.GetInt32(5)),
                         Pol = (EPol)Enum.Parse(typeof(EPol), reader.GetString(6)),
                         Lozinka = reader.GetString(7),
                         TipKorisnika = (ETipKorisnika)Enum.Parse(typeof(ETipKorisnika), reader.GetString(8)),
@@ -113,6 +151,8 @@ namespace SF11_2019_POP2020.Services
         public int saveUser(Object obj)
         {
             Korisnik korisnik = obj as Korisnik;
+            /*readAdrese();
+            Util.Instance.Adrese = adrese;*/
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
@@ -126,7 +166,7 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Prezime", korisnik.Prezime));
                 command.Parameters.Add(new SqlParameter("Jmbg", korisnik.Jmbg));
                 command.Parameters.Add(new SqlParameter("Email", korisnik.Email));
-                command.Parameters.Add(new SqlParameter("AdresaId", korisnik.AdresaId));
+                command.Parameters.Add(new SqlParameter("AdresaId", korisnik.Adresa.Id));
                 command.Parameters.Add(new SqlParameter("Pol", korisnik.Pol.ToString()));
                 command.Parameters.Add(new SqlParameter("Lozinka", korisnik.Lozinka));
                 command.Parameters.Add(new SqlParameter("TipKorisnika", korisnik.TipKorisnika.ToString()));
@@ -140,6 +180,7 @@ namespace SF11_2019_POP2020.Services
             // return -1;
         }
 
+        
         public void updateUser(object obj)
         {
             Korisnik korisnik = obj as Korisnik;
@@ -155,7 +196,7 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Prezime", korisnik.Prezime));
                 command.Parameters.Add(new SqlParameter("Jmbg", korisnik.Jmbg));
                 command.Parameters.Add(new SqlParameter("Email", korisnik.Email));
-                command.Parameters.Add(new SqlParameter("AdresaId", korisnik.AdresaId));
+                command.Parameters.Add(new SqlParameter("AdresaId", korisnik.Adresa.Id));
                 //command.Parameters.Add(new SqlParameter("Pol", korisnik.Pol));
                 command.Parameters.Add(new SqlParameter("Lozinka", korisnik.Lozinka));
                 //command.Parameters.Add(new SqlParameter("TipKorisnika", korisnik.TipKorisnika));

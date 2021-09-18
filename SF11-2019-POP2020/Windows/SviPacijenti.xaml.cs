@@ -78,7 +78,7 @@ namespace SF11_2019_POP2020.Windows
                 Util.Instance.Korisnici[index].Ime = izabraniPacijent.Ime;
                 Util.Instance.Korisnici[index].Prezime = izabraniPacijent.Prezime;
                 Util.Instance.Korisnici[index].Email = izabraniPacijent.Email;
-                Util.Instance.Korisnici[index].AdresaId = izabraniPacijent.AdresaId;
+                Util.Instance.Korisnici[index].Adresa = izabraniPacijent.Adresa;
                 Util.Instance.Korisnici[index].Pol = izabraniPacijent.Pol;
                 Util.Instance.Korisnici[index].Lozinka = izabraniPacijent.Lozinka;
                 Util.Instance.Korisnici[index].TipKorisnika = izabraniPacijent.TipKorisnika;
