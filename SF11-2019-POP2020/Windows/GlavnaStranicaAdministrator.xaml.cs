@@ -114,5 +114,12 @@ namespace SF11_2019_POP2020.Windows
         {
 
         }
+
+        private void btnDoktori_Click(object sender, RoutedEventArgs e)
+        {
+            jmbg = textBlock1.Text;
+            SviDoktori sd = new SviDoktori();
+            sd.Show();
+        }
     }
 }

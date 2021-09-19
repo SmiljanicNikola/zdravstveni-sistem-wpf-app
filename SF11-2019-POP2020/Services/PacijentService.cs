@@ -57,7 +57,24 @@ namespace SF11_2019_POP2020.Services
 
         public int savePacijenta(object obj)
         {
-            throw new NotImplementedException();
+            Pacijent pacijent = obj as Pacijent;
+
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+                command.CommandText = @"insert into dbo.Pacijenti(IdKorisnika, Termini, Aktivan)
+                       output inserted.id VALUES(@IdKorisnika,@Termini, @Aktivan)";
+
+                command.Parameters.Add(new SqlParameter("IdKorisnika", pacijent.Korisnik.Id));
+                command.Parameters.Add(new SqlParameter("Termini", "|"));
+                command.Parameters.Add(new SqlParameter("Aktivan", pacijent.Aktivan));
+
+                return (int)command.ExecuteScalar();
+
+
+            }
         }
 
         public void updatePacijenta(object obj)

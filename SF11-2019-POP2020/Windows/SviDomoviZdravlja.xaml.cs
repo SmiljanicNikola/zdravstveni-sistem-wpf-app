@@ -44,9 +44,20 @@ namespace SF11_2019_POP2020.Windows
             }
             Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
 
-            if (kor.TipKorisnika.Equals(ETipKorisnika.LEKAR) || kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+            if (kor == null)
+            {
+                menuAkcije.Visibility = Visibility.Hidden;
+                btnPocetnaLekar.Visibility = Visibility.Hidden;
+                btnPocetnaAdmin.Visibility = Visibility.Hidden;
+                btnPocetnaPacijent.Visibility = Visibility.Hidden;
+
+            }
+            else
+            { //ODAVDE
+
+                if (kor.TipKorisnika.Equals(ETipKorisnika.LEKAR) || kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
                 {
-                    
+
                     txtPretragaPoNazivuInstitucije.Visibility = Visibility.Hidden;
                     txtPretragaPoUlici.Visibility = Visibility.Hidden;
                     menuAkcije.Visibility = Visibility.Hidden;
@@ -54,21 +65,26 @@ namespace SF11_2019_POP2020.Windows
                     lblNazivInstituta.Visibility = Visibility.Hidden;
 
                 }
-            if (kor.TipKorisnika.Equals(ETipKorisnika.LEKAR))
-            {
-                btnPocetnaAdmin.Visibility = Visibility.Hidden;
-                btnPocetnaPacijent.Visibility = Visibility.Hidden;
-            }
-            if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
-            {
-                btnPocetnaAdmin.Visibility = Visibility.Hidden;
-                btnPocetnaLekar.Visibility = Visibility.Hidden;
-            }
-            if (kor.TipKorisnika.Equals(ETipKorisnika.ADMINISTRATOR))
-            {
-                btnPocetnaLekar.Visibility = Visibility.Hidden;
-                btnPocetnaPacijent.Visibility = Visibility.Hidden;
-            }
+                if (kor.TipKorisnika.Equals(ETipKorisnika.LEKAR))
+                {
+                    btnPocetnaNeulogovan.Visibility = Visibility.Hidden;
+                    btnPocetnaAdmin.Visibility = Visibility.Hidden;
+                    btnPocetnaPacijent.Visibility = Visibility.Hidden;
+                }
+                if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+                {
+                    btnPocetnaAdmin.Visibility = Visibility.Hidden;
+                    btnPocetnaLekar.Visibility = Visibility.Hidden;
+                    btnPocetnaNeulogovan.Visibility = Visibility.Hidden;
+                }
+                if (kor.TipKorisnika.Equals(ETipKorisnika.ADMINISTRATOR))
+                {
+                    btnPocetnaLekar.Visibility = Visibility.Hidden;
+                    btnPocetnaPacijent.Visibility = Visibility.Hidden;
+                    btnPocetnaNeulogovan.Visibility = Visibility.Hidden;
+                }
+
+            }//DOVDE
 
             view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
 
@@ -244,6 +260,18 @@ namespace SF11_2019_POP2020.Windows
             GlavnaStranicaPacijent gsp = new GlavnaStranicaPacijent();
             this.Hide();
             gsp.Show();
+        }
+
+        private void btnPocetnaNeulogovan_Click(object sender, RoutedEventArgs e)
+        {
+            HomeWindow glavna = new HomeWindow();
+            this.Hide();
+            glavna.Show();
+        }
+
+        private void btnPocetnaNeulogovan_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

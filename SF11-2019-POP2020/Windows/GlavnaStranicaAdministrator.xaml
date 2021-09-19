@@ -26,7 +26,8 @@
         <Button Content="Adrese" HorizontalAlignment="Left" Name="btnAdrese" Click="btnAdrese_Click" Margin="261,284,0,0" VerticalAlignment="Top" Width="93" Height="31"/>
         <GroupBox Header="Entiteti" HorizontalAlignment="Left" Height="248" Margin="113,105,0,0" VerticalAlignment="Top" Width="302"/>
         <Button Content="Exit" HorizontalAlignment="Left" Margin="673,362,0,0" VerticalAlignment="Top" Width="84" Height="36" Click="Button_Click"/>
-        <Button Content="Korisnici" HorizontalAlignment="Left" x:Name="btnKorisnici" Click="btnKorisnici_Click" Margin="206,169,0,0" VerticalAlignment="Top" Width="93" Height="31"/>
+        <Button Content="Korisnici" HorizontalAlignment="Left" x:Name="btnKorisnici" Click="btnKorisnici_Click" Margin="146,166,0,0" VerticalAlignment="Top" Width="93" Height="31"/>
         <TextBlock HorizontalAlignment="Left" Margin="504,63,0,0" TextWrapping="Wrap" Name="textBlock1"  VerticalAlignment="Top"><Run Text=""/></TextBlock>
+        <Button Content="Doktori" HorizontalAlignment="Left" Margin="261,166,0,0" VerticalAlignment="Top" Width="93" Height="31" Name="btnDoktori" Click="btnDoktori_Click"/>
     </Grid>
 </Window>

@@ -166,7 +166,15 @@ namespace SF11_2019_POP2020.Services
                        output inserted.id VALUES(@IdKorisnika, @DomZdravljaId, @Termini, @Aktivan)";
 
                     command.Parameters.Add(new SqlParameter("IdKorisnika", lekar.Korisnik.Id));
+
+                if (lekar.DomZdravlja != null)
+                {
                     command.Parameters.Add(new SqlParameter("DomZdravljaId", lekar.DomZdravlja.Id));
+                }
+                else
+                {
+                    command.Parameters.Add(new SqlParameter("DomZdravljaId", null));
+                }
                     command.Parameters.Add(new SqlParameter("Termini", "|"));
                     command.Parameters.Add(new SqlParameter("Aktivan", lekar.Aktivan));
 

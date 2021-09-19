@@ -184,13 +184,13 @@ namespace SF11_2019_POP2020.Services
                 conn.Open();
 
                 SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"insert into dbo.Termini(LekarId, Datum, StatusTermina, PacijentId, Aktivan)
-                       output inserted.id VALUES(@LekarId, @Datum, @StatusTermina, @PacijentId, @Aktivan)";
+                command.CommandText = @"insert into dbo.Termini(LekarId, Datum, StatusTermina, Aktivan)
+                       output inserted.id VALUES(@LekarId, @Datum, @StatusTermina, @Aktivan)";
 
                 command.Parameters.Add(new SqlParameter("LekarId", termin.Lekar.Id));
                 command.Parameters.Add(new SqlParameter("Datum", termin.Datum));
                 command.Parameters.Add(new SqlParameter("StatusTermina", termin.StatusTermina.ToString()));
-                command.Parameters.Add(new SqlParameter("PacijentId", termin.Pacijent.Id));
+                //command.Parameters.Add(new SqlParameter("PacijentId", null));
                 command.Parameters.Add(new SqlParameter("Aktivan", termin.Aktivan));
 
                 return (int)command.ExecuteScalar();

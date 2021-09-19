@@ -12,25 +12,22 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <Menu Name="Menu" HorizontalAlignment="Left" Height="27" Margin="0,10,0,0" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="3">
-            <MenuItem Header="Pregled">
-                <MenuItem Header="Pregled domova zdravlja" Name="PregledDomovaZdravlja" Click="PregledDomovaZdravlja_Click"></MenuItem>
-                <MenuItem Header="Pregled dostupnih lekara" Name="PregledKorisnika" Click="PregledKorisnika_Click" ></MenuItem>
-                <MenuItem Header="Pregled dostupnih admina" Name="PregledAdmina" Click="PregledAdmina_Click"></MenuItem>
-                <MenuItem Header="Pregled dostupnih pacijenata" Name="PregledPacijenata" Click="PregledAdmina_Click"></MenuItem>
-                <MenuItem Header="Pregled terapija" Name="PregledTerapija" Click="PregledTerapija_Click"></MenuItem>
+        <Menu Name="Menu" HorizontalAlignment="Left" Height="37" Margin="0,10,0,0" VerticalAlignment="Top" Width="792" Grid.ColumnSpan="3">
+            <MenuItem Header="Pregled" Height="37" Width="72">
+                <MenuItem Header="Pregled Domova Zdravlja" Name="pregledDomova" Click="pregledDomova_Click"></MenuItem>
+                <MenuItem Header="Pregled Lekara" Name="pregledLekara" Click="pregledLekara_Click" ></MenuItem>
             </MenuItem>
         </Menu>
         <Button Name="btnStart" Content="Lekari" Click="btnStart_Click" Margin="7,286,786.6,93" RenderTransformOrigin="0.232,0.48" Grid.Column="1" Grid.ColumnSpan="2"/>
-        <Label Content="Dobrodosli!" HorizontalAlignment="Left" Margin="366,42,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.ColumnSpan="3"/>
-        <Button Grid.ColumnSpan="3" Content="Admin" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="366,115,0,0" Click="Button_Click_5"/>
-        <Button Grid.ColumnSpan="3" Content="Lekar" HorizontalAlignment="Left" Margin="275,115,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
-        <Button Grid.ColumnSpan="3" Content="Pacijent" HorizontalAlignment="Left" Margin="456,115,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_6"/>
-        <Button Grid.ColumnSpan="3" Name="btnRegistracija" Content="Registracija" HorizontalAlignment="Left" Margin="366,220,0,0" VerticalAlignment="Top" Width="75" Click="btnRegistracija_Click"/>
+        <Label Content="Dobrodosli!" HorizontalAlignment="Left" Margin="366,52,0,0" VerticalAlignment="Top" Height="26" Width="72" Grid.ColumnSpan="3"/>
+        <Button Grid.ColumnSpan="3" Content="Admin" HorizontalAlignment="Left" VerticalAlignment="Top" Width="75" Margin="366,125,0,0" Click="Button_Click_5"/>
+        <Button Grid.ColumnSpan="3" Content="Lekar" HorizontalAlignment="Left" Margin="275,125,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_3"/>
+        <Button Grid.ColumnSpan="3" Content="Pacijent" HorizontalAlignment="Left" Margin="456,125,0,0" VerticalAlignment="Top" Width="75" Click="Button_Click_6"/>
+        <Button Grid.ColumnSpan="3" Name="btnRegistracija" Content="Registracija" HorizontalAlignment="Left" Margin="366,230,0,0" VerticalAlignment="Top" Width="75" Click="btnRegistracija_Click"/>
         <Button Grid.ColumnSpan="3" Content="Nastavi" HorizontalAlignment="Left" Margin="663,376,0,0" VerticalAlignment="Top" Width="75"/>
         <Label Grid.ColumnSpan="3" Content="Nastavite bez naloga?" HorizontalAlignment="Left" Margin="635,345,0,0" VerticalAlignment="Top"/>
-        <GroupBox Grid.ColumnSpan="3" Header="Ulogujte se kao: " HorizontalAlignment="Left" Height="90" Margin="245,73,0,0" VerticalAlignment="Top" Width="334"/>
-        <GroupBox Grid.ColumnSpan="3" Header="Registrujte se" HorizontalAlignment="Left" Height="111" Margin="324,177,0,0" VerticalAlignment="Top" Width="162"/>
+        <GroupBox Grid.ColumnSpan="3" Header="Ulogujte se kao: " HorizontalAlignment="Left" Height="90" Margin="245,83,0,0" VerticalAlignment="Top" Width="334"/>
+        <GroupBox Grid.ColumnSpan="3" Header="Registrujte se" HorizontalAlignment="Left" Height="111" Margin="324,187,0,0" VerticalAlignment="Top" Width="162"/>
 
 
     </Grid>

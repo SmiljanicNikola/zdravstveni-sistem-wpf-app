@@ -30,6 +30,8 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
 
         </Grid.RowDefinitions>
         <Label Grid.Column="0" Grid.Row="0" Name="lblIme" Content="Ime:"/>
@@ -115,7 +117,7 @@
 
         <Label Grid.Column="0" Grid.Row="10" Name="lblTipKorisnika" Content="Tip korisnika:"/>
         <ComboBox Name="ComboBoxTipKorisnika" Grid.Column="1" Grid.Row="10" SelectedItem="{Binding Path=TipKorisnika}">
- 
+
         </ComboBox>
 
 
@@ -143,8 +145,12 @@
             </Validation.ErrorTemplate>
         </TextBox>
 
-        <Button Grid.Column="0" Grid.Row="16" Content="Cancel" Name="btnCancel" Click="btnCancel_Click"></Button>
-        <Button Grid.Column="1" Grid.Row="16" Content="Ok" Name="btnOk" Click="btnOk_Click"></Button>
-        
+
+        <ComboBox Grid.Column="1" Grid.Row="16" Name="cmbDomoviZdravlja" Visibility="Hidden" SelectionChanged="cmbDomoviZdravlja_SelectionChanged"></ComboBox>
+
+        <Button Grid.Column="0" Grid.Row="18" Content="Cancel" Name="btnCancel" Click="btnCancel_Click"></Button>
+        <Button Grid.Column="1" Grid.Row="18" Content="Ok" Name="btnOk" Click="btnOk_Click"></Button>
+        <CheckBox Content="CheckBox" Name="checkBox1"  HorizontalAlignment="Left" Margin="10,5,0,0" Grid.Row="16" VerticalAlignment="Top" Checked="checkBox1_Checked"/>
+
     </Grid>
 </Window>

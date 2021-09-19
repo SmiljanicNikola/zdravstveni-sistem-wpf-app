@@ -24,6 +24,10 @@ namespace SF11_2019_POP2020.Windows
         private EStatus odabranStatus;
         private Korisnik odabranKorisnik;
         private Adresa novaAdresa;
+        ObservableCollection<DomZdravlja> domoviZdravlja;
+        private DomZdravlja selektovanDomZdravljaComboBox;
+
+
         public DodavanjeIzmenaKorisnika(Korisnik korisnik, EStatus status = EStatus.Dodaj)
         {
             InitializeComponent();
@@ -32,6 +36,9 @@ namespace SF11_2019_POP2020.Windows
 
             odabranKorisnik = korisnik;
             odabranStatus = status;
+
+            this.domoviZdravlja = Util.Instance.DomoviZdravlja;
+            cmbDomoviZdravlja.ItemsSource = this.domoviZdravlja;
 
             if (odabranStatus.Equals(EStatus.Dodaj))
             {
@@ -47,8 +54,19 @@ namespace SF11_2019_POP2020.Windows
                 ComboBoxPol.IsEnabled = false;
             }
 
+            if (checkBox1.IsChecked == true)
+            {
+                cmbDomoviZdravlja.Visibility = Visibility.Hidden;
+            }
+
             ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
             ComboBoxPol.ItemsSource = Enum.GetValues(typeof(EPol)).Cast<EPol>();
+
+            /*if ((ComboBoxTipKorisnika.SelectedItem.ToString()).Equals(ETipKorisnika.PACIJENT))
+            {
+                cmbDomoviZdravlja.Visibility = Visibility.Hidden;
+
+            }*/
 
         }
 
@@ -99,15 +117,30 @@ namespace SF11_2019_POP2020.Windows
                         Pol = (EPol)Enum.Parse(typeof(EPol), ComboBoxPol.SelectedItem.ToString()),
                         Lozinka = txtLozinka.Text,
                         TipKorisnika = (ETipKorisnika)Enum.Parse(typeof(ETipKorisnika), ComboBoxTipKorisnika.SelectedItem.ToString()),
+                        
                         Aktivan = true
 
-                };
+                       
 
+                };
+                    
                     //Util.Instance.Lekari.Add(lekar);
                     //int id = Util.Instance.SacuvajEntitet(k);
-                    Util.Instance.SacuvajEntitet(k);
-                    //k.Id = id;
+                    int id = Util.Instance.SacuvajEntitet(k);
+                    k.Id = id;
                     Util.Instance.Korisnici.Add(k);
+                    if (k.TipKorisnika.Equals(ETipKorisnika.LEKAR))
+                    {
+                        Lekar lekar = new Lekar();
+                        lekar.Korisnik = k;
+                        lekar.DomZdravlja = cmbDomoviZdravlja.SelectedItem as DomZdravlja;
+                        lekar.Termini = "|";
+                        lekar.Aktivan = true;
+                        int id2 = Util.Instance.SacuvajEntitet(lekar);
+                        lekar.Id = id2;
+                        Util.Instance.Lekari.Add(lekar);
+
+                    }
 
                 }
             else if (odabranStatus.Equals(EStatus.Izmeni))
@@ -149,6 +182,22 @@ namespace SF11_2019_POP2020.Windows
             {
 
             }
+        }
+
+        private void cmbDomoviZdravlja_IsVisibleChanged(object sender, DependencyPropertyChangedEventArgs e)
+        {
+
+        }
+
+        private void checkBox1_Checked(object sender, RoutedEventArgs e)
+        {
+            cmbDomoviZdravlja.Visibility = Visibility.Visible;
+        }
+
+        private void cmbDomoviZdravlja_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.selektovanDomZdravljaComboBox = cmbDomoviZdravlja.SelectedItem as DomZdravlja;
+
         }
     }
 }

@@ -43,21 +43,6 @@ namespace SF11_2019_POP2020
             window.Show();
         }
 
-        private void btnAdministratori_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void Button_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
-
         private void btnAdrese_Click(object sender, RoutedEventArgs e)
         {
             SveAdrese windowAdrese = new SveAdrese();
@@ -130,25 +115,23 @@ namespace SF11_2019_POP2020
             windowTerapije.Show();
         }
 
-        private void PregledTerapija_Click(object sender, RoutedEventArgs e)
+        private void pregledLekara_Click(object sender, RoutedEventArgs e)
         {
+            SviDoktori windowLekari = new SviDoktori();
 
+            this.Hide();
+            windowLekari.Show();
         }
 
-        private void PregledDomovaZdravlja_Click(object sender, RoutedEventArgs e)
+        private void pregledDomova_Click(object sender, RoutedEventArgs e)
         {
+            SviDomoviZdravlja sdz = new SviDomoviZdravlja();
 
+            this.Hide();
+            sdz.Show();
         }
 
-        private void PregledKorisnika_Click(object sender, RoutedEventArgs e)
-        {
-            
-        }
 
-        private void PregledAdmina_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void btnRegistracija_Click(object sender, RoutedEventArgs e)
         {

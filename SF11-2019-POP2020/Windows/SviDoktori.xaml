@@ -11,19 +11,19 @@
             <ColumnDefinition Width="6*"/>
             <ColumnDefinition Width="5*"/>
         </Grid.ColumnDefinitions>
-        <DataGrid CanUserAddRows="False" Name="DataGridDoktori" HorizontalAlignment="Left" Height="237" Margin="10,61,0,0" VerticalAlignment="Top" Width="520" SelectionChanged="DataGridDoktori_SelectionChanged"
+        <DataGrid CanUserAddRows="False" Name="DataGridDoktori" HorizontalAlignment="Left" Height="237" Margin="22,61,0,0" VerticalAlignment="Top" Width="508" SelectionChanged="DataGridDoktori_SelectionChanged"
                   AutoGeneratingColumn="DataGridDoktori_AutoGeneratingColumn" AutoGenerateColumns="True" Grid.ColumnSpan="2" />
         <Menu Name="Menu" HorizontalAlignment="Left" Height="35" Margin="0,0,0,374" VerticalAlignment="Bottom" Width="792" Grid.ColumnSpan="2">
-            <MenuItem Header="Doktori" Click="MenuItem_Click">
-                <MenuItem Name="MenuItemDodajDoktora" Header="Dodaj doktora" Click="MenuItemDodajDoktora_Click" />
-                <MenuItem Name="MenuItemIzmeniDoktora" Header="Izmeni Doktora" Click="MenuItemIzmeniDoktora_Click" />
-                <MenuItem Name="MenuItemObrisiDoktora" Header="Obrisi doktora" Click="MenuItemObrisiDoktora_Click" />
-                <MenuItem Name="MenuItemTerminiDoktora" Header="Vidi termine lekara" Click="MenuItemTerminiDoktora_Click" />
+            <MenuItem Name="menuItemAkcije" Header="Doktori" Height="35" Width="78">
+                <MenuItem x:Name="MenuItemDodajDoktora" Header="Dodaj doktora" Click="MenuItemDodajDoktora_Click" />
+                <MenuItem x:Name="MenuItemIzmeniDoktora" Header="Izmeni Doktora" Click="MenuItemIzmeniDoktora_Click" />
+                <MenuItem x:Name="MenuItemObrisiDoktora" Header="Obrisi doktora" Click="MenuItemObrisiDoktora_Click" />
+                <MenuItem x:Name="MenuItemTerminiDoktora" Header="Vidi termine lekara" Click="MenuItemTerminiDoktora_Click" />
 
             </MenuItem>
         </Menu>
-        <Button Content="Pocetna admin" Name="btnPocetnaAdmin" HorizontalAlignment="Left" Margin="243.487,372,0,0" VerticalAlignment="Top" Width="98" Click="btnPocetnaAdmin_Click" Height="38" Grid.Column="1"/>
-        <Button Content="Pocetna app" Name="btnPocetnaApp" HorizontalAlignment="Left" Margin="135,372,0,0" VerticalAlignment="Top" Width="90" Height="38" Click="btnPocetnaApp_Click" Grid.Column="1"/>
+        <Button Content="Pocetna admin" Name="btnPocetnaAdmin" HorizontalAlignment="Left" Margin="243,359,0,0" VerticalAlignment="Top" Width="98" Click="btnPocetnaAdmin_Click" Height="38" Grid.Column="1"/>
+        <Button Content="Pocetna app" Name="btnPocetnaApp" HorizontalAlignment="Left" Margin="243,359,0,0" VerticalAlignment="Top" Width="98" Height="38" Click="btnPocetnaApp_Click" Grid.Column="1"/>
         <Label Content="Institucije:" Grid.Column="1" HorizontalAlignment="Left" Margin="135,109,0,0" VerticalAlignment="Top"/>
         <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="203,109,0,0" VerticalAlignment="Top" Width="120" Name="cmbInstitucije" SelectionChanged="cmbInstitucije_SelectionChanged"/>
         <CheckBox Content="CheckBox" Grid.Column="1" HorizontalAlignment="Left" Height="2" Margin="459,86,-105,0" VerticalAlignment="Top" Width="6"/>

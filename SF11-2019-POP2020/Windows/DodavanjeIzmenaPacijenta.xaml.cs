@@ -1,6 +1,7 @@
 ﻿using SF11_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -31,14 +32,15 @@ namespace SF11_2019_POP2020.Windows
 
             odabranKorisnik = korisnik;
             odabranStatus = status;
-            ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
 
+            ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
             ComboBoxPol.ItemsSource = Enum.GetValues(typeof(EPol)).Cast<EPol>();
 
             if (odabranStatus.Equals(EStatus.Dodaj))
             {
                 novaAdresa = new Adresa();
             }
+            
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -68,19 +70,25 @@ namespace SF11_2019_POP2020.Windows
                         Prezime = txtPrezime.Text,
                         Jmbg = txtJMBG.Text,
                         Email = txtEmail.Text,
-                        //Adresa = Util.Instance.adresaPoId(novaAdresa.Id),
-                        Adresa = novaAdresa,
-                        Pol = EPol.M,
+                        Adresa = DodavanjeIzmenaAdrese.adresa,
+                        Pol = (EPol)Enum.Parse(typeof(EPol), ComboBoxPol.SelectedItem.ToString()),
                         Lozinka = txtLozinka.Text,
                         TipKorisnika = ETipKorisnika.PACIJENT,
                         Aktivan = true
 
                 };
-                Util.Instance.Korisnici.Add(k);
-                //Util.Instance.Lekari.Add(lekar);
-                Util.Instance.SacuvajEntitet(k);
+                    int id = Util.Instance.SacuvajEntitet(k);
+                    k.Id = id;
+                    Util.Instance.Korisnici.Add(k);
 
-            }
+                    Pacijent pacijent = new Pacijent();
+                    pacijent.Korisnik = k;
+                    pacijent.ListaTerapija = new ObservableCollection<Terapija>();
+                    pacijent.Aktivan = true;
+                    int id2 = Util.Instance.SacuvajEntitet(pacijent);
+                    pacijent.Id = id2;
+                    Util.Instance.Pacijenti.Add(pacijent);
+                }
             this.Close();
         }
         }
@@ -93,8 +101,12 @@ namespace SF11_2019_POP2020.Windows
         private void btnAdresa_Click(object sender, RoutedEventArgs e)
         {
             //Adresa novaAdresa = new Adresa();
-            DodavanjeIzmenaAdrese addAdresa = new DodavanjeIzmenaAdrese(novaAdresa);
-            addAdresa.Show();
+            DodavanjeIzmenaAdrese addAdresa = new DodavanjeIzmenaAdrese(novaAdresa,odabranStatus);
+            //addAdresa.Show();
+            if ((bool)addAdresa.ShowDialog())
+            {
+
+            }
         }
     }
 }

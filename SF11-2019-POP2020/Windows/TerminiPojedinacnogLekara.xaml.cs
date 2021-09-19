@@ -25,11 +25,12 @@ namespace SF11_2019_POP2020.Windows
         ICollectionView viewTermini;
         //ObservableCollection<Termin> termini;
         ObservableCollection<string> datumi;
+        public static string jmbg;
         public TerminiPojedinacnogLekara()
         {
             InitializeComponent();
 
-            string jmbg = GlavnaStranicaLekar.jmbg;
+            jmbg = GlavnaStranicaLekar.jmbg;
             Console.WriteLine(jmbg);
             ObservableCollection<Termin> privatniTermini = Util.Instance.terminiByLekarJmbg(jmbg);
 
@@ -136,7 +137,18 @@ namespace SF11_2019_POP2020.Windows
 
         private void MenuItemDodajTermin_Click(object sender, RoutedEventArgs e)
         {
+            Termin noviTermin = new Termin();
+            DodavanjeIzmenaTerminaDrugaVarijanta addTermin = new DodavanjeIzmenaTerminaDrugaVarijanta(noviTermin, EStatus.Dodaj);
+            addTermin.Show();
 
+            this.Hide();
+            //if ((bool)addAdmin.ShowDialog())
+            //{
+
+            //}
+            this.Show();
+            UpdateView();
+            viewTermini.Refresh();
         }
 
         private void cmbDatum_SelectionChanged(object sender, SelectionChangedEventArgs e)

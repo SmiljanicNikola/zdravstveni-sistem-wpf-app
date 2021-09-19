@@ -29,5 +29,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="32,252,0,0" TextWrapping="Wrap" Text="" Name="textBLock2" VerticalAlignment="Top" Height="16"/>
         <Button Content="Pocetna" HorizontalAlignment="Left" Margin="786,364,0,0" VerticalAlignment="Top" Width="91" Height="36" Name="btnPocetnaLekar" Click="btnPocetnaLekar_Click"/>
         <Button Content="Pocetna" HorizontalAlignment="Left" Margin="690,364,0,0" VerticalAlignment="Top" Width="91" Height="36" Name="btnPocetnaPacijent" Click="btnPocetnaPacijent_Click"/>
+        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="882,350,0,0" VerticalAlignment="Top" Width="91" Height="36" Name="btnPocetnaNeulogovan" Click="btnPocetnaNeulogovan_Click"/>
     </Grid>
 </Window>

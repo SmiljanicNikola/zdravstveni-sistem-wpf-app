@@ -495,6 +495,19 @@ namespace SF11_2019_POP2020.Models
             return null;
         }
 
+        public Lekar lekarPoJmbg(string jmbg)
+        {
+            foreach (Lekar lekar in Lekari)
+            {
+                if (lekar.Korisnik.Jmbg.Equals(jmbg))
+                {
+                    return lekar;
+                }
+            }
+            return null;
+        }
+
+
         public Pacijent pacijentPoId(int id)
         {
             foreach(Pacijent pacijent in Pacijenti)

@@ -130,6 +130,9 @@
     <Compile Include="Windows\DodavanjeIzmenaTermina.xaml.cs">
       <DependentUpon>DodavanjeIzmenaTermina.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\DodavanjeIzmenaTerminaDrugaVarijanta.xaml.cs">
+      <DependentUpon>DodavanjeIzmenaTerminaDrugaVarijanta.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -236,6 +239,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\DodavanjeIzmenaTermina.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\DodavanjeIzmenaTerminaDrugaVarijanta.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

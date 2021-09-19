@@ -17,45 +17,32 @@ using System.Windows.Shapes;
 namespace SF11_2019_POP2020.Windows
 {
     /// <summary>
-    /// Interaction logic for DodavanjeIzmenaTermina.xaml
+    /// Interaction logic for DodavanjeIzmenaTerminaDrugaVarijanta.xaml
     /// </summary>
-    public partial class DodavanjeIzmenaTermina : Window
+    public partial class DodavanjeIzmenaTerminaDrugaVarijanta : Window
     {
         private EStatus odabranStatus;
         private Termin odabranTermin;
         ObservableCollection<Lekar> lekari;
-
-        private Lekar selektovanLekarCmb;
-
-        public DodavanjeIzmenaTermina(Termin termin,  EStatus status = EStatus.Dodaj)
+        public DodavanjeIzmenaTerminaDrugaVarijanta(Termin termin, EStatus status = EStatus.Dodaj)
         {
             InitializeComponent();
-
             this.DataContext = termin;
+            string jmbg = TerminiPojedinacnogLekara.jmbg;
 
+            
             odabranTermin = termin;
+            ComboBoxStatusTermina.ItemsSource = Enum.GetValues(typeof(EStatusTermina)).Cast<EStatusTermina>();
             odabranStatus = status;
 
             this.lekari = Util.Instance.Lekari;
-            cmbLekari.ItemsSource = this.lekari;
-
-            ComboBoxStatusTermina.ItemsSource = Enum.GetValues(typeof(EStatusTermina)).Cast<EStatusTermina>();
-
-            if (status.Equals(EStatus.Izmeni) && termin != null)
-            {
-                cmbLekari.SelectedItem = odabranTermin.Lekar;
-                this.Title = "Izmena termina";
-            }
-            else
-            {
-                cmbLekari.SelectedItem = odabranTermin.Lekar;
-                this.Title = "Dodavanje termina";
-            }
+            
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
-            odabranTermin.Lekar = cmbLekari.SelectedItem as Lekar;
+            string jmbg = TerminiPojedinacnogLekara.jmbg;
+            odabranTermin.Lekar = Util.Instance.lekarPoJmbg(jmbg);
             odabranTermin.Datum = (DateTime)dateDatum.SelectedDate;
             odabranTermin.StatusTermina = EStatusTermina.SLOBODAN;
             //odabranTermin.Pacijent = Util.Instance.pacijentPoId(int.Parse(txtPacijentId.Text));
@@ -75,10 +62,10 @@ namespace SF11_2019_POP2020.Windows
                 Termin t = new Termin()
                 {
                     //Lekar = Util.Instance.lekarPoId(int.Parse(txtLekarId.Text)),
-                    Lekar = cmbLekari.SelectedItem as Lekar,
+                    Lekar = Util.Instance.lekarPoJmbg(jmbg),
                     Datum = (DateTime)dateDatum.SelectedDate,
                     StatusTermina = EStatusTermina.SLOBODAN,
-                    //Pacijent = Util.Instance.pacijentPoId(int.Parse(txtPacijentId.Text)),
+                    //Pacijent = null,
                     Aktivan = true
 
                 };
@@ -87,6 +74,7 @@ namespace SF11_2019_POP2020.Windows
                 t.Id = id;
                 Util.Instance.Termini.Add(t);
 
+                
                 this.Close();
             }
             else
@@ -98,12 +86,12 @@ namespace SF11_2019_POP2020.Windows
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
-            this.Close();
+
         }
 
-        private void cmbLekari_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        private void ComboBoxStatusTermina_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.selektovanLekarCmb = cmbLekari.SelectedItem as Lekar;
+
         }
     }
 }

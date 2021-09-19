@@ -29,7 +29,26 @@ namespace SF11_2019_POP2020.Windows
         public SviDoktori()
         {
             InitializeComponent();
+            string jmbg = GlavnaStranicaPacijent.jmbg;
+            if(jmbg == null)
+            {
+                jmbg = GlavnaStranicaAdministrator.jmbg;
+            }
+            Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
 
+            if (kor == null)
+            {
+                menuItemAkcije.Visibility = Visibility.Hidden;
+                btnPocetnaAdmin.Visibility = Visibility.Hidden;
+
+            }
+            if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+            {
+                menuItemAkcije.Visibility = Visibility.Hidden;
+                btnPocetnaAdmin.Visibility = Visibility.Hidden;
+            }
+
+            btnPocetnaApp.Visibility = Visibility.Hidden;
             view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
 
             this.naziviInstitucija = new ObservableCollection<string>(Util.Instance.DomoviZdravlja
@@ -137,7 +156,9 @@ namespace SF11_2019_POP2020.Windows
             st.Show();
         }
 
-        private void MenuItem_Click(object sender, RoutedEventArgs e)
+       
+
+        private void menuItemAkcije_Click(object sender, RoutedEventArgs e)
         {
 
         }
