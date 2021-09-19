@@ -133,6 +133,9 @@
     <Compile Include="Windows\DodavanjeIzmenaTerminaDrugaVarijanta.xaml.cs">
       <DependentUpon>DodavanjeIzmenaTerminaDrugaVarijanta.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Windows\DodavanjeTerapijaVerzija2.xaml.cs">
+      <DependentUpon>DodavanjeTerapijaVerzija2.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Windows\Form1.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -162,6 +165,9 @@
     </Compile>
     <Compile Include="Windows\LoginPacijent.xaml.cs">
       <DependentUpon>LoginPacijent.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Windows\PacijentiLekara.xaml.cs">
+      <DependentUpon>PacijentiLekara.xaml</DependentUpon>
     </Compile>
     <Compile Include="Windows\PrikazDomovaBezCRUD.xaml.cs">
       <DependentUpon>PrikazDomovaBezCRUD.xaml</DependentUpon>
@@ -246,6 +252,10 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Windows\DodavanjeTerapijaVerzija2.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Windows\GlavnaStranicaAdministrator.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -275,6 +285,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Windows\LoginPacijent.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Windows\PacijentiLekara.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

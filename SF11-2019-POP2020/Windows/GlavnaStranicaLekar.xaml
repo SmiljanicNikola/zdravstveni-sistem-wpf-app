@@ -22,5 +22,6 @@
         <TextBlock HorizontalAlignment="Left" Margin="459,63,0,0" TextWrapping="Wrap" Name="textBlock1" Text="TextBlock" VerticalAlignment="Top"/>
         <Button Content="Termini" HorizontalAlignment="Left" Margin="374,152,0,0" x:Name="btnTermini" VerticalAlignment="Top" Width="106" Click="btnPojedinacniTermini_Click" Height="42"/>
         <Button Content="Terapije" HorizontalAlignment="Left" Margin="510,154,0,0" VerticalAlignment="Top" Name="btnTerapije" Click="btnTerapije_Click" Width="106" Height="40"/>
+        <Button Content="Moji pacijenti" HorizontalAlignment="Left" Margin="374,222,0,0" VerticalAlignment="Top" Width="106" Height="39" Click="Button_Click"/>
     </Grid>
 </Window>

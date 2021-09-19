@@ -54,7 +54,7 @@ namespace SF11_2019_POP2020.Windows
         {
             HomeWindow window = new HomeWindow();
 
-            this.Hide();
+            this.Close();
             window.Show();
         }
 
@@ -92,6 +92,13 @@ namespace SF11_2019_POP2020.Windows
             TerminiPojedinacnogLekara tpl = new TerminiPojedinacnogLekara();
             //tpl.textBlock1.Text = jmbg;
             tpl.Show();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            jmbg = textBlock1.Text.Trim();
+            PacijentiLekara pl = new PacijentiLekara();
+            pl.Show();
         }
     }
 }

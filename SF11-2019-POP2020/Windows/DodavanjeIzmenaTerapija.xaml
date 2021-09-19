@@ -7,25 +7,31 @@
         mc:Ignorable="d"
         Title="DodavanjeIzmenaTerapija" Height="450" Width="800">
     <Grid>
-       
-            <Grid.ColumnDefinitions>
-                <ColumnDefinition/>
-                <ColumnDefinition/>
-            </Grid.ColumnDefinitions>
-            <Grid.RowDefinitions>
-                <RowDefinition/>
-                <RowDefinition/>
-                <RowDefinition/>
-            </Grid.RowDefinitions>
 
-            <Label Grid.Column="0" Grid.Row="0" Name="lblOpis" Content="Opis Terapije:"/>
-            <TextBox Grid.Column="1" Grid.Row="0" Name="txtOpis" Text="{Binding Path=Opis}"/>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition/>
+            <ColumnDefinition/>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
 
-            <Label Grid.Column="0" Grid.Row="1" Name="lblLekarId" Content="LekarId:"/>
-            <TextBox Grid.Column="1" Grid.Row="1" Name="txtLekarId" Text="{Binding Path=LekarId}"/>
+        </Grid.RowDefinitions>
 
-            <Button Grid.Column="0" Grid.Row="2" Content="Cancel" Name="btnCancel" Click="btnCancel_Click">
-                </Button>
-                <Button Grid.Column="1" Grid.Row="2" Content="Ok" Name="btnOk" Click="btnOk_Click"></Button>
-        </Grid>
+        <Label Grid.Column="0" Grid.Row="0" Name="lblOpis" Content="Opis Terapije:"/>
+        <TextBox Grid.Column="1" Grid.Row="0" Name="txtOpis" Text="{Binding Path=Opis}"/>
+
+        <Label Grid.Column="0" Grid.Row="1" Name="lblLekarId" Content="Lekar:"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="1" VerticalAlignment="Top" Width="376" Height="85" Name="cmbLekari" SelectionChanged="cmbLekari_SelectionChanged"/>
+
+        <Label Grid.Column="0" Grid.Row="2" Name="lblPacijentId" Content="Pacijent:"/>
+        <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="10,10,0,0" Grid.Row="2" VerticalAlignment="Top" Width="376" Height="85" Name="cmbPacijenti" SelectionChanged="cmbPacijenti_SelectionChanged"/>
+
+        <Button Grid.Column="0" Grid.Row="3" Content="Cancel" Name="btnCancel" Click="btnCancel_Click">
+        </Button>
+        <Button Grid.Column="1" Grid.Row="3" Content="Ok" Name="btnOk" Click="btnOk_Click"></Button>
+        
+    </Grid>
 </Window>

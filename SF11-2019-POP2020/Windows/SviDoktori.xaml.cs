@@ -30,7 +30,7 @@ namespace SF11_2019_POP2020.Windows
         {
             InitializeComponent();
             string jmbg = GlavnaStranicaPacijent.jmbg;
-            if(jmbg == null)
+            if (jmbg == null)
             {
                 jmbg = GlavnaStranicaAdministrator.jmbg;
             }
@@ -76,7 +76,7 @@ namespace SF11_2019_POP2020.Windows
 
         private void DataGridDoktori_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
+            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error") || e.PropertyName.Equals("Termini") || e.PropertyName.Equals("ListaTerapija"))
                 e.Column.Visibility = Visibility.Collapsed;
         }
 

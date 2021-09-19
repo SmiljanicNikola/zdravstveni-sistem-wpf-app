@@ -362,6 +362,32 @@ namespace SF11_2019_POP2020.Models
             }
             return pronadjeneTerapije;
         }
+
+
+        public ObservableCollection<Pacijent> pacijentiPoLekarJmbg(string jmbg)
+        {
+            ObservableCollection<Termin> terminiLekara = Util.Instance.terminiByLekarJmbg(jmbg);
+            ObservableCollection<Pacijent> pacijentiZakazaniKodLekara = new ObservableCollection<Pacijent>();
+            foreach (Lekar lekar in Lekari)
+            {
+                foreach(Termin termin in terminiLekara)
+                {
+                    foreach(Pacijent pacijent in Pacijenti)
+                    {
+                        if (lekar.Korisnik.Jmbg.Equals(termin.Lekar.Korisnik.Jmbg))
+                        {
+                            if(pacijent == termin.Pacijent)
+                            {
+                                pacijentiZakazaniKodLekara.Add(pacijent);
+                            }
+                        }
+                    }
+                }
+            }
+            return pacijentiZakazaniKodLekara;
+        }
+
+
         public ObservableCollection<Lekar> nadjiLekarePoInstituciji(string institucija)
         {
             ObservableCollection<Lekar> pronadjeniLekari = new ObservableCollection<Lekar>();

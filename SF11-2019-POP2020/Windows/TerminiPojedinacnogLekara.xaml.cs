@@ -111,10 +111,13 @@ namespace SF11_2019_POP2020.Windows
 
         }
 
-        private void DataGridTermini_AutoGeneratingColumn(object sender, SelectionChangedEventArgs e)
+        private void DataGridTerminiLekara_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
 
+            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
+                e.Column.Visibility = Visibility.Collapsed;
         }
+
 
         private void MenuItemObrisiTermin_Click(object sender, RoutedEventArgs e)
         {
@@ -174,5 +177,7 @@ namespace SF11_2019_POP2020.Windows
             UpdateView();
             viewTermini.Refresh();
         }
+
+     
     }
 }

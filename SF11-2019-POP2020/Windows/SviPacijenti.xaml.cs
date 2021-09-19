@@ -27,7 +27,7 @@ namespace SF11_2019_POP2020.Windows
         {
             InitializeComponent();
 
-                        UpdateView();
+            UpdateView();
 
         }
 
@@ -44,13 +44,13 @@ namespace SF11_2019_POP2020.Windows
         }
 
 
-     
+
 
         private void MenuItemDodajPacijenta_Click(object sender, RoutedEventArgs e)
         {
 
             Korisnik noviKorisnik = new Korisnik();
-            DodavanjeIzmenaPacijenta addPacijent = new DodavanjeIzmenaPacijenta(noviKorisnik, EStatus.Dodaj) ;
+            DodavanjeIzmenaPacijenta addPacijent = new DodavanjeIzmenaPacijenta(noviKorisnik, EStatus.Dodaj);
             addPacijent.Show();
 
             this.Hide();
@@ -85,7 +85,7 @@ namespace SF11_2019_POP2020.Windows
                 //Util.Instance.Korisnici[index].Aktivan = izabraniPacijent.Aktivan;
 
                 //Util.Instance.UpdateEntiteta(izabraniLekar);
-           
+
             }
             //Util.Instance.SacuvajEntitet(stariPacijent);
             //Util.Instance.DeletePacijent(izabraniPacijent.Jmbg);
@@ -111,10 +111,10 @@ namespace SF11_2019_POP2020.Windows
             window.Show();
         }
 
-     
-            private void DataGridPacijenti_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
-            {
-                if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
+
+        private void DataGridPacijenti_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
+        {
+            if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error") || e.PropertyName.Equals("Termini") || e.PropertyName.Equals("ListaTerapija"))
                     e.Column.Visibility = Visibility.Collapsed;
             }
 

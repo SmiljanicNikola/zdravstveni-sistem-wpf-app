@@ -32,7 +32,7 @@ namespace SF11_2019_POP2020.Windows
                                                     Integrated Security=True;Connect Timeout=30;Encrypt=False;
                                                     TrustServerCertificate=False;ApplicationIntent=ReadWrite;
                                                     MultiSubnetFailover=False");
-            string query = "Select * from korisnici where TipKorisnika like 'pacijent' and jmbg ='" + txtJmbg.Text.Trim() + "' and lozinka ='" + txtLozinka.Text.Trim() + "'";
+            string query = "Select * from korisnici where TipKorisnika like 'pacijent' and jmbg ='" + txtJmbg.Text.Trim() + "' and lozinka ='" + txtLozinka.Password.Trim() + "'";
             SqlDataAdapter sda = new SqlDataAdapter(query, sqlConn);
             DataTable dtbl = new DataTable();
             sda.Fill(dtbl);

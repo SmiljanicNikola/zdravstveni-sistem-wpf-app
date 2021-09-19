@@ -20,7 +20,7 @@
 
         </Grid.RowDefinitions>
 
-        <Label Grid.Column="0" Grid.Row="0" Name="lblLekarId" Content="LekarId:"/>
+        <Label Grid.Column="0" Grid.Row="0" Name="lblLekarId" Content="Lekar:"/>
         <ComboBox Grid.Column="1" Grid.Row="0" Text="{Binding Path=LekarId}" Name="cmbLekari" SelectionChanged="cmbLekari_SelectionChanged"/>
 
         <Label Grid.Column="0" Grid.Row="1" Name="lblDatumTermina" Content="Datum termina:"/>

@@ -32,16 +32,12 @@ namespace SF11_2019_POP2020.Windows
         private void MenuItemLekari_Click(object sender, RoutedEventArgs e)
         {
             SviLekari window = new SviLekari();
-
-            this.Hide();
             window.Show();
         }
 
         private void MenuItemPacijenti_Click(object sender, RoutedEventArgs e)
         {
             SviPacijenti windowPacijenti = new SviPacijenti();
-
-            this.Hide();
             windowPacijenti.Show();
         }
 
@@ -61,6 +57,7 @@ namespace SF11_2019_POP2020.Windows
             HomeWindow window = new HomeWindow();
 
             //this.Hide();
+            this.Close();
             window.Show();
         }
 
@@ -71,6 +68,8 @@ namespace SF11_2019_POP2020.Windows
 
         private void btnTerapije_Click(object sender, RoutedEventArgs e)
         {
+            jmbg = textBlock1.Text;
+
             SveTerapije windowTerapije = new SveTerapije();
 
             //this.Hide();

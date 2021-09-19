@@ -8,7 +8,7 @@
         Title="SveTerapije" Height="450" Width="800">
     <Grid>
         <Menu HorizontalAlignment="Left" Height="37" Margin="0,13,0,0" VerticalAlignment="Top" Width="792">
-            <MenuItem Name="menuItemAkcije" Header="Akcije">
+            <MenuItem Name="menuItemAkcije" Header="Akcije" Click="menuItemAkcije_Click" Height="37" Width="70">
                 <MenuItem Name="MenuItemDodajTerapiju" Header="Dodaj dom terapiju" Click="MenuItemDodajTerapiju_Click" ></MenuItem>
                 <MenuItem Name="MenuItemIzmeniTerapiju" Header="Izmeni dom terapiju" Click="MenuItemIzmeniTerapiju_Click" ></MenuItem>
                 <MenuItem Name="MenuItemObrisiTerapiju" Header="Obrisi dom terapiju" Click="MenuItemObrisiTerapiju_Click" ></MenuItem>

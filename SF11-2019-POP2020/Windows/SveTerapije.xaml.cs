@@ -27,46 +27,77 @@ namespace SF11_2019_POP2020.Windows
 
         ObservableCollection<string> lekari;
 
-
+        public static string jmbg;
         public SveTerapije()
         {
             InitializeComponent();
 
-            string jmbg = GlavnaStranicaPacijent.jmbg;
-            if (jmbg != null)
+            Pacijent pacijenttt = PacijentiLekara.pacijentt;
+            if (pacijenttt != null)
             {
-                ObservableCollection<Terapija> terapijePacijenta = Util.Instance.nadjiTerapijePoJmbgPacijenta(jmbg);
+                string jmbg1 = pacijenttt.Korisnik.Jmbg;
+                ObservableCollection<Terapija> terapijePacijenta = Util.Instance.nadjiTerapijePoJmbgPacijenta(jmbg1);
                 view = CollectionViewSource.GetDefaultView(terapijePacijenta);
-
-                Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
-
-                if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
-                {
-
-                    menuItemAkcije.Visibility = Visibility.Hidden;
-                    
-
-                }
-
+                menuItemAkcije.Visibility = Visibility.Hidden;
             }
-
             else
             {
 
-                view = CollectionViewSource.GetDefaultView(Util.Instance.Terapije);
+                string jmbg = GlavnaStranicaPacijent.jmbg;
+                if (jmbg != null)
+                {
+                    ObservableCollection<Terapija> terapijePacijenta = Util.Instance.nadjiTerapijePoJmbgPacijenta(jmbg);
+                    view = CollectionViewSource.GetDefaultView(terapijePacijenta);
 
+                    Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
+
+                    if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+                    {
+
+                        menuItemAkcije.Visibility = Visibility.Hidden;
+
+
+                    }
+
+                }
+                /*else if (jmbg == null)
+                {
+                    jmbg = PacijentiLekara.jmbg;
+                    if (jmbg != null)
+                    {
+                        ObservableCollection<Terapija> terapijePacijenta = Util.Instance.nadjiTerapijePoJmbgPacijenta(jmbg);
+                        view = CollectionViewSource.GetDefaultView(terapijePacijenta);
+
+                        Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
+
+                        if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+                        {
+
+                            menuItemAkcije.Visibility = Visibility.Hidden;
+
+
+                        }
+
+                    }
+                }*/
+
+                else
+                {
+
+                    view = CollectionViewSource.GetDefaultView(Util.Instance.Terapije);
+
+                }
+                /* this.lekari = new ObservableCollection<string>(Util.Instance.Terapije
+                      .Select(terapijaa => terapijaa.Opis)
+                      .Distinct()
+                      .Prepend("Izaberite lekara...")
+                      );
+
+                 //view.Filter = CustomFilter;
+
+                 cmbLekari.ItemsSource = this.lekari;
+                 cmbLekari.SelectedIndex = 0;*/
             }
-            /* this.lekari = new ObservableCollection<string>(Util.Instance.Terapije
-                  .Select(terapijaa => terapijaa.Opis)
-                  .Distinct()
-                  .Prepend("Izaberite lekara...")
-                  );
-
-             //view.Filter = CustomFilter;
-
-             cmbLekari.ItemsSource = this.lekari;
-             cmbLekari.SelectedIndex = 0;*/
-
             UpdateView();
 
 
@@ -182,6 +213,7 @@ namespace SF11_2019_POP2020.Windows
 
         private void MenuItemDodajTerapiju_Click(object sender, RoutedEventArgs e)
         {
+            jmbg = GlavnaStranicaAdministrator.jmbg;
             Terapija novaTerapija = new Terapija();
             DodavanjeIzmenaTerapija addTerapija = new DodavanjeIzmenaTerapija(novaTerapija, EStatus.Dodaj);
             addTerapija.Show();
@@ -209,6 +241,11 @@ namespace SF11_2019_POP2020.Windows
         }
 
         private void DataGridTerapije_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void menuItemAkcije_Click(object sender, RoutedEventArgs e)
         {
 
         }

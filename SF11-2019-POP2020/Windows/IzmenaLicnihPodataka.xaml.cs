@@ -21,6 +21,8 @@ namespace SF11_2019_POP2020.Windows
     public partial class IzmenaLicnihPodataka : Window
     {
         private Korisnik ciljaniKorisnik;
+        private Adresa novaAdresa;
+        private EStatus odabranStatus;
 
         public IzmenaLicnihPodataka(Korisnik korisnik)
         {
@@ -28,18 +30,31 @@ namespace SF11_2019_POP2020.Windows
 
             this.DataContext = korisnik;
             ciljaniKorisnik = korisnik;
+            novaAdresa = korisnik.Adresa;
 
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
             Util.Instance.updateLicnihPodataka(ciljaniKorisnik);
+            this.Close();
+           
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.DialogResult = true;
             this.Close();
+        }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            DodavanjeIzmenaAdrese addAdresa = new DodavanjeIzmenaAdrese(novaAdresa, EStatus.Izmeni);
+            //addAdresa.Show();
+            if ((bool)addAdresa.ShowDialog())
+            {
+
+            }
         }
     }
 }

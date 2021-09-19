@@ -63,7 +63,7 @@ namespace SF11_2019_POP2020.Windows
         {
             HomeWindow window = new HomeWindow();
 
-            this.Hide();
+            this.Close();
             window.Show();
         }
 

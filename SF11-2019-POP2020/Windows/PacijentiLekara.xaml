@@ -1,0 +1,18 @@
+﻿<Window x:Class="SF11_2019_POP2020.Windows.PacijentiLekara"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SF11_2019_POP2020.Windows"
+        mc:Ignorable="d"
+        Title="PacijentiLekara" Height="450" Width="800">
+    <Grid>
+        <DataGrid CanUserAddRows="False" Name="dataGridPacijentiLekara" HorizontalAlignment="Left" Height="236" Margin="34,71,0,0" VerticalAlignment="Top" Width="531" SelectionChanged="dataGridPacijentiLekara_SelectionChanged" AutoGeneratingColumn="dataGridPacijentiLekara_AutoGeneratingColumn" />
+        <Menu HorizontalAlignment="Left" Height="37" Margin="0,13,0,0" VerticalAlignment="Top" Width="992">
+            <MenuItem Header="Akcije" Name="menuAkcije" Height="37" Width="72">
+                <MenuItem Name="MenuItemKarton" Header="Zdravstveni karton" Click="MenuItemKarton_Click" ></MenuItem>
+                <MenuItem Name="MenuItemDodajTerapiju" Header="Dodaj terapiju" Click="MenuItemDodajTerapiju_Click"></MenuItem>
+            </MenuItem>
+        </Menu>
+    </Grid>
+</Window>

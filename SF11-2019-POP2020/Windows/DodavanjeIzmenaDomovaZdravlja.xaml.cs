@@ -23,6 +23,7 @@ namespace SF11_2019_POP2020.Windows
     {
         private EStatus odabranStatus;
         private DomZdravlja odabranDomZdravlja;
+        private Adresa novaAdresa;
         public DodavanjeIzmenaDomovaZdravlja(DomZdravlja domZdravlja, EStatus status = EStatus.Dodaj)
         {
             InitializeComponent();
@@ -40,10 +41,12 @@ namespace SF11_2019_POP2020.Windows
                 //Util.Instance.UpdateEntiteta(domZdravlja);
                 //Util.Instance.SacuvajEntitet(lekar);
                 //Util.Instance.UpdateEntiteta(termin);
+                novaAdresa = domZdravlja.Adresa;
 
             }
             else
             {
+                novaAdresa = new Adresa();
                 this.Title = "Dodaj Dom zdravlja";
             }
 
@@ -56,12 +59,14 @@ namespace SF11_2019_POP2020.Windows
                 DomZdravlja dt = new DomZdravlja()
                 {
                     NazivInstitucije = txtNazivInstitucije.Text,      
-                    Adresa = Util.Instance.adresaPoId(int.Parse(txtAdresaId.Text)),
+                    Adresa = DodavanjeIzmenaAdrese.adresa,
                     Aktivan = true
 
                 };
+                
+                int id = Util.Instance.SacuvajEntitet(dt);
+                dt.Id = id;
                 Util.Instance.DomoviZdravlja.Add(dt);
-                Util.Instance.SacuvajEntitet(dt);
 
                 this.Close();
             }
@@ -80,6 +85,16 @@ namespace SF11_2019_POP2020.Windows
         {
             this.Close();
 
+        }
+
+        private void btnAdresa_Click(object sender, RoutedEventArgs e)
+        {
+            DodavanjeIzmenaAdrese addAdresa = new DodavanjeIzmenaAdrese(novaAdresa, odabranStatus);
+            //addAdresa.Show();
+            if ((bool)addAdresa.ShowDialog())
+            {
+
+            }
         }
     }
 }
