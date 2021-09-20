@@ -130,29 +130,36 @@ namespace SF11_2019_POP2020.Windows
         {
             //Korisnik izabraniLekar = (Korisnik)DataGridLekari.SelectedItem;
             Termin izabraniTermin = view.CurrentItem as Termin;
-
-            izabraniTermin.StatusTermina = EStatusTermina.ZAKAZAN;
-
-
-            string jmbg = GlavnaStranicaPacijent.jmbg;
-            if (jmbg == null)
+            if (izabraniTermin.StatusTermina.Equals(EStatusTermina.ZAKAZAN))
             {
-                jmbg = GlavnaStranicaAdministrator.jmbg;
-
+                MessageBox.Show("Termin je vec zakazan, rezervisite slobodan");
             }
-
-            Korisnik korisnik = Util.Instance.korisnikPoJmbg(jmbg);
-            if (korisnik.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+            else
             {
-                izabraniTermin.Pacijent = Util.Instance.pacijentPoJmbg(jmbg);
+
+                izabraniTermin.StatusTermina = EStatusTermina.ZAKAZAN;
+
+
+                string jmbg = GlavnaStranicaPacijent.jmbg;
+                if (jmbg == null)
+                {
+                    jmbg = GlavnaStranicaAdministrator.jmbg;
+
+                }
+
+                Korisnik korisnik = Util.Instance.korisnikPoJmbg(jmbg);
+                if (korisnik.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
+                {
+                    izabraniTermin.Pacijent = Util.Instance.pacijentPoJmbg(jmbg);
+                }
+
+
+
+                Util.Instance.UpdateEntiteta(izabraniTermin);
+
+                this.Show();
+                view.Refresh();
             }
-
-
-
-            Util.Instance.UpdateEntiteta(izabraniTermin);
-
-            this.Show();
-            view.Refresh();
         }
 
         private void MenuItemObrisiTermin_Click(object sender, RoutedEventArgs e)

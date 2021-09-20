@@ -14,7 +14,7 @@
         <DataGrid CanUserAddRows="False" Name="DataGridDoktori" HorizontalAlignment="Left" Height="237" Margin="22,61,0,0" VerticalAlignment="Top" Width="508" SelectionChanged="DataGridDoktori_SelectionChanged"
                   AutoGeneratingColumn="DataGridDoktori_AutoGeneratingColumn" AutoGenerateColumns="True" Grid.ColumnSpan="2" />
         <Menu Name="Menu" HorizontalAlignment="Left" Height="35" Margin="0,0,0,374" VerticalAlignment="Bottom" Width="792" Grid.ColumnSpan="2">
-            <MenuItem Name="menuItemAkcije" Header="Doktori" Height="35" Width="78">
+            <MenuItem Name="menuItemAkcije" Header="Doktori" Height="35" Width="78" Click="menuItemAkcije_Click_1">
                 <MenuItem x:Name="MenuItemDodajDoktora" Header="Dodaj doktora" Click="MenuItemDodajDoktora_Click" />
                 <MenuItem x:Name="MenuItemIzmeniDoktora" Header="Izmeni Doktora" Click="MenuItemIzmeniDoktora_Click" />
                 <MenuItem x:Name="MenuItemObrisiDoktora" Header="Obrisi doktora" Click="MenuItemObrisiDoktora_Click" />

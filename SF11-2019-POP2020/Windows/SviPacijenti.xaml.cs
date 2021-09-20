@@ -62,7 +62,7 @@ namespace SF11_2019_POP2020.Windows
             view.Refresh();
         }
 
-        private void MenuItemIzmeniPacijenta_Click(object sender, RoutedEventArgs e)
+        /*private void MenuItemIzmeniPacijenta_Click(object sender, RoutedEventArgs e)
         {
             Korisnik izabraniPacijent = view.CurrentItem as Korisnik;
             Korisnik stariPacijent = izabraniPacijent.Clone();
@@ -94,14 +94,14 @@ namespace SF11_2019_POP2020.Windows
             this.Show();
             view.Refresh();
 
-        }
+        }*/
 
-        private void MenuItemObrisiPacijenta_Click(object sender, RoutedEventArgs e)
+        /*private void MenuItemObrisiPacijenta_Click(object sender, RoutedEventArgs e)
         {
             Korisnik izabraniPacijent = view.CurrentItem as Korisnik;
             //Util.Instance.DeletePacijent(izabraniPacijent.Jmbg);
 
-        }
+        }*/
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

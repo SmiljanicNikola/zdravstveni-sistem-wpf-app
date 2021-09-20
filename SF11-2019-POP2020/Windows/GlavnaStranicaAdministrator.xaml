@@ -15,7 +15,7 @@
                 <MenuItem Name="MenuItemLicniPodaci" Header="Licni Podaci" Click="MenuItemLicniPodaci_Click"></MenuItem>
 
             </MenuItem>
-            <MenuItem Header="Izlogujte se" Margin="560,0,0,0"  Height="40" Width="100">
+            <MenuItem Header="Izlogujte se" Margin="560,0,0,0"  Height="40" Width="100" Click="MenuItem_Click_1">
                 <MenuItem Name="MenuItemLogOut" Header="LogOut" Click="MenuItemLogOut_Click" ></MenuItem>
             </MenuItem>
         </Menu>

@@ -198,6 +198,7 @@ namespace SF11_2019_POP2020.Services
 
                 command.Parameters.Add(new SqlParameter("DomZdravljaId", lekar.DomZdravlja.Id));
                 command.Parameters.Add(new SqlParameter("Aktivan", lekar.Aktivan));
+                command.Parameters.Add(new SqlParameter("Id", lekar.Id));
 
 
 

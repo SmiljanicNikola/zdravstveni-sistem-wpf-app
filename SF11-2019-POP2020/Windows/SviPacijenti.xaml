@@ -11,16 +11,12 @@
             <ColumnDefinition Width="0*"/>
             <ColumnDefinition/>
         </Grid.ColumnDefinitions>
-        <DataGrid CanUserAddRows="False" Name="DataGridPacijenti" HorizontalAlignment="Left" Height="218" Margin="4,67,0,0" VerticalAlignment="Top" Width="726"
+        <DataGrid CanUserAddRows="False" Name="DataGridPacijenti" HorizontalAlignment="Left" Height="218" Margin="52,77,0,0" VerticalAlignment="Top" Width="726"
                   AutoGenerateColumns="True" AutoGeneratingColumn="DataGridPacijenti_AutoGeneratingColumn"  Grid.Column="1" SelectionChanged="DataGridPacijenti_SelectionChanged_1"/>
         <Menu HorizontalAlignment="Left" Height="43" VerticalAlignment="Top" Width="824" Grid.ColumnSpan="2" Margin="0,10,0,0">
-            <MenuItem Header="Pacijenti">
+            <MenuItem Header="Pacijenti" Height="43" Width="70">
                 <MenuItem Name="MenuItemDodajPacijenta" Header="Dodaj pacijenta" Click="MenuItemDodajPacijenta_Click"></MenuItem>
-                <MenuItem Name="MenuItemIzmeniPacijenta" Header="Izmeni pacijenta" Click="MenuItemIzmeniPacijenta_Click"></MenuItem>
-                <MenuItem Name="MenuItemObrisiPacijenta" Header="Obrisi pacijenta" Click="MenuItemObrisiPacijenta_Click"></MenuItem>
             </MenuItem>
         </Menu>
-        <Button Content="Pocetna" HorizontalAlignment="Left" Margin="631,365,0,0" VerticalAlignment="Top" Width="83" Height="34" Click="Button_Click" Grid.Column="1"/>
-        <Button Grid.ColumnSpan="2" Name="btnAdminPocetna" Content="Admin pocetna" HorizontalAlignment="Left" Margin="719,365,0,0" VerticalAlignment="Top" Width="86" Height="34" Click="btnAdminPocetna_Click"/>
     </Grid>
 </Window>

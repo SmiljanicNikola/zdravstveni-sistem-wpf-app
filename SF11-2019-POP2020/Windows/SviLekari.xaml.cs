@@ -71,14 +71,7 @@ namespace SF11_2019_POP2020.Windows
             DataGridLekari.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
         }
 
-        private void UpdateView2()
-        {
-            //DataGridLekari.ItemsSource = null;
-            view = CollectionViewSource.GetDefaultView(Util.Instance.Doktori);
-            DataGridDoktori.ItemsSource = view; // Util.Instance.Korisnici;
-            DataGridDoktori.IsSynchronizedWithCurrentItem = true;
-            DataGridDoktori.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
-        }
+      
 
         private void DataGridLekari_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
@@ -213,13 +206,7 @@ namespace SF11_2019_POP2020.Windows
             gsa.Show();
         }
 
-        private void btnPocetna_Click(object sender, RoutedEventArgs e)
-        {
-            HomeWindow window = new HomeWindow();
-
-            this.Hide();
-            window.Show();
-        }
+      
 
         private void DataGridDoktori_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {

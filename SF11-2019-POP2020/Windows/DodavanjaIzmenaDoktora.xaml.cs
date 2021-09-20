@@ -1,6 +1,7 @@
 ﻿using SF11_2019_POP2020.Models;
 using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -22,6 +23,11 @@ namespace SF11_2019_POP2020.Windows
     {
         private EStatus odabranStatus;
         private Lekar odabranDoktor;
+        private DomZdravlja selektovanDomZdravljaComboBox;
+        ObservableCollection<DomZdravlja> domoviZdravlja;
+
+
+
         public DodavanjaIzmenaDoktora(Lekar lekar, EStatus status = EStatus.Dodaj)
         {
             InitializeComponent();
@@ -31,8 +37,11 @@ namespace SF11_2019_POP2020.Windows
             odabranDoktor = lekar;
             odabranStatus = status;
 
+            this.domoviZdravlja = Util.Instance.DomoviZdravlja;
+            cmbDomoviZdravlja.ItemsSource = this.domoviZdravlja;
+
             //ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
-       
+
 
             if (status.Equals(EStatus.Izmeni) && lekar != null)
             {
@@ -46,6 +55,7 @@ namespace SF11_2019_POP2020.Windows
                 Util.Instance.SacuvajEntitet(lekar);*/                //Util.Instance.SacuvajEntitet(lekar);
                 //Util.Instance.UpdateEntiteta(lekar);
                 //Util.Instance.SacuvajEntitet(lekar);
+                lekar.DomZdravlja = cmbDomoviZdravlja.SelectedItem as DomZdravlja;
 
 
             }
@@ -66,24 +76,25 @@ namespace SF11_2019_POP2020.Windows
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
+            odabranDoktor.DomZdravlja = cmbDomoviZdravlja.SelectedItem as DomZdravlja;
+            odabranDoktor.Aktivan = true;
+
+            /*if (odabranStatus.Equals(EStatus.Dodaj))
             {
-
-                if (odabranStatus.Equals(EStatus.Dodaj))
+                Lekar l = new Lekar()
                 {
-                    Lekar l = new Lekar()
-                    {
-                        Korisnik = Util.Instance.korisnikPoId(int.Parse(txtKorisnikId.Text)),
-                        DomZdravlja = Util.Instance.domZdravljaPoId(int.Parse(txtDomZdravljaId.Text)),
-                        Termini = "|",
-                        Aktivan = true
+                    Korisnik = Util.Instance.korisnikPoId(int.Parse(txtKorisnikId.Text)),
+                    DomZdravlja = Util.Instance.domZdravljaPoId(int.Parse(txtDomZdravljaId.Text)),
+                    Termini = "|",
+                    Aktivan = true
 
-                    };
-                    Util.Instance.Lekari.Add(l);
-                    Util.Instance.SacuvajEntitet(l);
+                };
+                Util.Instance.Lekari.Add(l);
+                Util.Instance.SacuvajEntitet(l);
 
-                    
-                }
-                else if (odabranStatus.Equals(EStatus.Izmeni))
+
+            }*/
+            if (odabranStatus.Equals(EStatus.Izmeni))
                 {
                     /*Adresa adresa = new Adresa()
                     {
@@ -98,6 +109,12 @@ namespace SF11_2019_POP2020.Windows
                 }
                 this.Close();
             }
+        
+
+        private void cmbDomoviZdravlja_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            this.selektovanDomZdravljaComboBox = cmbDomoviZdravlja.SelectedItem as DomZdravlja;
+
         }
     }
     }

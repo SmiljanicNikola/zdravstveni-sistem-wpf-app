@@ -19,10 +19,11 @@
             </MenuItem>
         </Menu>
         <TextBlock HorizontalAlignment="Left" Margin="472,63,0,0" TextWrapping="Wrap" Name="textBlock1"  Text="TextBlock" VerticalAlignment="Top"/>
-        <Button Content="Domovi Zdravlja" HorizontalAlignment="Left" Margin="306,130,0,0" Name="btnDomovi" VerticalAlignment="Top" Width="108" Height="35" Click="btnDomovi_Click"/>
-        <Button Content="Lekari" HorizontalAlignment="Left" Margin="438,130,0,0" VerticalAlignment="Top" Width="94" Height="35" Name="btnL" Click="Button_Click"/>
-        <Button Content="Zdravstveni karton" HorizontalAlignment="Left" Margin="306,189,0,0" VerticalAlignment="Top" Width="108" Height="35" Name="btnZdravstveniKarton" Click="btnZdravstveniKarton_Click"/>
-        <Button Content="Termini" HorizontalAlignment="Left" Margin="438,189,0,0" VerticalAlignment="Top" Width="94" Height="35" Name="btnTermini" Click="btnTermini_Click"/>
-        
+        <Button Content="Domovi Zdravlja" HorizontalAlignment="Left" Margin="306,155,0,0" Name="btnDomovi" VerticalAlignment="Top" Width="108" Height="35" Click="btnDomovi_Click"/>
+        <Button Content="Lekari" HorizontalAlignment="Left" Margin="438,155,0,0" VerticalAlignment="Top" Width="94" Height="35" Name="btnL" Click="Button_Click"/>
+        <Button Content="Zdravstveni karton" HorizontalAlignment="Left" Margin="306,214,0,0" VerticalAlignment="Top" Width="108" Height="35" Name="btnZdravstveniKarton" Click="btnZdravstveniKarton_Click"/>
+        <Button Content="Termini" HorizontalAlignment="Left" Margin="438,214,0,0" VerticalAlignment="Top" Width="94" Height="35" Name="btnTermini" Click="btnTermini_Click"/>
+        <GroupBox Header="Mogucnosti" HorizontalAlignment="Left" Height="169" Margin="259,124,0,0" VerticalAlignment="Top" Width="325"/>
+
     </Grid>
 </Window>

@@ -56,6 +56,8 @@ namespace SF11_2019_POP2020.Windows
         {
             HomeWindow window = new HomeWindow();
 
+            jmbg = null;
+
             //this.Hide();
             this.Close();
             window.Show();
@@ -119,6 +121,11 @@ namespace SF11_2019_POP2020.Windows
             jmbg = textBlock1.Text;
             SviDoktori sd = new SviDoktori();
             sd.Show();
+        }
+
+        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

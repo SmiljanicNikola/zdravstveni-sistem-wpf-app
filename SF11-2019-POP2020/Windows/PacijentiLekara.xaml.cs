@@ -75,7 +75,7 @@ namespace SF11_2019_POP2020.Windows
         private void MenuItemKarton_Click(object sender, RoutedEventArgs e)
         {
             Pacijent izabranPacijent = viewPacijentiLekara.CurrentItem as Pacijent;
-            
+            //jmbg = GlavnaStranicaLekar.jmbg;
 
             if (izabranPacijent != null)
             {

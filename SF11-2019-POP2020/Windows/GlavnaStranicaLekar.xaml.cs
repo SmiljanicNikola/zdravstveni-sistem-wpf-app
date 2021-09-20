@@ -53,7 +53,7 @@ namespace SF11_2019_POP2020.Windows
         private void MenuItemLogOut_Click(object sender, RoutedEventArgs e)
         {
             HomeWindow window = new HomeWindow();
-
+            jmbg = null;
             this.Close();
             window.Show();
         }
@@ -69,10 +69,7 @@ namespace SF11_2019_POP2020.Windows
         }
 
 
-        private void btnTerapije_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
+       
 
         private void btnDomovi_Click(object sender, RoutedEventArgs e)
         {

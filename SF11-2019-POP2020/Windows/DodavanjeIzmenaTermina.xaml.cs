@@ -103,7 +103,7 @@ namespace SF11_2019_POP2020.Windows
 
         private void cmbLekari_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            this.selektovanLekarCmb = cmbLekari.SelectedItem as Lekar;
+            selektovanLekarCmb = cmbLekari.SelectedItem as Lekar;
         }
     }
 }

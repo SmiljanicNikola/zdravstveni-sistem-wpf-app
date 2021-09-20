@@ -18,10 +18,10 @@
                 <MenuItem Name="MenuItemLogOut" Header="LogOut" Click="MenuItemLogOut_Click" ></MenuItem>
             </MenuItem>
         </Menu>
-        <Button Content="Domovi Zdravlja" HorizontalAlignment="Left" Margin="241,152,0,0" Name="btnDomovi" VerticalAlignment="Top" Width="107" Click="btnDomovi_Click" Height="41"/>
+        <Button Content="Domovi Zdravlja" HorizontalAlignment="Left" Margin="250,152,0,0" Name="btnDomovi" VerticalAlignment="Top" Width="107" Click="btnDomovi_Click" Height="41"/>
         <TextBlock HorizontalAlignment="Left" Margin="459,63,0,0" TextWrapping="Wrap" Name="textBlock1" Text="TextBlock" VerticalAlignment="Top"/>
         <Button Content="Termini" HorizontalAlignment="Left" Margin="374,152,0,0" x:Name="btnTermini" VerticalAlignment="Top" Width="106" Click="btnPojedinacniTermini_Click" Height="42"/>
-        <Button Content="Terapije" HorizontalAlignment="Left" Margin="510,154,0,0" VerticalAlignment="Top" Name="btnTerapije" Click="btnTerapije_Click" Width="106" Height="40"/>
-        <Button Content="Moji pacijenti" HorizontalAlignment="Left" Margin="374,222,0,0" VerticalAlignment="Top" Width="106" Height="39" Click="Button_Click"/>
+        <Button Content="Moji pacijenti" HorizontalAlignment="Left" Margin="501,153,0,0" VerticalAlignment="Top" Width="106" Height="39" Click="Button_Click"/>
+        <GroupBox Header="Mogucnosti" HorizontalAlignment="Left" Height="122" Margin="196,112,0,0" VerticalAlignment="Top" Width="432"/>
     </Grid>
 </Window>

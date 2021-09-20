@@ -119,7 +119,7 @@ namespace SF11_2019_POP2020
         {
             SviDoktori windowLekari = new SviDoktori();
 
-            this.Hide();
+            
             windowLekari.Show();
         }
 
@@ -127,7 +127,7 @@ namespace SF11_2019_POP2020
         {
             SviDomoviZdravlja sdz = new SviDomoviZdravlja();
 
-            this.Hide();
+            
             sdz.Show();
         }
 
@@ -146,6 +146,11 @@ namespace SF11_2019_POP2020
             //}
             this.Show();
             //view.Refresh();
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }
