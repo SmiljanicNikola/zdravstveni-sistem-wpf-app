@@ -17,7 +17,6 @@
             <RowDefinition/>
             <RowDefinition/>
             <RowDefinition/>
-
         </Grid.RowDefinitions>
 
         <Label Grid.Column="0" Grid.Row="0" Name="lblLekarId" Content="Lekar:"/>
@@ -25,12 +24,8 @@
 
         <Label Grid.Column="0" Grid.Row="1" Name="lblDatumTermina" Content="Datum termina:"/>
         <DatePicker Grid.Column="1" Grid.Row="1" Margin="5.2,5,9.6,5" Name="dateDatum" Text="{Binding Path=Datum}"/>
-
-
-
         <Label Grid.Column="0" Grid.Row="2" Name="lblStatusTermina" Content="StatusTermina:"/>
         <ComboBox Name="ComboBoxStatusTermina" Grid.Column="2" Grid.Row="2" SelectedItem="{Binding Path=StatusTermina}">
-
         </ComboBox>
 
         <Label Grid.Column="0" Grid.Row="3" Name="lblPacijentId" Content="PacijentId:"/>

@@ -9,11 +9,11 @@ namespace SF11_2019_POP2020.Services
     public interface IAdresaService
     {
         void readAdrese();
+
         int saveAdresa(Object obj);
 
         void updateAdresa(Object obj);
+
         void deleteAdresa(int id);
-
-
     }
 }

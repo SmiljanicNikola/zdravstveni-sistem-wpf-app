@@ -8,7 +8,7 @@ namespace SF11_2019_POP2020.Models
     public sealed class Util
     {
 
-
+        //Inicijalizacija stringa za konektovanje na internu bazu podataka
         public static string CONNECTION_STRING = @"Data Source=(localdb)\MSSQLLocalDB;Initial Catalog=master;
                                                     Integrated Security=True;Connect Timeout=30;Encrypt=False;
                                                     TrustServerCertificate=False;ApplicationIntent=ReadWrite;
@@ -17,15 +17,14 @@ namespace SF11_2019_POP2020.Models
 
         private static readonly Util instance = new Util();
         IUserService _userService;
-        //IUserService _doctorService;
         IAdresaService _adresaService;
         IUserService _adminService;
         IDomZdravljaService _domZdravljaService;
-        //IUserService _pacijentService;AAAAAAAAA
         ITerminService _terminService;
         ITerapijaService _terapijaService;
         ILekarService _lekarService;
         IPacijentService _pacijentService;
+        IDezurstvaService _dezurstvoService;
         
 
         private Util()
@@ -38,8 +37,10 @@ namespace SF11_2019_POP2020.Models
             _terminService = new TerminService();
             _terapijaService = new TerapijaService();
             _lekarService = new LekarService();
+            _dezurstvoService = new DezurstvaService();
             
         }
+
         static Util()
         {
 
@@ -54,11 +55,15 @@ namespace SF11_2019_POP2020.Models
         }
 
         public ObservableCollection<Korisnik> Korisnici { get; set; }
+
         public ObservableCollection<Lekar> Lekari { get; set; }
+
         public ObservableCollection<Adresa> Adrese { get; set; }
+
         public ObservableCollection<Korisnik> KorisniciAdmini { get; set; }
+
         public ObservableCollection<DomZdravlja> DomoviZdravlja { get; set; }
-        //public ObservableCollection<Korisnik> KorisniciPacijenti { get; set; }
+
         public ObservableCollection<Termin> Termini { get; set; }
 
         public ObservableCollection<Termin> PrivatniTermini { get; set; }
@@ -66,7 +71,10 @@ namespace SF11_2019_POP2020.Models
         public ObservableCollection<Terapija> Terapije { get; set; }
         
         public ObservableCollection<Pacijent> Pacijenti { get; set; }
+
         public ObservableCollection<Lekar> Doktori { get; set; }
+
+        public ObservableCollection<Dezurstvo> Dezurstva { get; set; }
 
         public void Initialize()
         {
@@ -76,17 +84,10 @@ namespace SF11_2019_POP2020.Models
             Adrese = new ObservableCollection<Adresa>();
             KorisniciAdmini = new ObservableCollection<Korisnik>();
             DomoviZdravlja = new ObservableCollection<DomZdravlja>();
-
-            //KorisniciPacijenti = new ObservableCollection<Korisnik>();
             Termini = new ObservableCollection<Termin>();
-
             PrivatniTermini = new ObservableCollection<Termin>();
-
             Terapije = new ObservableCollection<Terapija>();
-            //SviKorisnici = new ObservableCollection<Korisnik>();
-            //Doktori = new ObservableCollection<Lekar>();
-
-
+            Dezurstva = new ObservableCollection<Dezurstvo>();
         }
 
         public int SacuvajEntitet(Object obj)
@@ -130,43 +131,60 @@ namespace SF11_2019_POP2020.Models
         {
             if (filename.Contains("korisnici"))
             {
-                //_sviKorisniciService.readUsers();
                 _userService.readUsers();
-                /*_adminService.readUsers();
-                _pacijentService.readUsers();*/
-            }
-            else if (filename.Contains("lekari"))
-            {
-                _lekarService.readDoktore();
                 
             }
+
+            else if (filename.Contains("lekari"))
+            {
+                _lekarService.readDoktore();               
+            }
+
+            else if (filename.Contains("dezurstva"))
+            {
+                _dezurstvoService.readDezurstva();
+            }
+
+            else if (filename.Contains("dezurstava"))
+            {
+                _dezurstvoService.readDezurstva();
+            }
+
+            else if (filename.Contains("dezurstvo"))
+            {
+                _dezurstvoService.readDezurstva();
+            }
+
             else if (filename.Contains("pacijenti"))
             {
                 _pacijentService.readPacijente();
-
             }
+
             else if (filename.Contains("adrese"))
             {
                 _adresaService.readAdrese();
             }
+
             else if (filename.Contains("domovizdravlja"))
             {
                 _domZdravljaService.readDomoveZdravlja();
             }
+
             else if (filename.Contains("termini"))
             {
                 _terminService.readTermine();
             }
+
             else if (filename.Contains("terapije"))
             {
                 _terapijaService.readTerapije();
             }
+
         }
 
         public void DeleteUser(string jmbg)
         {
             _userService.deleteUser(jmbg);
-
         }
         public void DeleteAdresa(int id)
         {
@@ -249,18 +267,43 @@ namespace SF11_2019_POP2020.Models
                 command.Parameters.Add(new SqlParameter("Lozinka", korisnik.Lozinka));
                 command.Parameters.Add(new SqlParameter("Aktivan", korisnik.Aktivan));
 
-
-
                 command.ExecuteNonQuery();
 
             }
         }
 
+
+        public void readDezurstva()
+        {
+            Util.Instance.Dezurstva = new ObservableCollection<Dezurstvo>();
+
+            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+            {
+                conn.Open();
+
+                SqlCommand command = conn.CreateCommand();
+
+                command.CommandText = @"Select * from Dezurstva where Aktivan=1";
+
+                SqlDataReader reader = command.ExecuteReader();
+
+                while (reader.Read())
+                {
+                    Util.Instance.Dezurstva.Add(new Dezurstvo
+                    {
+                        Id = reader.GetInt32(0),
+                        Lekar = Util.Instance.lekarPoId(reader.GetInt32(1)),
+                        Pocetak = reader.GetDateTime(2).Date,
+                        Kraj = reader.GetDateTime(3).Date,
+                        Aktivan = reader.GetBoolean(4)
+                    });
+                }
+                reader.Close();
+            }
+        }
+
         public int saveUser(Korisnik korisnik)
         {
-            
-            /*readAdrese();
-            Util.Instance.Adrese = adrese;*/
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
@@ -282,10 +325,7 @@ namespace SF11_2019_POP2020.Models
 
                 return (int)command.ExecuteScalar();
 
-
             }
-
-            // return -1;
         }
 
         public Korisnik nadjiUlogovanog(string jmbg)
@@ -296,9 +336,7 @@ namespace SF11_2019_POP2020.Models
                     {
                         return kor;
                     }
-               
             }
-
             return null;
         }
 
@@ -315,18 +353,6 @@ namespace SF11_2019_POP2020.Models
             return domovi;
         }
 
-        /*public ObservableCollection<Termin> terminiIzabranogLekara(int id)
-        {
-            ObservableCollection<Termin> terminiIzabranog = new ObservableCollection<Termin>();
-            foreach(Termin termin in Termini)
-            {
-                if(termin.Lekar.Id == id)
-                {
-                    terminiIzabranog.Add(termin);
-                }
-            }
-            return terminiIzabranog;
-        }*/
 
         public ObservableCollection<Termin> terminiIzabranogLekara(Lekar lekar)
         {
@@ -340,6 +366,7 @@ namespace SF11_2019_POP2020.Models
             }
             return terminiIzabranog;
         }
+
 
         public ObservableCollection<Termin> nadjiTerminePoDatumu (string datum)
         {
@@ -409,26 +436,7 @@ namespace SF11_2019_POP2020.Models
             return pronadjeni;
         }
 
-        /*public ObservableCollection<Termin> terminiByLekarJmbg(string jmbg)
-        {
-            ObservableCollection<Termin> privatniTermini = new ObservableCollection<Termin>();
-            //ObservableCollection<Lekar> Lekari = Util.Instance.Lekari;
-
-            foreach (Termin t in Termini)
-            {
-                foreach(Lekar l in Lekari) {
-                    if(t.Lekar == l)
-                    {
-                        if(l.Korisnik.Jmbg == jmbg)
-                        {
-                            privatniTermini.Add(t);
-                        }
-                    }
-                }
-               
-            }
-            return privatniTermini;
-        }*/
+  
 
         public ObservableCollection<Termin> terminiByLekarJmbg(string jmbg)
         {
@@ -448,30 +456,6 @@ namespace SF11_2019_POP2020.Models
         }
 
 
-        /*public ObservableCollection<Terapija> nadjiTerapijePoLekaru(string lekar)
-        {
-            ObservableCollection<Terapija> terapije = new ObservableCollection<Terapija>();
-
-            foreach(Terapija ter in Terapije)
-            {
-                if ((ter.Lekar.Korisnik.Ime + ter.Lekar.Korisnik.Prezime).ToLower().Contains(lekar.ToLower())) terapije.Add(ter);
-            }
-            return terapije;
-        }*/
-
-        /*public DomZdravlja nadjiDomovePoMestu(string grad)
-        {
-            foreach (DomZdravlja dz in DomoviZdravlja)
-            {
-                if(dz.Adresa.Grad == grad)
-                {
-                    return dz;
-                }
-            }
-            return null;
-
-        }*/
-
         public Adresa adresaPoId(int id)
         {
             foreach(Adresa adr in Adrese)
@@ -484,6 +468,7 @@ namespace SF11_2019_POP2020.Models
             return null;
         }
 
+
         public Korisnik korisnikPoId(int id)
         {
             foreach (Korisnik korisnik in Korisnici)
@@ -495,6 +480,7 @@ namespace SF11_2019_POP2020.Models
             }
             return null;
         }
+
 
         public Korisnik korisnikPoJmbg(string jmbg)
         {
@@ -558,6 +544,7 @@ namespace SF11_2019_POP2020.Models
             return null;
         }
 
+
         public DomZdravlja domZdravljaPoId(int id)
         {             
 
@@ -571,8 +558,6 @@ namespace SF11_2019_POP2020.Models
             }
             return null;
         }
-
-
 
     }
 }

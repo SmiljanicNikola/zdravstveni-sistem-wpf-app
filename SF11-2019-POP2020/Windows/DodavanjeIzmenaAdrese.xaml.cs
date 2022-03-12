@@ -47,19 +47,11 @@ namespace SF11_2019_POP2020.Windows
         }
 
 
-
-        /*
-        public void Napuni()
-        {
-
-
-        }*/
-
-
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
         }
+
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
@@ -84,20 +76,9 @@ namespace SF11_2019_POP2020.Windows
                 }
                 else if (odabranStatus.Equals(EStatus.Izmeni))
                 {
-                    /*Adresa adresa = new Adresa()
-                    {
-                        Ulica = txtUlica.Text,
-                        Broj = txtBroj.Text,
-                        Grad = txtGrad.Text,
-                        Drzava = txtDrzava.Text,
-                        Aktivan = true
-
-                    };*/
                     Util.Instance.UpdateEntiteta(odabranaAdresa);
                 }
-
                 this.Close();
-                //this.DialogResult = true;
             }
         }
 

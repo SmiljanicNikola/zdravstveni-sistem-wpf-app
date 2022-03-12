@@ -7,24 +7,14 @@ using System.Threading.Tasks;
 namespace SF11_2019_POP2020.Models
 {
     [Serializable]
-
-    public class Terapija
+    public class Dezurstvo
     {
-
         private int _id;
 
         public int Id
         {
             get { return _id; }
             set { _id = value; }
-        }
-
-        private string _opis;
-
-        public string Opis
-        {
-            get { return _opis; }
-            set { _opis = value; }
         }
 
         private Lekar _lekar;
@@ -35,12 +25,20 @@ namespace SF11_2019_POP2020.Models
             set { _lekar = value; }
         }
 
-        private Pacijent _pacijent;
+        private DateTime _pocetak;
 
-        public Pacijent Pacijent
+        public DateTime Pocetak
         {
-            get { return _pacijent; }
-            set { _pacijent = value; }
+            get { return _pocetak; }
+            set { _pocetak = value; }
+        }
+
+        private DateTime _kraj;
+
+        public DateTime Kraj
+        {
+            get { return _kraj; }
+            set { _kraj = value; }
         }
 
 
@@ -52,18 +50,23 @@ namespace SF11_2019_POP2020.Models
             set { _aktivan = value; }
         }
 
-        public Terapija()
+        public Dezurstvo()
         {
 
         }
 
-        public Terapija Clone()
+        public override string ToString()
         {
-            Terapija kopija = new Terapija();
+            return Pocetak + " " + Kraj;
+        }
+        public Dezurstvo Clone()
+        {
+            Dezurstvo kopija = new Dezurstvo();
 
-            kopija.Opis = Opis;
             kopija.Lekar = Lekar;
-            kopija.Pacijent = Pacijent;
+            kopija.Pocetak = Pocetak;
+            kopija.Kraj = Kraj;
+
             kopija.Aktivan = Aktivan;
 
             return kopija;

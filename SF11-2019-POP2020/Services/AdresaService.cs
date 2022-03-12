@@ -88,8 +88,6 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Aktivan", adresa.Aktivan));
 
                 return (int)command.ExecuteScalar();
-
-
             }
         
         }
@@ -113,10 +111,7 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Drzava", adresa.Drzava));
                 command.Parameters.Add(new SqlParameter("Aktivan", adresa.Aktivan));
 
-
-
                 command.ExecuteNonQuery();
-
             }
         }
     }

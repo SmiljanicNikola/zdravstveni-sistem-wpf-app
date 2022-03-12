@@ -29,5 +29,7 @@
         <Button Content="Korisnici" HorizontalAlignment="Left" x:Name="btnKorisnici" Click="btnKorisnici_Click" Margin="146,166,0,0" VerticalAlignment="Top" Width="93" Height="31"/>
         <TextBlock HorizontalAlignment="Left" Margin="504,63,0,0" TextWrapping="Wrap" Name="textBlock1"  VerticalAlignment="Top"><Run Text=""/></TextBlock>
         <Button Content="Doktori" HorizontalAlignment="Left" Margin="261,166,0,0" VerticalAlignment="Top" Width="93" Height="31" Name="btnDoktori" Click="btnDoktori_Click"/>
+        <Button Content="Dezurstva" Name="dataGridDezurstva" HorizontalAlignment="Left" Margin="610,202,0,0" VerticalAlignment="Top" Width="103" Height="35" Click="dataGridDezurstva_Click"/>
+        <GroupBox Header="PredZadatak" HorizontalAlignment="Left" Height="100" Margin="561,166,0,0" VerticalAlignment="Top" Width="196"/>
     </Grid>
 </Window>

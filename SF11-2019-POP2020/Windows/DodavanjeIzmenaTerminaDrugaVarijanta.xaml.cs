@@ -36,7 +36,6 @@ namespace SF11_2019_POP2020.Windows
             odabranStatus = status;
 
             this.lekari = Util.Instance.Lekari;
-            
         }
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
@@ -45,36 +44,22 @@ namespace SF11_2019_POP2020.Windows
             odabranTermin.Lekar = Util.Instance.lekarPoJmbg(jmbg);
             odabranTermin.Datum = (DateTime)dateDatum.SelectedDate;
             odabranTermin.StatusTermina = EStatusTermina.SLOBODAN;
-            //odabranTermin.Pacijent = Util.Instance.pacijentPoId(int.Parse(txtPacijentId.Text));
             odabranTermin.Aktivan = true;
 
             if (odabranStatus.Equals(EStatus.Dodaj))
             {
-                //ComboBoxItem item = (ComboBoxItem)ComboBoxPol.SelectedItem;
-                //string value = item.Content.ToString();
-                //.TryParse(value, out ETipKorisnika tip);
-                //ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
-
-                // ComboBoxItem item1 = (ComboBoxItem)ComboBoxPol.SelectedItem;
-                // string value1 = item1.Content.ToString();
-                // Enum.TryParse(value1, out EPol pol);
-                //odabranKorisnik.Aktivan = true;
                 Termin t = new Termin()
                 {
-                    //Lekar = Util.Instance.lekarPoId(int.Parse(txtLekarId.Text)),
                     Lekar = Util.Instance.lekarPoJmbg(jmbg),
                     Datum = (DateTime)dateDatum.SelectedDate,
                     StatusTermina = EStatusTermina.SLOBODAN,
-                    //Pacijent = null,
                     Aktivan = true
-
                 };
                 
                 int id = Util.Instance.SacuvajEntitet(t);
                 t.Id = id;
                 Util.Instance.Termini.Add(t);
-
-                
+   
                 this.Close();
             }
             else

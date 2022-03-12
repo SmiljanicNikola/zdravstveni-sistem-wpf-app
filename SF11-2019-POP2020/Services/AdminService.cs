@@ -21,7 +21,6 @@ namespace SF11_2019_POP2020.Services
                 throw new UserNotFoundException($"Ne postoji korisnik sa jmbg-om {jmbg}");
             k.Aktivan = false;
 
-            // updateUser(k);
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
                 conn.Open();
@@ -40,7 +39,6 @@ namespace SF11_2019_POP2020.Services
             }
         }
 
-     
 
         public void deleteUserZapravo(int id)
         {
@@ -49,9 +47,7 @@ namespace SF11_2019_POP2020.Services
 
         public void readUsers()
         {
-
             Util.Instance.KorisniciAdmini = new ObservableCollection<Korisnik>();
-            //Util.Instance.Lekari = new ObservableCollection<Lekar>();
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
@@ -78,15 +74,12 @@ namespace SF11_2019_POP2020.Services
                         TipKorisnika = ETipKorisnika.ADMINISTRATOR,
                         Aktivan = reader.GetBoolean(9)
 
-
-
                     });
                 }
                 reader.Close();
-
             }
-
         }
+
         public int saveUser(Object obj)
         {
             return -1;
@@ -97,7 +90,6 @@ namespace SF11_2019_POP2020.Services
         {
             throw new NotImplementedException();
         }
-
     }
  }
 

@@ -13,9 +13,11 @@ namespace SF11_2019_POP2020.Services
         void readAdrese();
 
         void readDomoveZdravlja();
+
         int saveDoktora(Object obj);
 
         void updateDoktora(Object obj);
+
         void deleteDoktora(int id);
 
         void deleteUserZapravo(int id);

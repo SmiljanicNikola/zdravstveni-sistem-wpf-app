@@ -42,7 +42,6 @@ namespace SF11_2019_POP2020.Models
             set { _listaTerapija = value; }
         }
 
-      
 
         private bool _aktivan;
 
@@ -67,9 +66,5 @@ namespace SF11_2019_POP2020.Models
         {
             return Korisnik.Ime + " " + Korisnik.Prezime;
         }
-
-
-
-
     }
 }

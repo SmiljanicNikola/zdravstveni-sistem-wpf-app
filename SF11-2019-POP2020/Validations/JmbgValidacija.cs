@@ -10,8 +10,6 @@ namespace SF11_2019_POP2020.Validations
 {
     class JmbgValidacija : ValidationRule
     {
-       
-
         public override ValidationResult Validate(object value, CultureInfo cultureInfo)
         {
             if (value.ToString().Trim().Length == 13)

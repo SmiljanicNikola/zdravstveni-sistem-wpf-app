@@ -10,7 +10,6 @@ using System.Threading.Tasks;
 
 namespace SF11_2019_POP2020.Services
 {
-
     class LekarService : ILekarService
     {
         ObservableCollection<DomZdravlja> domovi = new ObservableCollection<DomZdravlja>();
@@ -41,16 +40,15 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Id", l.Id));
 
                 command.ExecuteNonQuery();
-
-
             }
-
         }
+
 
         public void deleteUserZapravo(int id)
         {
             throw new NotImplementedException();
         }
+
 
         public void readDoktore()
         {
@@ -58,8 +56,6 @@ namespace SF11_2019_POP2020.Services
 
             readDomoveZdravlja();
             Util.Instance.DomoviZdravlja = domovi;
-            //Util.Instance.Lekari = new ObservableCollection<Lekar>();
-
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
@@ -84,8 +80,8 @@ namespace SF11_2019_POP2020.Services
                 }
                 reader.Close();
             }
-
         }
+
 
         public void readDomoveZdravlja()
         {
@@ -146,15 +142,12 @@ namespace SF11_2019_POP2020.Services
                     });
                 }
                 reader.Close();
-
             }
         }
 
 
         public int saveDoktora(object obj)
         {
-
-
                 Lekar lekar = obj as Lekar;
 
                 using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
@@ -179,11 +172,9 @@ namespace SF11_2019_POP2020.Services
                     command.Parameters.Add(new SqlParameter("Aktivan", lekar.Aktivan));
 
                     return (int)command.ExecuteScalar();
-
-
                 }
+        }
 
-            }
 
         public void updateDoktora(object obj)
         {
@@ -200,10 +191,7 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Aktivan", lekar.Aktivan));
                 command.Parameters.Add(new SqlParameter("Id", lekar.Id));
 
-
-
                 command.ExecuteNonQuery();
-
             }
         }
     }

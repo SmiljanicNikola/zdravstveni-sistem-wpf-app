@@ -47,7 +47,6 @@ namespace SF11_2019_POP2020.Windows
             else if (txtJmbg.Text.Equals(""))
             {
                 MessageBox.Show("Unesite JMBG u polje namenjeno za to!");
-
             }
             else
             {

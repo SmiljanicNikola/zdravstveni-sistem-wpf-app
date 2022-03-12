@@ -65,27 +65,27 @@ namespace SF11_2019_POP2020.Services
             }
         }
 
-            public int saveDomoveZdravlja(object obj)
-            {
-            DomZdravlja domZdravlja = obj as DomZdravlja;
 
-            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
-            {
-                conn.Open();
+        public int saveDomoveZdravlja(object obj)
+        {
+        DomZdravlja domZdravlja = obj as DomZdravlja;
 
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"insert into dbo.DomoviZdravlja(NazivInstitucije, adresaId, aktivan)
-                       output inserted.id VALUES(@nazivInstitucije, @adresaId, @aktivan)";
+        using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+        {
+            conn.Open();
 
-                command.Parameters.Add(new SqlParameter("nazivInstitucije", domZdravlja.NazivInstitucije));
-                command.Parameters.Add(new SqlParameter("adresaId", domZdravlja.Adresa.Id));
-                command.Parameters.Add(new SqlParameter("Aktivan", domZdravlja.Aktivan));
+            SqlCommand command = conn.CreateCommand();
+            command.CommandText = @"insert into dbo.DomoviZdravlja(NazivInstitucije, adresaId, aktivan)
+                    output inserted.id VALUES(@nazivInstitucije, @adresaId, @aktivan)";
 
-                return (int)command.ExecuteScalar();
+            command.Parameters.Add(new SqlParameter("nazivInstitucije", domZdravlja.NazivInstitucije));
+            command.Parameters.Add(new SqlParameter("adresaId", domZdravlja.Adresa.Id));
+            command.Parameters.Add(new SqlParameter("Aktivan", domZdravlja.Aktivan));
 
-
+            return (int)command.ExecuteScalar();
             }
         }
+
 
         public void updateDomoveZdravlja(object obj)
         {
@@ -104,9 +104,7 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Aktivan", domZdravlja.Aktivan));
                 command.Parameters.Add(new SqlParameter("Id", domZdravlja.Id));
 
-
                 command.ExecuteNonQuery();
-
             }
         }
     }

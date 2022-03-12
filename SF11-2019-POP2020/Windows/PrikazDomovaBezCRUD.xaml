@@ -7,8 +7,12 @@
         mc:Ignorable="d"
         Title="PrikazDomovaBezCRUD" Height="450" Width="800">
     <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="7*"/>
+            <ColumnDefinition Width="11*"/>
+        </Grid.ColumnDefinitions>
         <DataGrid CanUserAddRows="False" Name="DataGridDomZdravlja" HorizontalAlignment="Left" Height="174" Margin="27,24,0,0" VerticalAlignment="Top" Width="513"
-                  AutoGenerateColumns="True" AutoGeneratingColumn="DataGridTermini_AutoGeneratingColumn"/>
+                  AutoGenerateColumns="True" AutoGeneratingColumn="DataGridTermini_AutoGeneratingColumn" SelectionChanged="DataGridDomZdravlja_SelectionChanged"/>
         <Label Content="Izaberi mesto:" HorizontalAlignment="Left" Margin="27,229,0,0" VerticalAlignment="Top"/>
         <ComboBox HorizontalAlignment="Left" Name="ComboBoxMesto" Margin="115,232,0,0" VerticalAlignment="Top" Width="114" Height="23"/>
     </Grid>

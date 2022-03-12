@@ -17,7 +17,6 @@ namespace SF11_2019_POP2020.Validations
             return new ValidationResult(false, "Email treba da bude u ispravnom formatu!");
             
 
-            
         }
     }
 }

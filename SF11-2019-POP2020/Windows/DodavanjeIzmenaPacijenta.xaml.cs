@@ -54,16 +54,6 @@ namespace SF11_2019_POP2020.Windows
             if (IsValid()) { 
             if (odabranStatus.Equals(EStatus.Dodaj))
             {
-                    //novaAdresa = new Adresa();
-                    //ComboBoxItem item = (ComboBoxItem)ComboBoxPol.SelectedItem;
-                    //string value = item.Content.ToString();
-                    //.TryParse(value, out ETipKorisnika tip);
-                    //ComboBoxTipKorisnika.ItemsSource = Enum.GetValues(typeof(ETipKorisnika)).Cast<ETipKorisnika>();
-
-                    // ComboBoxItem item1 = (ComboBoxItem)ComboBoxPol.SelectedItem;
-                    // string value1 = item1.Content.ToString();
-                    // Enum.TryParse(value1, out EPol pol);
-                    //odabranKorisnik.Aktivan = true;
                     Korisnik k = new Korisnik
                     {
                         Ime = txtIme.Text,
@@ -75,10 +65,11 @@ namespace SF11_2019_POP2020.Windows
                         Lozinka = txtLozinka.Text,
                         TipKorisnika = ETipKorisnika.PACIJENT,
                         Aktivan = true
+                    };
 
-                };
                     int id = Util.Instance.SacuvajEntitet(k);
                     k.Id = id;
+
                     Util.Instance.Korisnici.Add(k);
 
                     Pacijent pacijent = new Pacijent();
@@ -87,22 +78,23 @@ namespace SF11_2019_POP2020.Windows
                     pacijent.Aktivan = true;
                     int id2 = Util.Instance.SacuvajEntitet(pacijent);
                     pacijent.Id = id2;
+
                     Util.Instance.Pacijenti.Add(pacijent);
                 }
             this.Close();
+            }
         }
-        }
+
 
         private bool IsValid()
         {
             return !Validation.GetHasError(txtEmail) && !Validation.GetHasError(txtJMBG) && !Validation.GetHasError(txtIme) && !Validation.GetHasError(txtPrezime) && !Validation.GetHasError(txtLozinka);
         }
 
+
         private void btnAdresa_Click(object sender, RoutedEventArgs e)
         {
-            //Adresa novaAdresa = new Adresa();
             DodavanjeIzmenaAdrese addAdresa = new DodavanjeIzmenaAdrese(novaAdresa,odabranStatus);
-            //addAdresa.Show();
             if ((bool)addAdresa.ShowDialog())
             {
 

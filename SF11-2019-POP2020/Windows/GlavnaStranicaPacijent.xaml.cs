@@ -24,26 +24,11 @@ namespace SF11_2019_POP2020.Windows
         ICollection view;
 
         public static string jmbg;
-
         public GlavnaStranicaPacijent()
         {
             InitializeComponent();
         }
 
-        private void MenuItemLekari_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItemPacijenti_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
-
-        private void MenuItemAdministratori_Click(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void MenuItemLicniPodaci_Click(object sender, RoutedEventArgs e)
         {
@@ -54,10 +39,6 @@ namespace SF11_2019_POP2020.Windows
             add.ShowDialog();
         }
 
-        private void MenuItem_Click_1(object sender, RoutedEventArgs e)
-        {
-
-        }
 
         private void MenuItemLogOut_Click(object sender, RoutedEventArgs e)
         {
@@ -65,11 +46,6 @@ namespace SF11_2019_POP2020.Windows
             jmbg = null;
             this.Close();
             window.Show();
-        }
-
-        private void MenuItemLekari_Click_1(object sender, RoutedEventArgs e)
-        {
-
         }
 
         private void PregledTermina_Click(object sender, RoutedEventArgs e)
@@ -95,12 +71,7 @@ namespace SF11_2019_POP2020.Windows
             addTermin.Show();
 
             this.Hide();
-            //if ((bool)addAdmin.ShowDialog())
-            //{
-
-            //}
             this.Show();
-            
         }
 
         private void btnDomovi_Click(object sender, RoutedEventArgs e)
@@ -108,9 +79,7 @@ namespace SF11_2019_POP2020.Windows
             jmbg = textBlock1.Text.Trim();
 
             SviDomoviZdravlja sdz = new SviDomoviZdravlja();
-            //sdz.textBlock1.Text = jmbg;
             sdz.Show();
-           
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
@@ -127,13 +96,26 @@ namespace SF11_2019_POP2020.Windows
             st.Show();
         }
 
-        
-
         private void btnTermini_Click(object sender, RoutedEventArgs e)
         {
             jmbg = textBlock1.Text.Trim();
             SviTermini st = new SviTermini();
             st.Show();
+        }
+
+        private void MenuItemLekari_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItemPacijenti_Click(object sender, RoutedEventArgs e)
+        {
+
+        }
+
+        private void MenuItemAdministratori_Click(object sender, RoutedEventArgs e)
+        {
+
         }
     }
 }

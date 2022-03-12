@@ -60,8 +60,6 @@ namespace SF11_2019_POP2020.Models
             set { _aktivan = value; }
         }
 
-      
-
         public Termin()
         {
 
@@ -81,8 +79,5 @@ namespace SF11_2019_POP2020.Models
 
             return kopijaTermin;
         }
-
-        
-
     }
 }

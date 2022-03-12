@@ -26,7 +26,5 @@
         <Button Grid.ColumnSpan="3" Name="btnRegistracija" Content="Registracija" HorizontalAlignment="Left" Margin="366,230,0,0" VerticalAlignment="Top" Width="75" Click="btnRegistracija_Click"/>
         <GroupBox Grid.ColumnSpan="3" Header="Ulogujte se kao: " HorizontalAlignment="Left" Height="90" Margin="245,83,0,0" VerticalAlignment="Top" Width="334"/>
         <GroupBox Grid.ColumnSpan="3" Header="Registrujte se" HorizontalAlignment="Left" Height="111" Margin="324,187,0,0" VerticalAlignment="Top" Width="162"/>
-
-
     </Grid>
 </Window>

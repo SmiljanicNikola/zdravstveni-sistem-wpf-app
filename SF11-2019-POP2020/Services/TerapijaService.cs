@@ -35,10 +35,8 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Id", terap.Id));
 
                 command.ExecuteNonQuery();
-
             }
         }
-
 
 
         public void readTerapije()
@@ -55,23 +53,6 @@ namespace SF11_2019_POP2020.Services
 
                 SqlDataReader reader = command.ExecuteReader();
 
-                /*while (reader.Read())
-                {
-                    Util.Instance.Terapije.Add(new Terapija
-                    {
-                        Id = reader.GetInt32(0),
-                        Opis = reader.GetString(1),
-                        Lekar = Util.Instance.lekarPoId(reader.GetInt32(2)),
-                        Pacijent = Util.Instance.pacijentPoId(reader.GetInt32(3)),
-                        Aktivan = reader.GetBoolean(4),
-
-                        Util.Instance.pacijentPoId(reader.GetInt32(3)).ListaTerapija.Add(Terapija)
-
-
-
-                    });
-                }
-                reader.Close();*/
                 while (reader.Read())
                 {
                     Terapija terapija = new Terapija();
@@ -81,20 +62,11 @@ namespace SF11_2019_POP2020.Services
                     terapija.Pacijent = Util.Instance.pacijentPoId(reader.GetInt32(3));
                     terapija.Aktivan = reader.GetBoolean(4);
 
-                    /*Pacijent pacijent = Util.Instance.pacijentPoId(reader.GetInt32(3));
-                    pacijent.ListaTerapija.Add(terapija);*/
-                   
-                   //terapija.Pacijent.ListaTerapija.Add(terapija);
-                    
-
                     Util.Instance.Terapije.Add(terapija);
-
                 }
-
                 reader.Close();
             }
         }
-
 
 
         public int saveTerapije(object obj)
@@ -115,11 +87,8 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Aktivan", terapija.Aktivan));
 
                 return (int)command.ExecuteScalar();
-
-
             }
         }
-
 
 
         public void updateTerapije(object obj)
@@ -140,13 +109,8 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("PacijentId", terapija.Pacijent.Id));
                 command.Parameters.Add(new SqlParameter("Aktivan", terapija.Aktivan));
 
-
-
                 command.ExecuteNonQuery();
-
             }
-
-
         }
     }
 }

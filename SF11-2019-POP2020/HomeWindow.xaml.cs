@@ -30,9 +30,6 @@ namespace SF11_2019_POP2020
             Util.Instance.CitanjeEntiteta("domovizdravlja.txt");
             Util.Instance.CitanjeEntiteta("termini.txt");
             Util.Instance.CitanjeEntiteta("terapije.txt");
-
-
-
         }
 
         private void btnStart_Click(object sender, RoutedEventArgs e)
@@ -54,6 +51,7 @@ namespace SF11_2019_POP2020
         private void Button_Click_2(object sender, RoutedEventArgs e)
         {
             SviDomoviZdravlja windowDomoviZdravlja = new SviDomoviZdravlja();
+
             this.Hide();
             windowDomoviZdravlja.Show();
         }
@@ -118,7 +116,6 @@ namespace SF11_2019_POP2020
         private void pregledLekara_Click(object sender, RoutedEventArgs e)
         {
             SviDoktori windowLekari = new SviDoktori();
-
             
             windowLekari.Show();
         }
@@ -126,26 +123,18 @@ namespace SF11_2019_POP2020
         private void pregledDomova_Click(object sender, RoutedEventArgs e)
         {
             SviDomoviZdravlja sdz = new SviDomoviZdravlja();
-
             
             sdz.Show();
         }
-
-
 
         private void btnRegistracija_Click(object sender, RoutedEventArgs e)
         {
             Korisnik noviKorisnik = new Korisnik();
             DodavanjeIzmenaPacijenta addPacijent = new DodavanjeIzmenaPacijenta(noviKorisnik, EStatus.Dodaj);
+
             addPacijent.Show();
-
-            this.Hide();
-            //if ((bool)addAdmin.ShowDialog())
-            //{
-
-            //}
+            this.Hide();    
             this.Show();
-            //view.Refresh();
         }
 
         private void MenuItem_Click(object sender, RoutedEventArgs e)

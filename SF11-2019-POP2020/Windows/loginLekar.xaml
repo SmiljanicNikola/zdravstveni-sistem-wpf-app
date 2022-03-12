@@ -7,7 +7,6 @@
         mc:Ignorable="d"
         Title="loginLekar" Height="450" Width="800">
     <Grid>
-
         <Grid.RenderTransform>
             <TransformGroup>
                 <ScaleTransform/>
@@ -25,6 +24,5 @@
             <TextBlock TextWrapping="Wrap" Text="Prijavi se"/>
         </Button>
         <Button Content="Odustani" Name="ButtonOdustani" HorizontalAlignment="Left" Margin="206,209,0,0" VerticalAlignment="Top" Width="85" Height="35" Click="ButtonOdustani_Click"/>
-
     </Grid>
 </Window>

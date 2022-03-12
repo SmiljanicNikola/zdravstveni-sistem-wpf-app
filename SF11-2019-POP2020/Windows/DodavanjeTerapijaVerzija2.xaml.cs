@@ -33,12 +33,6 @@ namespace SF11_2019_POP2020.Windows
             if (status.Equals(EStatus.Izmeni) && terapija != null)
             {
                 this.Title = "Izmeni Terapiju";
-
-                //Util.Instance.SacuvajEntitet(lekar);
-                //Util.Instance.UpdateEntiteta(lekar);
-                //Util.Instance.SacuvajEntitet(lekar);
-                //Util.Instance.UpdateEntiteta(termin);
-
             }
             else
             {
@@ -69,13 +63,12 @@ namespace SF11_2019_POP2020.Windows
 
                 this.Close();
             }
-
-
             this.Close();
         }
+
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             
         }
-        }
     }
+}

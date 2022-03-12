@@ -24,7 +24,6 @@ namespace SF11_2019_POP2020.Services
                 throw new UserNotFoundException($"Ne postoji korisnik sa jmbg-om {jmbg}");
             k.Aktivan = false;
 
-            // updateUser(k);
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
                 conn.Open();
@@ -39,13 +38,12 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Jmbg", k.Jmbg));
 
                 command.ExecuteNonQuery();
-
             }
         }
+
+
         public void readAdrese()
         {
-
-            //Util.Instance.Adrese = new ObservableCollection<Adresa>();
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
@@ -70,17 +68,15 @@ namespace SF11_2019_POP2020.Services
                     });
                 }
                 reader.Close();
-
             }
         }
 
-
-        
 
         public void deleteUserZapravo(string jmbg)
         {
             throw new NotImplementedException();
         }
+
 
         public void deleteUserZapravo(int id)
         {
@@ -90,7 +86,6 @@ namespace SF11_2019_POP2020.Services
                 throw new UserNotFoundException($"Ne postoji korisnik sa Id-om {id}");
             k.Aktivan = false;
 
-            // updateUser(k);
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
                 conn.Open();
@@ -102,14 +97,13 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Id", k.Id));
 
                 command.ExecuteNonQuery();
-
             }
         }
 
 
-        
         public void readUsers()
         {
+
             Util.Instance.Korisnici = new ObservableCollection<Korisnik>();
             readAdrese();
             Util.Instance.Adrese = adrese;
@@ -138,21 +132,16 @@ namespace SF11_2019_POP2020.Services
                         Lozinka = reader.GetString(7),
                         TipKorisnika = (ETipKorisnika)Enum.Parse(typeof(ETipKorisnika), reader.GetString(8)),
                         Aktivan = reader.GetBoolean(9)
-                    }) ;
+                    });
                 }
                 reader.Close();
-
             }
-
-
         }
 
 
         public int saveUser(Object obj)
         {
             Korisnik korisnik = obj as Korisnik;
-            /*readAdrese();
-            Util.Instance.Adrese = adrese;*/
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
@@ -173,11 +162,7 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Aktivan", korisnik.Aktivan));
 
                 return (int)command.ExecuteScalar();
-
-
             }
-
-            // return -1;
         }
 
         
@@ -197,15 +182,10 @@ namespace SF11_2019_POP2020.Services
                 command.Parameters.Add(new SqlParameter("Jmbg", korisnik.Jmbg));
                 command.Parameters.Add(new SqlParameter("Email", korisnik.Email));
                 command.Parameters.Add(new SqlParameter("AdresaId", korisnik.Adresa.Id));
-                //command.Parameters.Add(new SqlParameter("Pol", korisnik.Pol));
                 command.Parameters.Add(new SqlParameter("Lozinka", korisnik.Lozinka));
-                //command.Parameters.Add(new SqlParameter("TipKorisnika", korisnik.TipKorisnika));
                 command.Parameters.Add(new SqlParameter("Aktivan", korisnik.Aktivan));
            
-
-
                 command.ExecuteNonQuery();
-
             }
         }
     }

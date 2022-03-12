@@ -17,6 +17,5 @@
             </MenuItem>
         </Menu>
         <Button Content="Pocetna" HorizontalAlignment="Left" Margin="678,361,0,0" VerticalAlignment="Top" Width="91" Height="36" Click="Button_Click"/>
-
     </Grid>
 </Window>

@@ -18,7 +18,7 @@
             <MenuItem Header="Doktori">
                 <MenuItem Name="MenuItemDodajDoktora" Header="Dodaj doktora" Click="MenuItemDodajDoktora_Click" />
                 <MenuItem Name="MenuItemIzmeniDoktora" Header="Izmeni Doktora" Click="MenuItemIzmeniDoktora_Click" />
-                <MenuItem Name="MenuItemObrisiDoktora" Header="Obrisi doktora" Click="MenuItemObrisiDoktora_Click"/>
+                <MenuItem Name="MenuItemObrisiDoktora" Header="Obrisi doktora"/>
             </MenuItem>
         </Menu>
         <DataGrid CanUserAddRows="False" Name="DataGridLekari" HorizontalAlignment="Left" Height="237" Margin="50,60,0,0" VerticalAlignment="Top" Width="629" SelectionChanged="DataGridLekari_SelectionChanged"

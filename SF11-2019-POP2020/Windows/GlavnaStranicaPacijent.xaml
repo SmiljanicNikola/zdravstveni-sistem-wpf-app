@@ -9,12 +9,12 @@
     <Grid>
         <Label Content="Ulogovani ste kao : Pacijent" HorizontalAlignment="Left" Margin="317,58,0,0" VerticalAlignment="Top"/>
         <Menu HorizontalAlignment="Left" Height="40" Margin="0,13,-0.4,0" VerticalAlignment="Top" Width="794" >
-            <MenuItem Header="Akcije" Margin="0,0,0,0" Click="MenuItem_Click_1" Height="40" Width="130">
+            <MenuItem Header="Akcije" Margin="0,0,0,0" Height="40" Width="130">
                 <MenuItem Name="MenuItemLicniPodaci" Header="Licni podaci" Click="MenuItemLicniPodaci_Click" ></MenuItem>
                 <MenuItem Name="PregledTermina" Header="Pregled termina" Click="PregledTermina_Click" ></MenuItem>
                 <MenuItem Name="ZakazivanjeTermina" Header="Zakazi Termin" Click="ZakazivanjeTermina_Click"></MenuItem>
             </MenuItem>
-            <MenuItem Header="Izlogujte se" Click="MenuItem_Click_1" Margin="560,0,0,0"  Height="40" Width="100">
+            <MenuItem Header="Izlogujte se" Margin="560,0,0,0"  Height="40" Width="100">
                 <MenuItem Name="MenuItemLogOut" Header="LogOut" Click="MenuItemLogOut_Click" ></MenuItem>
             </MenuItem>
         </Menu>
@@ -24,6 +24,5 @@
         <Button Content="Zdravstveni karton" HorizontalAlignment="Left" Margin="306,214,0,0" VerticalAlignment="Top" Width="108" Height="35" Name="btnZdravstveniKarton" Click="btnZdravstveniKarton_Click"/>
         <Button Content="Termini" HorizontalAlignment="Left" Margin="438,214,0,0" VerticalAlignment="Top" Width="94" Height="35" Name="btnTermini" Click="btnTermini_Click"/>
         <GroupBox Header="Mogucnosti" HorizontalAlignment="Left" Height="169" Margin="259,124,0,0" VerticalAlignment="Top" Width="325"/>
-
     </Grid>
 </Window>

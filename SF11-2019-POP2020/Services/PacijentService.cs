@@ -25,9 +25,6 @@ namespace SF11_2019_POP2020.Services
         public void readPacijente()
         {
             Util.Instance.Pacijenti = new ObservableCollection<Pacijent>();
-            //Util.Instance.DomoviZdravlja = new ObservableCollection<DomZdravlja>();
-            //Util.Instance.Lekari = new ObservableCollection<Lekar>();
-
 
             using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
             {
@@ -49,90 +46,33 @@ namespace SF11_2019_POP2020.Services
                         Termini = reader.GetString(2),
                         Aktivan = reader.GetBoolean(3),
                         ListaTerapija = new ObservableCollection<Terapija>(),
-                });
+                    });
                 }
                 reader.Close();
             }
         }
-
-
-        /*public void readPacijente()
-        {
-            Util.Instance.Pacijenti = new ObservableCollection<Pacijent>();
-            //Util.Instance.DomoviZdravlja = new ObservableCollection<DomZdravlja>();
-            //Util.Instance.Lekari = new ObservableCollection<Lekar>();
-
-
-            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
-            {
-                conn.Open();
-
-                SqlCommand command = conn.CreateCommand();
-
-                command.CommandText = @"Select * from Pacijenti where Aktivan=1";
-
-                SqlDataReader reader = command.ExecuteReader();
-
-                while (reader.Read())
-                {
-                    Util.Instance.Pacijenti.Add(new Pacijent
-                    {
-                        Id = reader.GetInt32(0),
-                        Korisnik = Util.Instance.korisnikPoId(reader.GetInt32(1)),
-                        //ListaTerapija = new ObservableCollection<Terapija>(),
-                        Termini = reader.GetString(2),
-                        Aktivan = reader.GetBoolean(3),
-                        ListaTerapija = new ObservableCollection<Terapija>(),
-                    });
-                }
-                reader.Close();
-
-                conn.Open();
-
-                SqlCommand command2 = conn.CreateCommand();
-
-                command2.CommandText = @"Select * from Termini where PacijentId = @PacijentId";
-                SqlDataReader reader2 = command.ExecuteReader();
-
-                while (reader2.Read())
-                {
-                    Util.Instance.Pacijenti.Add(new Pacijent
-                    {
-                        Id = reader.GetInt32(0),
-                        Korisnik = Util.Instance.korisnikPoId(reader.GetInt32(1)),
-                        //ListaTerapija = new ObservableCollection<Terapija>(),
-                        Termini = reader.GetString(2),
-                        Aktivan = reader.GetBoolean(3),
-                        ListaTerapija = new ObservableCollection<Terapija>(),
-                    });
-                }
-
-            }
-        }*/
-
 
      
-public int savePacijenta(object obj)
+        public int savePacijenta(object obj)
         {
-            Pacijent pacijent = obj as Pacijent;
+                Pacijent pacijent = obj as Pacijent;
 
-            using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
-            {
-                conn.Open();
+                using (SqlConnection conn = new SqlConnection(Util.CONNECTION_STRING))
+                {
+                    conn.Open();
 
-                SqlCommand command = conn.CreateCommand();
-                command.CommandText = @"insert into dbo.Pacijenti(IdKorisnika, Termini, Aktivan)
-                       output inserted.id VALUES(@IdKorisnika,@Termini, @Aktivan)";
+                    SqlCommand command = conn.CreateCommand();
+                    command.CommandText = @"insert into dbo.Pacijenti(IdKorisnika, Termini, Aktivan)
+                           output inserted.id VALUES(@IdKorisnika,@Termini, @Aktivan)";
 
-                command.Parameters.Add(new SqlParameter("IdKorisnika", pacijent.Korisnik.Id));
-                command.Parameters.Add(new SqlParameter("Termini", "|"));
-                command.Parameters.Add(new SqlParameter("Aktivan", pacijent.Aktivan));
+                    command.Parameters.Add(new SqlParameter("IdKorisnika", pacijent.Korisnik.Id));
+                    command.Parameters.Add(new SqlParameter("Termini", "|"));
+                    command.Parameters.Add(new SqlParameter("Aktivan", pacijent.Aktivan));
 
-                return (int)command.ExecuteScalar();
-
-
-            }
+                    return (int)command.ExecuteScalar();
+                }
         }
+
 
         public void updatePacijenta(object obj)
         {

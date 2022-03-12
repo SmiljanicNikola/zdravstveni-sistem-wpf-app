@@ -38,7 +38,6 @@ namespace SF11_2019_POP2020.Windows
         {
             Util.Instance.updateLicnihPodataka(ciljaniKorisnik);
             this.Close();
-           
         }
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
@@ -50,7 +49,6 @@ namespace SF11_2019_POP2020.Windows
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             DodavanjeIzmenaAdrese addAdresa = new DodavanjeIzmenaAdrese(novaAdresa, EStatus.Izmeni);
-            //addAdresa.Show();
             if ((bool)addAdresa.ShowDialog())
             {
 

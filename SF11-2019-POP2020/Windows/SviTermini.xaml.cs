@@ -33,17 +33,13 @@ namespace SF11_2019_POP2020.Windows
             {
                 ObservableCollection<Termin> terminiIzabranogLekara = Util.Instance.terminiIzabranogLekara(lekar);
                 view = CollectionViewSource.GetDefaultView(terminiIzabranogLekara);
-
-
             }
             else
             {
-
                 string jmbg = GlavnaStranicaPacijent.jmbg;
                 if (jmbg == null)
                 {
                     jmbg = GlavnaStranicaAdministrator.jmbg;
-
                 }
 
                 Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
@@ -54,26 +50,17 @@ namespace SF11_2019_POP2020.Windows
                     MenuItemIzmeniTermin.Visibility = Visibility.Hidden;
                     MenuItemObrisiTermin.Visibility = Visibility.Hidden;
                     MenuItemZakaziTermin.Visibility = Visibility.Visible;
-
                 }
-
                 view = CollectionViewSource.GetDefaultView(Util.Instance.Termini);
-
-
             }
-                UpdateView();
-
-            
+            UpdateView();     
         }
 
         private void UpdateView()
         {
-
             DataGridTermini.ItemsSource = view;
             DataGridTermini.IsSynchronizedWithCurrentItem = true;
             DataGridTermini.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
-
-
         }
 
         private void DataGridTermini_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -89,17 +76,12 @@ namespace SF11_2019_POP2020.Windows
             addTermin.Show();
 
             this.Hide();
-            //if ((bool)addAdmin.ShowDialog())
-            //{
-
-            //}
             this.Show();
             view.Refresh();
         }
 
         private void MenuItemIzmeniTermin_Click(object sender, RoutedEventArgs e)
         {
-            //Korisnik izabraniLekar = (Korisnik)DataGridLekari.SelectedItem;
             Termin izabraniTermin = view.CurrentItem as Termin;
             Termin stariTermin = izabraniTermin.Clone();
             DodavanjeIzmenaTermina addTermin = new DodavanjeIzmenaTermina(izabraniTermin, EStatus.Izmeni);
@@ -109,26 +91,16 @@ namespace SF11_2019_POP2020.Windows
             {
                 int index = Util.Instance.Termini.ToList().FindIndex(t => t.Id.Equals(izabraniTermin.Id));
 
-                Util.Instance.Termini[index] = stariTermin;
-                /*Util.Instance.Termini[index].Id = izabraniTermin.Id;
-                Util.Instance.Termini[index].LekarId = izabraniTermin.LekarId;
-                Util.Instance.Termini[index].Datum = izabraniTermin.Datum;
-                Util.Instance.Termini[index].StatusTermina = izabraniTermin.StatusTermina;
-                Util.Instance.Termini[index].PacijentId = izabraniTermin.PacijentId;
-                Util.Instance.Termini[index].Aktivan = izabraniTermin.Aktivan;*/
-
-                //Util.Instance.UpdateEntiteta(izabraniTermin);
+                Util.Instance.Termini[index] = stariTermin;        
             }
-                
 
-           
             this.Show();
             view.Refresh();
+
         }
 
         private void MenuItemZakaziTermin_Click(object sender, RoutedEventArgs e)
         {
-            //Korisnik izabraniLekar = (Korisnik)DataGridLekari.SelectedItem;
             Termin izabraniTermin = view.CurrentItem as Termin;
             if (izabraniTermin.StatusTermina.Equals(EStatusTermina.ZAKAZAN))
             {
@@ -136,15 +108,12 @@ namespace SF11_2019_POP2020.Windows
             }
             else
             {
-
                 izabraniTermin.StatusTermina = EStatusTermina.ZAKAZAN;
-
 
                 string jmbg = GlavnaStranicaPacijent.jmbg;
                 if (jmbg == null)
                 {
                     jmbg = GlavnaStranicaAdministrator.jmbg;
-
                 }
 
                 Korisnik korisnik = Util.Instance.korisnikPoJmbg(jmbg);
@@ -152,9 +121,6 @@ namespace SF11_2019_POP2020.Windows
                 {
                     izabraniTermin.Pacijent = Util.Instance.pacijentPoJmbg(jmbg);
                 }
-
-
-
                 Util.Instance.UpdateEntiteta(izabraniTermin);
 
                 this.Show();
@@ -180,6 +146,11 @@ namespace SF11_2019_POP2020.Windows
         }
 
         private void DataGridTermini_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
+        }
+
+        private void MenuItem_Click(object sender, RoutedEventArgs e)
         {
 
         }

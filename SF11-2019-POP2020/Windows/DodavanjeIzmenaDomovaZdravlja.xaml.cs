@@ -37,20 +37,18 @@ namespace SF11_2019_POP2020.Windows
             if (status.Equals(EStatus.Izmeni) && domZdravlja != null)
             {
                 this.Title = "Izmeni Dom zdravlja";
-                //Util.Instance.SacuvajEntitet(lekar);
-                //Util.Instance.UpdateEntiteta(domZdravlja);
-                //Util.Instance.SacuvajEntitet(lekar);
-                //Util.Instance.UpdateEntiteta(termin);
+           
                 novaAdresa = domZdravlja.Adresa;
-
             }
             else
             {
                 novaAdresa = new Adresa();
+
                 this.Title = "Dodaj Dom zdravlja";
             }
 
         }
+
 
         private void btnOk_Click(object sender, RoutedEventArgs e)
         {
@@ -72,20 +70,17 @@ namespace SF11_2019_POP2020.Windows
             }
             else if(odabranStatus.Equals(EStatus.Izmeni))
             {
-          
                 Util.Instance.UpdateEntiteta(odabranDomZdravlja);
-
             }
-
             this.Close();
-
         }
+
 
         private void btnCancel_Click(object sender, RoutedEventArgs e)
         {
             this.Close();
-
         }
+
 
         private void btnAdresa_Click(object sender, RoutedEventArgs e)
         {

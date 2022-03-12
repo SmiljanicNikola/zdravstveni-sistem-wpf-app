@@ -23,9 +23,9 @@ namespace SF11_2019_POP2020.Windows
     public partial class TerminiPojedinacnogLekara : Window
     {
         ICollectionView viewTermini;
-        //ObservableCollection<Termin> termini;
         ObservableCollection<string> datumi;
         public static string jmbg;
+
         public TerminiPojedinacnogLekara()
         {
             InitializeComponent();
@@ -42,19 +42,10 @@ namespace SF11_2019_POP2020.Windows
 
             cmbDatum.ItemsSource = this.datumi;
             cmbDatum.SelectedIndex = 0;
-
-
-            
-
-           
             viewTermini = CollectionViewSource.GetDefaultView(privatniTermini);
 
             UpdateView();
-
-            //view.Filter = customFilter;
         }
-
-       
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -63,47 +54,14 @@ namespace SF11_2019_POP2020.Windows
             gsl.Show();
             this.Close();
         }
-        /*public ObservableCollection<Termin> terminiByLekarJmbg(string jmbg)
-        {
-            ObservableCollection<Termin> privatniTermini = new ObservableCollection<Termin>();
-
-            foreach (Termin t in Util.Instance.Termini)
-            {
-                if (t.Lekar.Korisnik.Jmbg == jmbg)
-                {
-                    privatniTermini.Add(t);
-                }
-            }
-            return privatniTermini;
-        }*/
 
         private void UpdateView()
         {
             string jmbg = GlavnaStranicaLekar.jmbg;
-            /*ObservableCollection<Termin> termini = Util.Instance.Termini;
-            ObservableCollection<Lekar> lekari = Util.Instance.Lekari;
-            ObservableCollection<Termin> privatni = new ObservableCollection<Termin>();
 
-            foreach (Termin terminn in termini)
-            {
-                foreach(Lekar lekarr in lekari)
-                {
-                    if(terminn.Lekar == lekarr)
-                    {
-                        if(lekarr.Korisnik.Jmbg == jmbg)
-                        {
-                            privatni.Add(terminn);
-                        }
-                    }
-                }
-                
-            }*/
-            //viewTermini = CollectionViewSource.GetDefaultView();
             DataGridTerminiLekara.ItemsSource = viewTermini;
             DataGridTerminiLekara.IsSynchronizedWithCurrentItem = true;
             DataGridTerminiLekara.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
-            //view.Filter = customFilter;
-
         }
 
         private void DataGridTermini_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -113,27 +71,26 @@ namespace SF11_2019_POP2020.Windows
 
         private void DataGridTerminiLekara_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-
             if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
                 e.Column.Visibility = Visibility.Collapsed;
         }
-
 
         private void MenuItemObrisiTermin_Click(object sender, RoutedEventArgs e)
         {
             Termin izabraniTermin = viewTermini.CurrentItem as Termin;
             if (izabraniTermin.StatusTermina.Equals(EStatusTermina.SLOBODAN))
             {
-
                 Util.Instance.DeleteTermin(izabraniTermin.Id);
                 Util.Instance.Termini.Remove(izabraniTermin);
             }
             else { 
+
             }
             string jmbg = GlavnaStranicaLekar.jmbg;
             Console.WriteLine(jmbg);
             ObservableCollection<Termin> privatniTermini = Util.Instance.terminiByLekarJmbg(jmbg);
             viewTermini = CollectionViewSource.GetDefaultView(privatniTermini);
+
             UpdateView();
             viewTermini.Refresh();
         }
@@ -145,10 +102,6 @@ namespace SF11_2019_POP2020.Windows
             addTermin.Show();
 
             this.Hide();
-            //if ((bool)addAdmin.ShowDialog())
-            //{
-
-            //}
             this.Show();
             UpdateView();
             viewTermini.Refresh();
@@ -164,7 +117,6 @@ namespace SF11_2019_POP2020.Windows
             string datum = cmbDatum.SelectedItem as string;
             string jmbg = GlavnaStranicaLekar.jmbg;
 
-
             if (datum.Contains("Izaberite datum"))
             {
                 viewTermini = CollectionViewSource.GetDefaultView(Util.Instance.terminiByLekarJmbg(jmbg));
@@ -176,8 +128,7 @@ namespace SF11_2019_POP2020.Windows
 
             UpdateView();
             viewTermini.Refresh();
-        }
 
-     
+        }
     }
 }

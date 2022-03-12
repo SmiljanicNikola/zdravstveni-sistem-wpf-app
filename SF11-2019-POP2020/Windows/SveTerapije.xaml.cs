@@ -53,56 +53,17 @@ namespace SF11_2019_POP2020.Windows
 
                     if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
                     {
-
                         menuItemAkcije.Visibility = Visibility.Hidden;
-
-
                     }
 
                 }
-                /*else if (jmbg == null)
-                {
-                    jmbg = PacijentiLekara.jmbg;
-                    if (jmbg != null)
-                    {
-                        ObservableCollection<Terapija> terapijePacijenta = Util.Instance.nadjiTerapijePoJmbgPacijenta(jmbg);
-                        view = CollectionViewSource.GetDefaultView(terapijePacijenta);
-
-                        Korisnik kor = Util.Instance.korisnikPoJmbg(jmbg);
-
-                        if (kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
-                        {
-
-                            menuItemAkcije.Visibility = Visibility.Hidden;
-
-
-                        }
-
-                    }
-                }*/
-
                 else
                 {
-
                     view = CollectionViewSource.GetDefaultView(Util.Instance.Terapije);
-
-                }
-                /* this.lekari = new ObservableCollection<string>(Util.Instance.Terapije
-                      .Select(terapijaa => terapijaa.Opis)
-                      .Distinct()
-                      .Prepend("Izaberite lekara...")
-                      );
-
-                 //view.Filter = CustomFilter;
-
-                 cmbLekari.ItemsSource = this.lekari;
-                 cmbLekari.SelectedIndex = 0;*/
+                } 
             }
             UpdateView();
-
-
         }
-
 
         private void UpdateView()
         {
@@ -110,7 +71,6 @@ namespace SF11_2019_POP2020.Windows
             DataGridTerapije.IsSynchronizedWithCurrentItem = true;
             DataGridTerapije.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
             view.Filter = CustomFilter;
-
         }
 
         private bool CustomFilter(object obj)
@@ -139,23 +99,6 @@ namespace SF11_2019_POP2020.Windows
                 }
                 else
                     return true;
-            /*if (terapija.Aktivan)
-            { 
-                if (txtPretragaPoLekaru.Text != "")
-                {
-                    List<String> imePrezime = new List<string>
-                    {
-                        terapija.Lekar.Korisnik.Ime,
-                        terapija.Lekar.Korisnik.Prezime
-                };
-
-                    return imePrezime.Any(podatak => podatak.Contains(txtPretragaPoLekaru.Text));
-                }
-
-                else
-                    return true;
-
-        }*/
             return false;
         }
 
@@ -183,32 +126,26 @@ namespace SF11_2019_POP2020.Windows
             {
                 Terapija staraTerapija = izabranaTerapija.Clone();
                 DodavanjeIzmenaTerapija addterapije = new DodavanjeIzmenaTerapija(izabranaTerapija, EStatus.Izmeni);
-                //this.Hide();
                 if ((bool)addterapije.ShowDialog())
                 {
                     
                 }
                 view.Refresh();
-
             }
-
         }
 
         private void txtPretragaPoOpisu_KeyUp(object sender, KeyEventArgs e)
         {
             view.Refresh();
-
         }
 
         private void txtPretragaPoLekaru_KeyUp(object sender, KeyEventArgs e)
         {
             view.Refresh();
-
         }
         private void txtPretragaPoLekaruPrezime_KeyUp(object sender, KeyEventArgs e)
         {
             view.Refresh();
-
         }
 
         private void MenuItemDodajTerapiju_Click(object sender, RoutedEventArgs e)
@@ -219,10 +156,6 @@ namespace SF11_2019_POP2020.Windows
             addTerapija.Show();
 
             this.Hide();
-            //if ((bool)addAdmin.ShowDialog())
-            //{
-
-            //}
             this.Show();
             view.Refresh();
         }
@@ -237,7 +170,6 @@ namespace SF11_2019_POP2020.Windows
         private void txtPretragePoLekaruEmail_KeyUp(object sender, KeyEventArgs e)
         {
             view.Refresh();
-
         }
 
         private void DataGridTerapije_SelectionChanged(object sender, SelectionChangedEventArgs e)
@@ -249,30 +181,5 @@ namespace SF11_2019_POP2020.Windows
         {
 
         }
-
-        /*private void ComboBox_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-            string lekar = cmbLekari.SelectedItem as string;
-
-            //DomZdravlja dz = new DomZdravlja();
-            //ObservableCollection<DomZdravlja> DomoviZdravlja();
-            if (dz.Adresa.Grad.Equals(grad))
-            {
-                view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
-
-            }
-            if (lekar.Contains("Izaberite lekara"))
-            {
-                //view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiTerapijePoLekaru(""));
-            }
-            else
-            {
-                //view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiTerapijePoLekaru(lekar));
-            }
-
-
-            UpdateView();
-            view.Refresh();
-        }*/
     }
 }

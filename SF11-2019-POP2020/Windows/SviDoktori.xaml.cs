@@ -53,15 +53,12 @@ namespace SF11_2019_POP2020.Windows
 
                 }
                 btnPocetnaApp.Visibility = Visibility.Hidden;
-
             }
-            //view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
 
             this.naziviInstitucija = new ObservableCollection<string>(Util.Instance.DomoviZdravlja
                     .Select(domZdravlja => domZdravlja.NazivInstitucije)
                     .Distinct()
                     .Prepend("Izaberite instituciju..."));
-
 
                 cmbInstitucije.ItemsSource = this.naziviInstitucija;
                 cmbInstitucije.SelectedIndex = 0;
@@ -73,13 +70,9 @@ namespace SF11_2019_POP2020.Windows
 
         private void UpdateView2()
         {
-            //DataGridLekari.ItemsSource = null;
-            //view = CollectionViewSource.GetDefaultView(Util.Instance.Lekari);
-            DataGridDoktori.ItemsSource = view; // Util.Instance.Korisnici;
+            DataGridDoktori.ItemsSource = view;
             DataGridDoktori.IsSynchronizedWithCurrentItem = true;
             DataGridDoktori.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
-            //view.Filter = CustomFilter;
-
         }
 
         private void DataGridDoktori_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
@@ -118,12 +111,6 @@ namespace SF11_2019_POP2020.Windows
 
                 if ((bool)addIzmenaLekara.ShowDialog())
                 {
-                    /*int index = Util.Instance.DomoviZdravlja.ToList().FindIndex(dt => dt.Id.Equals(izabraniDom.Id));
-
-                    //Util.Instance.Korisnici[index] = stariLekar;
-                    Util.Instance.DomoviZdravlja[index].NazivInstitucije = izabraniDom.NazivInstitucije;
-                    Util.Instance.DomoviZdravlja[index].adresaId = izabraniDom.adresaId;
-                    Util.Instance.DomoviZdravlja[index].Aktivan = izabraniDom.Aktivan;*/
 
                 }
                 UpdateView2();
@@ -168,7 +155,6 @@ namespace SF11_2019_POP2020.Windows
             else
             {
                 view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiLekarePoInstituciji(institucija));
-
             }
 
             UpdateView2();
@@ -182,8 +168,6 @@ namespace SF11_2019_POP2020.Windows
             SviTermini st = new SviTermini();
             st.Show();
         }
-
-       
 
         private void menuItemAkcije_Click(object sender, RoutedEventArgs e)
         {

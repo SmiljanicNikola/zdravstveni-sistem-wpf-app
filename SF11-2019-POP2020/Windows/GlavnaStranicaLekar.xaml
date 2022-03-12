@@ -7,12 +7,10 @@
         mc:Ignorable="d"
         Title="GlavnaStranicaLekar" Height="450" Width="800">
     <Grid>
-
         <Label Content="Ulogovani ste kao : Lekar" HorizontalAlignment="Left" Margin="317,58,0,0" VerticalAlignment="Top"/>
         <Menu HorizontalAlignment="Left" Height="40" Margin="0,13,-0.4,0" VerticalAlignment="Top" Width="794" >
             <MenuItem Header="Akcije" Margin="0,0,0,0" Click="MenuItem_Click" Height="40" Width="130">
                 <MenuItem Name="MenuItemLicniPodaci" Header="Licni podaci" Click="MenuItemLicniPodaci_Click" ></MenuItem>
-
             </MenuItem>
             <MenuItem Header="Izlogujte se" Click="MenuItem_Click_1" Margin="560,0,0,0"  Height="40" Width="100">
                 <MenuItem Name="MenuItemLogOut" Header="LogOut" Click="MenuItemLogOut_Click" ></MenuItem>

@@ -30,25 +30,18 @@ namespace SF11_2019_POP2020.Windows
             UpdateView();
         }
 
-
         private void UpdateView()
         {
-
             view = CollectionViewSource.GetDefaultView(Util.Instance.Termini);
             DataGridTermini.ItemsSource = view;
             DataGridTermini.IsSynchronizedWithCurrentItem = true;
             DataGridTermini.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
-
-
         }
 
         private void DataGridTermini_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-
             if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
                 e.Column.Visibility = Visibility.Collapsed;
         }
-
-      
     }
 }

@@ -64,7 +64,6 @@ namespace SF11_2019_POP2020.Models
         }
 
 
-
         public Adresa Clone()
         {
             Adresa kopija = new Adresa();
@@ -78,8 +77,6 @@ namespace SF11_2019_POP2020.Models
 
             return kopija;
         }
-
-
 
     }
 }

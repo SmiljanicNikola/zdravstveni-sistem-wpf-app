@@ -19,7 +19,6 @@
                 <MenuItem x:Name="MenuItemIzmeniDoktora" Header="Izmeni Doktora" Click="MenuItemIzmeniDoktora_Click" />
                 <MenuItem x:Name="MenuItemObrisiDoktora" Header="Obrisi doktora" Click="MenuItemObrisiDoktora_Click" />
                 <MenuItem x:Name="MenuItemTerminiDoktora" Header="Vidi termine lekara" Click="MenuItemTerminiDoktora_Click" />
-
             </MenuItem>
         </Menu>
         <Button Content="Pocetna admin" Name="btnPocetnaAdmin" HorizontalAlignment="Left" Margin="243,359,0,0" VerticalAlignment="Top" Width="98" Click="btnPocetnaAdmin_Click" Height="38" Grid.Column="1"/>
@@ -28,6 +27,5 @@
         <ComboBox Grid.Column="1" HorizontalAlignment="Left" Margin="203,109,0,0" VerticalAlignment="Top" Width="120" Name="cmbInstitucije" SelectionChanged="cmbInstitucije_SelectionChanged"/>
         <CheckBox Content="CheckBox" Grid.Column="1" HorizontalAlignment="Left" Height="2" Margin="459,86,-105,0" VerticalAlignment="Top" Width="6"/>
         <GroupBox Grid.Column="1" Header="Pretrage" HorizontalAlignment="Left" Height="140" Margin="121,61,0,0" VerticalAlignment="Top" Width="220"/>
-
     </Grid>
 </Window>

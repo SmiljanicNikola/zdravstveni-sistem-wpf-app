@@ -28,7 +28,6 @@ namespace SF11_2019_POP2020.Windows
         }
 
 
-
         private void MenuItemLekari_Click(object sender, RoutedEventArgs e)
         {
             SviLekari window = new SviLekari();
@@ -41,7 +40,6 @@ namespace SF11_2019_POP2020.Windows
             windowPacijenti.Show();
         }
 
-        
 
         private void MenuItemLicniPodaci_Click(object sender, RoutedEventArgs e)
         {
@@ -52,38 +50,39 @@ namespace SF11_2019_POP2020.Windows
             add.ShowDialog();
         }
 
+
         private void MenuItemLogOut_Click(object sender, RoutedEventArgs e)
         {
             HomeWindow window = new HomeWindow();
 
             jmbg = null;
 
-            //this.Hide();
             this.Close();
             window.Show();
         }
+
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             //this.Close();
         }
 
+
         private void btnTerapije_Click(object sender, RoutedEventArgs e)
         {
             jmbg = textBlock1.Text;
 
             SveTerapije windowTerapije = new SveTerapije();
-
             //this.Hide();
             windowTerapije.Show();
         }
+
 
         private void btnDomoviZdravlja_Click(object sender, RoutedEventArgs e)
         {
             jmbg = textBlock1.Text;
 
             SviDomoviZdravlja windowDomoviZdravlja = new SviDomoviZdravlja();
-            //this.Hide();
             windowDomoviZdravlja.Show();
         }
 
@@ -126,6 +125,13 @@ namespace SF11_2019_POP2020.Windows
         private void MenuItem_Click_1(object sender, RoutedEventArgs e)
         {
 
+        }
+
+        private void dataGridDezurstva_Click(object sender, RoutedEventArgs e)
+        {
+            jmbg = textBlock1.Text;
+            PrikazDezurstava pd = new PrikazDezurstava();
+            pd.Show();
         }
     }
 }

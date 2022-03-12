@@ -48,9 +48,9 @@ namespace SF11_2019_POP2020.Windows
                 e.Column.Visibility = Visibility.Collapsed;
         }
 
+        private void DataGridDomZdravlja_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
 
-
-
-    
+        }
     }
 }

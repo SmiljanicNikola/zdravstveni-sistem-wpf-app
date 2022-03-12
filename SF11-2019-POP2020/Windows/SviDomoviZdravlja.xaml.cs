@@ -26,7 +26,6 @@ namespace SF11_2019_POP2020.Windows
 
         ObservableCollection<string> gradovi;
 
-
         public SviDomoviZdravlja()
         {
             InitializeComponent();
@@ -50,20 +49,16 @@ namespace SF11_2019_POP2020.Windows
                 btnPocetnaLekar.Visibility = Visibility.Hidden;
                 btnPocetnaAdmin.Visibility = Visibility.Hidden;
                 btnPocetnaPacijent.Visibility = Visibility.Hidden;
-
             }
             else
             { //ODAVDE
-
                 if (kor.TipKorisnika.Equals(ETipKorisnika.LEKAR) || kor.TipKorisnika.Equals(ETipKorisnika.PACIJENT))
                 {
-
                     txtPretragaPoNazivuInstitucije.Visibility = Visibility.Hidden;
                     txtPretragaPoUlici.Visibility = Visibility.Hidden;
                     menuAkcije.Visibility = Visibility.Hidden;
                     lblUlica.Visibility = Visibility.Hidden;
                     lblNazivInstituta.Visibility = Visibility.Hidden;
-
                 }
                 if (kor.TipKorisnika.Equals(ETipKorisnika.LEKAR))
                 {
@@ -95,8 +90,6 @@ namespace SF11_2019_POP2020.Windows
                  .Prepend("Izaberite grad...")
                  );
 
-            //view.Filter = CustomFilter;
-
             cmbMesto.ItemsSource = this.gradovi;
             cmbMesto.SelectedIndex = 0;
 
@@ -117,26 +110,18 @@ namespace SF11_2019_POP2020.Windows
                 {
                     return domZdravlja.Adresa.Ulica.Contains(txtPretragaPoUlici.Text);
                 }
-            /*if(domZdravlja.Aktivan)
-                if(cmbMesto.Text != "izaberite")
-                {
-                    return 
-                }*/
                 else
                     return true;
-
 
             return false;
         }
 
         private void UpdateView()
-        {
-            
+        {  
             DataGridDomoviZdravlja.ItemsSource = view;
             DataGridDomoviZdravlja.IsSynchronizedWithCurrentItem = true;
             DataGridDomoviZdravlja.ColumnWidth = new DataGridLength(1, DataGridLengthUnitType.Star);
             view.Filter = CustomFilter; 
-
         }
 
         private void MenuItemDodajDomZdravlja_Click(object sender, RoutedEventArgs e)
@@ -146,19 +131,12 @@ namespace SF11_2019_POP2020.Windows
             addDomZdravlja.Show();
 
             this.Hide();
-            //if ((bool)addAdmin.ShowDialog())
-            //{
-
-            //}
             this.Show();
             UpdateView();
-
-            //view.Refresh();
         }
 
         private void MenuItemIzmeniDomZdravlja_Click(object sender, RoutedEventArgs e)
         {
-            //Korisnik izabraniLekar = (Korisnik)DataGridLekari.SelectedItem;
             DomZdravlja izabraniDom = view.CurrentItem as DomZdravlja;
             if (izabraniDom != null)
             {
@@ -167,18 +145,10 @@ namespace SF11_2019_POP2020.Windows
 
                 if ((bool)addDomZdravlja.ShowDialog())
                 {
-                    /*int index = Util.Instance.DomoviZdravlja.ToList().FindIndex(dt => dt.Id.Equals(izabraniDom.Id));
-
-                    //Util.Instance.Korisnici[index] = stariLekar;
-                    Util.Instance.DomoviZdravlja[index].NazivInstitucije = izabraniDom.NazivInstitucije;
-                    Util.Instance.DomoviZdravlja[index].adresaId = izabraniDom.adresaId;
-                    Util.Instance.DomoviZdravlja[index].Aktivan = izabraniDom.Aktivan;*/
-
+                   
                 }
                 UpdateView();
-                //view.Refresh();
             }
-
         }
 
         private void MenuItemObrisiDomZdravlja_Click(object sender, RoutedEventArgs e)
@@ -194,14 +164,12 @@ namespace SF11_2019_POP2020.Windows
 
         private void DataGridDomoviZdravlja_AutoGeneratingColumn(object sender, DataGridAutoGeneratingColumnEventArgs e)
         {
-
             if (e.PropertyName.Equals("Aktivan") || e.PropertyName.Equals("Error"))
                 e.Column.Visibility = Visibility.Collapsed;
         }
 
         private void btnPocetnaAdmin_Click(object sender, RoutedEventArgs e)
         {
-            /*HomeWindow window = new HomeWindow();*/
             GlavnaStranicaAdministrator gsa = new GlavnaStranicaAdministrator();
             this.Hide();
             gsa.Show();
@@ -210,7 +178,6 @@ namespace SF11_2019_POP2020.Windows
         private void txtPretragaPoNazivuInstitucije_KeyUp(object sender, KeyEventArgs e)
         {
             view.Refresh();
-
         }
 
         private void txtPretragaPoUlici_KeyUp(object sender, KeyEventArgs e)
@@ -222,13 +189,6 @@ namespace SF11_2019_POP2020.Windows
         {
             string grad = cmbMesto.SelectedItem as string;
 
-            //DomZdravlja dz = new DomZdravlja();
-            //ObservableCollection<DomZdravlja> DomoviZdravlja();
-            /*if (dz.Adresa.Grad.Equals(grad))
-            {
-                view = CollectionViewSource.GetDefaultView(Util.Instance.DomoviZdravlja);
-
-            }*/
             if (grad.Contains("Izaberite grad"))
             {
                 view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiDomovePoMestu(""));
@@ -238,14 +198,8 @@ namespace SF11_2019_POP2020.Windows
                 view = CollectionViewSource.GetDefaultView(Util.Instance.nadjiDomovePoMestu(grad));
             }
 
-
             UpdateView();
             view.Refresh();
-        }
-
-        private void DataGridDomoviZdravlja_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
 
         private void btnPocetnaLekar_Click(object sender, RoutedEventArgs e)
@@ -267,6 +221,11 @@ namespace SF11_2019_POP2020.Windows
             HomeWindow glavna = new HomeWindow();
             this.Hide();
             glavna.Show();
+        }
+
+        private void DataGridDomoviZdravlja_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+
         }
 
         private void btnPocetnaNeulogovan_Click_1(object sender, RoutedEventArgs e)
